@@ -122,6 +122,12 @@ def _write(df: pd.DataFrame, out: Path) -> None:
         f"{n_seeds} independent synthetic worlds per effect scale. Effect scale 0 injects no "
         "award effect at all, so any Sharpe there is pure noise (or a bug).",
         "",
+        "Reading it: with no effect, hedged returns average zero and every strategy pays 10 bps "
+        "per side on a book that turns over every 5 days. That is roughly -10%/yr for the "
+        "always-invested `all awards` book, hence its Sharpe near -1.5. Negative Sharpe at "
+        "scale 0 is the cost drag, not a false signal. The models only beat `random 20%` once "
+        "a real effect exists, and the simple size rule is the most robust of the three.",
+        "",
         report.md_table(rows),
         "",
         "![Sharpe vs effect](sharpe_vs_effect.png)",
