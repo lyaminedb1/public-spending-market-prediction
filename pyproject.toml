@@ -1,0 +1,29 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "psmp"
+version = "0.1.0"
+description = "Predict stock reactions to US federal contract awards (public spending -> market signal)."
+requires-python = ">=3.10"
+dependencies = [
+    "numpy>=1.24",
+    "pandas>=2.0",
+    "scipy>=1.10",
+    "scikit-learn>=1.3",
+    "matplotlib>=3.7",
+    "requests>=2.31",
+]
+
+[project.optional-dependencies]
+dev = ["pytest>=7"]
+
+[project.scripts]
+psmp = "psmp.cli:main"
+
+[tool.setuptools.packages.find]
+include = ["psmp*"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
