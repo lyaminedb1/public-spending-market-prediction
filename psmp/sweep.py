@@ -8,6 +8,7 @@ from __future__ import annotations
 
 import contextlib
 import io
+import multiprocessing
 import os
 from concurrent.futures import ProcessPoolExecutor, as_completed
 from pathlib import Path
@@ -53,9 +54,12 @@ def sweep(
     workers = workers or os.cpu_count() or 1
     rows = []
     # One BLAS/OpenMP thread per process, otherwise workers fight over cores.
+    # Spawn, don't fork: a forked child inherits OpenMP state from the parent
+    # and can spin forever inside scikit-learn's thread pool.
     for var in ("OMP_NUM_THREADS", "OPENBLAS_NUM_THREADS", "MKL_NUM_THREADS"):
         os.environ[var] = "1"
-    with ProcessPoolExecutor(workers) as pool:
+    ctx = multiprocessing.get_context("spawn")
+    with ProcessPoolExecutor(workers, mp_context=ctx) as pool:
         futures = {pool.submit(_one, j): j for j in jobs}
         for k, fut in enumerate(as_completed(futures), start=1):
             rows.extend(fut.result())

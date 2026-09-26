@@ -61,7 +61,7 @@ def _end_labels(ax, items, min_gap=0.045):
     to_ax = ax.transAxes.inverted()
     pts = []
     for label, x, y in items:
-        disp = ax.transData.transform((x, y))
+        disp = ax.transData.transform((float(ax.convert_xunits(x)), float(y)))
         pts.append([label, x, to_ax.transform(disp)[1]])
     pts.sort(key=lambda p: p[2])
     for i in range(1, len(pts)):
