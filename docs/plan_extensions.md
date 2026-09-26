@@ -42,3 +42,15 @@ justifiées par la littérature ou par le diagnostic (surapprentissage, changeme
 - Données de la commande publique (DECP) : nettoyage trop long.
 - Panel de plusieurs pays (comme Bouillot et al., 2025) : données budgétaires mensuelles hétérogènes.
 - Sentiment des actualités, Google Trends : hors du périmètre « dépenses publiques » du titre.
+
+## Ajout du 26 septembre 2026, 23h20 (avant tout résultat de ce test)
+
+| # | Extension | Justification |
+|---|---|---|
+| E14 | **Étude d'événement** : réaction quotidienne du spread OAT–Bund (et de l'OAT, du CAC 40) le jour de la publication de la situation mensuelle budgétaire | Si les marchés intègrent l'information budgétaire dès sa publication (Fama, 1970 ; Ramey, 2011), l'effet doit apparaître le jour même et non un mois plus tard. Complète le résultat négatif des prévisions mensuelles. |
+
+Protocole E14, fixé avant l'analyse :
+- **Dates d'événement** : communiqués de presse du ministère « Situation mensuelle budgétaire » (presse.economie.gouv.fr) ; à défaut, dates de publication DGFiP avec une fenêtre élargie [-2 ; +1] jours ouvrés.
+- **Données** : taux à 10 ans quotidiens France et Allemagne (BCE / Banque de France / Bundesbank), CAC 40 quotidien.
+- **Tests** : (1) la variation absolue du spread sur la fenêtre [0 ; +1] est-elle plus grande les jours de publication que les autres jours (test de Mann-Whitney, test de permutation) ? (2) la variation du spread sur la fenêtre est-elle liée à la surprise budgétaire du mois publié (corrélation de Spearman, régression) ?
+- Résultat rapporté quel qu'il soit.
