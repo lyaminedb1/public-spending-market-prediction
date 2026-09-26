@@ -38,6 +38,8 @@
 - Cibles stationnaires (ADF p < 0,01) ; niveaux (spread, OAT, solde, charge de la dette) non stationnaires → on modélise des variations.
 - Autocorrélation d'ordre 1 : Δspread 0,14 ; ΔOAT 0,23 ; CAC 40 -0,09.
 - Corrélations de Spearman budget (t-2) / cibles (t+1), seuil 5 % = ±0,16 : spread → seul l'investissement (-0,16) ; ΔOAT → personnel 0,23, charge de la dette 0,21, fonctionnement 0,17, mais ces liens tombent à 0,07–0,13 une fois l'inflation contrôlée (confusion avec le régime d'inflation 2022-2023) ; CAC 40 → rien de significatif.
+- Les niveaux `_12m` (Md€) sont non stationnaires (ADF p > 0,7) et produisent des corrélations fallacieuses avec l'OAT (jusqu'à 0,34, tendance commune) → **dans les modèles, utiliser les `_ytd_gap`, pas les `_12m`**. Les `_ytd_gap` sont proches de la stationnarité (p 0,01–0,06).
+- Notebook pédagogique : `notebooks/03_EDA.ipynb` (généré par `src/make_eda_notebook.py`).
 - Conclusion d'étape : signal budgétaire faible et en partie confondu avec l'inflation → l'inflation doit rester dans le modèle « contrôles seuls ».
 
 ## Modèles et évaluation
