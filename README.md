@@ -23,7 +23,10 @@ Modèles comparés : naïf, régression linéaire, forêt aléatoire, XGBoost �
 | Yahoo Finance | CAC 40 (`^FCHI`) | `src/01_collect_data.py` |
 
 ## Utilisation
+Travailler dans un environnement dédié (ne pas installer dans l'environnement `base` d'Anaconda) :
 ```bash
+conda create -n memoire python=3.11 -y
+conda activate memoire
 pip install -r requirements.txt
 python src/01_collect_data.py
 ```
