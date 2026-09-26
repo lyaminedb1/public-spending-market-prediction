@@ -1,0 +1,10 @@
+pandas
+numpy
+requests
+yfinance
+scikit-learn
+xgboost
+statsmodels
+shap
+matplotlib
+jupyter

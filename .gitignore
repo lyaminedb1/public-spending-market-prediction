@@ -1,0 +1,17 @@
+# Python
+__pycache__/
+*.py[cod]
+.ipynb_checkpoints/
+.venv/
+venv/
+env/
+.env
+
+# macOS / éditeurs
+.DS_Store
+.vscode/
+.idea/
+
+# Rédaction (le texte du mémoire reste hors du dépôt jusqu'à la soutenance)
+*.docx
+*.pdf
