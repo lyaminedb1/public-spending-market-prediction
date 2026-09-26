@@ -33,6 +33,13 @@
 - Vérification : les soldes annuels reconstitués correspondent aux chiffres officiels (-85,6 Md€ en 2014, -178,1 en 2020, -173,0 en 2023, -155,9 en 2024).
 - Taux OAT/Bund = moyennes mensuelles : les variations de moyennes sont mécaniquement un peu autocorrélées (à signaler, et raison de toujours inclure la variation passée).
 
+## Analyse exploratoire (`python src/03_exploration.py`)
+- Figures : `results/figures/fig3_1_*.png` ; tableaux : `results/tables/eda_*.csv`.
+- Cibles stationnaires (ADF p < 0,01) ; niveaux (spread, OAT, solde, charge de la dette) non stationnaires → on modélise des variations.
+- Autocorrélation d'ordre 1 : Δspread 0,14 ; ΔOAT 0,23 ; CAC 40 -0,09.
+- Corrélations de Spearman budget (t-2) / cibles (t+1), seuil 5 % = ±0,16 : spread → seul l'investissement (-0,16) ; ΔOAT → personnel 0,23, charge de la dette 0,21, fonctionnement 0,17, mais ces liens tombent à 0,07–0,13 une fois l'inflation contrôlée (confusion avec le régime d'inflation 2022-2023) ; CAC 40 → rien de significatif.
+- Conclusion d'étape : signal budgétaire faible et en partie confondu avec l'inflation → l'inflation doit rester dans le modèle « contrôles seuls ».
+
 ## Modèles et évaluation
 - Modèles : naïf (marche aléatoire / moyenne), régression linéaire avec retards, forêt aléatoire, XGBoost. **Pas de deep learning** (trop peu d'observations).
 - Comparaison clé : modèle « contrôles seuls » contre « contrôles + dépenses ».
@@ -55,7 +62,7 @@ Bouillot, Candelon & Kool (2025), *Forecasting European sovereign spreads using 
 - `data/processed/` : jeu de données mensuel nettoyé.
 - `notebooks/` : 01_collecte, 02_nettoyage, 03_exploration, 04_modeles.
 - `src/` : scripts et fonctions réutilisables.
-- `results/figures/` : graphiques pour le mémoire.
+- `results/figures/` : graphiques pour le mémoire ; `results/tables/` : tableaux.
 
 ## Plan du mémoire
 Introduction · Ch.1 État de l'art (rédigé) · Ch.2 Données et méthodologie · Ch.3 Résultats · Ch.4 Discussion · Conclusion · Bibliographie · Annexes.
