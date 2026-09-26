@@ -49,6 +49,17 @@
 - Métriques : RMSE, MAE, taux de bonne direction ; test de Diebold-Mariano.
 - Importance des variables : SHAP ou permutation importance.
 
+## Résultats de la modélisation (`python src/04_models.py`, ~5 min)
+- Jeux de variables emboîtés : M0 marchés (11 var.) ; M1 = M0 + 7 dépenses `_ytd_gap` ; M2 = M1 + recettes et solde. Test H1 = M1 vs M0.
+- Hyperparamètres fixés a priori (Ridge : alpha par RidgeCV ; RF : 300 arbres, profondeur 4 ; XGB : 200 arbres, profondeur 2, lr 0,05).
+- Validation glissante, fenêtre croissante, test 2020-01 → 2026-07 (79 mois).
+- **Aucun modèle ne bat la moyenne historique** (R² hors échantillon < 0 partout ; meilleur : Ridge M0 sur CAC 40, -0,3 %). Même un AR(1) simple fait -2 à -3 % (tests depuis 2020 et depuis 2017) → pas un bug, imprévisibilité mensuelle (Welch & Goyal 2008).
+- **H1 rejetée** : ajouter les dépenses n'améliore aucune cible (DM M1 vs M0 : p > 0,2 partout).
+- **H2 non testable** en l'état (pas d'apport à comparer).
+- **H3 rejetée** : XGBoost est le pire (RMSE +10 à +16 % vs moyenne) ; la forêt aléatoire n'est pas significativement meilleure que Ridge.
+- **H4** : en échantillon (SHAP), les dépenses pèsent ~30 % de l'importance (intervention et investissement en tête) mais cela ne se traduit pas hors échantillon → surapprentissage : point clé de la discussion.
+- Sorties : `results/tables/models_*.csv`, figures `fig3_2_rmse_relatif`, `fig3_3_importance_shap`, `fig3_4_previsions_spread`.
+
 ## Hypothèses
 - H1 : pour au moins un indicateur, ajouter les dépenses améliore la prévision.
 - H2 : l'apport décroît du spread, au taux OAT, puis au CAC 40.
