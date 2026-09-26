@@ -1,0 +1,4 @@
+extension,cible,comparaison,n_test,R2oos_sans_%,R2oos_avec_%,DM,p_avec_meilleur,p_avec_bat_moyenne,note
+E9 Elastic Net,y_d_spread,enet : M1 vs M0,79,-1.9627,-3.5712,-0.5696,0.7147,0.804,
+E9 Elastic Net,y_d_oat,enet : M1 vs M0,79,-5.8565,-6.8949,-0.3311,0.6293,0.7245,
+E9 Elastic Net,y_cac_ret,enet : M1 vs M0,79,0.2635,-3.2578,-1.4307,0.9217,0.9042,

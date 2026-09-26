@@ -1,0 +1,10 @@
+extension,cible,comparaison,n_test,R2oos_sans_%,R2oos_avec_%,DM,p_avec_meilleur,p_avec_bat_moyenne,note
+E3 volatilité,y_d_spread,ridge : M1 vs M0,79,-5.1257,-9.8375,-1.5581,0.9384,0.9628,
+E3 volatilité,y_d_spread,rf : M1 vs M0,79,-17.0394,-14.1106,0.789,0.2162,0.9945,
+E3 volatilité,y_d_spread,xgb : M1 vs M0,79,-46.6083,-36.5728,0.8735,0.1925,0.9993,
+E3 volatilité,y_d_oat,ridge : M1 vs M0,79,2.654,2.1615,-0.1759,0.5696,0.3862,
+E3 volatilité,y_d_oat,rf : M1 vs M0,79,3.1156,4.45,0.3844,0.3509,0.3176,
+E3 volatilité,y_d_oat,xgb : M1 vs M0,79,-11.968,-2.0294,1.3334,0.0931,0.5523,
+E3 volatilité,y_cac_ret,ridge : M1 vs M0,79,-0.6388,-3.3656,-1.0476,0.851,0.6876,
+E3 volatilité,y_cac_ret,rf : M1 vs M0,79,9.2785,6.8261,-0.9375,0.8243,0.1774,
+E3 volatilité,y_cac_ret,xgb : M1 vs M0,79,2.4108,2.685,0.0468,0.4814,0.4205,

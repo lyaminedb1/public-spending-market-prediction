@@ -1,0 +1,10 @@
+extension,cible,comparaison,n_test,R2oos_sans_%,R2oos_avec_%,DM,p_avec_meilleur,p_avec_bat_moyenne,note,precision_sans_%,AUC_sans,precision_avec_%,AUC_avec,precision_classe_majoritaire_%
+E2 classification,y_d_spread,logit : M1 vs M0 (perte de Brier),79,-22.0141,-22.1229,-0.0114,0.5046,0.9529,R2oos = score de Brier relatif à la fréquence historique,54.4304,0.5065,54.4304,0.5565,49.3671
+E2 classification,y_d_spread,rf : M1 vs M0 (perte de Brier),79,-0.6553,1.0396,0.3884,0.3494,0.4334,R2oos = score de Brier relatif à la fréquence historique,48.1013,0.5435,53.1646,0.5734,49.3671
+E2 classification,y_d_spread,xgb : M1 vs M0 (perte de Brier),79,-9.6185,-3.9794,0.7279,0.2344,0.6515,R2oos = score de Brier relatif à la fréquence historique,48.1013,0.5247,56.962,0.6045,49.3671
+E2 classification,y_d_oat,logit : M1 vs M0 (perte de Brier),79,-12.0672,-27.5511,-2.3243,0.9886,0.9747,R2oos = score de Brier relatif à la fréquence historique,55.6962,0.5981,51.8987,0.5403,44.3038
+E2 classification,y_d_oat,rf : M1 vs M0 (perte de Brier),79,5.2016,7.0742,0.5457,0.2934,0.1615,R2oos = score de Brier relatif à la fréquence historique,55.6962,0.5747,54.4304,0.5617,44.3038
+E2 classification,y_d_oat,xgb : M1 vs M0 (perte de Brier),79,-1.2707,-2.112,-0.1656,0.5655,0.5793,R2oos = score de Brier relatif à la fréquence historique,55.6962,0.589,56.962,0.5747,44.3038
+E2 classification,y_cac_ret,logit : M1 vs M0 (perte de Brier),79,-6.6271,-18.5967,-1.3613,0.9113,0.9276,R2oos = score de Brier relatif à la fréquence historique,59.4937,0.5941,58.2278,0.5571,60.7595
+E2 classification,y_cac_ret,rf : M1 vs M0 (perte de Brier),79,-5.5265,-6.859,-0.5209,0.698,0.9116,R2oos = score de Brier relatif à la fréquence historique,53.1646,0.4247,49.3671,0.4476,60.7595
+E2 classification,y_cac_ret,xgb : M1 vs M0 (perte de Brier),79,-23.2782,-23.1494,0.0271,0.4892,0.9922,R2oos = score de Brier relatif à la fréquence historique,49.3671,0.4079,51.8987,0.4247,60.7595

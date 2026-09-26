@@ -60,6 +60,16 @@
 - **H4** : en échantillon (SHAP), les dépenses pèsent ~30 % de l'importance (intervention et investissement en tête) mais cela ne se traduit pas hors échantillon → surapprentissage : point clé de la discussion.
 - Sorties : `results/tables/models_*.csv`, figures `fig3_2_rmse_relatif`, `fig3_3_importance_shap`, `fig3_4_previsions_spread`.
 
+## Extensions pré-enregistrées (`docs/plan_extensions.md`, commit b136e8f avant exécution)
+- `python src/05_extra_features.py` (surprise budgétaire vs LFI, notations) puis `python src/06_extensions.py` (~35 min) puis `python src/07_extensions_summary.py`.
+- Sorties : `results/tables/extensions/E*.csv`, `results/tables/ext_summary.csv` (123 comparaisons avec/sans dépenses + 36 ventilations E12), `results/tables/ext_synthese.csv`, figure `fig3_5_extensions.png`.
+- **Résultat : 0 comparaison significative après correction Benjamini-Hochberg (10 %)** ; 2 p brutes < 0,05 sur 123 (≈ 6 attendues par hasard).
+- Ce qui bat la moyenne historique, **sans les dépenses** : volatilité (E3 : CAC 40 +9,3 %, OAT +3 à +4,5 %), classification OAT (E2 : score de Brier +5 à +7 %), spread à 3 mois (RF M0 +3,1 %), CAC à 12 mois (XGB M0 +14 %, 68 obs. chevauchantes, fragile).
+- Surprise budgétaire (E4) : LFI 2026 absente de l'open data → test jusqu'à 2026-02 ; aucun apport.
+- Notations (E13) : 9 dégradations 2013-2025 (`data/raw/ratings_france.csv`, sources en lien) ; aucun apport.
+- Contrôle anti-fuite vérifié : pour l'horizon h, la dernière ligne d'entraînement est toujours ≥ h mois avant le mois de test.
+- Conclusion : résultat négatif robuste à 13 variantes.
+
 ## Hypothèses
 - H1 : pour au moins un indicateur, ajouter les dépenses améliore la prévision.
 - H2 : l'apport décroît du spread, au taux OAT, puis au CAC 40.

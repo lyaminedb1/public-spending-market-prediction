@@ -1,0 +1,19 @@
+extension,cible,comparaison,n_test,R2oos_sans_%,R2oos_avec_%,DM,p_avec_meilleur,p_avec_bat_moyenne,note
+E4 surprise,y_d_spread,ridge : M0 + surprise vs M0,74,-14.1845,-16.2468,-0.4852,0.6855,0.9513,test jusqu'à 2026-02 (LFI 2026 indisponible)
+E4 surprise,y_d_spread,ridge : M1 + surprise vs M0,74,-14.1845,-16.2907,-0.3169,0.6239,0.9595,test jusqu'à 2026-02
+E4 surprise,y_d_spread,rf : M0 + surprise vs M0,74,-2.6965,-7.7788,-1.6348,0.9468,0.8404,test jusqu'à 2026-02 (LFI 2026 indisponible)
+E4 surprise,y_d_spread,rf : M1 + surprise vs M0,74,-2.6965,-9.2754,-1.4078,0.9183,0.8892,test jusqu'à 2026-02
+E4 surprise,y_d_spread,xgb : M0 + surprise vs M0,74,-26.5768,-48.9622,-2.1912,0.9842,0.9989,test jusqu'à 2026-02 (LFI 2026 indisponible)
+E4 surprise,y_d_spread,xgb : M1 + surprise vs M0,74,-26.5768,-30.2634,-0.3556,0.6384,0.9851,test jusqu'à 2026-02
+E4 surprise,y_d_oat,ridge : M0 + surprise vs M0,74,-12.4858,-15.5323,-1.5547,0.9378,0.8719,test jusqu'à 2026-02 (LFI 2026 indisponible)
+E4 surprise,y_d_oat,ridge : M1 + surprise vs M0,74,-12.4858,-17.2695,-0.9395,0.8247,0.9011,test jusqu'à 2026-02
+E4 surprise,y_d_oat,rf : M0 + surprise vs M0,74,-5.0156,-4.6671,0.2721,0.3932,0.6702,test jusqu'à 2026-02 (LFI 2026 indisponible)
+E4 surprise,y_d_oat,rf : M1 + surprise vs M0,74,-5.0156,-7.2589,-0.572,0.7155,0.757,test jusqu'à 2026-02
+E4 surprise,y_d_oat,xgb : M0 + surprise vs M0,74,-21.2583,-24.967,-0.8319,0.7959,0.9191,test jusqu'à 2026-02 (LFI 2026 indisponible)
+E4 surprise,y_d_oat,xgb : M1 + surprise vs M0,74,-21.2583,-26.4665,-0.683,0.7516,0.9382,test jusqu'à 2026-02
+E4 surprise,y_cac_ret,ridge : M0 + surprise vs M0,74,-0.3427,-0.7347,-0.5848,0.7198,0.7887,test jusqu'à 2026-02 (LFI 2026 indisponible)
+E4 surprise,y_cac_ret,ridge : M1 + surprise vs M0,74,-0.3427,-1.9962,-1.116,0.866,0.8779,test jusqu'à 2026-02
+E4 surprise,y_cac_ret,rf : M0 + surprise vs M0,74,-8.3017,-10.8373,-1.3026,0.9016,0.9647,test jusqu'à 2026-02 (LFI 2026 indisponible)
+E4 surprise,y_cac_ret,rf : M1 + surprise vs M0,74,-8.3017,-9.9488,-0.4163,0.6608,0.9718,test jusqu'à 2026-02
+E4 surprise,y_cac_ret,xgb : M0 + surprise vs M0,74,-35.5798,-34.3892,0.2305,0.4092,0.9944,test jusqu'à 2026-02 (LFI 2026 indisponible)
+E4 surprise,y_cac_ret,xgb : M1 + surprise vs M0,74,-35.5798,-27.2801,0.9509,0.1724,0.9891,test jusqu'à 2026-02
