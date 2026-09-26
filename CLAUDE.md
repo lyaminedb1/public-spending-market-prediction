@@ -18,15 +18,20 @@
 - Les cibles sont fixées a priori. Ne pas choisir les cibles en fonction des corrélations observées (data snooping).
 
 ## Variables explicatives
-- **Principales — dépenses de l'État** (situation mensuelle budgétaire, séries longues, data.economie.gouv.fr) : dépenses par titre (personnel, fonctionnement, investissement, intervention, charge de la dette) et par grande mission.
+- **Principales — dépenses de l'État** (situation mensuelle budgétaire, séries longues, data.economie.gouv.fr, jan. 2013 – juil. 2026) : dépenses par titre (personnel, fonctionnement, charge de la dette, investissement, intervention) et prélèvements sur recettes. Pas de ventilation par mission dans ces fichiers. Les opérations financières sont exclues (montants irréguliers, pas une dépense économique).
 - **Contrôles** : recettes, solde d'exécution, valeur passée de la cible, taux directeurs BCE (MRO, facilité de dépôt), taux Bund, VIX (aversion au risque), inflation France (IPCH).
 
 ## Règles de construction des données
 - Les montants budgétaires sont **cumulés depuis janvier** : les différencier pour obtenir des flux mensuels.
-- Forte saisonnalité : utiliser des **variations sur un an** (glissement annuel).
-- **Décalage de publication** : la situation du mois M est publiée environ 5 semaines après. Pour prédire t+1, n'utiliser que le budget de t-1 au plus (décalage d'au moins 2 mois par rapport à la cible). Sinon biais d'anticipation (look-ahead bias).
+- Forte saisonnalité : deux transformations par ligne budgétaire : somme glissante sur 12 mois (`_12m`, Md€) et écart du cumul depuis janvier par rapport au même mois de l'année précédente, en % du total annuel (`_ytd_gap`). Pas de taux de croissance du cumul : il explose en début d'année (base proche de zéro).
+- **Décalage de publication** : la situation du mois M est publiée environ 5 semaines après (juin 2026 publié le 6 août 2026). À la fin du mois t, seul le budget de t-2 est connu : les variables budgétaires sont décalées de 2 mois (`BUDGET_LAG = 2`). Sinon biais d'anticipation (look-ahead bias).
 - Décembre : version provisoire puis définitive (révisions, à mentionner comme limite).
 - OAT/Bund FRED = moyennes mensuelles (OCDE). CAC 40 `^FCHI` = indice de prix, hors dividendes.
+
+## Jeu de données construit
+- `python src/02_build_dataset.py` → `data/processed/dataset_monthly.csv` : 150 mois (2014-03 → 2026-08), 149 avec cible. Préfixe `y_` = cibles, `b_` = budget (décalé de 2 mois), le reste = marchés et contrôles en t.
+- Vérification : les soldes annuels reconstitués correspondent aux chiffres officiels (-85,6 Md€ en 2014, -178,1 en 2020, -173,0 en 2023, -155,9 en 2024).
+- Taux OAT/Bund = moyennes mensuelles : les variations de moyennes sont mécaniquement un peu autocorrélées (à signaler, et raison de toujours inclure la variation passée).
 
 ## Modèles et évaluation
 - Modèles : naïf (marche aléatoire / moyenne), régression linéaire avec retards, forêt aléatoire, XGBoost. **Pas de deep learning** (trop peu d'observations).
