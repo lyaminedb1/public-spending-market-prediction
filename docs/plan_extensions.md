@@ -69,3 +69,18 @@ Protocole E15, fixé avant l'analyse :
 - **Validation glissante** trimestrielle, fenêtre croissante, **test à partir de 2010T1** (inclut la crise de la dette) ; sous-période 2015T1+ rapportée aussi.
 - **Tests** : Diebold-Mariano sur la perte quadratique sommée sur les pays à chaque trimestre ; résultats par pays rapportés. Les p-values s'ajoutent à la correction Benjamini-Hochberg de l'ensemble des extensions.
 - Résultat rapporté quel qu'il soit ; les résultats France mensuels restent le cœur du mémoire.
+
+## Ajout du 27 septembre 2026, 11h40 (avant collecte et avant tout résultat)
+
+| # | Extension | Justification |
+|---|---|---|
+| E16 | **Réplication élargie de Bouillot, Candelon et Kool (2025)** : panel mensuel de 5 pays (France, Italie, Espagne, Portugal, Belgique ; spread face au Bund), 2008-2026, base de plusieurs centaines de variables ouvertes organisées en blocs thématiques | Tester si une base large, dans le cadre de la référence la plus proche, fait apparaître un apport des finances publiques. |
+
+Protocole E16, fixé avant l'analyse :
+- **Blocs** : (1) taux et marchés du pays (taux court, taux long, indice boursier) ; (2) macroéconomie du pays (chômage, inflation, production industrielle, confiance des ménages et des entreprises, indicateur avancé OCDE) ; (3) variables mondiales (taux et activité américains, pétrole, euro-dollar, VIX, écart de crédit) ; (4) **finances publiques** (Eurostat trimestriel : dépenses totales, rémunérations, intérêts, investissement, prestations, consommations intermédiaires, recettes, solde ; décalage de 2 trimestres puis prolongé mensuellement). Chaque variable entre en niveau et en variation, avec 1 retard. Variables publiées avec retard (macro) décalées d'1 mois ; finances publiques de 2 trimestres.
+- **Cibles** : (a) **niveau** du spread au mois t+1 (comme Bouillot et al.) ; (b) **variation** du spread entre t et t+1.
+- **Modèles** : XGBoost (modèle de référence de Bouillot et al.), forêt aléatoire, Ridge ; modèle groupé sur les pays, indicatrices pays.
+- **Références** : moyenne historique du pays **et marche aléatoire** (spread inchangé). Le R² par rapport à la moyenne ET le gain par rapport à la marche aléatoire sont rapportés tous les deux.
+- **Test clé** : modèle complet contre modèle sans le bloc finances publiques (Diebold-Mariano sur la perte sommée sur les pays), ajouté à la correction Benjamini-Hochberg.
+- Validation glissante mensuelle, fenêtre croissante, test à partir de 2012-01 (entraînement 2008-2011), réestimation tous les 3 mois pour tenir le temps de calcul.
+- Résultat rapporté quel qu'il soit.
