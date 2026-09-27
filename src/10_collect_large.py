@@ -102,7 +102,7 @@ if __name__ == "__main__":
             except Exception as e:
                 fails.append((sid, str(e)[:60]))
                 print(f"    ÉCHEC  {sid}", flush=True)
-            time.sleep(0.3)
+            time.sleep(1.5)
         save(cols, meta)
         print(f"  {c2} : terminé", flush=True)
     for bloc, nom, sid in GLOBAL_SERIES:
@@ -113,7 +113,7 @@ if __name__ == "__main__":
         except Exception as e:
             fails.append((sid, str(e)[:60]))
             print(f"    ÉCHEC  {sid}", flush=True)
-        time.sleep(0.3)
+        time.sleep(1.5)
 
     df = save(cols, meta)
     print(f"\nSéries récupérées : {len(cols)} ; période {df.index.min()} -> {df.index.max()}")
