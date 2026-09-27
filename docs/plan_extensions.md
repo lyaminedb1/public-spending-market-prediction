@@ -123,3 +123,8 @@ Protocole E19 :
 Protocole E20 :
 - Indice mensuel d'incertitude de politique économique pour la France (Baker, Bloom et Davis ; via FRED), en logarithme, décalé d'1 mois.
 - (a) M0 + incertitude contre M0 ; (b) M1 + incertitude contre M0 + incertitude. Trois cibles principales, trois modèles, test 2020-01 → 2026-07 ; 18 comparaisons.
+
+### Écart au protocole E20 (27/09/2026, 20h55, avant exécution)
+L'indice France (`FRAEPUINDXM`) n'est pas disponible sur FRED ; seul l'indice européen `EUEPUINDXM`
+(Baker, Bloom et Davis, construit à partir de la presse de 5 pays dont la France) l'est. E20 est exécutée avec
+l'indice européen ; le reste du protocole est inchangé.
