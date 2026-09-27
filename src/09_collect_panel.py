@@ -9,13 +9,14 @@ Collecte pour l'extension E15 (panel européen trimestriel, docs/plan_extensions
     python src/09_collect_panel.py
 puis :  git add data && git commit -m "Données panel européen" && git push
 """
-from io import StringIO
 from itertools import product
 import json
 from pathlib import Path
 
 import pandas as pd
 import requests
+
+from fred_http import fred_csv
 
 OUT = Path("data/raw/panel")
 OUT.mkdir(parents=True, exist_ok=True)
@@ -26,12 +27,7 @@ NA_ITEMS = ["TE", "D1PAY", "D41PAY", "P51G", "D62PAY", "P2", "TR", "B9"]
 
 
 def fred(series_id):
-    r = requests.get(f"https://fred.stlouisfed.org/graph/fredgraph.csv?id={series_id}", timeout=60, headers=HEADERS)
-    r.raise_for_status()
-    df = pd.read_csv(StringIO(r.text))
-    s = pd.to_numeric(df[series_id], errors="coerce")
-    s.index = pd.to_datetime(df[df.columns[0]])
-    return s.dropna()
+    return fred_csv(series_id)
 
 
 def eurostat_jsonstat():
@@ -70,6 +66,9 @@ if __name__ == "__main__":
     pd.DataFrame(rates).to_csv(OUT / "taux_10y_mensuels.csv", index_label="date")
 
     print("2. Eurostat gov_10q_ggnfa")
+    if (OUT / "eurostat_gov_10q_ggnfa.csv").exists():
+        print("  déjà téléchargé, on garde le fichier existant")
+        raise SystemExit("\nTerminé. Pousse le dossier data/ sur GitHub.")
     try:
         df = eurostat_jsonstat()
         df.to_csv(OUT / "eurostat_gov_10q_ggnfa.csv", index=False)

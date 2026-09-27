@@ -12,16 +12,15 @@ puis :  git add data && git commit -m "Base élargie E16" && git push
 
 Le script affiche les séries introuvables : ce n'est pas grave, la base reste large.
 """
-from io import StringIO
 from pathlib import Path
 import time
 
 import pandas as pd
-import requests
+
+from fred_http import fred_csv
 
 OUT = Path("data/raw/large")
 OUT.mkdir(parents=True, exist_ok=True)
-HEADERS = {"User-Agent": "Mozilla/5.0 (memoire ECE; recherche academique)"}
 START = "2000-01-01"
 
 # code ISO-2 -> ISO-3 (certaines séries OCDE sur FRED utilisent l'ISO-3)
@@ -60,24 +59,8 @@ GLOBAL_SERIES = [
 
 
 def fred(series_id):
-    last = None
-    for attempt in range(2):
-        try:
-            r = requests.get(f"https://fred.stlouisfed.org/graph/fredgraph.csv?id={series_id}",
-                             timeout=20, headers=HEADERS)
-            r.raise_for_status()
-            break
-        except requests.exceptions.HTTPError as e:
-            raise e  # série inexistante : inutile de réessayer
-        except Exception as e:
-            last = e
-            time.sleep(2)
-    else:
-        raise last
-    df = pd.read_csv(StringIO(r.text))
-    s = pd.to_numeric(df[series_id], errors="coerce")
-    s.index = pd.to_datetime(df[df.columns[0]])
-    s = s[s.index >= START].dropna()
+    s = fred_csv(series_id)
+    s = s[s.index >= START]
     # tout en mensuel : moyenne du mois pour les séries quotidiennes / hebdomadaires
     return s.groupby(s.index.to_period("M")).mean()
 
