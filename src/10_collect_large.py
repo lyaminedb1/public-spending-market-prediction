@@ -60,14 +60,34 @@ GLOBAL_SERIES = [
 
 
 def fred(series_id):
-    r = requests.get(f"https://fred.stlouisfed.org/graph/fredgraph.csv?id={series_id}", timeout=60, headers=HEADERS)
-    r.raise_for_status()
+    last = None
+    for attempt in range(2):
+        try:
+            r = requests.get(f"https://fred.stlouisfed.org/graph/fredgraph.csv?id={series_id}",
+                             timeout=20, headers=HEADERS)
+            r.raise_for_status()
+            break
+        except requests.exceptions.HTTPError as e:
+            raise e  # série inexistante : inutile de réessayer
+        except Exception as e:
+            last = e
+            time.sleep(2)
+    else:
+        raise last
     df = pd.read_csv(StringIO(r.text))
     s = pd.to_numeric(df[series_id], errors="coerce")
     s.index = pd.to_datetime(df[df.columns[0]])
     s = s[s.index >= START].dropna()
     # tout en mensuel : moyenne du mois pour les séries quotidiennes / hebdomadaires
     return s.groupby(s.index.to_period("M")).mean()
+
+
+def save(cols, meta):
+    df = pd.DataFrame(cols).sort_index()
+    df.index = df.index.astype(str)
+    df.to_csv(OUT / "base_elargie_mensuelle.csv", index_label="mois")
+    pd.DataFrame(meta).to_csv(OUT / "dictionnaire_variables.csv", index=False)
+    return df
 
 
 if __name__ == "__main__":
@@ -78,22 +98,24 @@ if __name__ == "__main__":
             try:
                 cols[f"{c2}_{nom}"] = fred(sid)
                 meta.append({"variable": f"{c2}_{nom}", "pays": c2, "bloc": bloc, "fred_id": sid})
+                print(f"    OK     {sid}", flush=True)
             except Exception as e:
                 fails.append((sid, str(e)[:60]))
+                print(f"    ÉCHEC  {sid}", flush=True)
             time.sleep(0.3)
-        print(f"  {c2} : terminé")
+        save(cols, meta)
+        print(f"  {c2} : terminé", flush=True)
     for bloc, nom, sid in GLOBAL_SERIES:
         try:
             cols[nom] = fred(sid)
             meta.append({"variable": nom, "pays": "MONDE", "bloc": bloc, "fred_id": sid})
+            print(f"    OK     {sid}", flush=True)
         except Exception as e:
             fails.append((sid, str(e)[:60]))
+            print(f"    ÉCHEC  {sid}", flush=True)
         time.sleep(0.3)
 
-    df = pd.DataFrame(cols).sort_index()
-    df.index = df.index.astype(str)
-    df.to_csv(OUT / "base_elargie_mensuelle.csv", index_label="mois")
-    pd.DataFrame(meta).to_csv(OUT / "dictionnaire_variables.csv", index=False)
+    df = save(cols, meta)
     print(f"\nSéries récupérées : {len(cols)} ; période {df.index.min()} -> {df.index.max()}")
     if fails:
         print(f"Séries introuvables ({len(fails)}) :")
