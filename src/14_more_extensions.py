@@ -145,13 +145,19 @@ def e18(df):
 # ---------------------------------------------------------------------------
 # E19 : actions sectorielles (France)
 # ---------------------------------------------------------------------------
-def e19(df):
+def actions_mensuelles():
+    """Prix de fin de mois des actions ; le dernier mois est retiré s'il est incomplet
+    (données quotidiennes arrêtées avant le dernier jour ouvré) -- correction de la revue du 27/09 :
+    sinon la dernière cible est un rendement partiel."""
     px = pd.read_csv(MORE / "actions_mensuel.csv", index_col="mois")
-    # Retirer le dernier mois s'il est incomplet (données quotidiennes arrêtées avant le dernier jour ouvré)
-    # -- correction de la revue du 27/09 : sinon la dernière cible est un rendement partiel
     last_day = pd.read_csv(MORE / "actions_quotidien.csv", index_col="date", parse_dates=True).index.max()
     if last_day < last_day + pd.offsets.BMonthEnd(0):
         px = px.drop(index=str(last_day.to_period("M")))
+    return px
+
+
+def e19(df):
+    px = actions_mensuelles()
     ret = px.pct_change() * 100
     baskets = {"btp_concessions": ["vinci", "eiffage", "bouygues"], "defense": ["thales", "dassault_aviation"]}
     d = df.copy()

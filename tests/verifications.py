@@ -154,11 +154,15 @@ for name, lag in cas.items():
 # ---------------------------------------------------------------------------
 print("E. Actions sectorielles (E19)")
 q = pd.read_csv("data/raw/more/actions_quotidien.csv", index_col="date", parse_dates=True)
-last_day = q.index.max()
-incomplet = last_day < last_day + pd.offsets.BMonthEnd(0)
-src14 = (SRC / "14_more_extensions.py").read_text(encoding="utf-8")
-check("14_more_extensions.py retire le dernier mois s'il est incomplet", "BMonthEnd(0)" in src14,
-      f"dernier jour de données {last_day.date()}, mois {'incomplet → retiré' if incomplet else 'complet'}")
+M14 = load("m14", "14_more_extensions.py")
+px = M14.actions_mensuelles()
+dernier_mois = pd.Period(px.index.max(), "M")
+jours = q[q.index.to_period("M") == dernier_mois].index
+dernier_ouvre = dernier_mois.to_timestamp() + pd.offsets.BMonthEnd(0)   # dernier jour ouvré du mois
+# tolérance d'1 jour ouvré pour un jour férié en fin de mois (ex. Vendredi saint le 29/03/2024)
+complet = len(jours) > 0 and jours.max() >= dernier_ouvre - pd.offsets.BDay(1)
+check("dernier mois utilisé pour E19 complet (données jusqu'à la fin du mois)", complet,
+      f"dernier jour de données {q.index.max().date()}, dernier mois utilisé {dernier_mois} (dernier jour {jours.max().date()})")
 e19 = pd.read_csv("results/tables/extensions/E19.csv")
 n1 = e19[e19.comparaison.str.contains("h=1")].n_test.unique().tolist()
 n3 = e19[e19.comparaison.str.contains("h=3")].n_test.unique().tolist()
