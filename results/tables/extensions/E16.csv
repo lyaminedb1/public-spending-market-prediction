@@ -1,7 +1,7 @@
 extension,cible,comparaison,n_test,R2_vs_moyenne_sans_%,R2_vs_moyenne_avec_%,gain_vs_marche_aleatoire_sans_%,gain_vs_marche_aleatoire_avec_%,RMSE_niveau_avec_pb,RMSE_marche_aleatoire_pb,DM,p_avec_meilleur,p_avec_bat_marche_aleatoire
-E16 réplication élargie,spread variation,rf : complet vs sans finances publiques,874,-3.964,-4.041,-9.875,-9.956,19.306,18.411,-0.04,0.516,0.848
-E16 réplication élargie,spread variation,ridge : complet vs sans finances publiques,874,-220.058,-169.219,-238.255,-184.526,31.056,18.411,1.39,0.083,0.915
-E16 réplication élargie,spread variation,xgb : complet vs sans finances publiques,874,-14.191,-11.368,-20.684,-17.7,19.974,18.411,0.757,0.225,0.974
-E16 réplication élargie,spread niveau,rf : complet vs sans finances publiques,874,94.796,94.583,-128.123,-137.468,28.372,18.411,-0.713,0.762,1.0
-E16 réplication élargie,spread niveau,ridge : complet vs sans finances publiques,874,89.782,92.161,-347.926,-243.617,34.129,18.411,1.122,0.132,0.95
-E16 réplication élargie,spread niveau,xgb : complet vs sans finances publiques,874,96.916,97.104,-35.172,-26.927,20.743,18.411,1.283,0.101,0.931
+E16 réplication élargie,spread variation,rf : complet vs sans finances publiques,874,-3.707,-4.133,-9.603,-10.054,19.315,18.411,-0.225,0.589,0.855
+E16 réplication élargie,spread variation,ridge : complet vs sans finances publiques,874,-238.198,-162.78,-257.427,-177.721,30.682,18.411,1.42,0.079,0.915
+E16 réplication élargie,spread variation,xgb : complet vs sans finances publiques,874,-12.377,-13.143,-18.767,-19.576,20.133,18.411,-0.217,0.586,0.982
+E16 réplication élargie,spread niveau,rf : complet vs sans finances publiques,874,94.852,94.535,-125.676,-139.555,28.496,18.411,-1.199,0.884,1.0
+E16 réplication élargie,spread niveau,ridge : complet vs sans finances publiques,874,90.017,92.42,-337.616,-232.273,33.561,18.411,1.172,0.121,0.948
+E16 réplication élargie,spread niveau,xgb : complet vs sans finances publiques,874,96.978,97.015,-32.491,-30.854,21.061,18.411,0.274,0.392,0.938

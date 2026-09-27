@@ -8,6 +8,13 @@ Collecte pour l'étude d'événement (E14, docs/plan_extensions.md).
    - documents DGFiP « Situation mensuelle de l'État » (economie.gouv.fr)
    Les pages HTML brutes sont enregistrées telles quelles ; l'extraction des dates se fait ensuite.
 
+LIMITE CONNUE (revue du 27/09/2026) : cette collecte n'a pas fonctionné.
+- Les clés BCE « FM/D.FR... » et « FM/D.DE... » n'existent pas (HTTP 404) : pas de taux quotidiens.
+- Les 20 pages « presse » enregistrées sont identiques (la page 1) : le site charge les résultats
+  de recherche en JavaScript et ignore le paramètre de pagination (« ?paged= » comme « /page/N/ »).
+  Seules les 6 dernières dates de publication (févr.-juil. 2026) sont donc disponibles.
+E14 n'a pas été exécutée et figure en perspectives ; aucun résultat du mémoire ne dépend de ce script.
+
 À lancer sur ton ordinateur (accès internet), depuis la racine du dépôt :
     python src/08_collect_daily.py
 puis :  git add data && git commit -m "Données quotidiennes étude d'événement" && git push

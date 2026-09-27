@@ -98,6 +98,17 @@
 - Ajouter dans 1.4 : domination des études américaines → la France est peu étudiée (fait partie du vide) ; colonne « Pays » et séparation noyau / cadre / méthode dans le tableau 1.1.
 - Brouillon du chapitre 1 : `/home/claude/memoire/chapitre1.md` (hors dépôt) et Claude Docs https://claude.ai/code/artifact/8e4a6819-0106-4901-acda-9eddf1735daa ; chapitre 2 : https://claude.ai/code/artifact/7744f999-cd6d-4e6a-a73b-c204c41ba55b.
 
+## Revue du code (27/09 soir) — état
+- **Préparation des données revue en entier** (01, 02, 05, 08, 09, 10, 13 + préparation dans 11 et 14). Corrections :
+  1. `02` : inflation (IPCH) décalée d'1 mois (commit f1f834c).
+  2. `11` (E16) : production industrielle et chômage décalés de **2 mois** (publiés début m+2), au lieu d'1. Relancé : conclusions inchangées (finances publiques : p 0,08-0,88 ; tous < marche aléatoire).
+  3. `14` (E19) : dernier mois des actions (sept. 2026, arrêté au 25/09) retiré car incomplet → 79 mois de test (h=1), 77 (h=3), conforme au protocole. Relancé : plus aucun cas « avec dépenses » > moyenne (RF BTP h=3 : -0,7 %) ; défense h=3 RF/XGB : dépenses moins mauvaises (p 0,06 / 0,008) mais R² -11 à -20 %.
+  4. `08` (E14) : collecte ratée documentée (clés BCE 404 ; pages presse identiques, pagination en JavaScript). Sans effet : E14 non exécutée.
+- Vérifié correct : notations E13 (9 dégradations), LFI E4, décalage Eurostat 2 trimestres (E15-E18), EPU E20 décalé.
+- **Limites à écrire** : données budgétaires révisées (vintage final) ; cibles taux en moyennes mensuelles ; `_ytd_gap` de variance croissante sur l'année (×6 janv.→déc.) ; E16 : 25/68 séries OCDE MEI arrêtées sur FRED fin 2022-début 2024 → 23,6 % de valeurs imputées (médiane) sur les 144 dernières lignes de test ; E19 : prix hors dividendes (détachements à dates différentes du CAC 40).
+- **À relancer une fois la revue finie** (lisent `dataset_monthly.csv` corrigé) : `03_exploration`, `05`, `06_extensions` (E1-E13), `14` E20, puis `06_extensions.py resume` (BH) et `07`. E16 et E19 sont déjà à jour.
+- Reste à revoir : `04_models`, `06_extensions` (dont `walk_forward` qui compte en lignes et non en mois), modèles de `11` et `14`.
+
 ## Prochaines étapes (au 27/09 soir)
 0. **D'abord : revue du code pas à pas** (demande d'Elyamine) — 02_build_dataset → 04_models → 06/11/14 : vérifier construction des variables, décalages, absence de fuite, validation glissante, hyperparamètres, métriques, DM et BH ; expliquer chaque choix de ML ; corriger tout bug trouvé et relancer. Toute modification doit être justifiée par une erreur de méthode, pas par le résultat obtenu. La conclusion « négative » n'est pas rédigée avant cette revue ; chapitre 1 (liste des sources) en attente.
 1. Restructurer le chapitre 1 selon la décision ci-dessus.

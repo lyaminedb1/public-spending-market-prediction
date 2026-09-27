@@ -36,9 +36,13 @@ TAB = Path("results/tables/extensions")
 TAB.mkdir(parents=True, exist_ok=True)
 
 GOV_ITEMS = ["TE", "D1PAY", "D41PAY", "P51G", "D62PAY", "P2", "TR"]
-MACRO_LAG1 = ("chomage", "ipch", "production_ind", "production_manuf", "confiance_menages",
-              "confiance_entreprises", "indicateur_avance", "us_production_ind", "us_inflation",
-              "us_chomage", "zone_euro_chomage", "zone_euro_ipch")
+# Décalage de publication des variables macro (fin du mois t = ce qui est publié à cette date)
+# 2 mois : production industrielle (INSEE, Destatis, Istat : mois m publié vers le 5-10 de m+2)
+#          et chômage harmonisé Eurostat/OCDE (mois m publié début m+2) -- correction de la revue du 27/09
+MACRO_LAG2 = ("chomage", "production_ind", "production_manuf", "zone_euro_chomage")
+# 1 mois : les autres variables macro (publiées au cours du mois suivant)
+MACRO_LAG1 = ("ipch", "confiance_menages", "confiance_entreprises", "indicateur_avance",
+              "us_production_ind", "us_inflation", "us_chomage", "zone_euro_ipch")
 YOY = ("ipch", "production_ind", "production_manuf", "us_production_ind", "us_inflation", "zone_euro_ipch")
 LOGRET = ("actions", "petrole_brent", "eur_usd")
 
@@ -109,7 +113,7 @@ def transform(s, name):
         out = {"r1": np.log(s).diff() * 100, "r12": np.log(s).diff(12) * 100}
     else:
         out = {"lvl": s, "d": s.diff()}
-    lag = 1 if base in MACRO_LAG1 else 0
+    lag = 2 if base in MACRO_LAG2 else 1 if base in MACRO_LAG1 else 0
     return {k: v.shift(lag) for k, v in out.items()}
 
 
