@@ -1,0 +1,13 @@
+extension,cible,comparaison,n_test,R2oos_sans_%,R2oos_avec_%,DM,p_avec_meilleur,p_avec_bat_moyenne,note
+E19 actions sectorielles,btp_concessions (excès CAC 40),ridge h=1 : M1 vs M0,80,-1.225,-2.667,-1.294,0.9,0.962,
+E19 actions sectorielles,btp_concessions (excès CAC 40),rf h=1 : M1 vs M0,80,-5.616,-8.713,-1.065,0.855,0.99,
+E19 actions sectorielles,btp_concessions (excès CAC 40),xgb h=1 : M1 vs M0,80,-19.244,-24.677,-0.81,0.79,0.991,
+E19 actions sectorielles,btp_concessions (excès CAC 40),ridge h=3 : M1 vs M0,78,-8.814,-24.143,-1.681,0.952,0.983,
+E19 actions sectorielles,btp_concessions (excès CAC 40),rf h=3 : M1 vs M0,78,0.487,0.364,-0.029,0.511,0.471,
+E19 actions sectorielles,btp_concessions (excès CAC 40),xgb h=3 : M1 vs M0,78,-8.178,-6.867,0.207,0.418,0.744,
+E19 actions sectorielles,defense (excès CAC 40),ridge h=1 : M1 vs M0,80,-0.932,-3.089,-0.776,0.78,0.83,
+E19 actions sectorielles,defense (excès CAC 40),rf h=1 : M1 vs M0,80,-6.278,-5.418,0.36,0.36,0.842,
+E19 actions sectorielles,defense (excès CAC 40),xgb h=1 : M1 vs M0,80,-13.899,-10.568,0.382,0.352,0.826,
+E19 actions sectorielles,defense (excès CAC 40),ridge h=3 : M1 vs M0,78,-9.935,-68.551,-1.569,0.94,0.957,
+E19 actions sectorielles,defense (excès CAC 40),rf h=3 : M1 vs M0,78,-19.948,-9.688,1.717,0.045,0.812,
+E19 actions sectorielles,defense (excès CAC 40),xgb h=3 : M1 vs M0,78,-49.196,-17.922,2.209,0.015,0.871,

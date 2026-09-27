@@ -74,7 +74,12 @@
 - FRED bloque `requests` depuis le 27/09 : téléchargement via `curl` (`src/fred_http.py`). 68 séries (6 pays × 9 + 14 mondiales), Eurostat gov_10q_ggnfa.
 - **E15** (trimestriel, 5 pays, test 2010T1-2026T2, 330 obs.) : Ridge M0 +13,9 %, M1 +15,5 % vs moyenne, MAIS diagnostic non pré-enregistré (`src/12_diag_e15.py`) : c'est l'autocorrélation mécanique des variations de moyennes trimestrielles (AR1 0,32 vs 0,07 en fin de trimestre, Working 1960). En fin de trimestre : tout négatif (M0 -4,1 %, M1 -2,9 %). Dépenses : +4 pts en 2010-2014 (crise), -13 pts après 2015 → piste « effet en période de crise » (Afonso et al. 2015), non significatif (p 0,37).
 - **E16** (mensuel, 5 pays, 150 variables dont 18 finances publiques, test 2012-01 → 874 obs.) : niveau du spread R² 90-97 % vs moyenne (comme Bouillot et al.) mais **tous les modèles perdent contre la marche aléatoire** (XGB -27 %, RF -137 %, Ridge -244 % ; RMSE 20,7 pb vs 18,4 pb). Variation : R² négatif partout. Finances publiques : aucun apport (p 0,08-0,76).
-- BH sur 132 comparaisons (E12 exclue) : 0 significative ; 3 p brutes < 0,05. `python src/06_extensions.py resume` recalcule la correction.
+- **E17** panel annuel (déc., 75 prév.) : tous < moyenne (-20 à -338 %) et < marche aléatoire ; RF M1 moins mauvais que M0 (p 0,04) mais toujours perdant.
+- **E18** régime de crise (fin de trimestre, exploratoire) : les interactions dépenses × tension dégradent partout ; le « +4 pts en crise » d'E15 disparaît sans moyennes.
+- **E19** actions sectorielles (excès vs CAC 40, BTP : Vinci/Eiffage/Bouygues ; défense : Thales/Dassault) : tout < moyenne sauf RF BTP h=3 (+0,5 % sans, +0,4 % avec) ; défense h=3 : dépenses moins mauvaises (p 0,015-0,045) mais R² -10 à -18 %.
+- **E20** incertitude politique (indice **européen**, écart déclaré : France absente de FRED) : ni l'EPU ni les dépenses n'aident.
+- E14 (étude d'événement) : taux quotidiens introuvables par script (BCE 404, stooq bloqué) → perspectives.
+- **BH sur 168 comparaisons** (E12 et ventilations exclues) : 0 significative (p_BH min 0,84) ; 6 p brutes < 0,05 (≈ 8 attendues par hasard), toutes des cas où le modèle avec dépenses reste sous la moyenne. 6 cas où « avec dépenses » bat la moyenne et la version sans, tous non significatifs (E2/E3 RF +1 à +2 pts, E15 = artefact des moyennes). `python src/06_extensions.py resume` recalcule la correction.
 - Message clé : un R² de 95 % sur le niveau n'est pas une prévision ; la comparaison à la marche aléatoire est indispensable (critique de Bouillot et al.).
 
 ## Hypothèses

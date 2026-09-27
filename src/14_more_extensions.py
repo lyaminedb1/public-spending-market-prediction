@@ -173,6 +173,8 @@ def e19(df):
 # ---------------------------------------------------------------------------
 def e20(df):
     f = MORE / "epu_FRAEPUINDXM.csv"
+    if not f.exists():  # écart déclaré dans docs/plan_extensions.md : indice européen
+        f = MORE / "epu_EUEPUINDXM.csv"
     e = pd.read_csv(f, index_col="date", parse_dates=True).iloc[:, 0]
     e.index = e.index.to_period("M").astype(str)
     d = df.copy()
