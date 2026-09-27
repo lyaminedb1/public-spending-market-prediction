@@ -27,6 +27,17 @@ SRC = Path("src")
 sys.path.insert(0, str(SRC))
 RESULTS = []
 
+# Les contrôles portent sur les données, pas sur les modèles : si XGBoost ne se charge pas
+# (ex. Mac sans libomp), on le remplace par un module vide pour pouvoir importer les scripts.
+try:
+    import xgboost  # noqa: F401
+except Exception:
+    import types
+    _fake = types.ModuleType("xgboost")
+    _fake.XGBRegressor = _fake.XGBClassifier = None
+    sys.modules["xgboost"] = _fake
+    print("(XGBoost indisponible sur cette machine : ignoré, inutile pour ces contrôles)\n")
+
 
 def load(name, file):
     spec = importlib.util.spec_from_file_location(name, SRC / file)
