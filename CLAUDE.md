@@ -94,5 +94,12 @@ Bouillot, Candelon & Kool (2025), *Forecasting European sovereign spreads using 
 - `src/` : scripts et fonctions réutilisables.
 - `results/figures/` : graphiques pour le mémoire ; `results/tables/` : tableaux.
 
+## Guide ECE de rédaction (Student Guide for Dissertation 2025-2026)
+- Ordre : page de titre (titre, nom complet, ECE, MSc Data Management & IA, encadrante, mois/année) · remerciements · résumé 150-300 mots + 5-7 mots-clés · sommaire · listes des figures et des tableaux · abréviations · glossaire · Introduction (3-5 p.) · État de l'art (10-15 p., ≥ 10 sources académiques, finir sur le manque/gap) · Méthodologie (5-8 p., inclure considérations éthiques) · Résultats (**4-6 p., sans interprétation**) · Discussion (6-8 p. : implications, limites, recherches futures) · Conclusion (2-3 p.) · Références (APA, IEEE ou Harvard, ordre alphabétique) · Annexes.
+- Mise en forme : Times New Roman ou Arial 12, double interligne (tableaux/notes/références simple), marges 2,54 cm, numéros de page en bas au centre ou en haut à droite ; titre niveau 1 centré gras, niveau 2 aligné à gauche gras, niveau 3 en retrait gras terminé par un point ; figures/tableaux numérotés par chapitre avec source.
+- **IA** : déclarer l'usage des outils d'IA (méthodologie ou remerciements) ; interdit de rendre des hypothèses, interprétations ou paragraphes générés par IA sans relecture critique et apport personnel.
+- Remise en PDF par e-mail à l'encadrante et au responsable du MSc ; retard = note F. Soutenance 20-30 min (10-20 min de présentation + 10-15 min de questions). Écrit 50 % / oral 50 %.
+- Conséquence : les 20 extensions tiennent dans les Résultats sous forme d'un tableau de synthèse + figure ; le détail va en annexe ; les diagnostics (moyennes trimestrielles, marche aléatoire) sont interprétés dans la Discussion.
+
 ## Plan du mémoire
 Introduction · Ch.1 État de l'art (rédigé) · Ch.2 Données et méthodologie · Ch.3 Résultats · Ch.4 Discussion · Conclusion · Bibliographie · Annexes.
