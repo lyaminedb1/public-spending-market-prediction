@@ -89,6 +89,19 @@
 - H4 : parmi les dépenses, la charge de la dette et les dépenses d'intervention sont les plus prédictives.
 - Un résultat négatif pour H1 est plausible (efficience des marchés, Fama 1970 ; anticipation, Ramey 2011) et reste valable.
 
+## Décision bibliographie (27/09/2026, à appliquer au chapitre 1)
+- Priorité aux études **européennes** ; ~10 sources principales, le reste en soutien méthodologique court.
+- Noyau européen : Bouillot, Candelon & Kool (2025) ; Afonso, Arghyrou & Kontonikas (2015) ; Bernoth, von Hagen & Schuknecht (2012) ; Belly et al. (2023) ; Garlanda-Longueville (2023, France) ; Attinasi, Checherita & Nickel (2009) ; Favero (2013) ; Barbier-Gauchard & Sofianos (2025).
+- Cadre théorique (américain mais général) : Fama (1970), Ramey (2011), Welch & Goyal (2008).
+- Soutien bref : Diebold-Mariano, Bailey et al., Breiman, Chen-Guestrin, Croushore, Giannone et al., Janssen et al. ; raccourcir Blanchard-Perotti, Laubach, Afonso-Sousa, Medeiros, Gu-Kelly-Xiu, Bianchi.
+- Ajouter dans 1.4 : domination des études américaines → la France est peu étudiée (fait partie du vide) ; colonne « Pays » et séparation noyau / cadre / méthode dans le tableau 1.1.
+- Brouillon du chapitre 1 : `/home/claude/memoire/chapitre1.md` (hors dépôt) et Claude Docs https://claude.ai/code/artifact/8e4a6819-0106-4901-acda-9eddf1735daa ; chapitre 2 : https://claude.ai/code/artifact/7744f999-cd6d-4e6a-a73b-c204c41ba55b.
+
+## Prochaines étapes (au 27/09 soir)
+1. Restructurer le chapitre 1 selon la décision ci-dessus.
+2. Rédiger le chapitre 3 (Résultats, 4-6 p.) : 3.1 descriptif, 3.2 modèles principaux (H1, H3, H4), 3.3 extensions (tableau de synthèse + fig3_5, détail en annexe), 3.4 panel européen et marche aléatoire.
+3. Chapitre 4 (Discussion) : ce qui fait bouger le spread (10 plus gros mois : Covid 03/2020, présidentielle 2017, dissolution 06/2024, Trump 11/2016, Ukraine 02/2022… aucun lié au budget ; dates à vérifier), critique de Bouillot et al., artefact des moyennes, limites, perspectives (étude d'événement E14, annonces PLF).
+
 ## Référence la plus proche
 Bouillot, Candelon & Kool (2025), *Forecasting European sovereign spreads using machine learning*, UCLouvain : prévision à un mois des spreads de 10 pays dont la France, XGBoost en tête, le spread passé domine.
 
