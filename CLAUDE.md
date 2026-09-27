@@ -98,6 +98,7 @@
 - Brouillon du chapitre 1 : `/home/claude/memoire/chapitre1.md` (hors dépôt) et Claude Docs https://claude.ai/code/artifact/8e4a6819-0106-4901-acda-9eddf1735daa ; chapitre 2 : https://claude.ai/code/artifact/7744f999-cd6d-4e6a-a73b-c204c41ba55b.
 
 ## Prochaines étapes (au 27/09 soir)
+0. **D'abord : revue du code pas à pas** (demande d'Elyamine) — 02_build_dataset → 04_models → 06/11/14 : vérifier construction des variables, décalages, absence de fuite, validation glissante, hyperparamètres, métriques, DM et BH ; expliquer chaque choix de ML ; corriger tout bug trouvé et relancer. Toute modification doit être justifiée par une erreur de méthode, pas par le résultat obtenu. La conclusion « négative » n'est pas rédigée avant cette revue ; chapitre 1 (liste des sources) en attente.
 1. Restructurer le chapitre 1 selon la décision ci-dessus.
 2. Rédiger le chapitre 3 (Résultats, 4-6 p.) : 3.1 descriptif, 3.2 modèles principaux (H1, H3, H4), 3.3 extensions (tableau de synthèse + fig3_5, détail en annexe), 3.4 panel européen et marche aléatoire.
 3. Chapitre 4 (Discussion) : ce qui fait bouger le spread (10 plus gros mois : Covid 03/2020, présidentielle 2017, dissolution 06/2024, Trump 11/2016, Ukraine 02/2022… aucun lié au budget ; dates à vérifier), critique de Bouillot et al., artefact des moyennes, limites, perspectives (étude d'événement E14, annonces PLF).
