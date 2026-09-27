@@ -84,3 +84,42 @@ Protocole E16, fixé avant l'analyse :
 - **Test clé** : modèle complet contre modèle sans le bloc finances publiques (Diebold-Mariano sur la perte sommée sur les pays), ajouté à la correction Benjamini-Hochberg.
 - Validation glissante mensuelle, fenêtre croissante, test à partir de 2012-01 (entraînement 2008-2011), réestimation tous les 3 mois pour tenir le temps de calcul.
 - Résultat rapporté quel qu'il soit.
+
+## Ajout du 27 septembre 2026, 13h15 (après les résultats E15/E16, avant toute donnée et tout résultat des tests ci-dessous)
+
+Motivation déclarée : après le résultat négatif d'E1–E16, nous testons quatre dernières pistes, chacune justifiée
+par un mécanisme économique. **Toutes** les p-values s'ajoutent à la correction Benjamini-Hochberg (10 %) de l'ensemble
+des extensions. Limite fixée : résultats au plus tard le 29/09/2026 au soir ; ce qui n'est pas terminé passe en perspectives.
+E14 (étude d'événement, pré-enregistrée le 26/09) est exécutée avec ce lot si les données quotidiennes sont obtenues.
+
+| # | Extension | Justification |
+|---|---|---|
+| E17 | **Panel annuel** (5 pays) : variation du spread sur l'année suivante | Les finances publiques expliquent les spreads à basse fréquence (Codogno et al., 2003 ; Afonso et al., 2015) ; la fréquence mensuelle est surtout du bruit pour une variable lente. |
+| E18 | **Régime de crise** (panel trimestriel) : dépenses × indicatrice de tension | Les marchés ne regardent les finances publiques qu'en période de tension (Bernoth et Erdogan, 2012). **Exploratoire** : l'idée vient de la ventilation par sous-période d'E15. |
+| E19 | **Actions sectorielles exposées à la dépense publique** (France) | Canal des revenus : l'investissement et la commande publics sont des recettes pour le BTP-concessions et la défense ; le CAC 40 est trop agrégé. |
+| E20 | **Incertitude de politique économique** (Baker, Bloom et Davis, 2016), France | Tester si l'apport des dépenses apparaît une fois l'incertitude politique contrôlée, et si cette incertitude aide elle-même. |
+
+Protocole E17 :
+- Pays : FR, IT, ES, PT, BE (spread face au Bund, en pb). Valeur annuelle = **décembre** (pas de moyenne annuelle, pour éviter l'autocorrélation mécanique mise en évidence par le diagnostic d'E15).
+- Cible : spread de décembre t+1 − spread de décembre t.
+- M0 : spread de décembre t, variation du spread sur l'année t, variation du Bund sur l'année t, VIX (décembre), taux de dépôt BCE (décembre), indicatrices pays.
+- M1 = M0 + finances publiques connues fin décembre t (Eurostat, décalage de 2 trimestres, donc sommes sur 4 trimestres se terminant au T2 de l'année t) : croissance sur un an de TE, D1PAY, D41PAY, P51G, D62PAY, P2, TR ; solde en % des dépenses ; part des intérêts ; variation du solde en % des dépenses sur un an.
+- Modèles : Ridge, forêt aléatoire, XGBoost (hyperparamètres de `src/04_models.py`), modèle groupé. Références : moyenne historique par pays et marche aléatoire (variation nulle).
+- Validation glissante annuelle, fenêtre croissante ; origines de prévision 2010 à 2024 (cibles 2011 à 2025), 75 prévisions.
+- DM sur la perte sommée sur les pays chaque année.
+
+Protocole E18 (exploratoire) :
+- Panel trimestriel d'E15, mais spread en **fin de trimestre** (dernier mois du trimestre) pour la cible et les retards.
+- Tension = 1 si le spread du pays en fin de trimestre q dépasse 200 pb.
+- M0 = variables d'E15 + indicatrice de tension ; M1 = M0 + finances publiques + finances publiques × tension.
+- Test à partir de 2010T1 ; résultats rapportés aussi pour 2010-2014 et 2015+.
+
+Protocole E19 :
+- Cibles (France, mensuel, prix de clôture de fin de mois hors dividendes comme le CAC 40) : rendement du mois suivant **en excès du CAC 40** de deux paniers équipondérés : (a) BTP-concessions : Vinci (DG.PA), Eiffage (FGR.PA), Bouygues (EN.PA) ; (b) défense : Thales (HO.PA), Dassault Aviation (AM.PA).
+- Horizons 1 et 3 mois.
+- M0 = variables de marché du modèle principal + rendement en excès du panier (t et t-1) ; M1 = M0 + les 7 dépenses `_ytd_gap` (décalage de 2 mois). Les données DGFiP ne ventilent pas la défense : pas de ligne dédiée.
+- Ridge, forêt aléatoire, XGBoost ; test 2020-01 → 2026-07 ; 12 comparaisons. Actions individuelles : descriptif seulement, hors tests.
+
+Protocole E20 :
+- Indice mensuel d'incertitude de politique économique pour la France (Baker, Bloom et Davis ; via FRED), en logarithme, décalé d'1 mois.
+- (a) M0 + incertitude contre M0 ; (b) M1 + incertitude contre M0 + incertitude. Trois cibles principales, trois modèles, test 2020-01 → 2026-07 ; 18 comparaisons.
