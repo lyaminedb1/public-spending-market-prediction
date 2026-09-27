@@ -59,7 +59,7 @@
 - **H1 rejetée** : ajouter les dépenses n'améliore aucune cible (DM M1 vs M0 : p bilatérale 0,33 à 0,99).
 - **H2 non testable** en l'état (pas d'apport à comparer).
 - **H3 rejetée** : XGBoost est le pire (RMSE +13 à +16 % vs moyenne ; significativement pire que Ridge sur le CAC 40, p 0,02) ; la forêt aléatoire n'est pas significativement meilleure que Ridge. XGBoost instable : R² OAT -22 % → -30 % pour le seul décalage de l'inflation (une seule graine ; à examiner dans la revue de 04).
-- **H4** : en échantillon (SHAP), les dépenses pèsent 31 à 37 % de l'importance (intervention et investissement en tête) mais cela ne se traduit pas hors échantillon → surapprentissage : point clé de la discussion.
+- **H4** : en échantillon (SHAP), les dépenses pèsent 31 à 37 % de l'importance (intervention et investissement en tête) mais cela ne se traduit pas hors échantillon → surapprentissage : point clé de la discussion. ⚠️ *Revue du 28/09 : 7 variables de pur bruit obtiennent 34-38 % de SHAP → la part SHAP ne montre aucune information ; H4 non soutenue (à valider, `docs/revue_04_models.md`, constat 4).*
 - Sorties : `results/tables/models_*.csv`, figures `fig3_2_rmse_relatif`, `fig3_3_importance_shap`, `fig3_4_previsions_spread`.
 
 ## Extensions pré-enregistrées (`docs/plan_extensions.md`, commit b136e8f avant exécution)
@@ -113,7 +113,9 @@
 - Contrôles automatiques : `python tests/verifications.py` (alignement des cibles, décalages, doublons, mois incomplets).
 - **Limites à écrire** : données budgétaires révisées (vintage final) ; cibles taux en moyennes mensuelles ; `_ytd_gap` de variance croissante sur l'année (×6 janv.→déc.) ; E16 : 25/68 séries OCDE MEI arrêtées sur FRED fin 2022-début 2024 → 23,6 % de valeurs imputées (médiane) sur les 144 dernières lignes de test ; E19 : prix hors dividendes (détachements à dates différentes du CAC 40).
 - **À relancer une fois la revue finie** (lisent `dataset_monthly.csv` corrigé) : `03_exploration`, `05`, `06_extensions` (E1-E13), `14` E20, puis `06_extensions.py resume` (BH) et `07`. E16 et E19 sont déjà à jour.
-- Reste à revoir : `03_exploration` (chiffres cités dans le mémoire), `04_models` (prévu le 28/09), `06_extensions` (dont `walk_forward` qui compte en lignes et non en mois), modèles de `11` et `14`.
+- **Revue de `04_models` faite la nuit du 27-28/09, décisions en attente d'Elyamine** : rapport `docs/revue_04_models.md`, diagnostics `src/15_diag_04.py` → `results/tables/diag_04/`. Aucun code de 04 modifié. Points clés : puissance faible (un signal de corrélation 0,3 n'est pas détecté de façon fiable) ; dépenses ≤ 7 variables de bruit ; Clark-West trop permissif ici (bruit « significatif » 40-75 %) → garder DM ; SHAP : bruit 34-38 % → H4 non soutenue ; XGB ±9 pts selon la graine, conclusions stables ; variation nulle bat la moyenne pour les taux ; hyperparamètres non prouvables « a priori » (code et résultats commités ensemble) ; **grille RidgeCV bornée à 1000 atteinte 75-99 % des mois pour le CAC** → proposition : élargir à 10⁶ dans 04 et 06 (effet < 1 pt).
+- Plan du chapitre 4 (structure + faits sourcés, sans interprétation) : `docs/plan_chapitre4.md`. Le chapitre 3 n'est pas « clos » : résultats E1-E13, E20, BH à relancer.
+- Reste à revoir : `03_exploration` (chiffres cités dans le mémoire), `06_extensions` (dont `walk_forward` qui compte en lignes et non en mois), modèles de `11` et `14`.
 
 ## Prochaines étapes (au 27/09 soir)
 0. **D'abord : revue du code pas à pas** (demande d'Elyamine) — 02_build_dataset → 04_models → 06/11/14 : vérifier construction des variables, décalages, absence de fuite, validation glissante, hyperparamètres, métriques, DM et BH ; expliquer chaque choix de ML ; corriger tout bug trouvé et relancer. Toute modification doit être justifiée par une erreur de méthode, pas par le résultat obtenu. La conclusion « négative » n'est pas rédigée avant cette revue ; chapitre 1 (liste des sources) en attente.
