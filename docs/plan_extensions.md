@@ -85,7 +85,7 @@ Protocole E16, fixé avant l'analyse :
 - Validation glissante mensuelle, fenêtre croissante, test à partir de 2012-01 (entraînement 2008-2011), réestimation tous les 3 mois pour tenir le temps de calcul.
 - Résultat rapporté quel qu'il soit.
 
-## Ajout du 27 septembre 2026, 13h15 (après les résultats E15/E16, avant toute donnée et tout résultat des tests ci-dessous)
+## Ajout du 27 septembre 2026, 13h00 (après les résultats E15/E16, avant toute donnée et tout résultat des tests ci-dessous)
 
 Motivation déclarée : après le résultat négatif d'E1–E16, nous testons quatre dernières pistes, chacune justifiée
 par un mécanisme économique. **Toutes** les p-values s'ajoutent à la correction Benjamini-Hochberg (10 %) de l'ensemble
