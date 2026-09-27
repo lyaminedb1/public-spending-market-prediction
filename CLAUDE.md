@@ -70,6 +70,13 @@
 - Contrôle anti-fuite vérifié : pour l'horizon h, la dernière ligne d'entraînement est toujours ≥ h mois avant le mois de test.
 - Conclusion : résultat négatif robuste à 13 variantes.
 
+## Panel européen E15/E16 (`python src/11_panel_models.py`, ~16 min ; collecte `09_collect_panel.py`, `10_collect_large.py`)
+- FRED bloque `requests` depuis le 27/09 : téléchargement via `curl` (`src/fred_http.py`). 68 séries (6 pays × 9 + 14 mondiales), Eurostat gov_10q_ggnfa.
+- **E15** (trimestriel, 5 pays, test 2010T1-2026T2, 330 obs.) : Ridge M0 +13,9 %, M1 +15,5 % vs moyenne, MAIS diagnostic non pré-enregistré (`src/12_diag_e15.py`) : c'est l'autocorrélation mécanique des variations de moyennes trimestrielles (AR1 0,32 vs 0,07 en fin de trimestre, Working 1960). En fin de trimestre : tout négatif (M0 -4,1 %, M1 -2,9 %). Dépenses : +4 pts en 2010-2014 (crise), -13 pts après 2015 → piste « effet en période de crise » (Afonso et al. 2015), non significatif (p 0,37).
+- **E16** (mensuel, 5 pays, 150 variables dont 18 finances publiques, test 2012-01 → 874 obs.) : niveau du spread R² 90-97 % vs moyenne (comme Bouillot et al.) mais **tous les modèles perdent contre la marche aléatoire** (XGB -27 %, RF -137 %, Ridge -244 % ; RMSE 20,7 pb vs 18,4 pb). Variation : R² négatif partout. Finances publiques : aucun apport (p 0,08-0,76).
+- BH sur 132 comparaisons (E12 exclue) : 0 significative ; 3 p brutes < 0,05. `python src/06_extensions.py resume` recalcule la correction.
+- Message clé : un R² de 95 % sur le niveau n'est pas une prévision ; la comparaison à la marche aléatoire est indispensable (critique de Bouillot et al.).
+
 ## Hypothèses
 - H1 : pour au moins un indicateur, ajouter les dépenses améliore la prévision.
 - H2 : l'apport décroît du spread, au taux OAT, puis au CAC 40.

@@ -392,7 +392,8 @@ def benjamini_hochberg(p, q=0.10):
 
 
 def summarize():
-    files = sorted(TAB.glob("E*.csv"))
+    # un fichier par extension (E1.csv, E15.csv…) ; les fichiers annexes (E16_predictions.csv…) sont exclus
+    files = sorted(f for f in TAB.glob("E*.csv") if "_" not in f.stem)
     s = pd.concat([pd.read_csv(f) for f in files], ignore_index=True)
     # E12 (sous-périodes) est une ventilation d'E0, pas un test indépendant : exclue de la correction
     mask = ~s.extension.str.startswith("E12")
@@ -406,6 +407,8 @@ def summarize():
 if __name__ == "__main__":
     df = load()
     todo = sys.argv[1:] or list(EXTENSIONS)
+    if todo == ["resume"]:  # recalcul de la correction BH seule (après src/11_panel_models.py)
+        todo = []
     for key in todo:
         t0 = time.time()
         rows = EXTENSIONS[key](df)
