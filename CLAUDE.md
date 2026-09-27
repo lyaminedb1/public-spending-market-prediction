@@ -24,7 +24,8 @@
 ## Règles de construction des données
 - Les montants budgétaires sont **cumulés depuis janvier** : les différencier pour obtenir des flux mensuels.
 - Forte saisonnalité : deux transformations par ligne budgétaire : somme glissante sur 12 mois (`_12m`, Md€) et écart du cumul depuis janvier par rapport au même mois de l'année précédente, en % du total annuel (`_ytd_gap`). Pas de taux de croissance du cumul : il explose en début d'année (base proche de zéro).
-- **Décalage de publication** : la situation du mois M est publiée environ 5 semaines après (juin 2026 publié le 6 août 2026). À la fin du mois t, seul le budget de t-2 est connu : les variables budgétaires sont décalées de 2 mois (`BUDGET_LAG = 2`). Sinon biais d'anticipation (look-ahead bias).
+- **Décalage de publication** : la situation du mois M est publiée début M+2 (juin 2026 publié le 4 août 2026 ; janv. 2023 le 2 mars ; déc. 2024 le 4 févr. 2025 ; vérifié lors de la revue du 27/09).
+- **Inflation (IPCH) décalée d'1 mois** (correction de la revue du 27/09) : l'IPCH définitif du mois t paraît mi-t+1 ; même règle qu'E16/E20. Effet sur 04_models : R² bougent de quelques points, conclusions inchangées (meilleur R² -1,0 %, DM M1 vs M0 p ≥ 0,33). À la fin du mois t, seul le budget de t-2 est connu : les variables budgétaires sont décalées de 2 mois (`BUDGET_LAG = 2`). Sinon biais d'anticipation (look-ahead bias).
 - Décembre : version provisoire puis définitive (révisions, à mentionner comme limite).
 - OAT/Bund FRED = moyennes mensuelles (OCDE). CAC 40 `^FCHI` = indice de prix, hors dividendes.
 

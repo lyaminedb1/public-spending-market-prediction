@@ -8,8 +8,9 @@ Sortie   : data/processed/dataset_monthly.csv  (une ligne par mois t)
 Convention temporelle (ligne = fin du mois t) :
 - cibles      : variation entre t et t+1 (mois suivant)
 - marchés     : valeurs connues à la fin du mois t
-- budget      : données du mois t-2 (la situation du mois M est publiée ~5 semaines après,
-                ex. juin 2026 publié le 6 août 2026) -> pas de biais d'anticipation
+- inflation   : IPCH du mois t-1 (le mois t n'est publié en version définitive qu'en t+1)
+- budget      : données du mois t-2 (la situation du mois M est publiée début M+2,
+                ex. juin 2026 publié le 4 août 2026) -> pas de biais d'anticipation
 
 Lancer depuis la racine du dépôt :  python src/02_build_dataset.py
 """
@@ -161,7 +162,9 @@ def main() -> None:
     df["cac_ret_l1"] = df["cac_ret"].shift(1)
     df["vix"] = mk["vix"]
     df["d_vix"] = mk["vix"].diff()
-    df["inflation_yoy"] = mk["inflation_yoy"]
+    # Inflation décalée d'1 mois : l'IPCH définitif du mois t est publié vers le milieu de t+1
+    # (même règle que les variables macro d'E16 et l'EPU d'E20) -> pas de biais d'anticipation
+    df["inflation_yoy"] = mk["inflation_yoy"].shift(1)
     df["ecb_mro"] = mk["ecb_mro"]
     df["ecb_dfr"] = mk["ecb_dfr"]
 
