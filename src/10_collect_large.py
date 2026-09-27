@@ -22,7 +22,7 @@ import requests
 OUT = Path("data/raw/large")
 OUT.mkdir(parents=True, exist_ok=True)
 HEADERS = {"User-Agent": "Mozilla/5.0 (memoire ECE; recherche academique)"}
-START = "2006-01-01"
+START = "2000-01-01"
 
 # code ISO-2 -> ISO-3 (certaines séries OCDE sur FRED utilisent l'ISO-3)
 COUNTRIES = {"FR": "FRA", "DE": "DEU", "IT": "ITA", "ES": "ESP", "PT": "PRT", "BE": "BEL"}
@@ -51,6 +51,7 @@ GLOBAL_SERIES = [
     ("mondial", "us_inflation", "CPIAUCSL"),
     ("mondial", "us_chomage", "UNRATE"),
     ("mondial", "vix", "VIXCLS"),
+    ("mondial", "bce_facilite_depot", "ECBDFR"),
     ("mondial", "petrole_brent", "DCOILBRENTEU"),
     ("mondial", "eur_usd", "DEXUSEU"),
     ("mondial", "zone_euro_chomage", "LRHUTTTTEZM156S"),
