@@ -54,3 +54,18 @@ Protocole E14, fixé avant l'analyse :
 - **Données** : taux à 10 ans quotidiens France et Allemagne (BCE / Banque de France / Bundesbank), CAC 40 quotidien.
 - **Tests** : (1) la variation absolue du spread sur la fenêtre [0 ; +1] est-elle plus grande les jours de publication que les autres jours (test de Mann-Whitney, test de permutation) ? (2) la variation du spread sur la fenêtre est-elle liée à la surprise budgétaire du mois publié (corrélation de Spearman, régression) ?
 - Résultat rapporté quel qu'il soit.
+
+## Ajout du 27 septembre 2026, 11h30 (avant collecte et avant tout résultat)
+
+| # | Extension | Justification |
+|---|---|---|
+| E15 | **Panel européen trimestriel** : France, Italie, Espagne, Portugal, Belgique ; dépenses publiques harmonisées Eurostat (`gov_10q_ggnfa`) | Plus d'observations (réduire le surapprentissage), inclusion de la crise de la dette 2010-2012 (absente des données françaises mensuelles), pays plus sensibles aux finances publiques. Réplique le cadre de Bouillot, Candelon et Kool (2025) en corrigeant trois points : cible en variation, comparaison à la marche aléatoire, délai de publication. |
+
+Protocole E15, fixé avant l'analyse :
+- **Cible** : variation du spread (taux 10 ans du pays − Bund, moyenne trimestrielle des données mensuelles OCDE/FRED) entre le trimestre q et q+1, en points de base.
+- **Dépenses (Eurostat, administrations publiques S13, millions d'euros, non désaisonnalisé)** : dépenses totales (TE), rémunérations (D1PAY), intérêts (D41PAY), investissement (P51G), prestations sociales (D62PAY), consommations intermédiaires (P2). Transformation : croissance sur un an de la somme sur 4 trimestres. Décalage de publication : **2 trimestres**.
+- **M0** : variation passée du spread, niveau du spread, variation du Bund, VIX, taux de dépôt BCE, indicatrices pays. **M1** = M0 + dépenses.
+- **Modèles** : Ridge, forêt aléatoire, XGBoost (hyperparamètres de `src/04_models.py`), modèle groupé sur les pays ; références : moyenne historique par pays et marche aléatoire (variation nulle).
+- **Validation glissante** trimestrielle, fenêtre croissante, **test à partir de 2010T1** (inclut la crise de la dette) ; sous-période 2015T1+ rapportée aussi.
+- **Tests** : Diebold-Mariano sur la perte quadratique sommée sur les pays à chaque trimestre ; résultats par pays rapportés. Les p-values s'ajoutent à la correction Benjamini-Hochberg de l'ensemble des extensions.
+- Résultat rapporté quel qu'il soit ; les résultats France mensuels restent le cœur du mémoire.
