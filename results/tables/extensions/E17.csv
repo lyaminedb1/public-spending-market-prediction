@@ -1,0 +1,4 @@
+extension,cible,comparaison,n_test,R2oos_sans_%,R2oos_avec_%,gain_vs_marche_aleatoire_sans_%,gain_vs_marche_aleatoire_avec_%,DM,p_avec_meilleur,p_avec_bat_marche_aleatoire,note
+E17 panel annuel,Δ spread annuel (5 pays),ridge : M1 vs M0,75,-330.551,-338.368,-380.809,-389.539,-0.701,0.753,0.825,origines 2010-2024 ; entraînement dès 2001
+E17 panel annuel,Δ spread annuel (5 pays),rf : M1 vs M0,75,-45.504,-19.779,-62.488,-33.761,1.912,0.038,0.877,origines 2010-2024 ; entraînement dès 2001
+E17 panel annuel,Δ spread annuel (5 pays),xgb : M1 vs M0,75,-108.116,-51.495,-132.409,-69.179,1.509,0.077,0.948,origines 2010-2024 ; entraînement dès 2001

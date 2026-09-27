@@ -396,7 +396,7 @@ def summarize():
     files = sorted(f for f in TAB.glob("E*.csv") if "_" not in f.stem)
     s = pd.concat([pd.read_csv(f) for f in files], ignore_index=True)
     # E12 (sous-périodes) est une ventilation d'E0, pas un test indépendant : exclue de la correction
-    mask = ~s.extension.str.startswith("E12")
+    mask = ~s.extension.str.startswith("E12") & ~s.extension.str.contains("hors correction")
     s["p_BH"], s["significatif_BH_10%"] = np.nan, False
     adj, sig = benjamini_hochberg(s.loc[mask, "p_avec_meilleur"])
     s.loc[mask, "p_BH"], s.loc[mask, "significatif_BH_10%"] = adj, sig
