@@ -25,7 +25,7 @@ Environnement : `. .venv/bin/activate` (étape 00).
 | 05 ✅ | `05_references_et_bh_04.md` | Deux références (moyenne, zéro) + BH sur les tests de 04 | 5 min |
 | 06 ✅ | `06_figure_shap_bruit.md` | Référence de bruit sur la figure 3.3 | 1 min |
 | 07 ✅ | `07_permutation_oos.md` | Importance par permutation hors échantillon | ~5 min |
-| 08 | `08_table_hypotheses.md` | Tableau H1-H4 généré par script | — |
+| 08 ✅ | `08_table_hypotheses.md` | Tableau H1-H4 généré par script | — |
 | 09 | `09_parametrer_decalage.md` | Décalage budgétaire unique et paramétrable (02, 05, 04) | — |
 | 10 | `10_robustesse_decalage3.md` | Robustesse : décalage de 3 mois | 5 min |
 | 11 | `11_chiffres_limites.md` | Reproduire par script les chiffres des limites | — |
