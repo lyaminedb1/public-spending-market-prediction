@@ -117,6 +117,12 @@
 - Plan du chapitre 4 (structure + faits sourcés, sans interprétation) : `docs/plan_chapitre4.md`. Le chapitre 3 n'est pas « clos » : résultats E1-E13, E20, BH à relancer.
 - Reste à revoir : `03_exploration` (chiffres cités dans le mémoire), `06_extensions` (dont `walk_forward` qui compte en lignes et non en mois), modèles de `11` et `14`.
 
+## Rédaction (28-29/09)
+- **Ch. 2** (Claude Docs, lien ci-dessus) mis à jour le 28/09 avec la revue : dates de publication vérifiées, inflation t-1, limite `_ytd_gap`, données révisées, 31 contrôles, hyperparamètres non « a priori », pré-enregistrement séquentiel honnête (E17-E20 après E15/E16), tableau E1-E20. Style : « nous », phrases courtes. 2 commentaires en attente (grille Ridge, SHAP vs bruit).
+- **Ch. 1** restructuré le 29/09 selon la décision bibliographie : intro (priorité Europe) · 1.1 cadre (Fama, Ramey, Welch-Goyal) · 1.2 finances publiques et spreads en zone euro (+ fondateurs US en bref) · 1.3 ML et spreads (Belly, Bouillot, Barbier-Gauchard ; US en bref) · 1.4 données ouvertes et méthode (court) · 1.5 synthèse (tableau 1.1 avec rôle + pays, « France peu étudiée », hypothèses). Choi & Varian retiré (plus cité). Résumés des articles repris de l'ancien brouillon : à vérifier sur les articles.
+- Refus : pas de substitution de caractères (omicron) pour tromper les détecteurs ; déclaration d'usage de l'IA à rédiger.
+- Chapitre 3 bloqué tant que les 7 décisions de `docs/revue_04_models.md` et la relance finale ne sont pas faites.
+
 ## Prochaines étapes (au 27/09 soir)
 0. **D'abord : revue du code pas à pas** (demande d'Elyamine) — 02_build_dataset → 04_models → 06/11/14 : vérifier construction des variables, décalages, absence de fuite, validation glissante, hyperparamètres, métriques, DM et BH ; expliquer chaque choix de ML ; corriger tout bug trouvé et relancer. Toute modification doit être justifiée par une erreur de méthode, pas par le résultat obtenu. La conclusion « négative » n'est pas rédigée avant cette revue ; chapitre 1 (liste des sources) en attente.
 1. Restructurer le chapitre 1 selon la décision ci-dessus.
