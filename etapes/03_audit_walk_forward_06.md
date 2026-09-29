@@ -1,5 +1,7 @@
 # Étape 03 — `walk_forward` de 06 : lignes ou mois ? cibles à horizon h
 
+**Statut : ✅ fait.** Code de `walk_forward` **inchangé** : avec des trous, il est seulement plus prudent (jamais de fuite) ; 0 mois manquant sur les vraies données ; 29/29 contrôles (`python tests/test_walk_forward_06.py`).
+
 **Point non revu** (CLAUDE.md) : `src/06_extensions.py:135-152` coupe l'entraînement avec `d.iloc[: i-h+1]` où `d = df.dropna(subset=[target]+cols)`. Si `dropna` supprime des lignes au milieu, « h lignes » ≠ « h mois » (fuite ou trou). Même question pour `window=60` (lignes). De plus, `load()` construit les cibles cumulées h = 3, 6, 12 par `rolling` sur `y_*` : à vérifier contre les niveaux.
 
 **Dépend de** : 00.
@@ -13,10 +15,10 @@
 4. Si le code change : `diff` des résultats de E1 avant/après ; sinon « code inchangé, test ajouté ».
 
 ## Validation
-- [ ] Le test synthétique **échoue** sur une version volontairement cassée (entraînement sur `i-h+2` lignes) et **passe** sur le code final.
-- [ ] Les cibles h = 3, 6, 12 correspondent aux niveaux (écart max noté dans le commit).
-- [ ] Nombre de mois supprimés à l'intérieur : reporté dans le message de commit (attendu 0).
-- [ ] `python tests/verifications.py` toujours 31/31.
+- [x] Le test synthétique **échoue** sur une version volontairement cassée (entraînement sur `i-h+2` lignes) et **passe** sur le code final.
+- [x] Les cibles h = 3, 6, 12 correspondent aux niveaux (écart max noté dans le commit).
+- [x] Nombre de mois supprimés à l'intérieur : reporté dans le message de commit (attendu 0).
+- [x] `python tests/verifications.py` toujours 31/31.
 
 ## Commit
 `06 : tests de non-fuite de walk_forward en mois calendaires et de cohérence des cibles à horizon h` (+ correction si nécessaire)
