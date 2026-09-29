@@ -19,9 +19,11 @@ Protocole
 
 Lancer depuis la racine du dépôt :  python src/04_models.py            (~10 min)
                                     python src/04_models.py --from-saved  (tableaux et figures depuis les prévisions sauvegardées)
+                                    python src/04_models.py --data CSV --suffix NOM  (robustesse -> results/tables/robustesse/)
 """
 
 from pathlib import Path
+import sys
 import warnings
 
 import matplotlib.pyplot as plt
@@ -42,7 +44,9 @@ TAB = Path("results/tables")
 FIG.mkdir(parents=True, exist_ok=True)
 TAB.mkdir(parents=True, exist_ok=True)
 
-TEST_START = "2020-01"
+sys.path.insert(0, str(Path(__file__).parent))
+from config import TEST_START  # noqa: E402  (source unique, voir src/config.py)
+
 SEED = 42
 
 TARGETS = {
@@ -303,33 +307,40 @@ def fig_predictions(all_preds: dict) -> None:
 
 
 # ---------------------------------------------------------------------------
-def main(from_saved: bool = False) -> None:
+def main(from_saved: bool = False, data: Path = DATA, suffix: str = "") -> None:
     """from_saved : ne réestime aucun modèle ; recalcule tableaux et figures depuis models_predictions_*.csv
-    et models_shap_importance.csv (utile pour vérifier les métriques ou refaire les figures en quelques secondes)."""
-    df = pd.read_csv(DATA, index_col="mois")
+    et models_shap_importance.csv (utile pour vérifier les métriques ou refaire les figures en quelques secondes).
+    data / suffix : jeu de données alternatif (robustesse, ex. décalage de 3 mois). Avec un suffixe, les sorties
+    vont dans results/tables/robustesse/ (aucun résultat principal n'est écrasé), sans SHAP ni figures."""
+    df = pd.read_csv(data, index_col="mois")
     df = df.dropna(subset=list(TARGETS))  # la dernière ligne n'a pas de cible
+    out_dir = TAB / "robustesse" if suffix else TAB
+    tag = f"_{suffix}" if suffix else ""
+    out_dir.mkdir(parents=True, exist_ok=True)
 
     all_preds, all_met, all_dm = {}, [], []
     for target in TARGETS:
         if from_saved:
-            preds = pd.read_csv(TAB / f"models_predictions_{target}.csv", index_col=0)
+            preds = pd.read_csv(out_dir / f"models_predictions_{target}{tag}.csv", index_col=0)
         else:
             print(f"Validation glissante : {target} …", flush=True)
             preds = walk_forward(df, target)
-            preds.to_csv(TAB / f"models_predictions_{target}.csv")
+            preds.to_csv(out_dir / f"models_predictions_{target}{tag}.csv")
         all_preds[target] = preds
         all_met.append(metrics(preds, target))
         all_dm.append(dm_tests(preds, target))
 
     met = pd.concat(all_met).round(3)
     dm = add_bh(pd.concat(all_dm)).round(3)
-    met.to_csv(TAB / "models_metrics.csv", index=False)
-    dm.to_csv(TAB / "models_dm_tests.csv", index=False)
+    met.to_csv(out_dir / f"models_metrics{tag}.csv", index=False)
+    dm.to_csv(out_dir / f"models_dm_tests{tag}.csv", index=False)
 
-    imp = pd.read_csv(TAB / "models_shap_importance.csv", index_col=0) if from_saved else shap_importance(df)
-    fig_relative_rmse(met)
-    fig_shap(imp)
-    fig_predictions(all_preds)
+    imp = None
+    if not suffix:
+        imp = pd.read_csv(TAB / "models_shap_importance.csv", index_col=0) if from_saved else shap_importance(df)
+        fig_relative_rmse(met)
+        fig_shap(imp)
+        fig_predictions(all_preds)
 
     pd.set_option("display.width", 200)
     pd.set_option("display.max_rows", 100)
@@ -338,11 +349,14 @@ def main(from_saved: bool = False) -> None:
     print(met.to_string(index=False))
     print("\nTests de Diebold-Mariano (DM > 0 : le second modèle fait mieux)\n")
     print(dm.to_string(index=False))
-    grp = pd.DataFrame({t: [imp.loc[SPENDING, t].sum() / imp[t].sum() * 100] for t in TARGETS},
-                       index=["part des dépenses dans l'importance SHAP (%)"]).round(1)
-    print("\n", grp.to_string())
+    if imp is not None:
+        grp = pd.DataFrame({t: [imp.loc[SPENDING, t].sum() / imp[t].sum() * 100] for t in TARGETS},
+                           index=["part des dépenses dans l'importance SHAP (%)"]).round(1)
+        print("\n", grp.to_string())
 
 
 if __name__ == "__main__":
-    import sys
-    main(from_saved="--from-saved" in sys.argv)
+    args = sys.argv
+    main(from_saved="--from-saved" in args,
+         data=Path(args[args.index("--data") + 1]) if "--data" in args else DATA,
+         suffix=args[args.index("--suffix") + 1] if "--suffix" in args else "")

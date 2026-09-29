@@ -90,7 +90,19 @@ b_cols = [c for c in bud.columns]
 attendu = bud.reindex(idx - B.BUDGET_LAG)
 ecart = np.nanmax(np.abs(d[[f"b_{c}" for c in b_cols]].values - attendu.values))
 check(f"toutes les variables b_ = budget du mois t-{B.BUDGET_LAG}", ecart < 1e-9, f"écart max {ecart:.2e}")
-check("b_source_month = t-2", (d.b_source_month == (idx - B.BUDGET_LAG).astype(str)).all())
+check(f"b_source_month = t-{B.BUDGET_LAG}", (d.b_source_month == (idx - B.BUDGET_LAG).astype(str)).all())
+# variantes de robustesse du décalage budgétaire (dataset_monthly_lagN.csv, produites par 02 --lag N)
+for f in sorted(Path("data/processed").glob("dataset_monthly_lag*.csv")):
+    n = int(f.stem.split("lag")[-1])
+    dn = pd.read_csv(f, index_col="mois")
+    ixn = pd.PeriodIndex(dn.index, freq="M")
+    ecart_n = np.nanmax(np.abs(dn[[f"b_{c}" for c in b_cols]].values - bud.reindex(ixn - n).values))
+    check(f"{f.name} : budget = mois t-{n}", ecart_n < 1e-9 and (dn.b_source_month == (ixn - n).astype(str)).all(),
+          f"écart max {ecart_n:.2e}")
+    m_ = dn.index.intersection(d.index)
+    marche = [c for c in d.columns if not c.startswith("b_")]
+    check(f"{f.name} : variables de marché identiques au jeu principal",
+          np.nanmax(np.abs(dn.loc[m_, marche].values - d.loc[m_, marche].values)) < 1e-12)
 mk = B.build_markets()
 infl_attendue = mk["inflation_yoy"].shift(1).reindex(idx)
 ecart = np.nanmax(np.abs(d.inflation_yoy.values - infl_attendue.values))

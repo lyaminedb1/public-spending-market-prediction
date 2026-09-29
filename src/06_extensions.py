@@ -32,7 +32,8 @@ warnings.filterwarnings("ignore")
 TAB = Path("results/tables/extensions")
 TAB.mkdir(parents=True, exist_ok=True)
 SEED = 42
-TEST_START = "2020-01"
+sys.path.insert(0, str(Path(__file__).parent))
+from config import TEST_START  # noqa: E402  (source unique, voir src/config.py)
 
 TARGETS = {"y_d_spread": "Δ spread", "y_d_oat": "Δ OAT", "y_cac_ret": "CAC 40"}
 MARKETS = ["d_spread", "d_spread_l1", "spread_bp", "d_oat", "d_oat_l1", "cac_ret", "cac_ret_l1",

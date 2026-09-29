@@ -11,11 +11,14 @@ E13 Notations souveraines : nombre moyen de crans sous AAA (Fitch, Moody's, S&P)
 Sortie : data/processed/extra_features.csv (index = mois du jeu de données)
 """
 from pathlib import Path
+import sys
+
 import numpy as np
 import pandas as pd
 
 RAW = Path("data/raw")
-BUDGET_LAG = 2
+sys.path.insert(0, str(Path(__file__).parent))
+from config import BUDGET_LAG  # noqa: E402  (source unique du décalage, voir src/config.py)
 LINES = {"Total dépenses nettes du budget général": "dep", "Solde budgétaire": "solde"}
 
 
