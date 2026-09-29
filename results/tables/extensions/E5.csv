@@ -1,4 +1,4 @@
 extension,cible,comparaison,n_test,R2oos_sans_%,R2oos_avec_%,DM,p_avec_meilleur,p_avec_bat_moyenne,note
-E5 régime,y_d_spread,ridge : M1 + interactions régime vs M0 + régime,79,-15.0515,-32.4065,-0.9447,0.8261,0.9558,
-E5 régime,y_d_oat,ridge : M1 + interactions régime vs M0 + régime,79,-12.3021,-22.8537,-1.6848,0.952,0.9347,
-E5 régime,y_cac_ret,ridge : M1 + interactions régime vs M0 + régime,79,-2.5776,-10.2756,-1.527,0.9346,0.9567,
+E5 régime,y_d_spread,ridge : M1 + interactions régime vs M0 + régime,79,-14.0001,-29.5377,-0.9626,0.8306,0.9623,
+E5 régime,y_d_oat,ridge : M1 + interactions régime vs M0 + régime,79,-12.2483,-18.958,-1.3756,0.9136,0.9228,
+E5 régime,y_cac_ret,ridge : M1 + interactions régime vs M0 + régime,79,-4.7972,-13.7429,-1.7306,0.9563,0.99,

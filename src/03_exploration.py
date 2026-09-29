@@ -168,6 +168,28 @@ def fig_correlations(df: pd.DataFrame) -> pd.DataFrame:
     return out
 
 
+def partial_correlations(df: pd.DataFrame) -> pd.DataFrame:
+    """Corrélation de Spearman partielle budget / cible, en retirant l'inflation (IPCH t-1, variable du jeu).
+    Méthode : corrélation de Pearson entre les résidus des rangs après régression sur le rang de l'inflation.
+    Ajouté le 29/09 : le chiffre cité dans le mémoire n'était produit par aucun script."""
+    from scipy import stats
+    feats = {f"{k}_ytd_gap": v for k, v in BUDGET_LABELS.items()}
+    rows = []
+    for t in TARGETS:
+        sub = df[list(feats) + [t, "inflation_yoy"]].dropna().rank()
+        X = np.c_[np.ones(len(sub)), sub["inflation_yoy"]]
+        res = lambda c: sub[c] - X @ np.linalg.lstsq(X, sub[c], rcond=None)[0]
+        n = len(sub)
+        for f, lab in feats.items():
+            rho = np.corrcoef(res(f), res(t))[0, 1]
+            tstat = rho * np.sqrt((n - 3) / (1 - rho ** 2))
+            rows.append({"cible": t, "variable": lab, "rho_partiel": rho,
+                         "p": 2 * (1 - stats.t.cdf(abs(tstat), n - 3)), "n": n})
+    out = pd.DataFrame(rows).round(3)
+    out.to_csv(TAB / "eda_correlations_partielles_inflation.csv", index=False)
+    return out
+
+
 # ---------------------------------------------------------------------------
 # Tableau : statistiques descriptives, stationnarité, autocorrélation
 # ---------------------------------------------------------------------------
@@ -194,7 +216,9 @@ if __name__ == "__main__":
     fig_target_distributions(df)
     corr = fig_correlations(df)
     stats = stats_table(df)
+    part = partial_correlations(df)
     pd.set_option("display.width", 160)
+    print("Corrélations partielles (inflation retirée) :\n", part, "\n")
     print("Statistiques descriptives et stationnarité :\n", stats, "\n")
     print("Corrélations de Spearman (budget t-2 / cibles t+1) :\n", corr)
     print(f"\nFigures enregistrées dans {FIG}/, tableaux dans {TAB}/")

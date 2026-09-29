@@ -1,10 +1,10 @@
 extension,cible,comparaison,n_test,R2oos_sans_%,R2oos_avec_%,DM,p_avec_meilleur,p_avec_bat_moyenne,note,R2oos_M0_sans_notations_%
-E13 notations,y_d_spread,ridge : M1 + notations vs M0 + notations,79,-8.1468,-9.4541,-0.395,0.653,0.9104,,-15.3246
-E13 notations,y_d_spread,rf : M1 + notations vs M0 + notations,79,-1.5279,-6.9661,-1.4521,0.9248,0.8445,,-3.5749
-E13 notations,y_d_spread,xgb : M1 + notations vs M0 + notations,79,-29.4466,-25.7758,0.4469,0.3281,0.9757,,-28.0773
-E13 notations,y_d_oat,ridge : M1 + notations vs M0 + notations,79,-11.0939,-11.5773,-0.1597,0.5632,0.8266,,-11.8283
-E13 notations,y_d_oat,rf : M1 + notations vs M0 + notations,79,-2.6632,-5.6049,-0.8318,0.796,0.7142,,-4.8091
-E13 notations,y_d_oat,xgb : M1 + notations vs M0 + notations,79,-21.0253,-30.9128,-1.0271,0.8462,0.9412,,-21.9798
-E13 notations,y_cac_ret,ridge : M1 + notations vs M0 + notations,79,-0.3945,-16.513,-0.8766,0.8083,0.8166,,-0.2835
-E13 notations,y_cac_ret,rf : M1 + notations vs M0 + notations,79,-9.1367,-11.0694,-0.4938,0.6886,0.979,,-8.4356
-E13 notations,y_cac_ret,xgb : M1 + notations vs M0 + notations,79,-30.2019,-28.2923,0.2294,0.4096,0.9964,,-35.6003
+E13 notations,y_d_spread,ridge : M1 + notations vs M0 + notations,79,-8.8189,-8.6374,0.062,0.4753,0.9167,,-14.8914
+E13 notations,y_d_spread,rf : M1 + notations vs M0 + notations,79,-5.6769,-9.2705,-0.9547,0.8287,0.9276,,-6.791
+E13 notations,y_d_spread,xgb : M1 + notations vs M0 + notations,79,-35.4506,-27.4863,0.8654,0.1947,0.9812,,-35.4083
+E13 notations,y_d_oat,ridge : M1 + notations vs M0 + notations,79,-8.8804,-10.9769,-0.7933,0.785,0.8453,,-11.3144
+E13 notations,y_d_oat,rf : M1 + notations vs M0 + notations,79,-5.2015,-6.7889,-0.4533,0.6742,0.75,,-6.9463
+E13 notations,y_d_oat,xgb : M1 + notations vs M0 + notations,79,-27.2769,-36.2813,-0.9683,0.8321,0.9635,,-30.2239
+E13 notations,y_cac_ret,ridge : M1 + notations vs M0 + notations,79,0.0073,-21.4058,-1.2988,0.9011,0.901,,-1.3448
+E13 notations,y_cac_ret,rf : M1 + notations vs M0 + notations,79,-9.8059,-10.7101,-0.2634,0.6036,0.9781,,-9.6356
+E13 notations,y_cac_ret,xgb : M1 + notations vs M0 + notations,79,-34.0533,-26.736,0.8595,0.1963,0.9896,,-31.66

@@ -25,7 +25,7 @@
 - Les montants budgétaires sont **cumulés depuis janvier** : les différencier pour obtenir des flux mensuels.
 - Forte saisonnalité : deux transformations par ligne budgétaire : somme glissante sur 12 mois (`_12m`, Md€) et écart du cumul depuis janvier par rapport au même mois de l'année précédente, en % du total annuel (`_ytd_gap`). Pas de taux de croissance du cumul : il explose en début d'année (base proche de zéro).
 - **Décalage de publication** : la situation du mois M est publiée début M+2 (juin 2026 publié le 4 août 2026 ; janv. 2023 le 2 mars ; déc. 2024 le 4 févr. 2025 ; vérifié lors de la revue du 27/09). À la fin du mois t, seul le budget de t-2 est connu : les variables budgétaires sont décalées de 2 mois (`BUDGET_LAG = 2`). Sinon biais d'anticipation (look-ahead bias).
-- **Inflation (IPCH) décalée d'1 mois** (correction de la revue du 27/09) : l'INSEE publie une estimation provisoire en fin de mois t (août 2026 : le 28/08) et l'IPCH définitif mi-t+1 (août 2026 : le 15/09) ; les données FRED/Eurostat sont les valeurs définitives → décalage d'1 mois, même règle qu'E16/E20. Effet sur 04_models : R² bougent de quelques points, conclusions inchangées (meilleur R² -1,0 %, DM M1 vs M0 p ≥ 0,33).
+- **Inflation (IPCH) décalée d'1 mois** (correction de la revue du 27/09) : l'INSEE publie une estimation provisoire en fin de mois t (août 2026 : le 28/08) et l'IPCH définitif mi-t+1 (août 2026 : le 15/09) ; les données FRED/Eurostat sont les valeurs définitives → décalage d'1 mois, même règle qu'E16/E20. Effet sur 04_models : R² bougent de quelques points, conclusions inchangées.
 - Décembre : version provisoire puis définitive (révisions, à mentionner comme limite).
 - OAT/Bund FRED = moyennes mensuelles (OCDE). CAC 40 `^FCHI` = indice de prix, hors dividendes.
 
@@ -54,20 +54,19 @@
 - Jeux de variables emboîtés : M0 marchés (11 var.) ; M1 = M0 + 7 dépenses `_ytd_gap` ; M2 = M1 + recettes et solde. Test H1 = M1 vs M0.
 - Hyperparamètres fixés a priori (Ridge : alpha par RidgeCV ; RF : 300 arbres, profondeur 4 ; XGB : 200 arbres, profondeur 2, lr 0,05).
 - Validation glissante, fenêtre croissante, test 2020-01 → 2026-07 (79 mois).
-- *Chiffres de cette section à jour après la correction de l'inflation (27/09, commit f1f834c).*
-- **Aucun modèle ne bat la moyenne historique** (R² hors échantillon < 0 partout ; meilleur : Ridge M0 sur CAC 40, -1,0 %, était -0,3 % avant correction). Même un AR(1) simple fait -2 à -3 % (tests depuis 2020 et depuis 2017) → pas un bug, imprévisibilité mensuelle (Welch & Goyal 2008).
-- **H1 rejetée** : ajouter les dépenses n'améliore aucune cible (DM M1 vs M0 : p bilatérale 0,33 à 0,99).
+- *Chiffres de cette section = relance finale du 29/09 (inflation t-1 + grille Ridge 10⁻² à 10⁶, 40 valeurs).*
+- **Aucun modèle ne bat la moyenne historique** (R² hors échantillon < 0 partout ; meilleur : Ridge M0 sur CAC 40, -1,3 %). Variation nulle : +1,7 % (spread), +2,4 % (OAT), -0,2 % (CAC). Même un AR(1) simple fait -2 à -3 % (tests depuis 2020 et depuis 2017) → pas un bug, imprévisibilité mensuelle (Welch & Goyal 2008).
+- **H1 rejetée** : ajouter les dépenses n'améliore aucune cible (DM M1 vs M0 : p bilatérale 0,37 à 0,99).
 - **H2 non testable** en l'état (pas d'apport à comparer).
-- **H3 rejetée** : XGBoost est le pire (RMSE +13 à +16 % vs moyenne ; significativement pire que Ridge sur le CAC 40, p 0,02) ; la forêt aléatoire n'est pas significativement meilleure que Ridge. XGBoost instable : R² OAT -22 % → -30 % pour le seul décalage de l'inflation (une seule graine ; à examiner dans la revue de 04).
-- **H4** : en échantillon (SHAP), les dépenses pèsent 31 à 37 % de l'importance (intervention et investissement en tête) mais cela ne se traduit pas hors échantillon → surapprentissage : point clé de la discussion. ⚠️ *Revue du 28/09 : 7 variables de pur bruit obtiennent 34-38 % de SHAP → la part SHAP ne montre aucune information ; H4 non soutenue (à valider, `docs/revue_04_models.md`, constat 4).*
+- **H3 rejetée** : XGBoost est le pire (RMSE +13 à +16 % vs moyenne ; significativement pire que Ridge sur le CAC 40, p 0,03) ; la forêt aléatoire n'est pas significativement meilleure que Ridge (p 0,18-0,41). XGBoost : R² varie d'environ 9 pts selon la graine (RF : 3 pts), toujours négatif, conclusions stables.
+- **H4 non soutenue** (décision du 29/09) : SHAP en échantillon, dépenses 32,8 / 36,8 / 30,6 % ; 7 variables de pur bruit 38,1 / 34,2 / 37,1 % en moyenne (min-max 34,3-43,5 / 26,5-41,6 / 28,6-46,8) → la part SHAP ne montre aucune information.
 - Sorties : `results/tables/models_*.csv`, figures `fig3_2_rmse_relatif`, `fig3_3_importance_shap`, `fig3_4_previsions_spread`.
 
 ## Extensions pré-enregistrées (`docs/plan_extensions.md`, commit b136e8f avant exécution)
-> ⚠️ **Chiffres E1-E13 et BH ci-dessous = ANCIEN jeu de données** (avant correction de l'inflation). Ne pas les citer : relancer `05`, `06`, `06 resume`, `07` à la fin de la revue, puis mettre à jour.
+> Chiffres = relance finale du 29/09 (tableau de synthèse : `ext_synthese.csv`, repris au tableau 3.6 du chapitre 3).
 - `python src/05_extra_features.py` (surprise budgétaire vs LFI, notations) puis `python src/06_extensions.py` (~35 min) puis `python src/07_extensions_summary.py`.
 - Sorties : `results/tables/extensions/E*.csv`, `results/tables/ext_summary.csv` (123 comparaisons avec/sans dépenses + 36 ventilations E12), `results/tables/ext_synthese.csv`, figure `fig3_5_extensions.png`.
-- **Résultat : 0 comparaison significative après correction Benjamini-Hochberg (10 %)** ; 2 p brutes < 0,05 sur 123 (≈ 6 attendues par hasard).
-- Ce qui bat la moyenne historique, **sans les dépenses** : volatilité (E3 : CAC 40 +9,3 %, OAT +3 à +4,5 %), classification OAT (E2 : score de Brier +5 à +7 %), spread à 3 mois (RF M0 +3,1 %), CAC à 12 mois (XGB M0 +14 %, 68 obs. chevauchantes, fragile).
+- Meilleur R² sans / avec dépenses (spread | OAT | CAC) : voir tableau 3.6 du chapitre 3. Positifs sans dépenses : E3 volatilité (OAT +3,3, CAC +9,6), E2 Brier OAT (+2,5), spread h=3 (+2,3), CAC h=12 (+11,8, 68 obs. chevauchantes). Positifs avec et meilleurs que sans (4/45, non significatifs) : E2 spread (+0,5), E2 OAT (+5,8), E3 OAT (+4,2), E7 OAT (+0,1). Sans > avec dans 34 cas sur 45.
 - Surprise budgétaire (E4) : LFI 2026 absente de l'open data → test jusqu'à 2026-02 ; aucun apport.
 - Notations (E13) : 9 dégradations 2013-2025 (`data/raw/ratings_france.csv`, sources en lien) ; aucun apport.
 - Contrôle anti-fuite vérifié : pour l'horizon h, la dernière ligne d'entraînement est toujours ≥ h mois avant le mois de test.
@@ -80,10 +79,10 @@
 - **E17** panel annuel (déc., 75 prév.) : tous < moyenne (-20 à -338 %) et < marche aléatoire ; RF M1 moins mauvais que M0 (p 0,04) mais toujours perdant.
 - **E18** régime de crise (fin de trimestre, exploratoire) : les interactions dépenses × tension dégradent partout ; le « +4 pts en crise » d'E15 disparaît sans moyennes.
 - **E19** actions sectorielles (excès vs CAC 40, BTP : Vinci/Eiffage/Bouygues ; défense : Thales/Dassault) : tout < moyenne sauf RF BTP h=3 sans dépenses (+1,4 % ; avec : -0,7 %) ; défense h=3 : dépenses moins mauvaises (RF p 0,06, XGB p 0,008) mais R² -11 à -20 %. *À jour (27/09, commit 62b067b : mois incomplet retiré + inflation corrigée ; effets des deux corrections non séparés).*
-- **E20** incertitude politique (indice **européen**, écart déclaré : France absente de FRED) : ni l'EPU ni les dépenses n'aident. ⚠️ *Ancien jeu de données, à relancer.*
+- **E20** incertitude politique (indice **européen**, écart déclaré : France absente de FRED) : ni l'EPU ni les dépenses n'aident (aucune cible positive ; relancé le 29/09).
 - E14 (étude d'événement) : taux quotidiens introuvables par script (BCE 404, stooq bloqué) → perspectives.
-- ⚠️ *BH ci-dessous = ancienne version (E19 et E16 ont changé depuis ; E1-E13 et E20 à relancer). À recalculer avec `06_extensions.py resume` en fin de revue.*
-- **BH sur 168 comparaisons** (E12 et ventilations exclues) : 0 significative (p_BH min 0,84) ; 6 p brutes < 0,05 (≈ 8 attendues par hasard), toutes des cas où le modèle avec dépenses reste sous la moyenne. 6 cas où « avec dépenses » bat la moyenne et la version sans, tous non significatifs (E2/E3 RF +1 à +2 pts, E15 = artefact des moyennes). `python src/06_extensions.py resume` recalcule la correction.
+- **BH sur 168 comparaisons** (E12 et ventilations exclues ; relance du 29/09) : 0 significative (p_BH min 0,999) ; 6 p brutes < 0,05 (8,4 attendues par hasard), toutes des cas XGB/RF où « avec dépenses » est moins mauvais mais reste sous la moyenne (E1 xgb h=6 CAC, E1 xgb h=12 spread, E11 xgb CAC, E15 xgb, E17 rf, E19 défense xgb h=3). `python src/06_extensions.py resume` recalcule la correction.
+- `07` corrigé le 29/09 : les ventilations par sous-période d'E18 n'entrent plus dans le « meilleur R² » de l'extension (E18 : -3,3 / -5,0 au lieu de +1,1 / -3,3).
 - Message clé : un R² de 95 % sur le niveau n'est pas une prévision ; la comparaison à la marche aléatoire est indispensable (critique de Bouillot et al.).
 
 ## Hypothèses
@@ -112,22 +111,29 @@
 - Attention à l'argument : corriger une fuite ne rend pas forcément les modèles moins bons (Ridge M1 ΔOAT : -15,1 % → -10,9 % après correction de l'inflation). On corrige parce que c'est une erreur de méthode, quel que soit l'effet.
 - Contrôles automatiques : `python tests/verifications.py` (alignement des cibles, décalages, doublons, mois incomplets).
 - **Limites à écrire** : données budgétaires révisées (vintage final) ; cibles taux en moyennes mensuelles ; `_ytd_gap` de variance croissante sur l'année (×6 janv.→déc.) ; E16 : 25/68 séries OCDE MEI arrêtées sur FRED fin 2022-début 2024 → 23,6 % de valeurs imputées (médiane) sur les 144 dernières lignes de test ; E19 : prix hors dividendes (détachements à dates différentes du CAC 40).
-- **À relancer une fois la revue finie** (lisent `dataset_monthly.csv` corrigé) : `03_exploration`, `05`, `06_extensions` (E1-E13), `14` E20, puis `06_extensions.py resume` (BH) et `07`. E16 et E19 sont déjà à jour.
-- **Revue de `04_models` faite la nuit du 27-28/09, décisions en attente d'Elyamine** : rapport `docs/revue_04_models.md`, diagnostics `src/15_diag_04.py` → `results/tables/diag_04/`. Aucun code de 04 modifié. Points clés : puissance faible (un signal de corrélation 0,3 n'est pas détecté de façon fiable) ; dépenses ≤ 7 variables de bruit ; Clark-West trop permissif ici (bruit « significatif » 40-75 %) → garder DM ; SHAP : bruit 34-38 % → H4 non soutenue ; XGB ±9 pts selon la graine, conclusions stables ; variation nulle bat la moyenne pour les taux ; hyperparamètres non prouvables « a priori » (code et résultats commités ensemble) ; **grille RidgeCV bornée à 1000 atteinte 75-99 % des mois pour le CAC** → proposition : élargir à 10⁶ dans 04 et 06 (effet < 1 pt).
-- Plan du chapitre 4 (structure + faits sourcés, sans interprétation) : `docs/plan_chapitre4.md`. Le chapitre 3 n'est pas « clos » : résultats E1-E13, E20, BH à relancer.
-- Reste à revoir : `03_exploration` (chiffres cités dans le mémoire), `06_extensions` (dont `walk_forward` qui compte en lignes et non en mois), modèles de `11` et `14`.
+- **Relance finale faite le 29/09** (script de la session : 02 → tests → 03 → 04 → 05 → 06 → 14 E19/E20 → 06 resume → 07 → 15). Tous les résultats du dépôt sont à jour.
+- **Revue de `04_models` (27-28/09) : les 7 décisions ont été acceptées par Elyamine le 29/09** (`docs/revue_04_models.md`, diagnostics `src/15_diag_04.py` → `results/tables/diag_04/`) :
+  1. grille RidgeCV élargie à `np.logspace(-2, 6, 40)` dans 04 et 06 (l'ancienne borne 1000 était atteinte 75-99 % des mois pour le CAC ; R² de Ridge bouge d'au plus 1,2 pt) ;
+  2. H4 « non soutenue » (SHAP comparé au bruit) ;
+  3. puissance et contrôle par le bruit présentés en 3.3 et discutés au ch. 4 : ρ = 0,3 → bat la moyenne dans 20-30 % des tirages, DM détecte 0-50 % ; ρ = 0,5 → 80-100 %, DM 30-80 %. Bruit : Ridge 90-95 % des tirages ≥ dépenses, RF 80-100 %, XGB 50-60 % ;
+  4. garder DM (Clark-West trop permissif : du bruit « significatif » dans 5-55 % (Ridge) et 45-75 % (XGB) des tirages) ;
+  5. plages des graines en annexe ; 6. deux références (moyenne et variation nulle) au tableau 3.2 ; 7. hyperparamètres « fixés avant l'évaluation, sans réglage sur le test », pas « a priori ».
+- `06_extensions.walk_forward` : assertion ajoutée (mois contigus) → compter en lignes = compter en mois, vérifié.
+- `03_exploration` : corrélations partielles (inflation retirée) désormais calculées par le script → `eda_correlations_partielles_inflation.csv`. **Correction du texte** : l'ancien chiffre « 0,09 à 0,15, sous le seuil » (non reproductible) est faux ; ΔOAT : fonctionnement et charge de la dette 0,11 (p 0,18), personnel 0,165 (p 0,046, juste au seuil, 21 tests) ; spread : investissement -0,17 (p 0,04). Ch. 2 et 3 corrigés.
+- Plan du chapitre 4 : `docs/plan_chapitre4.md` (chiffres ⏳ à rafraîchir avec ceux ci-dessus).
+- Reste à revoir si le temps le permet : modèles de `11` et `14`.
 
 ## Rédaction (28-29/09)
-- **Ch. 2** (Claude Docs, lien ci-dessus) mis à jour le 28/09 avec la revue : dates de publication vérifiées, inflation t-1, limite `_ytd_gap`, données révisées, 31 contrôles, hyperparamètres non « a priori », pré-enregistrement séquentiel honnête (E17-E20 après E15/E16), tableau E1-E20. Style : « nous », phrases courtes. 2 commentaires en attente (grille Ridge, SHAP vs bruit).
-- **Ch. 1** restructuré le 29/09 selon la décision bibliographie : intro (priorité Europe) · 1.1 cadre (Fama, Ramey, Welch-Goyal) · 1.2 finances publiques et spreads en zone euro (+ fondateurs US en bref) · 1.3 ML et spreads (Belly, Bouillot, Barbier-Gauchard ; US en bref) · 1.4 données ouvertes et méthode (court) · 1.5 synthèse (tableau 1.1 avec rôle + pays, « France peu étudiée », hypothèses). Choi & Varian retiré (plus cité). Résumés des articles repris de l'ancien brouillon : à vérifier sur les articles.
+- **Ch. 2** (Claude Docs, lien ci-dessus) : à jour au 29/09 (grille Ridge 10⁶, corrélations partielles corrigées ; réponses postées aux 2 commentaires, à résoudre par Elyamine). Style : « nous », phrases courtes.
+- **Ch. 1** restructuré le 29/09 selon la décision bibliographie (1.1 cadre · 1.2 finances publiques et spreads · 1.3 ML · 1.4 données ouvertes · 1.5 synthèse, tableau 1.1). Résumés des articles : à vérifier sur les articles.
+- **Ch. 3** (Claude Docs https://claude.ai/code/artifact/8bb0b5ba-85e9-47e5-a6bd-df4fb6edf006) rédigé le 29/09 : 3.1 descriptif · 3.2 modèles (tab. 3.2 R², 3.3 DM) · 3.3 solidité (graines, tab. 3.4 contrôle positif, bruit) · 3.4 SHAP vs bruit (tab. 3.5) · 3.5 extensions E1-E13 + BH (tab. 3.6) · 3.6 panel E15-E18 (tab. 3.7 marche aléatoire) · 3.7 hypothèses (tab. 3.8). Sans interprétation.
 - Refus : pas de substitution de caractères (omicron) pour tromper les détecteurs ; déclaration d'usage de l'IA à rédiger.
-- Chapitre 3 bloqué tant que les 7 décisions de `docs/revue_04_models.md` et la relance finale ne sont pas faites.
 
-## Prochaines étapes (au 27/09 soir)
-0. **D'abord : revue du code pas à pas** (demande d'Elyamine) — 02_build_dataset → 04_models → 06/11/14 : vérifier construction des variables, décalages, absence de fuite, validation glissante, hyperparamètres, métriques, DM et BH ; expliquer chaque choix de ML ; corriger tout bug trouvé et relancer. Toute modification doit être justifiée par une erreur de méthode, pas par le résultat obtenu. La conclusion « négative » n'est pas rédigée avant cette revue ; chapitre 1 (liste des sources) en attente.
-1. Restructurer le chapitre 1 selon la décision ci-dessus.
-2. Rédiger le chapitre 3 (Résultats, 4-6 p.) : 3.1 descriptif, 3.2 modèles principaux (H1, H3, H4), 3.3 extensions (tableau de synthèse + fig3_5, détail en annexe), 3.4 panel européen et marche aléatoire.
-3. Chapitre 4 (Discussion) : ce qui fait bouger le spread (10 plus gros mois : Covid 03/2020, présidentielle 2017, dissolution 06/2024, Trump 11/2016, Ukraine 02/2022… aucun lié au budget ; dates à vérifier), critique de Bouillot et al., artefact des moyennes, limites, perspectives (étude d'événement E14, annonces PLF).
+## Prochaines étapes (au 29/09)
+1. Chapitre 4 (Discussion, 6-8 p.) à partir de `docs/plan_chapitre4.md` : l'interprétation doit venir d'Elyamine (règle ECE).
+2. Introduction, conclusion, résumé + mots-clés, déclaration d'usage de l'IA, annexes (détail E1-E20, graines, bruit).
+3. Vérifier sur les articles les chiffres cités au ch. 1 (Bouillot, Laubach…) ; dates des événements du ch. 4.
+4. Mise en forme finale (LaTeX ou docx ECE).
 
 ## Référence la plus proche
 Bouillot, Candelon & Kool (2025), *Forecasting European sovereign spreads using machine learning*, UCLouvain : prévision à un mois des spreads de 10 pays dont la France, XGBoost en tête, le spread passé domine.

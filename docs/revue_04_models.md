@@ -1,6 +1,8 @@
 # Revue de `src/04_models.py` (nuit du 27 au 28/09/2026)
 
-> **Statut : à valider par Elyamine.** Rien n'a été modifié dans `04_models.py` ni dans ses résultats.
+> **Statut (29/09) : les 7 décisions ont été acceptées par Elyamine.** Grille RidgeCV élargie à 10⁶ dans 04 et 06,
+> tout relancé ; les chiffres Ridge ci-dessous sont ceux d'avant la relance (écarts ≤ 1,2 pt, conclusions identiques).
+> Chiffres à jour : CLAUDE.md et chapitre 3. Clark-West sur du bruit après relance : 5-55 % (Ridge), 45-75 % (XGB).
 > Les diagnostics sont dans `src/15_diag_04.py` (nouveau) et leurs sorties dans `results/tables/diag_04/`.
 > Méthode (comme pour la préparation des données) : relire, recalculer de façon indépendante, puis **tester en
 > cassant** : ajouter exprès un faux signal (doit être trouvé) ou du bruit (ne doit pas être trouvé).

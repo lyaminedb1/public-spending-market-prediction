@@ -50,7 +50,7 @@ RATINGS = ["rating_crans_moyen", "degradations_12m"]
 # ---------------------------------------------------------------------------
 def reg_model(name):
     if name == "ridge":
-        return make_pipeline(StandardScaler(), RidgeCV(alphas=np.logspace(-2, 3, 30)))
+        return make_pipeline(StandardScaler(), RidgeCV(alphas=np.logspace(-2, 6, 40)))  # grille élargie (revue du 28/09 : borne 1000 atteinte pour le CAC 40)
     if name == "rf":
         return RandomForestRegressor(n_estimators=300, max_depth=4, min_samples_leaf=5,
                                      max_features=0.5, random_state=SEED, n_jobs=-1)
@@ -136,6 +136,10 @@ def walk_forward(df, target, cols, factory, h=1, window=None, test_end=None, pro
     """Prévision de chaque mois de test avec un modèle entraîné sur les seules cibles déjà observées :
     pour un horizon h, la cible de la ligne s couvre s → s+h, donc on n'entraîne que sur s <= t-h."""
     d = df.dropna(subset=[target] + cols)
+    # Garde-fou (revue du 28/09) : l'écart h est compté en lignes ; il faut donc des mois contigus,
+    # sans trou au milieu (des lignes retirées au début ou à la fin ne posent pas de problème).
+    _p = pd.PeriodIndex(d.index, freq="M")
+    assert (np.diff(_p.asi8) == 1).all(), f"walk_forward : mois non contigus pour {target}"
     pos = {m: i for i, m in enumerate(d.index)}
     test = [m for m in d.index if m >= TEST_START and (test_end is None or m <= test_end)]
     preds, means = [], []

@@ -47,7 +47,9 @@ def main():
                      "avec": mm[mm.variables == "M1 + dépenses"]["R2_oos_%"].max(),
                      "p_min_BH": np.nan})
     s = pd.read_csv("results/tables/ext_summary.csv")
-    s = s[~s.extension.str.startswith("E12")].copy()
+    # E12 et les ventilations par sous-période (E18) sont hors correction : un sous-échantillon ne doit pas
+    # passer pour le meilleur résultat de l'extension (revue du 29/09).
+    s = s[~s.extension.str.startswith("E12") & ~s.extension.str.contains("ventilation")].copy()
     s["cle"] = s.apply(key, axis=1)
     g = s.groupby(["cle", "cible"]).agg(sans=("R2oos_sans_%", "max"), avec=("R2oos_avec_%", "max"),
                                         p_min_BH=("p_BH", "min")).reset_index()
