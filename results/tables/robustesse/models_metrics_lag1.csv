@@ -1,0 +1,34 @@
+cible,modele,variables,RMSE,MAE,R2_oos_%,R2_vs_zero_%,bonne_direction_%
+y_d_spread,naif_moyenne,—,5.019,3.614,0.0,-2.054,49.367
+y_d_spread,naif_zero,—,4.968,3.612,2.013,0.0,
+y_d_spread,ridge,M0 marchés,5.386,4.011,-15.164,-17.529,51.899
+y_d_spread,rf,M0 marchés,5.116,3.763,-3.892,-6.026,55.696
+y_d_spread,xgb,M0 marchés,5.715,4.282,-29.659,-32.322,44.304
+y_d_spread,ridge,M1 + dépenses,5.474,4.126,-18.937,-21.38,46.835
+y_d_spread,rf,M1 + dépenses,5.273,3.94,-10.374,-12.642,43.038
+y_d_spread,xgb,M1 + dépenses,5.965,4.631,-41.256,-44.157,35.443
+y_d_spread,ridge,M2 + budget complet,5.551,4.207,-22.329,-24.841,45.57
+y_d_spread,rf,M2 + budget complet,5.243,3.901,-9.137,-11.378,44.304
+y_d_spread,xgb,M2 + budget complet,5.905,4.518,-38.424,-41.267,40.506
+y_d_oat,naif_moyenne,—,19.503,13.846,0.0,-2.737,57.143
+y_d_oat,naif_zero,—,19.242,13.81,2.664,0.0,
+y_d_oat,ridge,M0 marchés,20.541,14.428,-10.93,-13.966,57.143
+y_d_oat,rf,M0 marchés,20.034,14.1,-5.518,-8.407,58.442
+y_d_oat,xgb,M0 marchés,21.942,15.23,-26.575,-30.04,61.039
+y_d_oat,ridge,M1 + dépenses,20.569,14.465,-11.233,-14.278,50.649
+y_d_oat,rf,M1 + dépenses,19.91,14.371,-4.214,-7.067,54.545
+y_d_oat,xgb,M1 + dépenses,21.299,15.454,-19.26,-22.525,54.545
+y_d_oat,ridge,M2 + budget complet,20.254,14.441,-7.847,-10.799,54.545
+y_d_oat,rf,M2 + budget complet,19.804,14.103,-3.111,-5.934,55.844
+y_d_oat,xgb,M2 + budget complet,21.696,15.848,-23.754,-27.142,48.052
+y_cac_ret,naif_moyenne,—,5.034,3.679,0.0,0.23,60.759
+y_cac_ret,naif_zero,—,5.04,3.718,-0.231,0.0,
+y_cac_ret,ridge,M0 marchés,5.069,3.698,-1.379,-1.146,59.494
+y_cac_ret,rf,M0 marchés,5.274,3.9,-9.743,-9.49,49.367
+y_cac_ret,xgb,M0 marchés,5.897,4.255,-37.211,-36.895,51.899
+y_cac_ret,ridge,M1 + dépenses,5.053,3.692,-0.743,-0.511,59.494
+y_cac_ret,rf,M1 + dépenses,5.263,3.924,-9.315,-9.063,50.633
+y_cac_ret,xgb,M1 + dépenses,5.832,4.37,-34.221,-33.912,48.101
+y_cac_ret,ridge,M2 + budget complet,5.078,3.702,-1.753,-1.518,58.228
+y_cac_ret,rf,M2 + budget complet,5.249,3.89,-8.711,-8.46,54.43
+y_cac_ret,xgb,M2 + budget complet,5.736,4.238,-29.823,-29.524,48.101

@@ -1,0 +1,43 @@
+cible,test,DM,p_bilaterale,p_unilaterale,note,p_BH_H1
+y_d_spread,Ridge : M1 + dépenses vs M0,-0.751,0.455,0.772,,0.967
+y_d_spread,Ridge : M2 + budget complet vs M0,-1.199,0.234,0.883,,0.967
+y_d_spread,Ridge M1 vs moyenne historique,-2.119,0.037,0.981,,
+y_d_spread,Ridge M1 vs variation nulle,-2.306,0.024,0.988,,
+y_d_spread,Forêt aléatoire : M1 + dépenses vs M0,-1.93,0.057,0.971,,0.971
+y_d_spread,Forêt aléatoire : M2 + budget complet vs M0,-1.376,0.173,0.914,,0.967
+y_d_spread,Forêt aléatoire M1 vs moyenne historique,-1.626,0.108,0.946,,
+y_d_spread,Forêt aléatoire M1 vs variation nulle,-1.82,0.073,0.964,,
+y_d_spread,XGBoost : M1 + dépenses vs M0,-1.052,0.296,0.852,,0.967
+y_d_spread,XGBoost : M2 + budget complet vs M0,-0.748,0.457,0.772,,0.967
+y_d_spread,XGBoost M1 vs moyenne historique,-3.236,0.002,0.999,,
+y_d_spread,XGBoost M1 vs variation nulle,-3.392,0.001,0.999,,
+y_d_spread,Forêt aléatoire vs Ridge (M1),1.172,0.245,0.122,,
+y_d_spread,XGBoost vs Ridge (M1),-1.973,0.052,0.974,,
+y_d_oat,Ridge : M1 + dépenses vs M0,-0.056,0.956,0.522,,0.854
+y_d_oat,Ridge : M2 + budget complet vs M0,0.613,0.542,0.271,,0.806
+y_d_oat,Ridge M1 vs moyenne historique,-0.866,0.389,0.805,,
+y_d_oat,Ridge M1 vs variation nulle,-1.079,0.284,0.858,,
+y_d_oat,Forêt aléatoire : M1 + dépenses vs M0,0.282,0.778,0.389,,0.806
+y_d_oat,Forêt aléatoire : M2 + budget complet vs M0,0.579,0.564,0.282,,0.806
+y_d_oat,Forêt aléatoire M1 vs moyenne historique,-0.356,0.723,0.639,,
+y_d_oat,Forêt aléatoire M1 vs variation nulle,-0.589,0.557,0.721,,
+y_d_oat,XGBoost : M1 + dépenses vs M0,0.579,0.564,0.282,,0.806
+y_d_oat,XGBoost : M2 + budget complet vs M0,0.247,0.806,0.403,,0.806
+y_d_oat,XGBoost M1 vs moyenne historique,-0.971,0.335,0.833,,
+y_d_oat,XGBoost M1 vs variation nulle,-1.115,0.268,0.866,,
+y_d_oat,Forêt aléatoire vs Ridge (M1),1.214,0.228,0.114,,
+y_d_oat,XGBoost vs Ridge (M1),-0.769,0.444,0.778,,
+y_cac_ret,Ridge : M1 + dépenses vs M0,0.496,0.621,0.311,,0.806
+y_cac_ret,Ridge : M2 + budget complet vs M0,-0.285,0.776,0.612,,0.918
+y_cac_ret,Ridge M1 vs moyenne historique,-1.599,0.114,0.943,,
+y_cac_ret,Ridge M1 vs variation nulle,-0.276,0.783,0.608,référence peu pertinente pour le CAC 40 (rendement moyen positif),
+y_cac_ret,Forêt aléatoire : M1 + dépenses vs M0,0.12,0.905,0.453,,0.815
+y_cac_ret,Forêt aléatoire : M2 + budget complet vs M0,0.278,0.782,0.391,,0.806
+y_cac_ret,Forêt aléatoire M1 vs moyenne historique,-1.521,0.132,0.934,,
+y_cac_ret,Forêt aléatoire M1 vs variation nulle,-1.349,0.181,0.909,référence peu pertinente pour le CAC 40 (rendement moyen positif),
+y_cac_ret,XGBoost : M1 + dépenses vs M0,0.287,0.775,0.387,,0.806
+y_cac_ret,XGBoost : M2 + budget complet vs M0,0.68,0.499,0.249,,0.806
+y_cac_ret,XGBoost M1 vs moyenne historique,-2.162,0.034,0.983,,
+y_cac_ret,XGBoost M1 vs variation nulle,-2.098,0.039,0.98,référence peu pertinente pour le CAC 40 (rendement moyen positif),
+y_cac_ret,Forêt aléatoire vs Ridge (M1),-1.434,0.156,0.922,,
+y_cac_ret,XGBoost vs Ridge (M1),-2.146,0.035,0.983,,

@@ -27,7 +27,7 @@ Environnement : `. .venv/bin/activate` (étape 00).
 | 07 ✅ | `07_permutation_oos.md` | Importance par permutation hors échantillon | ~5 min |
 | 08 ✅ | `08_table_hypotheses.md` | Tableau H1-H4 généré par script | — |
 | 09 ✅ | `09_parametrer_decalage.md` | Décalage budgétaire unique et paramétrable (02, 05, 04) | — |
-| 10 | `10_robustesse_decalage3.md` | Robustesse : décalage de 3 mois | 5 min |
+| 10 ✅ | `10_robustesse_decalage3.md` | Robustesse : décalage de 3 mois | 5 min |
 | 11 ✅ | `11_chiffres_limites.md` | Reproduire par script les chiffres des limites | — |
 | 12 | `12_synthese_07_e15_e20.md` | Corriger 07 : E15-E20 absentes de la figure et de la synthèse | — |
 | 13 | `13_tests_automatiques.md` | Étendre les contrôles automatiques | — |
