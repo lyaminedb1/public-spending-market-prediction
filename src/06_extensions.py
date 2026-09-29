@@ -11,6 +11,7 @@ Usage :  python src/06_extensions.py            (toutes les extensions, ~30-40 m
          python src/06_extensions.py E1 E4      (seulement certaines)
 """
 from pathlib import Path
+import os
 import sys
 import time
 import warnings
@@ -31,7 +32,7 @@ warnings.filterwarnings("ignore")
 
 TAB = Path("results/tables/extensions")
 TAB.mkdir(parents=True, exist_ok=True)
-SEED = 42
+SEED = int(os.environ.get("SEED_06", 42))  # graine déclarée : 42 ; surcharge possible pour tester la stabilité (étape 17)
 sys.path.insert(0, str(Path(__file__).parent))
 from config import TEST_START  # noqa: E402  (source unique, voir src/config.py)
 

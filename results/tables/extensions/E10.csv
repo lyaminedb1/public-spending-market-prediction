@@ -1,4 +1,4 @@
 extension,cible,comparaison,n_test,R2oos_sans_%,R2oos_avec_%,DM,p_avec_meilleur,p_avec_bat_moyenne,note
-E10 XGB réglé,y_d_spread,xgb réglé : M1 vs M0,79,-2.1063,-6.0338,-1.9881,0.9748,0.8863,
-E10 XGB réglé,y_d_oat,xgb réglé : M1 vs M0,79,-0.8669,-4.089,-0.7886,0.7836,0.671,
-E10 XGB réglé,y_cac_ret,xgb réglé : M1 vs M0,79,-4.8479,-3.1043,0.6614,0.2552,0.8813,
+E10 XGB réglé,y_d_spread,xgb réglé : M1 vs M0,79,-4.3688,-6.1982,-1.0163,0.8437,0.8685,
+E10 XGB réglé,y_d_oat,xgb réglé : M1 vs M0,79,-4.787,-5.3791,-0.1243,0.5493,0.693,
+E10 XGB réglé,y_cac_ret,xgb réglé : M1 vs M0,79,-6.1549,-2.988,0.9411,0.1748,0.8723,

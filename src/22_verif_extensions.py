@@ -38,16 +38,15 @@ m = new[KEYS + COLS].merge(old[KEYS + COLS], on=KEYS, suffixes=("_nouveau", "_an
 m = m.merge(committed[KEYS + COLS].rename(columns={c: c + "_commite" for c in COLS}), on=KEYS, how="left")
 assert (m["_o"] == "both").all(), "comparaisons différentes entre l'ancienne grille et le nouveau"
 m["implique_ridge"] = m.comparaison.str.contains("ridge|Ridge|combinaison")  # E8 « combinaison » moyenne Ridge, RF et XGBoost
-m["relance"] = ~m.extension.str.startswith("E10")  # E10 : relancé à l'étape 17
 for c in ("R2oos_sans_%", "R2oos_avec_%", "p_avec_meilleur"):
     m[f"delta_grille_{c}"] = m[f"{c}_nouveau"] - m[f"{c}_ancienne_grille"]
     m[f"delta_env_{c}"] = m[f"{c}_ancienne_grille"] - m[f"{c}_commite"]
 out = m.drop(columns="_o")
 out.round(4).to_csv("results/tables/diag_04/verif_extensions.csv", index=False)
 
-sans_ridge = out[~out.implique_ridge & out.relance]
-avec_ridge = out[out.implique_ridge & out.relance]
-print(f"{len(out)} comparaisons (E10 exclue des statistiques : relancée à l'étape 17) ; {len(avec_ridge)} avec Ridge, {len(sans_ridge)} sans")
+sans_ridge = out[~out.implique_ridge]
+avec_ridge = out[out.implique_ridge]
+print(f"{len(out)} comparaisons ; {len(avec_ridge)} avec Ridge, {len(sans_ridge)} sans")
 print("sans Ridge : écart max nouveau - ancienne grille :", float(sans_ridge["delta_grille_R2oos_avec_%"].abs().max()),
       "(R² avec) /", float(sans_ridge["delta_grille_R2oos_sans_%"].abs().max()), "(R² sans)")
 print("avec Ridge : écart max nouveau - ancienne grille (R², points) :",

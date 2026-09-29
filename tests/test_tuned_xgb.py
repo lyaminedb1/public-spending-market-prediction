@@ -65,19 +65,22 @@ def run(leaky=False):
     finally:
         X.TunedXGB.tune, X.TunedXGB.fit, X.TunedXGB.predict = orig_tune, orig_fit, orig_pred
         X.TunedXGB.GRID, X.TARGETS = orig_grid, orig_targets
-    seen, viol, n_pred = "0000-00", 0, 0
+    last = {"tune": "0000-00", "fit": "0000-00"}
+    viol, n_pred = 0, 0
     for kind, v in log:
         if kind in ("tune", "fit"):
-            seen = max(seen, v)
+            last[kind] = v                    # dernier réglage / dernier ajustement effectués
         else:
             n_pred += 1
-            viol += seen >= v                 # une ligne d'entraînement de mois >= mois prévu
+            viol += max(last.values()) >= v   # une ligne d'entraînement de mois >= mois prévu
     return viol, n_pred, sum(1 for k, _ in log if k == "tune")
 
 
 viol, n_pred, n_tune = run()
 check("aucun réglage ni ajustement n'a vu le mois prévu ou un mois postérieur", viol == 0, f"{n_pred} prévisions, {n_tune} réglages")
-check("réglage refait tous les 12 mois (79 prévisions -> 7 réglages par jeu de variables)", n_tune == 14, f"{n_tune} réglages (2 jeux M0/M1)")
+attendu = 2 * int(np.ceil(n_pred / 2 / 12))
+check("réglage refait tous les 12 mois pour chacun des 2 jeux de variables (M0, M1)", n_tune == attendu,
+      f"{n_tune} réglages pour {n_pred} prévisions ; attendu {attendu}")
 viol_bad, _, _ = run(leaky=True)
 check("contrôle négatif : un réglage sur toutes les données est détecté", viol_bad > 0, f"{viol_bad} violations")
 n_ok, n = sum(RESULTS), len(RESULTS)
