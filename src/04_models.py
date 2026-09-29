@@ -246,7 +246,19 @@ def fig_relative_rmse(met: pd.DataFrame) -> None:
     plt.close(fig)
 
 
+def shap_noise_reference() -> pd.DataFrame | None:
+    """Part SHAP obtenue par 7 variables de pur bruit (10 tirages, src/15_diag_04.py shap_bruit), par cible."""
+    f = TAB / "diag_04" / "shap_bruit.csv"
+    if not f.exists():
+        print("Avertissement : diag_04/shap_bruit.csv absent, figure 3.3 sans référence de bruit "
+              "(lancer : python src/15_diag_04.py shap_bruit)")
+        return None
+    g = pd.read_csv(f).groupby("cible")["part_SHAP_bruit_%"]
+    return pd.DataFrame({"min": g.min(), "moyenne": g.mean(), "max": g.max()})
+
+
 def fig_shap(imp: pd.DataFrame) -> None:
+    ref = shap_noise_reference()
     fig, axes = plt.subplots(1, 3, figsize=(12, 4.2))
     for ax, (target, label) in zip(axes, TARGETS.items()):
         s = imp[target].sort_values()
@@ -257,10 +269,18 @@ def fig_shap(imp: pd.DataFrame) -> None:
                             .replace("_ytd_gap", "") for c in s.index], fontsize=7.5)
         ax.set_title(label)
         ax.grid(axis="y", visible=False)
+        part = imp.loc[SPENDING, target].sum() / imp[target].sum() * 100
+        txt = f"Dépenses : {part:.0f} % de l'importance"
+        if ref is not None:
+            r = ref.loc[target]
+            txt += f"\n7 variables de bruit : {r['min']:.0f}-{r['max']:.0f} %\n(moyenne {r['moyenne']:.0f} %)"
+        ax.text(0.97, 0.04, txt, transform=ax.transAxes, ha="right", va="bottom", fontsize=8, color=INK2,
+                bbox=dict(facecolor="white", edgecolor=GRID, boxstyle="round,pad=0.3"))
     handles = [plt.Rectangle((0, 0), 1, 1, color=BLUE), plt.Rectangle((0, 0), 1, 1, color=ORANGE)]
     fig.legend(handles, ["Marchés et macro", "Dépenses publiques"], loc="lower center", ncol=2,
                bbox_to_anchor=(0.5, -0.06))
-    fig.text(0, -0.1, "Valeur SHAP absolue moyenne, XGBoost estimé sur tout l'échantillon, jeu M1.",
+    fig.text(0, -0.1, "Valeur SHAP absolue moyenne, XGBoost estimé sur tout l'échantillon, jeu M1. Encadré : part des dépenses, "
+             "et part obtenue par 7 variables de pur bruit (10 tirages) : elle n'indique pas de contenu prédictif.",
              fontsize=8, color=INK2)
     fig.tight_layout()
     fig.savefig(FIG / "fig3_3_importance_shap.png")
