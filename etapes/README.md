@@ -19,8 +19,8 @@ Environnement : `. .venv/bin/activate` (étape 00).
 |---|---|---|---|
 | 00 ✅ | `00_environnement.md` | Environnement Python + 31 contrôles verts | — |
 | 01 ✅ | `01_instantane_reference.md` | Outil d'instantané (`tests/snapshot.py`) | — |
-| 02 | `02_grille_ridge.md` | Élargir la grille RidgeCV (04, 06) + mesure de l'alpha | 5 min |
-| 03 | `03_audit_walk_forward_06.md` | `walk_forward` de 06 en mois ; cibles à horizon h | — |
+| 02 ✅ | `02_grille_ridge.md` | Élargir la grille RidgeCV (04, 06) + mesure de l'alpha | 5 min |
+| 03 ✅ | `03_audit_walk_forward_06.md` | `walk_forward` de 06 en mois ; cibles à horizon h | — |
 | 04 | `04_diagnostics_15_relance.md` | Relancer les diagnostics de `15_diag_04` qui dépendent de Ridge + résumé | ~40 min |
 | 05 | `05_references_et_bh_04.md` | Deux références (moyenne, zéro) + BH sur les tests de 04 | 5 min |
 | 06 | `06_figure_shap_bruit.md` | Référence de bruit sur la figure 3.3 | 1 min |
@@ -37,7 +37,7 @@ Environnement : `. .venv/bin/activate` (étape 00).
 | 17 | `17_relance_06_e10.md` | E10 (XGBoost réglé) | ~15 min |
 | 18 | `18_relance_14_e19_e20.md` | E19 **et** E20 (Ridge change) | ~5 min |
 | 19 | `19_bh_et_synthese_finale.md` | Correction BH + synthèse | 1 min |
-| 20 | `20_panel_11_conditionnel.md` | Grille Ridge de 11 (seulement si nécessaire) | 0 ou 16 min |
+| 20 ✅ | `20_panel_11_conditionnel.md` | Sans objet (0 % à la borne, mesuré étape 02) | 0 |
 | 21 | `21_reproductibilite.md` | Versions figées, gel des données, `run_all.sh` | — |
 | 22 | `22_regression_finale.md` | Relance complète, deux fois, + CLAUDE.md aligné | ~2 h |
 

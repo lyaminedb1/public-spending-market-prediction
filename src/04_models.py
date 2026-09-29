@@ -68,7 +68,7 @@ MODEL_LABELS = {"ridge": "Ridge", "rf": "Forêt aléatoire", "xgb": "XGBoost"}
 
 def make_model(name: str):
     if name == "ridge":
-        return make_pipeline(StandardScaler(), RidgeCV(alphas=np.logspace(-2, 3, 30)))
+        return make_pipeline(StandardScaler(), RidgeCV(alphas=np.logspace(-2, 6, 40)))
     if name == "rf":
         return RandomForestRegressor(n_estimators=300, max_depth=4, min_samples_leaf=5,
                                      max_features=0.5, random_state=SEED, n_jobs=-1)

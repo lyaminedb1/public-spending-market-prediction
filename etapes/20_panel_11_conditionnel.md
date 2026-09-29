@@ -1,5 +1,7 @@
 # Étape 20 — Grille Ridge de `11_panel_models.py` (conditionnelle)
 
+**Statut : ✅ sans objet** — mesuré à l'étape 02 : 0 % des réestimations d'E16 (variation) à la borne 10⁴ (59 réestimations, alpha médian 33-53). Aucun changement, aucune relance de 11, E15-E18 inchangés.
+
 **Dépend de** : 02 (mesure de l'alpha sur 11 dans `alpha_bornes_avant.csv`).
 
 ## Actions

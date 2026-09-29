@@ -1,34 +1,34 @@
 cible,modele,variables,RMSE,MAE,R2_oos_%,bonne_direction_%
 y_d_spread,naif_moyenne,—,5.012,3.609,0.0,53.165
 y_d_spread,naif_zero,—,4.968,3.612,1.728,
-y_d_spread,ridge,M0 marchés,5.374,3.994,-14.989,53.165
+y_d_spread,ridge,M0 marchés,5.372,3.996,-14.891,53.165
 y_d_spread,rf,M0 marchés,5.179,3.824,-6.791,51.899
 y_d_spread,xgb,M0 marchés,5.832,4.383,-35.408,45.57
-y_d_spread,ridge,M1 + dépenses,5.376,3.975,-15.066,50.633
+y_d_spread,ridge,M1 + dépenses,5.368,3.956,-14.708,50.633
 y_d_spread,rf,M1 + dépenses,5.219,3.908,-8.444,41.772
 y_d_spread,xgb,M1 + dépenses,5.717,4.313,-30.102,43.038
-y_d_spread,ridge,M2 + budget complet,5.64,4.182,-26.635,49.367
+y_d_spread,ridge,M2 + budget complet,5.665,4.194,-27.783,50.633
 y_d_spread,rf,M2 + budget complet,5.269,3.95,-10.54,41.772
 y_d_spread,xgb,M2 + budget complet,5.68,4.314,-28.434,44.304
 y_d_oat,naif_moyenne,—,19.478,13.829,0.0,57.143
 y_d_oat,naif_zero,—,19.242,13.81,2.416,
-y_d_oat,ridge,M0 marchés,20.609,14.439,-11.947,57.143
-y_d_oat,rf,M0 marchés,20.144,14.304,-6.946,51.948
+y_d_oat,ridge,M0 marchés,20.551,14.417,-11.314,57.143
+y_d_oat,rf,M0 marchés,20.143,14.304,-6.945,51.948
 y_d_oat,xgb,M0 marchés,22.228,15.799,-30.224,57.143
-y_d_oat,ridge,M1 + dépenses,20.514,14.327,-10.914,51.948
-y_d_oat,rf,M1 + dépenses,20.141,14.242,-6.918,54.545
+y_d_oat,ridge,M1 + dépenses,20.546,14.353,-11.265,53.247
+y_d_oat,rf,M1 + dépenses,20.14,14.241,-6.913,54.545
 y_d_oat,xgb,M1 + dépenses,22.241,15.903,-30.38,49.351
-y_d_oat,ridge,M2 + budget complet,20.447,14.488,-10.196,55.844
-y_d_oat,rf,M2 + budget complet,20.046,14.203,-5.913,55.844
+y_d_oat,ridge,M2 + budget complet,20.335,14.433,-8.994,55.844
+y_d_oat,rf,M2 + budget complet,20.046,14.203,-5.915,55.844
 y_d_oat,xgb,M2 + budget complet,22.469,15.745,-33.067,53.247
 y_cac_ret,naif_moyenne,—,5.034,3.678,0.0,60.759
 y_cac_ret,naif_zero,—,5.04,3.718,-0.223,
-y_cac_ret,ridge,M0 marchés,5.06,3.679,-1.016,58.228
+y_cac_ret,ridge,M0 marchés,5.068,3.698,-1.345,59.494
 y_cac_ret,rf,M0 marchés,5.271,3.921,-9.636,49.367
 y_cac_ret,xgb,M0 marchés,5.777,4.185,-31.66,53.165
-y_cac_ret,ridge,M1 + dépenses,5.101,3.702,-2.665,58.228
+y_cac_ret,ridge,M1 + dépenses,5.122,3.734,-3.499,58.228
 y_cac_ret,rf,M1 + dépenses,5.299,3.948,-10.783,45.57
 y_cac_ret,xgb,M1 + dépenses,5.692,4.253,-27.818,51.899
-y_cac_ret,ridge,M2 + budget complet,5.075,3.674,-1.629,59.494
-y_cac_ret,rf,M2 + budget complet,5.308,3.897,-11.171,56.962
+y_cac_ret,ridge,M2 + budget complet,5.078,3.705,-1.757,58.228
+y_cac_ret,rf,M2 + budget complet,5.308,3.897,-11.167,56.962
 y_cac_ret,xgb,M2 + budget complet,5.668,4.18,-26.745,54.43
