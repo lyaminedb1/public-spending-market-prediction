@@ -30,7 +30,7 @@ Environnement : `. .venv/bin/activate` (étape 00).
 | 10 ✅ | `10_robustesse_decalage3.md` | Robustesse : décalage de 3 mois | 5 min |
 | 11 ✅ | `11_chiffres_limites.md` | Reproduire par script les chiffres des limites | — |
 | 12 ✅ | `12_synthese_07_e15_e20.md` | Corriger 07 : E15-E20 absentes de la figure et de la synthèse | — |
-| 13 | `13_tests_automatiques.md` | Étendre les contrôles automatiques | — |
+| 13 ✅ | `13_tests_automatiques.md` | Étendre les contrôles automatiques | — |
 | 14 | `14_relance_03_exploration.md` | Relancer 03 + notebook | 1 min |
 | 15 | `15_relance_05.md` | Relancer 05 | 1 min |
 | 16 | `16_relance_06_rapides.md` | E1-E9, E11-E13 | ~20 min |

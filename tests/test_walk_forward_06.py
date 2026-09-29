@@ -115,6 +115,17 @@ for h in (3, 6, 12):
         check(f"  exactement {h} NaN (les {h} dernières lignes) ({name})",
               nan == h and real[col].iloc[-h:].isna().all(), f"{nan} NaN")
 
+print("F. détection d'une fuite : une variable = cible du mois doit donner un R² hors échantillon proche de 100 %")
+rng = np.random.default_rng(1)
+idx = pd.period_range("2014-01", "2025-12", freq="M").astype(str)
+leak = pd.DataFrame({"y": rng.standard_normal(len(idx))}, index=idx)
+leak["x_fuite"] = leak["y"]                       # information du futur (la cible elle-même)
+leak["x_bruit"] = rng.standard_normal(len(idx))
+r_leak = X.r2_oos(X.walk_forward(leak, "y", ["x_fuite"], lambda: X.reg_model("ridge")))
+r_none = X.r2_oos(X.walk_forward(leak, "y", ["x_bruit"], lambda: X.reg_model("ridge")))
+check("variable = cible : R² hors échantillon > 90 %", r_leak > 90, f"R² {r_leak:.1f} %")
+check("variable de bruit : R² hors échantillon <= 0", r_none <= 0.5, f"R² {r_none:.1f} %")
+
 n_ok, n = sum(RESULTS), len(RESULTS)
 print(f"\n{n_ok}/{n} contrôles réussis")
 sys.exit(0 if n_ok == n else 1)
