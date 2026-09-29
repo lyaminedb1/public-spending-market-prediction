@@ -1,0 +1,54 @@
+constat_revue,bloc,cle,modele,cible,revue_min,revue_max,recalcule,conforme
+1,puissance,rho=0.3 : % tirages où le modèle bat la moyenne,ridge,y_cac_ret,10.0,30.0,30.0,True
+1,puissance,rho=0.3 : % tirages où le modèle bat la moyenne,ridge,y_d_oat,10.0,30.0,20.0,True
+1,puissance,rho=0.3 : % tirages où le modèle bat la moyenne,ridge,y_d_spread,10.0,30.0,20.0,True
+1,puissance,"rho=0.3 : % tirages où DM détecte l'apport (p<0,05 et gain>0)",ridge,y_cac_ret,0.0,50.0,0.0,True
+1,puissance,"rho=0.3 : % tirages où DM détecte l'apport (p<0,05 et gain>0)",ridge,y_d_oat,0.0,50.0,50.0,True
+1,puissance,"rho=0.3 : % tirages où DM détecte l'apport (p<0,05 et gain>0)",ridge,y_d_spread,0.0,50.0,10.0,True
+1,puissance,rho=0.5 : % tirages où le modèle bat la moyenne,ridge,y_cac_ret,80.0,100.0,100.0,True
+1,puissance,rho=0.5 : % tirages où le modèle bat la moyenne,ridge,y_d_oat,80.0,100.0,90.0,True
+1,puissance,rho=0.5 : % tirages où le modèle bat la moyenne,ridge,y_d_spread,80.0,100.0,80.0,True
+1,puissance,"rho=0.5 : % tirages où DM détecte l'apport (p<0,05 et gain>0)",ridge,y_cac_ret,30.0,80.0,30.0,True
+1,puissance,"rho=0.5 : % tirages où DM détecte l'apport (p<0,05 et gain>0)",ridge,y_d_oat,30.0,80.0,80.0,True
+1,puissance,"rho=0.5 : % tirages où DM détecte l'apport (p<0,05 et gain>0)",ridge,y_d_spread,30.0,80.0,30.0,True
+1,puissance,rho=1.0 : % tirages où le modèle bat la moyenne,ridge,y_cac_ret,100.0,100.0,100.0,True
+1,puissance,rho=1.0 : % tirages où le modèle bat la moyenne,ridge,y_d_oat,100.0,100.0,100.0,True
+1,puissance,rho=1.0 : % tirages où le modèle bat la moyenne,ridge,y_d_spread,100.0,100.0,100.0,True
+2,bruit,% tirages de bruit battus par les vraies dépenses,ridge,y_cac_ret,0.0,10.0,5.0,True
+2,bruit,% tirages de bruit battus par les vraies dépenses,ridge,y_d_oat,0.0,10.0,10.0,True
+2,bruit,% tirages de bruit battus par les vraies dépenses,ridge,y_d_spread,0.0,10.0,10.0,True
+2,bruit,% tirages de bruit battus par les vraies dépenses,rf,y_cac_ret,0.0,20.0,0.0,True
+2,bruit,% tirages de bruit battus par les vraies dépenses,rf,y_d_oat,0.0,20.0,0.0,True
+2,bruit,% tirages de bruit battus par les vraies dépenses,rf,y_d_spread,0.0,20.0,20.0,True
+2,bruit,% tirages de bruit battus par les vraies dépenses,xgb,y_cac_ret,40.0,50.0,50.0,True
+2,bruit,% tirages de bruit battus par les vraies dépenses,xgb,y_d_oat,40.0,50.0,40.0,True
+2,bruit,% tirages de bruit battus par les vraies dépenses,xgb,y_d_spread,40.0,50.0,50.0,True
+3,clark_west,p CW M1 vs M0,xgb,y_d_spread,0.018,0.018,0.018,True
+3,clark_west,p CW M1 vs M0,xgb,y_cac_ret,0.03,0.03,0.03,True
+3,clark_west,p CW M1 vs M0,xgb,y_d_oat,0.083,0.083,0.083,True
+3,taille_test,"% tirages de bruit « significatifs » (Clark-West, p<0,05)",xgb,y_cac_ret,45.0,75.0,75.0,True
+3,taille_test,"% tirages de bruit « significatifs » (Clark-West, p<0,05)",xgb,y_d_oat,45.0,75.0,45.0,True
+3,taille_test,"% tirages de bruit « significatifs » (Clark-West, p<0,05)",xgb,y_d_spread,45.0,75.0,70.0,True
+3,taille_test,"% tirages de bruit « significatifs » (Clark-West, p<0,05)",ridge,y_d_oat,40.0,50.0,25.0,False
+3,taille_test,"% tirages de bruit « significatifs » (Clark-West, p<0,05)",ridge,y_d_spread,40.0,50.0,55.0,False
+3,taille_test,"% tirages de bruit « significatifs » (DM bilatéral, p<0,05)",ridge,y_cac_ret,0.0,5.0,0.0,True
+3,taille_test,"% tirages de bruit « significatifs » (DM bilatéral, p<0,05)",ridge,y_d_oat,0.0,5.0,0.0,True
+3,taille_test,"% tirages de bruit « significatifs » (DM bilatéral, p<0,05)",ridge,y_d_spread,0.0,5.0,0.0,True
+3,taille_test,"% tirages de bruit « significatifs » (DM bilatéral, p<0,05)",xgb,y_cac_ret,0.0,5.0,0.0,True
+3,taille_test,"% tirages de bruit « significatifs » (DM bilatéral, p<0,05)",xgb,y_d_oat,0.0,5.0,0.0,True
+3,taille_test,"% tirages de bruit « significatifs » (DM bilatéral, p<0,05)",xgb,y_d_spread,0.0,5.0,5.0,True
+4,shap_bruit,part SHAP du bruit : moyenne (%),xgb,y_cac_ret,34.0,38.0,37.134,True
+4,shap_bruit,part SHAP du bruit : moyenne (%),xgb,y_d_oat,34.0,38.0,34.171,True
+4,shap_bruit,part SHAP du bruit : moyenne (%),xgb,y_d_spread,34.0,38.0,38.123,True
+5,graines,R² M0 min (%),xgb,y_d_spread,-39.8,-39.8,-39.779,True
+5,graines,R² M0 max (%),xgb,y_d_spread,-30.8,-30.8,-30.76,True
+5,graines,R² M0 min (%),rf,y_d_spread,-6.3,-6.3,-6.311,True
+5,graines,R² M0 max (%),rf,y_d_spread,-3.3,-3.3,-3.342,True
+5,graines,p DM M1 vs M0 minimale,xgb,y_d_spread,0.14,0.14,0.139,True
+5,graines,p DM M1 vs M0 minimale,rf,y_d_spread,0.13,0.13,0.131,True
+6,references,R² hors échantillon (%),AR(1),y_d_spread,-2.7,-1.9,-2.722,True
+6,references,R² hors échantillon (%),AR(1),y_d_oat,-2.7,-1.9,-2.323,True
+6,references,R² hors échantillon (%),AR(1),y_cac_ret,-2.7,-1.9,-1.911,True
+6,references,R² hors échantillon (%),variation nulle,y_d_spread,1.7,1.7,1.728,True
+6,references,R² hors échantillon (%),variation nulle,y_d_oat,2.4,2.4,2.416,True
+6,references,R² hors échantillon (%),variation nulle,y_cac_ret,-0.2,-0.2,-0.223,True
