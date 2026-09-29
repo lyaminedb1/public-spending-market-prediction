@@ -42,7 +42,7 @@ constat_revue,bloc,cle,modele,cible,revue_min,revue_max,recalcule,conforme
 4,shap_bruit,part SHAP du bruit : moyenne (%),xgb,y_d_spread,34.0,38.0,38.123,True
 5,graines,R² M0 min (%),xgb,y_d_spread,-39.8,-39.8,-39.779,True
 5,graines,R² M0 max (%),xgb,y_d_spread,-30.8,-30.8,-30.76,True
-5,graines,R² M0 min (%),rf,y_d_spread,-6.3,-6.3,-6.311,True
+5,graines,R² M0 min (%),rf,y_d_spread,-6.3,-6.3,-6.319,True
 5,graines,R² M0 max (%),rf,y_d_spread,-3.3,-3.3,-3.342,True
 5,graines,p DM M1 vs M0 minimale,xgb,y_d_spread,0.14,0.14,0.139,True
 5,graines,p DM M1 vs M0 minimale,rf,y_d_spread,0.13,0.13,0.131,True

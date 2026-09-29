@@ -52,8 +52,8 @@ E20b,y_d_oat,E20 Dépenses | incertitude (M1+EPU vs M0+EPU),-4.76,-5.93,,,1.0,3.
 E20b,y_d_spread,E20 Dépenses | incertitude (M1+EPU vs M0+EPU),-6.11,-7.55,,,1.0,3.0,16.0
 E15,Δ spread trimestriel (5 pays),E15 Panel trimestriel (moyennes),13.9,15.5,,13.73,1.0,3.0,100.0
 E16,spread niveau,"E16 Panel mensuel, niveau du spread",96.98,97.02,-32.49,-30.85,1.0,3.0,101.0
-E16,spread variation,"E16 Panel mensuel, variation du spread",-3.71,-4.13,-9.6,-10.05,1.0,3.0,102.0
-E17,Δ spread annuel (5 pays),E17 Panel annuel (décembre),-45.5,-19.78,-62.49,-33.76,1.0,3.0,103.0
-E18,Δ spread trimestriel fin de trimestre (5 pays),"E18 Panel, régime de crise (exploratoire)",-3.32,-5.01,-5.5,-7.22,1.0,3.0,104.0
+E16,spread variation,"E16 Panel mensuel, variation du spread",-3.67,-3.79,-9.56,-9.7,1.0,3.0,102.0
+E17,Δ spread annuel (5 pays),E17 Panel annuel (décembre),-45.35,-19.8,-62.32,-33.79,1.0,3.0,103.0
+E18,Δ spread trimestriel fin de trimestre (5 pays),"E18 Panel, régime de crise (exploratoire)",-3.32,-4.94,-5.5,-7.16,1.0,3.0,104.0
 E19,btp_concessions (excès CAC 40),E19 Actions BTP-concessions (excès CAC 40),1.35,-0.74,,,1.0,6.0,105.0
 E19,defense (excès CAC 40),E19 Actions défense (excès CAC 40),-0.01,-1.74,,,1.0,6.0,106.0

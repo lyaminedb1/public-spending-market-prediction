@@ -84,23 +84,23 @@ E13 notations,y_cac_ret,ridge : M1 + notations vs M0 + notations,79,0.007,-21.40
 E13 notations,y_cac_ret,rf : M1 + notations vs M0 + notations,79,-9.806,-10.77,-0.277,0.609,0.978,,-9.636,,,,,,,,,,,,,0.999,False
 E13 notations,y_cac_ret,xgb : M1 + notations vs M0 + notations,79,-34.053,-26.736,0.86,0.196,0.99,,-31.66,,,,,,,,,,,,,0.999,False
 E15 panel trimestriel,Δ spread trimestriel (5 pays),ridge : M1 vs M0,330,13.9,15.5,0.347,0.365,,test 2010Q1 → 2026Q2,,13.732,,,,,,,,,,,,0.999,False
-E15 panel trimestriel,Δ spread trimestriel (5 pays),rf : M1 vs M0,330,-5.331,4.029,1.611,0.056,,test 2010Q1 → 2026Q2,,2.021,,,,,,,,,,,,0.999,False
+E15 panel trimestriel,Δ spread trimestriel (5 pays),rf : M1 vs M0,330,-5.317,4.029,1.606,0.057,,test 2010Q1 → 2026Q2,,2.021,,,,,,,,,,,,0.999,False
 E15 panel trimestriel,Δ spread trimestriel (5 pays),xgb : M1 vs M0,330,-29.32,-2.862,1.705,0.047,,test 2010Q1 → 2026Q2,,-5.015,,,,,,,,,,,,0.999,False
-E16 réplication élargie,spread variation,rf : complet vs sans finances publiques,874,,,-0.225,0.589,,,,-10.054,-3.707,-4.133,-9.603,19.315,18.411,0.855,,,,,,0.999,False
+E16 réplication élargie,spread variation,rf : complet vs sans finances publiques,874,,,-0.068,0.527,,,,-9.696,-3.671,-3.794,-9.565,19.283,18.411,0.85,,,,,,0.999,False
 E16 réplication élargie,spread variation,ridge : complet vs sans finances publiques,874,,,1.42,0.079,,,,-177.721,-238.198,-162.78,-257.427,30.682,18.411,0.915,,,,,,0.999,False
 E16 réplication élargie,spread variation,xgb : complet vs sans finances publiques,874,,,-0.217,0.586,,,,-19.576,-12.377,-13.143,-18.767,20.133,18.411,0.982,,,,,,0.999,False
-E16 réplication élargie,spread niveau,rf : complet vs sans finances publiques,874,,,-1.199,0.884,,,,-139.555,94.852,94.535,-125.676,28.496,18.411,1.0,,,,,,0.999,False
+E16 réplication élargie,spread niveau,rf : complet vs sans finances publiques,874,,,-0.894,0.814,,,,-141.645,94.777,94.487,-128.951,28.62,18.411,1.0,,,,,,0.999,False
 E16 réplication élargie,spread niveau,ridge : complet vs sans finances publiques,874,,,1.172,0.121,,,,-232.273,90.017,92.42,-337.616,33.561,18.411,0.948,,,,,,0.999,False
 E16 réplication élargie,spread niveau,xgb : complet vs sans finances publiques,874,,,0.274,0.392,,,,-30.854,96.978,97.015,-32.491,21.061,18.411,0.938,,,,,,0.999,False
 E17 panel annuel,Δ spread annuel (5 pays),ridge : M1 vs M0,75,-330.551,-338.368,-0.701,0.753,,origines 2010-2024 ; entraînement dès 2001,,-389.539,,,-380.809,,,0.825,,,,,,0.999,False
-E17 panel annuel,Δ spread annuel (5 pays),rf : M1 vs M0,75,-45.504,-19.779,1.912,0.038,,origines 2010-2024 ; entraînement dès 2001,,-33.761,,,-62.488,,,0.877,,,,,,0.999,False
+E17 panel annuel,Δ spread annuel (5 pays),rf : M1 vs M0,75,-45.35,-19.803,1.905,0.039,,origines 2010-2024 ; entraînement dès 2001,,-33.788,,,-62.316,,,0.877,,,,,,0.999,False
 E17 panel annuel,Δ spread annuel (5 pays),xgb : M1 vs M0,75,-108.116,-51.495,1.509,0.077,,origines 2010-2024 ; entraînement dès 2001,,-69.179,,,-132.409,,,0.948,,,,,,0.999,False
 E18 régime de crise (exploratoire),Δ spread trimestriel fin de trimestre (5 pays),ridge : M1 vs M0,330,-3.323,-19.681,-0.906,0.816,,test 2010T1+ (tension : spread > 200 pb),,-22.207,,,-5.504,,,0.873,,,,,,0.999,False
 E18 ventilation (hors correction),Δ spread trimestriel fin de trimestre (5 pays),"ridge : M1 vs M0, 2010-2014",100,-4.096,-22.351,-0.858,0.799,,"sous-période, hors correction BH",,-25.017,,,-6.364,,,0.859,,,,,,,False
 E18 ventilation (hors correction),Δ spread trimestriel fin de trimestre (5 pays),"ridge : M1 vs M0, 2015+",230,1.14,-4.264,-1.166,0.875,,"sous-période, hors correction BH",,-6.056,,,-0.559,,,0.887,,,,,,,False
-E18 régime de crise (exploratoire),Δ spread trimestriel fin de trimestre (5 pays),rf : M1 vs M0,330,-10.432,-5.006,0.857,0.197,,test 2010T1+ (tension : spread > 200 pb),,-7.222,,,-12.763,,,0.686,,,,,,0.999,False
-E18 ventilation (hors correction),Δ spread trimestriel fin de trimestre (5 pays),"rf : M1 vs M0, 2010-2014",100,-12.377,-5.307,0.973,0.171,,"sous-période, hors correction BH",,-7.602,,,-14.825,,,0.664,,,,,,,False
-E18 ventilation (hors correction),Δ spread trimestriel fin de trimestre (5 pays),"rf : M1 vs M0, 2015+",230,0.792,-3.267,-0.459,0.676,,"sous-période, hors correction BH",,-5.042,,,-0.913,,,0.819,,,,,,,False
+E18 régime de crise (exploratoire),Δ spread trimestriel fin de trimestre (5 pays),rf : M1 vs M0,330,-10.431,-4.945,0.867,0.195,,test 2010T1+ (tension : spread > 200 pb),,-7.161,,,-12.762,,,0.685,,,,,,0.999,False
+E18 ventilation (hors correction),Δ spread trimestriel fin de trimestre (5 pays),"rf : M1 vs M0, 2010-2014",100,-12.369,-5.234,0.983,0.169,,"sous-période, hors correction BH",,-7.527,,,-14.817,,,0.663,,,,,,,False
+E18 ventilation (hors correction),Δ spread trimestriel fin de trimestre (5 pays),"rf : M1 vs M0, 2015+",230,0.755,-3.279,-0.457,0.675,,"sous-période, hors correction BH",,-5.054,,,-0.95,,,0.82,,,,,,,False
 E18 régime de crise (exploratoire),Δ spread trimestriel fin de trimestre (5 pays),xgb : M1 vs M0,330,-20.232,-26.187,-0.582,0.719,,test 2010T1+ (tension : spread > 200 pb),,-28.85,,,-22.77,,,0.927,,,,,,0.999,False
 E18 ventilation (hors correction),Δ spread trimestriel fin de trimestre (5 pays),"xgb : M1 vs M0, 2010-2014",100,-20.316,-28.222,-0.668,0.744,,"sous-période, hors correction BH",,-31.016,,,-22.938,,,0.907,,,,,,,False
 E18 ventilation (hors correction),Δ spread trimestriel fin de trimestre (5 pays),"xgb : M1 vs M0, 2015+",230,-19.747,-14.441,0.347,0.365,,"sous-période, hors correction BH",,-16.407,,,-21.805,,,0.854,,,,,,,False

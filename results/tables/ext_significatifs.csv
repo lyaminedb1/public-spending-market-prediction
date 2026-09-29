@@ -3,5 +3,5 @@ E19 actions sectorielles,defense (excès CAC 40),xgb h=3 : M1 vs M0,77,-53.313,-
 E1 horizon,y_d_spread,xgb h=12 : M1 vs M0,68,-195.766,-152.603,0.013,0.999,True,False,False,True
 E11 fenêtre 60 mois,y_cac_ret,xgb : M1 vs M0,79,-45.391,-28.238,0.024,0.999,True,False,False,True
 E1 horizon,y_cac_ret,xgb h=6 : M1 vs M0,74,-89.674,-53.212,0.027,0.999,True,False,False,True
-E17 panel annuel,Δ spread annuel (5 pays),rf : M1 vs M0,75,-45.504,-19.779,0.038,0.999,True,False,False,True
+E17 panel annuel,Δ spread annuel (5 pays),rf : M1 vs M0,75,-45.35,-19.803,0.039,0.999,True,False,False,True
 E15 panel trimestriel,Δ spread trimestriel (5 pays),xgb : M1 vs M0,330,-29.32,-2.862,0.047,0.999,True,False,False,True
