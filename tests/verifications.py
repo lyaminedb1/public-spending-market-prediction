@@ -57,6 +57,14 @@ def contiguous(index):
 
 
 # ---------------------------------------------------------------------------
+print("0. Gel des données brutes (data/MANIFEST.csv)")
+sys.path.insert(0, "tests")
+import data_manifest  # noqa: E402
+ecarts = data_manifest.check()
+check("données brutes identiques au manifeste (aucun fichier ajouté, retiré ou modifié)", not ecarts,
+      "; ".join(ecarts[:3]))
+
+# ---------------------------------------------------------------------------
 print("A. Données budgétaires brutes")
 B = load("b02", "02_build_dataset.py")
 for f in B.BUDGET_FILES:
@@ -276,6 +284,7 @@ r = subprocess.run([sys.executable, "tests/test_walk_forward_06.py"], capture_ou
 check("walk_forward de 06 : mois calendaires, cibles à horizon h, détection d'une fuite", r.returncode == 0,
       r.stdout.strip().splitlines()[-1] if r.stdout.strip() else r.stderr.strip()[-200:])
 
+# ---------------------------------------------------------------------------
 # ---------------------------------------------------------------------------
 n_ok, n_tot = sum(RESULTS), len(RESULTS)
 print(f"\n{n_ok}/{n_tot} contrôles réussis")

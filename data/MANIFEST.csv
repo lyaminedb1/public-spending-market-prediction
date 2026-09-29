@@ -1,0 +1,42 @@
+chemin,taille,md5
+data/raw/budget/Serie longue SMB_DGFiP_2024-xx.csv,28324,52e77f3038895a32ef730cf84fe312b4
+data/raw/budget/Séries longues SMB_DGFiP_2013-2023.csv,107652,94098840d4d667d810d1fee09474d7ab
+data/raw/budget/situations-mensuelles-budgetaires-series-longues.csv,14367,f37bce8bfc04d7f59ece4b8f791e18a3
+data/raw/budget/textes législatifs open data_2013-2023.csv,46726,b9a9b33dc128a27797241424772aa398
+data/raw/budget/textes législatifs_2024-xx.csv,14702,b2641989745e5d33d6224e1bfa0bb342
+data/raw/bund_10y.csv,5115,cb92ca70fc29776275f2c9542b3830d1
+data/raw/cac40.csv,115498,2a8cbf500bf24dc2906145272275105f
+data/raw/ecb_dfr.csv,508,7b1dc1ce835af4ba76f97f0a0ce64bf3
+data/raw/ecb_mro.csv,509,2741e884bdae7db042c0a52ba55848e1
+data/raw/events_html/presse_00.html,134738,ad76ae23d388b62a03e80abcddacd74f
+data/raw/events_html/presse_01.html,134751,9cc0a755735cd0cbe83d68ad6944bd0e
+data/raw/events_html/presse_02.html,134825,2035fc43555a5295de04111bdca32014
+data/raw/events_html/presse_03.html,134825,f483a8a9e6af741030a0e09018003620
+data/raw/events_html/presse_04.html,134825,0640913c9420436aafdeadf67ab108c1
+data/raw/events_html/presse_05.html,134825,d73e3dbd378d6cb60c433c65d3b015e0
+data/raw/events_html/presse_06.html,134825,ae028c446eb2216e34f75fec404411f2
+data/raw/events_html/presse_07.html,134825,94a95a510018287f73ccd3e04e0ae41f
+data/raw/events_html/presse_08.html,134825,6bb730cfe99428db6a6698e8af575ef7
+data/raw/events_html/presse_09.html,134825,80980b3700925567225f7d9c865b9873
+data/raw/events_html/presse_10.html,134831,287805920e10d2913e805ee3ffad94c6
+data/raw/events_html/presse_11.html,134831,82eb3b9fe90737696eed8e016ea9da47
+data/raw/events_html/presse_12.html,134831,74af9efa0a1f9346c1d3cf695a5759b7
+data/raw/events_html/presse_13.html,134831,081fad3cad0648f41ce026dd1edbff84
+data/raw/events_html/presse_14.html,134831,6d7f1bdf7370bb61d25b5a063908c7ee
+data/raw/events_html/presse_15.html,134831,fe17fa08fe33417bbc5886022308925e
+data/raw/events_html/presse_16.html,134831,f8b7efd600d68b411c1ab35230cba68c
+data/raw/events_html/presse_17.html,134831,4b1c0c185bd85f9eac9e41b431cf7cf2
+data/raw/events_html/presse_18.html,134831,c1c9ce93300c8c6def7f72bd6e3d60b8
+data/raw/events_html/presse_19.html,134831,92c701df9c28e64f76676e4570a67fa7
+data/raw/hicp_fr.csv,3399,226c3ab860590b695da3d51dc566fd1c
+data/raw/large/base_elargie_mensuelle.csv,182250,36aa9a9b066b1d6a04567d8ef7d984d9
+data/raw/large/dictionnaire_variables.csv,2798,4276fa533494f9472e30dc1eaa8666e3
+data/raw/more/actions_mensuel.csv,18944,5608f2a7f42f32bfb39cf10a12c3e2c0
+data/raw/more/actions_quotidien.csv,416537,b6e8d660e70844dda74c34e0ad1ea180
+data/raw/more/epu_EUEPUINDXM.csv,9804,8816c1766e4454bb46e06714e31828ef
+data/raw/oat_10y.csv,3215,2ee1e1066d75af873964ff2cf91db74d
+data/raw/panel/eurostat_gov_10q_ggnfa.csv,130493,d3ff900e29ce066238264c1d46857d03
+data/raw/panel/eurostat_gov_10q_ggnfa_raw.json,105065,4ff4c36bba89a243296bc2727c372db7
+data/raw/panel/taux_10y_mensuels.csv,39450,366eed8ff1d8378c7127e224a3d2c6e0
+data/raw/ratings_france.csv,1028,4a49cebe320c82ca78d5d502a2bf5b70
+data/raw/vix.csv,73067,11a88eb3514303320f441de04fbd4764

@@ -1,10 +1,16 @@
-pandas
-numpy
-requests
-yfinance
-scikit-learn
-xgboost
-statsmodels
-shap
-matplotlib
-jupyter
+# Versions utilisées pour produire les résultats du mémoire (Python 3.11).
+# Les sorties de RandomForest/XGBoost dépendent des versions : voir etapes/02 et etapes/16.
+pandas==3.0.6
+numpy==2.4.6
+scipy==1.17.1
+scikit-learn==1.9.1
+xgboost==3.2.0
+statsmodels==0.15.0
+shap==0.51.0
+matplotlib==3.11.2
+requests==2.34.2
+yfinance==1.7.0
+jupyter==1.1.1
+nbconvert==7.17.1
+nbformat==5.11.1
+ipykernel==7.3.0

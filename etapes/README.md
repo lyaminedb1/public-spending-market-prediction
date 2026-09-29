@@ -38,7 +38,7 @@ Environnement : `. .venv/bin/activate` (étape 00).
 | 18 ✅ | `18_relance_14_e19_e20.md` | E19 **et** E20 (Ridge change) | ~5 min |
 | 19 ✅ | `19_bh_et_synthese_finale.md` | Correction BH + synthèse | 1 min |
 | 20 ✅ | `20_panel_11_conditionnel.md` | Sans objet (0 % à la borne, mesuré étape 02) | 0 |
-| 21 | `21_reproductibilite.md` | Versions figées, gel des données, `run_all.sh` | — |
+| 21 ✅ | `21_reproductibilite.md` | Versions figées, gel des données, `run_all.sh` | — |
 | 22 | `22_regression_finale.md` | Relance complète, deux fois, + CLAUDE.md aligné | ~2 h |
 
 ## Corrections apportées à la première version du plan (revue du 29/09)
