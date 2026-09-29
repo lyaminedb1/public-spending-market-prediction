@@ -69,4 +69,5 @@ $PY src/21_verif_chiffres_03.py
 
 step "Contrôles automatiques"
 $PY tests/verifications.py
+$PY tests/check_claude_md.py
 echo; echo "Pipeline terminé."

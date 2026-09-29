@@ -32,6 +32,7 @@ pip install -r requirements.txt                    # versions figées : les sort
 ./run_all.sh --diag                                # ajoute les diagnostics de la revue de 04 (~1 h 30 de plus)
 ./run_all.sh --collecte                            # ajoute la collecte réseau (FRED via curl, BCE, Yahoo Finance, Eurostat)
 python tests/verifications.py                      # 63 contrôles automatiques (données, décalages, fuite, cohérence des résultats)
+python tests/check_claude_md.py                    # les nombres cités dans CLAUDE.md correspondent aux CSV
 ```
 Les données brutes sont dans le dépôt et gelées par `data/MANIFEST.csv` (`python tests/data_manifest.py check`).
 

@@ -39,7 +39,7 @@ Environnement : `. .venv/bin/activate` (étape 00).
 | 19 ✅ | `19_bh_et_synthese_finale.md` | Correction BH + synthèse | 1 min |
 | 20 ✅ | `20_panel_11_conditionnel.md` | Sans objet (0 % à la borne, mesuré étape 02) | 0 |
 | 21 ✅ | `21_reproductibilite.md` | Versions figées, gel des données, `run_all.sh` | — |
-| 22 | `22_regression_finale.md` | Relance complète, deux fois, + CLAUDE.md aligné | ~2 h |
+| 22 ✅ | `22_regression_finale.md` | Relance complète, deux fois, + CLAUDE.md aligné | ~2 h |
 
 ## Corrections apportées à la première version du plan (revue du 29/09)
 - **Doublon supprimé** : `15_diag_04.py` produit déjà `graines_*.csv` et `shap_bruit.csv`. Les anciennes étapes « graines » et « SHAP bruit » sont remplacées par la relance ciblée des seuls diagnostics qui dépendent de Ridge (`identite`, `cw`, `positif`, `bruit_ridge`, `cw_bruit_ridge`) ; RF et XGBoost ne changent pas.
