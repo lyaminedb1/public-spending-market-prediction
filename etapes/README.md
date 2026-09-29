@@ -33,7 +33,7 @@ Environnement : `. .venv/bin/activate` (étape 00).
 | 13 ✅ | `13_tests_automatiques.md` | Étendre les contrôles automatiques | — |
 | 14 ✅ | `14_relance_03_exploration.md` | Relancer 03 + notebook | 1 min |
 | 15 ✅ | `15_relance_05.md` | Relancer 05 | 1 min |
-| 16 | `16_relance_06_rapides.md` | E1-E9, E11-E13 | ~20 min |
+| 16 ✅ | `16_relance_06_rapides.md` | E1-E9, E11-E13 | ~20 min |
 | 17 | `17_relance_06_e10.md` | E10 (XGBoost réglé) | ~15 min |
 | 18 | `18_relance_14_e19_e20.md` | E19 **et** E20 (Ridge change) | ~5 min |
 | 19 | `19_bh_et_synthese_finale.md` | Correction BH + synthèse | 1 min |

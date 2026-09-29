@@ -1,43 +1,43 @@
 extension,cible,comparaison,n_test,R2oos_sans_%,R2oos_avec_%,DM,p_avec_meilleur,p_avec_bat_moyenne,note,R2oos_M0_sans_notations_%,gain_vs_marche_aleatoire_avec_%,R2_vs_moyenne_sans_%,R2_vs_moyenne_avec_%,gain_vs_marche_aleatoire_sans_%,RMSE_niveau_avec_pb,RMSE_marche_aleatoire_pb,p_avec_bat_marche_aleatoire,precision_sans_%,AUC_sans,precision_avec_%,AUC_avec,precision_classe_majoritaire_%,p_BH,significatif_BH_10%
-E1 horizon,y_d_spread,ridge h=3 : M1 vs M0,77,-61.865,-184.796,-2.866,0.997,0.996,,,,,,,,,,,,,,,0.997,False
-E1 horizon,y_d_spread,rf h=3 : M1 vs M0,77,3.124,-8.002,-1.747,0.958,0.704,,,,,,,,,,,,,,,0.997,False
-E1 horizon,y_d_spread,xgb h=3 : M1 vs M0,77,-30.153,-41.939,-0.729,0.766,0.896,,,,,,,,,,,,,,,0.997,False
-E1 horizon,y_d_oat,ridge h=3 : M1 vs M0,77,-45.867,-79.015,-2.552,0.994,0.995,,,,,,,,,,,,,,,0.997,False
-E1 horizon,y_d_oat,rf h=3 : M1 vs M0,77,-2.197,-7.58,-0.446,0.672,0.7,,,,,,,,,,,,,,,0.997,False
-E1 horizon,y_d_oat,xgb h=3 : M1 vs M0,77,-15.613,-19.474,-0.223,0.588,0.853,,,,,,,,,,,,,,,0.997,False
-E1 horizon,y_cac_ret,ridge h=3 : M1 vs M0,77,-40.323,-140.546,-1.943,0.972,0.983,,,,,,,,,,,,,,,0.997,False
-E1 horizon,y_cac_ret,rf h=3 : M1 vs M0,77,-7.069,-11.96,-1.208,0.885,0.926,,,,,,,,,,,,,,,0.997,False
-E1 horizon,y_cac_ret,xgb h=3 : M1 vs M0,77,-45.052,-49.531,-0.426,0.664,0.999,,,,,,,,,,,,,,,0.997,False
-E1 horizon,y_d_spread,ridge h=6 : M1 vs M0,74,-105.589,-185.28,-2.479,0.992,0.986,,,,,,,,,,,,,,,0.997,False
-E1 horizon,y_d_spread,rf h=6 : M1 vs M0,74,-9.747,-16.884,-1.524,0.934,0.785,,,,,,,,,,,,,,,0.997,False
-E1 horizon,y_d_spread,xgb h=6 : M1 vs M0,74,-33.06,-24.41,0.921,0.18,0.794,,,,,,,,,,,,,,,0.997,False
-E1 horizon,y_d_oat,ridge h=6 : M1 vs M0,74,-140.457,-235.394,-1.923,0.971,0.999,,,,,,,,,,,,,,,0.997,False
-E1 horizon,y_d_oat,rf h=6 : M1 vs M0,74,-25.345,-38.586,-1.137,0.87,0.987,,,,,,,,,,,,,,,0.997,False
-E1 horizon,y_d_oat,xgb h=6 : M1 vs M0,74,-50.408,-60.917,-0.536,0.703,0.999,,,,,,,,,,,,,,,0.997,False
-E1 horizon,y_cac_ret,ridge h=6 : M1 vs M0,74,-102.074,-243.88,-1.934,0.972,0.953,,,,,,,,,,,,,,,0.997,False
-E1 horizon,y_cac_ret,rf h=6 : M1 vs M0,74,-31.627,-39.618,-0.97,0.832,0.992,,,,,,,,,,,,,,,0.997,False
-E1 horizon,y_cac_ret,xgb h=6 : M1 vs M0,74,-110.294,-49.788,2.332,0.011,0.975,,,,,,,,,,,,,,,0.627,False
-E1 horizon,y_d_spread,ridge h=12 : M1 vs M0,68,-558.803,-560.595,-0.006,0.502,1.0,,,,,,,,,,,,,,,0.997,False
-E1 horizon,y_d_spread,rf h=12 : M1 vs M0,68,-100.663,-100.223,0.052,0.48,0.935,,,,,,,,,,,,,,,0.997,False
-E1 horizon,y_d_spread,xgb h=12 : M1 vs M0,68,-211.881,-164.514,2.348,0.011,0.978,,,,,,,,,,,,,,,0.627,False
-E1 horizon,y_d_oat,ridge h=12 : M1 vs M0,68,-663.221,-758.072,-0.559,0.711,0.992,,,,,,,,,,,,,,,0.997,False
-E1 horizon,y_d_oat,rf h=12 : M1 vs M0,68,-34.576,-33.382,0.105,0.458,0.997,,,,,,,,,,,,,,,0.997,False
-E1 horizon,y_d_oat,xgb h=12 : M1 vs M0,68,-80.798,-57.619,1.499,0.069,0.992,,,,,,,,,,,,,,,0.997,False
-E1 horizon,y_cac_ret,ridge h=12 : M1 vs M0,68,-459.333,-459.694,-0.007,0.503,0.893,,,,,,,,,,,,,,,0.997,False
-E1 horizon,y_cac_ret,rf h=12 : M1 vs M0,68,2.548,-17.282,-1.302,0.901,0.883,,,,,,,,,,,,,,,0.997,False
-E1 horizon,y_cac_ret,xgb h=12 : M1 vs M0,68,14.104,-33.824,-0.89,0.812,0.861,,,,,,,,,,,,,,,0.997,False
-E10 XGB réglé,y_d_spread,xgb réglé : M1 vs M0,79,-2.106,-6.034,-1.988,0.975,0.886,,,,,,,,,,,,,,,0.997,False
-E10 XGB réglé,y_d_oat,xgb réglé : M1 vs M0,79,-0.867,-4.089,-0.789,0.784,0.671,,,,,,,,,,,,,,,0.997,False
-E10 XGB réglé,y_cac_ret,xgb réglé : M1 vs M0,79,-4.848,-3.104,0.661,0.255,0.881,,,,,,,,,,,,,,,0.997,False
-E11 fenêtre 60 mois,y_d_spread,ridge : M1 vs M0,79,-6.792,-10.732,-0.66,0.744,0.947,,,,,,,,,,,,,,,0.997,False
-E11 fenêtre 60 mois,y_d_spread,rf : M1 vs M0,79,-4.274,-7.791,-0.931,0.823,0.845,,,,,,,,,,,,,,,0.997,False
-E11 fenêtre 60 mois,y_d_spread,xgb : M1 vs M0,79,-18.656,-25.066,-0.663,0.745,0.942,,,,,,,,,,,,,,,0.997,False
-E11 fenêtre 60 mois,y_d_oat,ridge : M1 vs M0,79,-9.977,-16.246,-1.228,0.888,0.838,,,,,,,,,,,,,,,0.997,False
-E11 fenêtre 60 mois,y_d_oat,rf : M1 vs M0,79,-6.329,-8.064,-0.514,0.696,0.79,,,,,,,,,,,,,,,0.997,False
-E11 fenêtre 60 mois,y_d_oat,xgb : M1 vs M0,79,-33.461,-32.097,0.132,0.448,0.959,,,,,,,,,,,,,,,0.997,False
-E11 fenêtre 60 mois,y_cac_ret,ridge : M1 vs M0,79,-1.955,-6.44,-0.863,0.805,0.872,,,,,,,,,,,,,,,0.997,False
-E11 fenêtre 60 mois,y_cac_ret,rf : M1 vs M0,79,-13.607,-12.2,0.369,0.357,0.946,,,,,,,,,,,,,,,0.997,False
-E11 fenêtre 60 mois,y_cac_ret,xgb : M1 vs M0,79,-40.715,-26.134,1.604,0.056,0.968,,,,,,,,,,,,,,,0.997,False
+E1 horizon,y_d_spread,ridge h=3 : M1 vs M0,77,-61.826,-199.14,-3.372,0.999,0.998,,,,,,,,,,,,,,,0.999,False
+E1 horizon,y_d_spread,rf h=3 : M1 vs M0,77,2.28,-8.623,-1.619,0.945,0.718,,,,,,,,,,,,,,,0.999,False
+E1 horizon,y_d_spread,xgb h=3 : M1 vs M0,77,-26.167,-35.36,-0.567,0.714,0.89,,,,,,,,,,,,,,,0.999,False
+E1 horizon,y_d_oat,ridge h=3 : M1 vs M0,77,-51.67,-92.799,-2.149,0.983,0.995,,,,,,,,,,,,,,,0.999,False
+E1 horizon,y_d_oat,rf h=3 : M1 vs M0,77,-2.747,-7.587,-0.417,0.661,0.705,,,,,,,,,,,,,,,0.999,False
+E1 horizon,y_d_oat,xgb h=3 : M1 vs M0,77,-14.935,-19.585,-0.235,0.593,0.84,,,,,,,,,,,,,,,0.999,False
+E1 horizon,y_cac_ret,ridge h=3 : M1 vs M0,77,-38.545,-140.57,-2.144,0.982,0.99,,,,,,,,,,,,,,,0.999,False
+E1 horizon,y_cac_ret,rf h=3 : M1 vs M0,77,-9.082,-14.666,-1.342,0.908,0.956,,,,,,,,,,,,,,,0.999,False
+E1 horizon,y_cac_ret,xgb h=3 : M1 vs M0,77,-49.146,-45.468,0.372,0.356,1.0,,,,,,,,,,,,,,,0.999,False
+E1 horizon,y_d_spread,ridge h=6 : M1 vs M0,74,-107.126,-192.952,-2.503,0.993,0.986,,,,,,,,,,,,,,,0.999,False
+E1 horizon,y_d_spread,rf h=6 : M1 vs M0,74,-12.139,-20.571,-1.616,0.945,0.816,,,,,,,,,,,,,,,0.999,False
+E1 horizon,y_d_spread,xgb h=6 : M1 vs M0,74,-36.913,-30.494,0.613,0.271,0.837,,,,,,,,,,,,,,,0.999,False
+E1 horizon,y_d_oat,ridge h=6 : M1 vs M0,74,-157.457,-265.593,-1.88,0.968,0.999,,,,,,,,,,,,,,,0.999,False
+E1 horizon,y_d_oat,rf h=6 : M1 vs M0,74,-27.49,-37.992,-0.98,0.835,0.984,,,,,,,,,,,,,,,0.999,False
+E1 horizon,y_d_oat,xgb h=6 : M1 vs M0,74,-46.909,-61.508,-0.744,0.77,0.999,,,,,,,,,,,,,,,0.999,False
+E1 horizon,y_cac_ret,ridge h=6 : M1 vs M0,74,-115.458,-257.276,-1.902,0.969,0.952,,,,,,,,,,,,,,,0.999,False
+E1 horizon,y_cac_ret,rf h=6 : M1 vs M0,74,-30.314,-39.523,-1.144,0.872,0.99,,,,,,,,,,,,,,,0.999,False
+E1 horizon,y_cac_ret,xgb h=6 : M1 vs M0,74,-89.674,-53.212,1.952,0.027,0.986,,,,,,,,,,,,,,,0.999,False
+E1 horizon,y_d_spread,ridge h=12 : M1 vs M0,68,-638.206,-524.531,0.346,0.365,0.999,,,,,,,,,,,,,,,0.999,False
+E1 horizon,y_d_spread,rf h=12 : M1 vs M0,68,-93.949,-97.314,-0.434,0.667,0.932,,,,,,,,,,,,,,,0.999,False
+E1 horizon,y_d_spread,xgb h=12 : M1 vs M0,68,-195.766,-152.603,2.279,0.013,0.967,,,,,,,,,,,,,,,0.999,False
+E1 horizon,y_d_oat,ridge h=12 : M1 vs M0,68,-686.413,-869.362,-1.039,0.849,0.988,,,,,,,,,,,,,,,0.999,False
+E1 horizon,y_d_oat,rf h=12 : M1 vs M0,68,-29.781,-28.168,0.156,0.438,0.99,,,,,,,,,,,,,,,0.999,False
+E1 horizon,y_d_oat,xgb h=12 : M1 vs M0,68,-70.038,-53.232,1.088,0.14,0.985,,,,,,,,,,,,,,,0.999,False
+E1 horizon,y_cac_ret,ridge h=12 : M1 vs M0,68,-515.926,-463.704,0.574,0.284,0.894,,,,,,,,,,,,,,,0.999,False
+E1 horizon,y_cac_ret,rf h=12 : M1 vs M0,68,2.698,-16.519,-1.266,0.895,0.894,,,,,,,,,,,,,,,0.999,False
+E1 horizon,y_cac_ret,xgb h=12 : M1 vs M0,68,11.818,-26.821,-0.801,0.787,0.858,,,,,,,,,,,,,,,0.999,False
+E10 XGB réglé,y_d_spread,xgb réglé : M1 vs M0,79,-2.106,-6.034,-1.988,0.975,0.886,,,,,,,,,,,,,,,0.999,False
+E10 XGB réglé,y_d_oat,xgb réglé : M1 vs M0,79,-0.867,-4.089,-0.789,0.784,0.671,,,,,,,,,,,,,,,0.999,False
+E10 XGB réglé,y_cac_ret,xgb réglé : M1 vs M0,79,-4.848,-3.104,0.661,0.255,0.881,,,,,,,,,,,,,,,0.999,False
+E11 fenêtre 60 mois,y_d_spread,ridge : M1 vs M0,79,-11.789,-14.308,-0.358,0.639,0.976,,,,,,,,,,,,,,,0.999,False
+E11 fenêtre 60 mois,y_d_spread,rf : M1 vs M0,79,-6.208,-8.857,-0.695,0.755,0.872,,,,,,,,,,,,,,,0.999,False
+E11 fenêtre 60 mois,y_d_spread,xgb : M1 vs M0,79,-25.894,-25.588,0.026,0.49,0.928,,,,,,,,,,,,,,,0.999,False
+E11 fenêtre 60 mois,y_d_oat,ridge : M1 vs M0,79,-8.729,-17.606,-1.5,0.931,0.872,,,,,,,,,,,,,,,0.999,False
+E11 fenêtre 60 mois,y_d_oat,rf : M1 vs M0,79,-9.466,-10.372,-0.278,0.609,0.841,,,,,,,,,,,,,,,0.999,False
+E11 fenêtre 60 mois,y_d_oat,xgb : M1 vs M0,79,-43.402,-36.661,0.658,0.256,0.967,,,,,,,,,,,,,,,0.999,False
+E11 fenêtre 60 mois,y_cac_ret,ridge : M1 vs M0,79,-3.958,-7.553,-0.698,0.756,0.913,,,,,,,,,,,,,,,0.999,False
+E11 fenêtre 60 mois,y_cac_ret,rf : M1 vs M0,79,-13.992,-12.939,0.256,0.4,0.957,,,,,,,,,,,,,,,0.999,False
+E11 fenêtre 60 mois,y_cac_ret,xgb : M1 vs M0,79,-45.391,-28.238,2.004,0.024,0.98,,,,,,,,,,,,,,,0.999,False
 E12 par période,y_d_spread,ridge [2020-2021] : M1 vs M0,24,7.557,-1.373,-1.795,0.957,0.576,,,,,,,,,,,,,,,,False
 E12 par période,y_d_spread,ridge [2022-2026] : M1 vs M0,55,-28.003,-22.496,0.744,0.23,0.968,,,,,,,,,,,,,,,,False
 E12 par période,y_d_spread,ridge [VIX ≤ 20] : M1 vs M0,46,-10.943,-7.858,0.544,0.295,0.923,,,,,,,,,,,,,,,,False
@@ -74,138 +74,138 @@ E12 par période,y_cac_ret,xgb [2020-2021] : M1 vs M0,24,-27.767,-34.56,-0.654,0
 E12 par période,y_cac_ret,xgb [2022-2026] : M1 vs M0,55,-35.933,-20.419,1.313,0.097,0.951,,,,,,,,,,,,,,,,False
 E12 par période,y_cac_ret,xgb [VIX ≤ 20] : M1 vs M0,46,-26.243,-34.694,-1.316,0.902,0.968,,,,,,,,,,,,,,,,False
 E12 par période,y_cac_ret,xgb [VIX > 20] : M1 vs M0,33,-36.116,-22.161,1.059,0.149,0.939,,,,,,,,,,,,,,,,False
-E13 notations,y_d_spread,ridge : M1 + notations vs M0 + notations,79,-8.147,-9.454,-0.395,0.653,0.91,,-15.325,,,,,,,,,,,,,0.997,False
-E13 notations,y_d_spread,rf : M1 + notations vs M0 + notations,79,-1.528,-6.966,-1.452,0.925,0.844,,-3.575,,,,,,,,,,,,,0.997,False
-E13 notations,y_d_spread,xgb : M1 + notations vs M0 + notations,79,-29.447,-25.776,0.447,0.328,0.976,,-28.077,,,,,,,,,,,,,0.997,False
-E13 notations,y_d_oat,ridge : M1 + notations vs M0 + notations,79,-11.094,-11.577,-0.16,0.563,0.827,,-11.828,,,,,,,,,,,,,0.997,False
-E13 notations,y_d_oat,rf : M1 + notations vs M0 + notations,79,-2.663,-5.605,-0.832,0.796,0.714,,-4.809,,,,,,,,,,,,,0.997,False
-E13 notations,y_d_oat,xgb : M1 + notations vs M0 + notations,79,-21.025,-30.913,-1.027,0.846,0.941,,-21.98,,,,,,,,,,,,,0.997,False
-E13 notations,y_cac_ret,ridge : M1 + notations vs M0 + notations,79,-0.394,-16.513,-0.877,0.808,0.817,,-0.284,,,,,,,,,,,,,0.997,False
-E13 notations,y_cac_ret,rf : M1 + notations vs M0 + notations,79,-9.137,-11.069,-0.494,0.689,0.979,,-8.436,,,,,,,,,,,,,0.997,False
-E13 notations,y_cac_ret,xgb : M1 + notations vs M0 + notations,79,-30.202,-28.292,0.229,0.41,0.996,,-35.6,,,,,,,,,,,,,0.997,False
-E15 panel trimestriel,Δ spread trimestriel (5 pays),ridge : M1 vs M0,330,13.9,15.5,0.347,0.365,,test 2010Q1 → 2026Q2,,13.732,,,,,,,,,,,,0.997,False
-E15 panel trimestriel,Δ spread trimestriel (5 pays),rf : M1 vs M0,330,-5.331,4.029,1.611,0.056,,test 2010Q1 → 2026Q2,,2.021,,,,,,,,,,,,0.997,False
-E15 panel trimestriel,Δ spread trimestriel (5 pays),xgb : M1 vs M0,330,-29.32,-2.862,1.705,0.047,,test 2010Q1 → 2026Q2,,-5.015,,,,,,,,,,,,0.997,False
-E16 réplication élargie,spread variation,rf : complet vs sans finances publiques,874,,,-0.225,0.589,,,,-10.054,-3.707,-4.133,-9.603,19.315,18.411,0.855,,,,,,0.997,False
-E16 réplication élargie,spread variation,ridge : complet vs sans finances publiques,874,,,1.42,0.079,,,,-177.721,-238.198,-162.78,-257.427,30.682,18.411,0.915,,,,,,0.997,False
-E16 réplication élargie,spread variation,xgb : complet vs sans finances publiques,874,,,-0.217,0.586,,,,-19.576,-12.377,-13.143,-18.767,20.133,18.411,0.982,,,,,,0.997,False
-E16 réplication élargie,spread niveau,rf : complet vs sans finances publiques,874,,,-1.199,0.884,,,,-139.555,94.852,94.535,-125.676,28.496,18.411,1.0,,,,,,0.997,False
-E16 réplication élargie,spread niveau,ridge : complet vs sans finances publiques,874,,,1.172,0.121,,,,-232.273,90.017,92.42,-337.616,33.561,18.411,0.948,,,,,,0.997,False
-E16 réplication élargie,spread niveau,xgb : complet vs sans finances publiques,874,,,0.274,0.392,,,,-30.854,96.978,97.015,-32.491,21.061,18.411,0.938,,,,,,0.997,False
-E17 panel annuel,Δ spread annuel (5 pays),ridge : M1 vs M0,75,-330.551,-338.368,-0.701,0.753,,origines 2010-2024 ; entraînement dès 2001,,-389.539,,,-380.809,,,0.825,,,,,,0.997,False
-E17 panel annuel,Δ spread annuel (5 pays),rf : M1 vs M0,75,-45.504,-19.779,1.912,0.038,,origines 2010-2024 ; entraînement dès 2001,,-33.761,,,-62.488,,,0.877,,,,,,0.997,False
-E17 panel annuel,Δ spread annuel (5 pays),xgb : M1 vs M0,75,-108.116,-51.495,1.509,0.077,,origines 2010-2024 ; entraînement dès 2001,,-69.179,,,-132.409,,,0.948,,,,,,0.997,False
-E18 régime de crise (exploratoire),Δ spread trimestriel fin de trimestre (5 pays),ridge : M1 vs M0,330,-3.323,-19.681,-0.906,0.816,,test 2010T1+ (tension : spread > 200 pb),,-22.207,,,-5.504,,,0.873,,,,,,0.997,False
+E13 notations,y_d_spread,ridge : M1 + notations vs M0 + notations,79,-8.819,-8.637,0.062,0.475,0.917,,-14.891,,,,,,,,,,,,,0.999,False
+E13 notations,y_d_spread,rf : M1 + notations vs M0 + notations,79,-5.677,-9.245,-0.948,0.827,0.927,,-6.791,,,,,,,,,,,,,0.999,False
+E13 notations,y_d_spread,xgb : M1 + notations vs M0 + notations,79,-35.451,-27.486,0.865,0.195,0.981,,-35.408,,,,,,,,,,,,,0.999,False
+E13 notations,y_d_oat,ridge : M1 + notations vs M0 + notations,79,-8.88,-10.977,-0.793,0.785,0.845,,-11.314,,,,,,,,,,,,,0.999,False
+E13 notations,y_d_oat,rf : M1 + notations vs M0 + notations,79,-5.204,-6.784,-0.451,0.673,0.75,,-6.945,,,,,,,,,,,,,0.999,False
+E13 notations,y_d_oat,xgb : M1 + notations vs M0 + notations,79,-27.277,-36.281,-0.968,0.832,0.964,,-30.224,,,,,,,,,,,,,0.999,False
+E13 notations,y_cac_ret,ridge : M1 + notations vs M0 + notations,79,0.007,-21.406,-1.299,0.901,0.901,,-1.345,,,,,,,,,,,,,0.999,False
+E13 notations,y_cac_ret,rf : M1 + notations vs M0 + notations,79,-9.806,-10.77,-0.277,0.609,0.978,,-9.636,,,,,,,,,,,,,0.999,False
+E13 notations,y_cac_ret,xgb : M1 + notations vs M0 + notations,79,-34.053,-26.736,0.86,0.196,0.99,,-31.66,,,,,,,,,,,,,0.999,False
+E15 panel trimestriel,Δ spread trimestriel (5 pays),ridge : M1 vs M0,330,13.9,15.5,0.347,0.365,,test 2010Q1 → 2026Q2,,13.732,,,,,,,,,,,,0.999,False
+E15 panel trimestriel,Δ spread trimestriel (5 pays),rf : M1 vs M0,330,-5.331,4.029,1.611,0.056,,test 2010Q1 → 2026Q2,,2.021,,,,,,,,,,,,0.999,False
+E15 panel trimestriel,Δ spread trimestriel (5 pays),xgb : M1 vs M0,330,-29.32,-2.862,1.705,0.047,,test 2010Q1 → 2026Q2,,-5.015,,,,,,,,,,,,0.999,False
+E16 réplication élargie,spread variation,rf : complet vs sans finances publiques,874,,,-0.225,0.589,,,,-10.054,-3.707,-4.133,-9.603,19.315,18.411,0.855,,,,,,0.999,False
+E16 réplication élargie,spread variation,ridge : complet vs sans finances publiques,874,,,1.42,0.079,,,,-177.721,-238.198,-162.78,-257.427,30.682,18.411,0.915,,,,,,0.999,False
+E16 réplication élargie,spread variation,xgb : complet vs sans finances publiques,874,,,-0.217,0.586,,,,-19.576,-12.377,-13.143,-18.767,20.133,18.411,0.982,,,,,,0.999,False
+E16 réplication élargie,spread niveau,rf : complet vs sans finances publiques,874,,,-1.199,0.884,,,,-139.555,94.852,94.535,-125.676,28.496,18.411,1.0,,,,,,0.999,False
+E16 réplication élargie,spread niveau,ridge : complet vs sans finances publiques,874,,,1.172,0.121,,,,-232.273,90.017,92.42,-337.616,33.561,18.411,0.948,,,,,,0.999,False
+E16 réplication élargie,spread niveau,xgb : complet vs sans finances publiques,874,,,0.274,0.392,,,,-30.854,96.978,97.015,-32.491,21.061,18.411,0.938,,,,,,0.999,False
+E17 panel annuel,Δ spread annuel (5 pays),ridge : M1 vs M0,75,-330.551,-338.368,-0.701,0.753,,origines 2010-2024 ; entraînement dès 2001,,-389.539,,,-380.809,,,0.825,,,,,,0.999,False
+E17 panel annuel,Δ spread annuel (5 pays),rf : M1 vs M0,75,-45.504,-19.779,1.912,0.038,,origines 2010-2024 ; entraînement dès 2001,,-33.761,,,-62.488,,,0.877,,,,,,0.999,False
+E17 panel annuel,Δ spread annuel (5 pays),xgb : M1 vs M0,75,-108.116,-51.495,1.509,0.077,,origines 2010-2024 ; entraînement dès 2001,,-69.179,,,-132.409,,,0.948,,,,,,0.999,False
+E18 régime de crise (exploratoire),Δ spread trimestriel fin de trimestre (5 pays),ridge : M1 vs M0,330,-3.323,-19.681,-0.906,0.816,,test 2010T1+ (tension : spread > 200 pb),,-22.207,,,-5.504,,,0.873,,,,,,0.999,False
 E18 ventilation (hors correction),Δ spread trimestriel fin de trimestre (5 pays),"ridge : M1 vs M0, 2010-2014",100,-4.096,-22.351,-0.858,0.799,,"sous-période, hors correction BH",,-25.017,,,-6.364,,,0.859,,,,,,,False
 E18 ventilation (hors correction),Δ spread trimestriel fin de trimestre (5 pays),"ridge : M1 vs M0, 2015+",230,1.14,-4.264,-1.166,0.875,,"sous-période, hors correction BH",,-6.056,,,-0.559,,,0.887,,,,,,,False
-E18 régime de crise (exploratoire),Δ spread trimestriel fin de trimestre (5 pays),rf : M1 vs M0,330,-10.432,-5.006,0.857,0.197,,test 2010T1+ (tension : spread > 200 pb),,-7.222,,,-12.763,,,0.686,,,,,,0.997,False
+E18 régime de crise (exploratoire),Δ spread trimestriel fin de trimestre (5 pays),rf : M1 vs M0,330,-10.432,-5.006,0.857,0.197,,test 2010T1+ (tension : spread > 200 pb),,-7.222,,,-12.763,,,0.686,,,,,,0.999,False
 E18 ventilation (hors correction),Δ spread trimestriel fin de trimestre (5 pays),"rf : M1 vs M0, 2010-2014",100,-12.377,-5.307,0.973,0.171,,"sous-période, hors correction BH",,-7.602,,,-14.825,,,0.664,,,,,,,False
 E18 ventilation (hors correction),Δ spread trimestriel fin de trimestre (5 pays),"rf : M1 vs M0, 2015+",230,0.792,-3.267,-0.459,0.676,,"sous-période, hors correction BH",,-5.042,,,-0.913,,,0.819,,,,,,,False
-E18 régime de crise (exploratoire),Δ spread trimestriel fin de trimestre (5 pays),xgb : M1 vs M0,330,-20.232,-26.187,-0.582,0.719,,test 2010T1+ (tension : spread > 200 pb),,-28.85,,,-22.77,,,0.927,,,,,,0.997,False
+E18 régime de crise (exploratoire),Δ spread trimestriel fin de trimestre (5 pays),xgb : M1 vs M0,330,-20.232,-26.187,-0.582,0.719,,test 2010T1+ (tension : spread > 200 pb),,-28.85,,,-22.77,,,0.927,,,,,,0.999,False
 E18 ventilation (hors correction),Δ spread trimestriel fin de trimestre (5 pays),"xgb : M1 vs M0, 2010-2014",100,-20.316,-28.222,-0.668,0.744,,"sous-période, hors correction BH",,-31.016,,,-22.938,,,0.907,,,,,,,False
 E18 ventilation (hors correction),Δ spread trimestriel fin de trimestre (5 pays),"xgb : M1 vs M0, 2015+",230,-19.747,-14.441,0.347,0.365,,"sous-période, hors correction BH",,-16.407,,,-21.805,,,0.854,,,,,,,False
-E19 actions sectorielles,btp_concessions (excès CAC 40),ridge h=1 : M1 vs M0,79,-1.244,-2.744,-1.323,0.905,0.964,,,,,,,,,,,,,,,0.997,False
-E19 actions sectorielles,btp_concessions (excès CAC 40),rf h=1 : M1 vs M0,79,-5.258,-9.921,-1.669,0.95,0.996,,,,,,,,,,,,,,,0.997,False
-E19 actions sectorielles,btp_concessions (excès CAC 40),xgb h=1 : M1 vs M0,79,-18.552,-31.459,-1.884,0.968,0.996,,,,,,,,,,,,,,,0.997,False
-E19 actions sectorielles,btp_concessions (excès CAC 40),ridge h=3 : M1 vs M0,77,-6.618,-23.411,-1.81,0.963,0.986,,,,,,,,,,,,,,,0.997,False
-E19 actions sectorielles,btp_concessions (excès CAC 40),rf h=3 : M1 vs M0,77,1.353,-0.724,-0.484,0.685,0.559,,,,,,,,,,,,,,,0.997,False
-E19 actions sectorielles,btp_concessions (excès CAC 40),xgb h=3 : M1 vs M0,77,-8.774,-8.705,0.012,0.495,0.821,,,,,,,,,,,,,,,0.997,False
-E19 actions sectorielles,defense (excès CAC 40),ridge h=1 : M1 vs M0,79,-0.98,-3.162,-0.794,0.785,0.836,,,,,,,,,,,,,,,0.997,False
-E19 actions sectorielles,defense (excès CAC 40),rf h=1 : M1 vs M0,79,-6.273,-6.024,0.109,0.457,0.863,,,,,,,,,,,,,,,0.997,False
-E19 actions sectorielles,defense (excès CAC 40),xgb h=1 : M1 vs M0,79,-13.211,-11.622,0.212,0.417,0.861,,,,,,,,,,,,,,,0.997,False
-E19 actions sectorielles,defense (excès CAC 40),ridge h=3 : M1 vs M0,77,-10.422,-68.844,-1.54,0.936,0.955,,,,,,,,,,,,,,,0.997,False
-E19 actions sectorielles,defense (excès CAC 40),rf h=3 : M1 vs M0,77,-19.426,-10.766,1.567,0.061,0.822,,,,,,,,,,,,,,,0.997,False
-E19 actions sectorielles,defense (excès CAC 40),xgb h=3 : M1 vs M0,77,-53.313,-19.941,2.454,0.008,0.882,,,,,,,,,,,,,,,0.627,False
-E2 classification,y_d_spread,logit : M1 vs M0 (perte de Brier),79,-22.014,-22.123,-0.011,0.505,0.953,R2oos = score de Brier relatif à la fréquence historique,,,,,,,,,54.43,0.506,54.43,0.556,49.367,0.997,False
-E2 classification,y_d_spread,rf : M1 vs M0 (perte de Brier),79,-0.655,1.04,0.388,0.349,0.433,R2oos = score de Brier relatif à la fréquence historique,,,,,,,,,48.101,0.544,53.165,0.573,49.367,0.997,False
-E2 classification,y_d_spread,xgb : M1 vs M0 (perte de Brier),79,-9.618,-3.979,0.728,0.234,0.652,R2oos = score de Brier relatif à la fréquence historique,,,,,,,,,48.101,0.525,56.962,0.604,49.367,0.997,False
-E2 classification,y_d_oat,logit : M1 vs M0 (perte de Brier),79,-12.067,-27.551,-2.324,0.989,0.975,R2oos = score de Brier relatif à la fréquence historique,,,,,,,,,55.696,0.598,51.899,0.54,44.304,0.997,False
-E2 classification,y_d_oat,rf : M1 vs M0 (perte de Brier),79,5.202,7.074,0.546,0.293,0.162,R2oos = score de Brier relatif à la fréquence historique,,,,,,,,,55.696,0.575,54.43,0.562,44.304,0.997,False
-E2 classification,y_d_oat,xgb : M1 vs M0 (perte de Brier),79,-1.271,-2.112,-0.166,0.566,0.579,R2oos = score de Brier relatif à la fréquence historique,,,,,,,,,55.696,0.589,56.962,0.575,44.304,0.997,False
-E2 classification,y_cac_ret,logit : M1 vs M0 (perte de Brier),79,-6.627,-18.597,-1.361,0.911,0.928,R2oos = score de Brier relatif à la fréquence historique,,,,,,,,,59.494,0.594,58.228,0.557,60.76,0.997,False
-E2 classification,y_cac_ret,rf : M1 vs M0 (perte de Brier),79,-5.526,-6.859,-0.521,0.698,0.912,R2oos = score de Brier relatif à la fréquence historique,,,,,,,,,53.165,0.425,49.367,0.448,60.76,0.997,False
-E2 classification,y_cac_ret,xgb : M1 vs M0 (perte de Brier),79,-23.278,-23.149,0.027,0.489,0.992,R2oos = score de Brier relatif à la fréquence historique,,,,,,,,,49.367,0.408,51.899,0.425,60.76,0.997,False
-E20a incertitude politique,y_d_spread,ridge : M0+EPU vs M0,79,-15.325,-13.968,0.879,0.191,0.921,,,,,,,,,,,,,,,0.997,False
-E20b dépenses + incertitude,y_d_spread,ridge : M1+EPU vs M0+EPU,79,-13.968,-14.701,-0.149,0.559,0.947,,,,,,,,,,,,,,,0.997,False
-E20a incertitude politique,y_d_spread,rf : M0+EPU vs M0,79,-3.575,-2.046,1.66,0.05,0.61,,,,,,,,,,,,,,,0.997,False
-E20b dépenses + incertitude,y_d_spread,rf : M1+EPU vs M0+EPU,79,-2.046,-5.121,-1.071,0.856,0.773,,,,,,,,,,,,,,,0.997,False
-E20a incertitude politique,y_d_spread,xgb : M0+EPU vs M0,79,-28.077,-33.505,-1.574,0.94,0.979,,,,,,,,,,,,,,,0.997,False
-E20b dépenses + incertitude,y_d_spread,xgb : M1+EPU vs M0+EPU,79,-33.505,-25.868,0.835,0.203,0.963,,,,,,,,,,,,,,,0.997,False
-E20a incertitude politique,y_d_oat,ridge : M0+EPU vs M0,79,-11.828,-9.999,0.677,0.25,0.766,,,,,,,,,,,,,,,0.997,False
-E20b dépenses + incertitude,y_d_oat,ridge : M1+EPU vs M0+EPU,79,-9.999,-13.123,-0.922,0.82,0.836,,,,,,,,,,,,,,,0.997,False
-E20a incertitude politique,y_d_oat,rf : M0+EPU vs M0,79,-4.809,-2.374,1.523,0.066,0.585,,,,,,,,,,,,,,,0.997,False
-E20b dépenses + incertitude,y_d_oat,rf : M1+EPU vs M0+EPU,79,-2.374,-4.405,-0.617,0.731,0.665,,,,,,,,,,,,,,,0.997,False
-E20a incertitude politique,y_d_oat,xgb : M0+EPU vs M0,79,-21.98,-26.923,-0.872,0.807,0.931,,,,,,,,,,,,,,,0.997,False
-E20b dépenses + incertitude,y_d_oat,xgb : M1+EPU vs M0+EPU,79,-26.923,-25.837,0.164,0.435,0.929,,,,,,,,,,,,,,,0.997,False
-E20a incertitude politique,y_cac_ret,ridge : M0+EPU vs M0,79,-0.284,-0.327,-0.411,0.659,0.676,,,,,,,,,,,,,,,0.997,False
-E20b dépenses + incertitude,y_cac_ret,ridge : M1+EPU vs M0+EPU,79,-0.327,-1.358,-1.011,0.842,0.84,,,,,,,,,,,,,,,0.997,False
-E20a incertitude politique,y_cac_ret,rf : M0+EPU vs M0,79,-8.436,-12.014,-2.847,0.997,0.98,,,,,,,,,,,,,,,0.997,False
-E20b dépenses + incertitude,y_cac_ret,rf : M1+EPU vs M0+EPU,79,-12.014,-11.008,0.318,0.376,0.987,,,,,,,,,,,,,,,0.997,False
-E20a incertitude politique,y_cac_ret,xgb : M0+EPU vs M0,79,-35.6,-37.406,-0.434,0.667,0.998,,,,,,,,,,,,,,,0.997,False
-E20b dépenses + incertitude,y_cac_ret,xgb : M1+EPU vs M0+EPU,79,-37.406,-32.102,0.601,0.275,0.996,,,,,,,,,,,,,,,0.997,False
-E3 volatilité,y_d_spread,ridge : M1 vs M0,79,-5.126,-9.838,-1.558,0.938,0.963,,,,,,,,,,,,,,,0.997,False
-E3 volatilité,y_d_spread,rf : M1 vs M0,79,-17.039,-14.111,0.789,0.216,0.994,,,,,,,,,,,,,,,0.997,False
-E3 volatilité,y_d_spread,xgb : M1 vs M0,79,-46.608,-36.573,0.874,0.192,0.999,,,,,,,,,,,,,,,0.997,False
-E3 volatilité,y_d_oat,ridge : M1 vs M0,79,2.654,2.162,-0.176,0.57,0.386,,,,,,,,,,,,,,,0.997,False
-E3 volatilité,y_d_oat,rf : M1 vs M0,79,3.116,4.45,0.384,0.351,0.318,,,,,,,,,,,,,,,0.997,False
-E3 volatilité,y_d_oat,xgb : M1 vs M0,79,-11.968,-2.029,1.333,0.093,0.552,,,,,,,,,,,,,,,0.997,False
-E3 volatilité,y_cac_ret,ridge : M1 vs M0,79,-0.639,-3.366,-1.048,0.851,0.688,,,,,,,,,,,,,,,0.997,False
-E3 volatilité,y_cac_ret,rf : M1 vs M0,79,9.278,6.826,-0.938,0.824,0.177,,,,,,,,,,,,,,,0.997,False
-E3 volatilité,y_cac_ret,xgb : M1 vs M0,79,2.411,2.685,0.047,0.481,0.42,,,,,,,,,,,,,,,0.997,False
-E4 surprise,y_d_spread,ridge : M0 + surprise vs M0,74,-14.184,-16.247,-0.485,0.686,0.951,test jusqu'à 2026-02 (LFI 2026 indisponible),,,,,,,,,,,,,,0.997,False
-E4 surprise,y_d_spread,ridge : M1 + surprise vs M0,74,-14.184,-16.291,-0.317,0.624,0.96,test jusqu'à 2026-02,,,,,,,,,,,,,,0.997,False
-E4 surprise,y_d_spread,rf : M0 + surprise vs M0,74,-2.696,-7.779,-1.635,0.947,0.84,test jusqu'à 2026-02 (LFI 2026 indisponible),,,,,,,,,,,,,,0.997,False
-E4 surprise,y_d_spread,rf : M1 + surprise vs M0,74,-2.696,-9.275,-1.408,0.918,0.889,test jusqu'à 2026-02,,,,,,,,,,,,,,0.997,False
-E4 surprise,y_d_spread,xgb : M0 + surprise vs M0,74,-26.577,-48.962,-2.191,0.984,0.999,test jusqu'à 2026-02 (LFI 2026 indisponible),,,,,,,,,,,,,,0.997,False
-E4 surprise,y_d_spread,xgb : M1 + surprise vs M0,74,-26.577,-30.263,-0.356,0.638,0.985,test jusqu'à 2026-02,,,,,,,,,,,,,,0.997,False
-E4 surprise,y_d_oat,ridge : M0 + surprise vs M0,74,-12.486,-15.532,-1.555,0.938,0.872,test jusqu'à 2026-02 (LFI 2026 indisponible),,,,,,,,,,,,,,0.997,False
-E4 surprise,y_d_oat,ridge : M1 + surprise vs M0,74,-12.486,-17.27,-0.94,0.825,0.901,test jusqu'à 2026-02,,,,,,,,,,,,,,0.997,False
-E4 surprise,y_d_oat,rf : M0 + surprise vs M0,74,-5.016,-4.667,0.272,0.393,0.67,test jusqu'à 2026-02 (LFI 2026 indisponible),,,,,,,,,,,,,,0.997,False
-E4 surprise,y_d_oat,rf : M1 + surprise vs M0,74,-5.016,-7.259,-0.572,0.716,0.757,test jusqu'à 2026-02,,,,,,,,,,,,,,0.997,False
-E4 surprise,y_d_oat,xgb : M0 + surprise vs M0,74,-21.258,-24.967,-0.832,0.796,0.919,test jusqu'à 2026-02 (LFI 2026 indisponible),,,,,,,,,,,,,,0.997,False
-E4 surprise,y_d_oat,xgb : M1 + surprise vs M0,74,-21.258,-26.466,-0.683,0.752,0.938,test jusqu'à 2026-02,,,,,,,,,,,,,,0.997,False
-E4 surprise,y_cac_ret,ridge : M0 + surprise vs M0,74,-0.343,-0.735,-0.585,0.72,0.789,test jusqu'à 2026-02 (LFI 2026 indisponible),,,,,,,,,,,,,,0.997,False
-E4 surprise,y_cac_ret,ridge : M1 + surprise vs M0,74,-0.343,-1.996,-1.116,0.866,0.878,test jusqu'à 2026-02,,,,,,,,,,,,,,0.997,False
-E4 surprise,y_cac_ret,rf : M0 + surprise vs M0,74,-8.302,-10.837,-1.303,0.902,0.965,test jusqu'à 2026-02 (LFI 2026 indisponible),,,,,,,,,,,,,,0.997,False
-E4 surprise,y_cac_ret,rf : M1 + surprise vs M0,74,-8.302,-9.949,-0.416,0.661,0.972,test jusqu'à 2026-02,,,,,,,,,,,,,,0.997,False
-E4 surprise,y_cac_ret,xgb : M0 + surprise vs M0,74,-35.58,-34.389,0.23,0.409,0.994,test jusqu'à 2026-02 (LFI 2026 indisponible),,,,,,,,,,,,,,0.997,False
-E4 surprise,y_cac_ret,xgb : M1 + surprise vs M0,74,-35.58,-27.28,0.951,0.172,0.989,test jusqu'à 2026-02,,,,,,,,,,,,,,0.997,False
-E5 régime,y_d_spread,ridge : M1 + interactions régime vs M0 + régime,79,-15.052,-32.406,-0.945,0.826,0.956,,,,,,,,,,,,,,,0.997,False
-E5 régime,y_d_oat,ridge : M1 + interactions régime vs M0 + régime,79,-12.302,-22.854,-1.685,0.952,0.935,,,,,,,,,,,,,,,0.997,False
-E5 régime,y_cac_ret,ridge : M1 + interactions régime vs M0 + régime,79,-2.578,-10.276,-1.527,0.935,0.957,,,,,,,,,,,,,,,0.997,False
-E6 réduit,y_d_spread,ridge : réduit + 2 dépenses vs réduit,79,-4.114,-4.797,-1.032,0.847,0.826,,,,,,,,,,,,,,,0.997,False
-E6 réduit,y_d_spread,ridge : réduit + 2 CP des dépenses vs réduit,79,-4.114,-3.992,0.1,0.46,0.772,,,,,,,,,,,,,,,0.997,False
-E6 réduit,y_d_spread,rf : réduit + 2 dépenses vs réduit,79,-6.179,-8.819,-0.887,0.811,0.822,,,,,,,,,,,,,,,0.997,False
-E6 réduit,y_d_spread,rf : réduit + 2 CP des dépenses vs réduit,79,-6.179,-11.037,-1.249,0.892,0.881,,,,,,,,,,,,,,,0.997,False
-E6 réduit,y_d_spread,xgb : réduit + 2 dépenses vs réduit,79,-23.136,-33.181,-1.003,0.84,0.983,,,,,,,,,,,,,,,0.997,False
-E6 réduit,y_d_spread,xgb : réduit + 2 CP des dépenses vs réduit,79,-23.136,-27.637,-0.538,0.704,0.968,,,,,,,,,,,,,,,0.997,False
-E6 réduit,y_d_oat,ridge : réduit + 2 dépenses vs réduit,79,-5.2,-4.701,0.161,0.436,0.661,,,,,,,,,,,,,,,0.997,False
-E6 réduit,y_d_oat,ridge : réduit + 2 CP des dépenses vs réduit,79,-5.2,-5.546,-0.21,0.583,0.67,,,,,,,,,,,,,,,0.997,False
-E6 réduit,y_d_oat,rf : réduit + 2 dépenses vs réduit,79,-3.119,-7.22,-1.17,0.877,0.736,,,,,,,,,,,,,,,0.997,False
-E6 réduit,y_d_oat,rf : réduit + 2 CP des dépenses vs réduit,79,-3.119,-7.339,-1.134,0.87,0.746,,,,,,,,,,,,,,,0.997,False
-E6 réduit,y_d_oat,xgb : réduit + 2 dépenses vs réduit,79,-24.685,-33.728,-1.231,0.889,0.98,,,,,,,,,,,,,,,0.997,False
-E6 réduit,y_d_oat,xgb : réduit + 2 CP des dépenses vs réduit,79,-24.685,-30.931,-0.734,0.768,0.963,,,,,,,,,,,,,,,0.997,False
-E6 réduit,y_cac_ret,ridge : réduit + 2 dépenses vs réduit,79,-2.427,-2.884,-0.446,0.672,0.845,,,,,,,,,,,,,,,0.997,False
-E6 réduit,y_cac_ret,ridge : réduit + 2 CP des dépenses vs réduit,79,-2.427,-2.065,0.464,0.322,0.83,,,,,,,,,,,,,,,0.997,False
-E6 réduit,y_cac_ret,rf : réduit + 2 dépenses vs réduit,79,-8.092,-7.721,0.118,0.453,0.966,,,,,,,,,,,,,,,0.997,False
-E6 réduit,y_cac_ret,rf : réduit + 2 CP des dépenses vs réduit,79,-8.092,-5.632,1.124,0.132,0.949,,,,,,,,,,,,,,,0.997,False
-E6 réduit,y_cac_ret,xgb : réduit + 2 dépenses vs réduit,79,-37.87,-32.357,0.71,0.24,0.996,,,,,,,,,,,,,,,0.997,False
-E6 réduit,y_cac_ret,xgb : réduit + 2 CP des dépenses vs réduit,79,-37.87,-32.54,0.785,0.217,0.998,,,,,,,,,,,,,,,0.997,False
-E7 tempérée,y_d_spread,ridge 50/50 avec la moyenne : M1 vs M0,79,-2.637,-4.004,-0.574,0.716,0.872,,,,,,,,,,,,,,,0.997,False
-E7 tempérée,y_d_spread,rf 50/50 avec la moyenne : M1 vs M0,79,-1.469,-2.827,-0.939,0.825,0.834,,,,,,,,,,,,,,,0.997,False
-E7 tempérée,y_d_spread,xgb 50/50 avec la moyenne : M1 vs M0,79,-10.517,-9.63,0.189,0.425,0.92,,,,,,,,,,,,,,,0.997,False
-E8 combinaison,y_d_spread,moyenne Ridge/RF/XGB : M1 vs M0,79,-13.356,-12.96,0.08,0.468,0.946,,,,,,,,,,,,,,,0.997,False
-E8 combinaison,y_d_spread,combinaison tempérée 50/50 : M1 vs M0,79,-3.456,-4.289,-0.355,0.638,0.864,,,,,,,,,,,,,,,0.997,False
-E7 tempérée,y_d_oat,ridge 50/50 avec la moyenne : M1 vs M0,79,-2.545,-2.714,-0.099,0.539,0.703,,,,,,,,,,,,,,,0.997,False
-E7 tempérée,y_d_oat,rf 50/50 avec la moyenne : M1 vs M0,79,-0.021,0.067,0.048,0.481,0.495,,,,,,,,,,,,,,,0.997,False
-E7 tempérée,y_d_oat,xgb 50/50 avec la moyenne : M1 vs M0,79,-5.706,-6.131,-0.143,0.557,0.757,,,,,,,,,,,,,,,0.997,False
-E8 combinaison,y_d_oat,moyenne Ridge/RF/XGB : M1 vs M0,79,-12.286,-12.657,-0.102,0.54,0.843,,,,,,,,,,,,,,,0.997,False
-E8 combinaison,y_d_oat,combinaison tempérée 50/50 : M1 vs M0,79,-1.789,-2.044,-0.141,0.556,0.634,,,,,,,,,,,,,,,0.997,False
-E7 tempérée,y_cac_ret,ridge 50/50 avec la moyenne : M1 vs M0,79,-0.627,-1.65,-0.92,0.82,0.918,,,,,,,,,,,,,,,0.997,False
-E7 tempérée,y_cac_ret,rf 50/50 avec la moyenne : M1 vs M0,79,-3.749,-4.356,-0.319,0.625,0.954,,,,,,,,,,,,,,,0.997,False
-E7 tempérée,y_cac_ret,xgb 50/50 avec la moyenne : M1 vs M0,79,-10.374,-9.071,0.353,0.362,0.954,,,,,,,,,,,,,,,0.997,False
-E8 combinaison,y_cac_ret,moyenne Ridge/RF/XGB : M1 vs M0,79,-10.248,-10.592,-0.101,0.54,0.974,,,,,,,,,,,,,,,0.997,False
-E8 combinaison,y_cac_ret,combinaison tempérée 50/50 : M1 vs M0,79,-3.926,-4.166,-0.141,0.556,0.941,,,,,,,,,,,,,,,0.997,False
-E9 Elastic Net,y_d_spread,enet : M1 vs M0,79,-1.963,-3.571,-0.57,0.715,0.804,,,,,,,,,,,,,,,0.997,False
-E9 Elastic Net,y_d_oat,enet : M1 vs M0,79,-5.856,-6.895,-0.331,0.629,0.724,,,,,,,,,,,,,,,0.997,False
-E9 Elastic Net,y_cac_ret,enet : M1 vs M0,79,0.264,-3.258,-1.431,0.922,0.904,,,,,,,,,,,,,,,0.997,False
+E19 actions sectorielles,btp_concessions (excès CAC 40),ridge h=1 : M1 vs M0,79,-1.244,-2.744,-1.323,0.905,0.964,,,,,,,,,,,,,,,0.999,False
+E19 actions sectorielles,btp_concessions (excès CAC 40),rf h=1 : M1 vs M0,79,-5.258,-9.921,-1.669,0.95,0.996,,,,,,,,,,,,,,,0.999,False
+E19 actions sectorielles,btp_concessions (excès CAC 40),xgb h=1 : M1 vs M0,79,-18.552,-31.459,-1.884,0.968,0.996,,,,,,,,,,,,,,,0.999,False
+E19 actions sectorielles,btp_concessions (excès CAC 40),ridge h=3 : M1 vs M0,77,-6.618,-23.411,-1.81,0.963,0.986,,,,,,,,,,,,,,,0.999,False
+E19 actions sectorielles,btp_concessions (excès CAC 40),rf h=3 : M1 vs M0,77,1.353,-0.724,-0.484,0.685,0.559,,,,,,,,,,,,,,,0.999,False
+E19 actions sectorielles,btp_concessions (excès CAC 40),xgb h=3 : M1 vs M0,77,-8.774,-8.705,0.012,0.495,0.821,,,,,,,,,,,,,,,0.999,False
+E19 actions sectorielles,defense (excès CAC 40),ridge h=1 : M1 vs M0,79,-0.98,-3.162,-0.794,0.785,0.836,,,,,,,,,,,,,,,0.999,False
+E19 actions sectorielles,defense (excès CAC 40),rf h=1 : M1 vs M0,79,-6.273,-6.024,0.109,0.457,0.863,,,,,,,,,,,,,,,0.999,False
+E19 actions sectorielles,defense (excès CAC 40),xgb h=1 : M1 vs M0,79,-13.211,-11.622,0.212,0.417,0.861,,,,,,,,,,,,,,,0.999,False
+E19 actions sectorielles,defense (excès CAC 40),ridge h=3 : M1 vs M0,77,-10.422,-68.844,-1.54,0.936,0.955,,,,,,,,,,,,,,,0.999,False
+E19 actions sectorielles,defense (excès CAC 40),rf h=3 : M1 vs M0,77,-19.426,-10.766,1.567,0.061,0.822,,,,,,,,,,,,,,,0.999,False
+E19 actions sectorielles,defense (excès CAC 40),xgb h=3 : M1 vs M0,77,-53.313,-19.941,2.454,0.008,0.882,,,,,,,,,,,,,,,0.999,False
+E2 classification,y_d_spread,logit : M1 vs M0 (perte de Brier),79,-24.442,-25.602,-0.123,0.549,0.977,R2oos = score de Brier relatif à la fréquence historique,,,,,,,,,46.835,0.471,54.43,0.524,49.367,0.999,False
+E2 classification,y_d_spread,rf : M1 vs M0 (perte de Brier),79,-2.37,0.512,0.655,0.257,0.466,R2oos = score de Brier relatif à la fréquence historique,,,,,,,,,48.101,0.522,53.165,0.566,49.367,0.999,False
+E2 classification,y_d_spread,xgb : M1 vs M0 (perte de Brier),79,-12.905,-7.453,0.723,0.236,0.767,R2oos = score de Brier relatif à la fréquence historique,,,,,,,,,44.304,0.51,58.228,0.573,49.367,0.999,False
+E2 classification,y_d_oat,logit : M1 vs M0 (perte de Brier),79,-16.107,-30.113,-2.093,0.98,0.985,R2oos = score de Brier relatif à la fréquence historique,,,,,,,,,54.43,0.57,51.899,0.521,44.304,0.999,False
+E2 classification,y_d_oat,rf : M1 vs M0 (perte de Brier),79,2.485,5.839,0.898,0.186,0.201,R2oos = score de Brier relatif à la fréquence historique,,,,,,,,,48.101,0.566,51.899,0.546,44.304,0.999,False
+E2 classification,y_d_oat,xgb : M1 vs M0 (perte de Brier),79,-4.741,-2.288,0.461,0.323,0.589,R2oos = score de Brier relatif à la fréquence historique,,,,,,,,,53.165,0.58,54.43,0.577,44.304,0.999,False
+E2 classification,y_cac_ret,logit : M1 vs M0 (perte de Brier),79,-3.716,-17.116,-1.563,0.939,0.91,R2oos = score de Brier relatif à la fréquence historique,,,,,,,,,60.76,0.602,60.76,0.563,60.76,0.999,False
+E2 classification,y_cac_ret,rf : M1 vs M0 (perte de Brier),79,-6.112,-6.779,-0.253,0.6,0.91,R2oos = score de Brier relatif à la fréquence historique,,,,,,,,,54.43,0.432,51.899,0.444,60.76,0.999,False
+E2 classification,y_cac_ret,xgb : M1 vs M0 (perte de Brier),79,-24.147,-20.593,0.721,0.237,0.986,R2oos = score de Brier relatif à la fréquence historique,,,,,,,,,49.367,0.414,53.165,0.425,60.76,0.999,False
+E20a incertitude politique,y_d_spread,ridge : M0+EPU vs M0,79,-15.325,-13.968,0.879,0.191,0.921,,,,,,,,,,,,,,,0.999,False
+E20b dépenses + incertitude,y_d_spread,ridge : M1+EPU vs M0+EPU,79,-13.968,-14.701,-0.149,0.559,0.947,,,,,,,,,,,,,,,0.999,False
+E20a incertitude politique,y_d_spread,rf : M0+EPU vs M0,79,-3.575,-2.046,1.66,0.05,0.61,,,,,,,,,,,,,,,0.999,False
+E20b dépenses + incertitude,y_d_spread,rf : M1+EPU vs M0+EPU,79,-2.046,-5.121,-1.071,0.856,0.773,,,,,,,,,,,,,,,0.999,False
+E20a incertitude politique,y_d_spread,xgb : M0+EPU vs M0,79,-28.077,-33.505,-1.574,0.94,0.979,,,,,,,,,,,,,,,0.999,False
+E20b dépenses + incertitude,y_d_spread,xgb : M1+EPU vs M0+EPU,79,-33.505,-25.868,0.835,0.203,0.963,,,,,,,,,,,,,,,0.999,False
+E20a incertitude politique,y_d_oat,ridge : M0+EPU vs M0,79,-11.828,-9.999,0.677,0.25,0.766,,,,,,,,,,,,,,,0.999,False
+E20b dépenses + incertitude,y_d_oat,ridge : M1+EPU vs M0+EPU,79,-9.999,-13.123,-0.922,0.82,0.836,,,,,,,,,,,,,,,0.999,False
+E20a incertitude politique,y_d_oat,rf : M0+EPU vs M0,79,-4.809,-2.374,1.523,0.066,0.585,,,,,,,,,,,,,,,0.999,False
+E20b dépenses + incertitude,y_d_oat,rf : M1+EPU vs M0+EPU,79,-2.374,-4.405,-0.617,0.731,0.665,,,,,,,,,,,,,,,0.999,False
+E20a incertitude politique,y_d_oat,xgb : M0+EPU vs M0,79,-21.98,-26.923,-0.872,0.807,0.931,,,,,,,,,,,,,,,0.999,False
+E20b dépenses + incertitude,y_d_oat,xgb : M1+EPU vs M0+EPU,79,-26.923,-25.837,0.164,0.435,0.929,,,,,,,,,,,,,,,0.999,False
+E20a incertitude politique,y_cac_ret,ridge : M0+EPU vs M0,79,-0.284,-0.327,-0.411,0.659,0.676,,,,,,,,,,,,,,,0.999,False
+E20b dépenses + incertitude,y_cac_ret,ridge : M1+EPU vs M0+EPU,79,-0.327,-1.358,-1.011,0.842,0.84,,,,,,,,,,,,,,,0.999,False
+E20a incertitude politique,y_cac_ret,rf : M0+EPU vs M0,79,-8.436,-12.014,-2.847,0.997,0.98,,,,,,,,,,,,,,,0.999,False
+E20b dépenses + incertitude,y_cac_ret,rf : M1+EPU vs M0+EPU,79,-12.014,-11.008,0.318,0.376,0.987,,,,,,,,,,,,,,,0.999,False
+E20a incertitude politique,y_cac_ret,xgb : M0+EPU vs M0,79,-35.6,-37.406,-0.434,0.667,0.998,,,,,,,,,,,,,,,0.999,False
+E20b dépenses + incertitude,y_cac_ret,xgb : M1+EPU vs M0+EPU,79,-37.406,-32.102,0.601,0.275,0.996,,,,,,,,,,,,,,,0.999,False
+E3 volatilité,y_d_spread,ridge : M1 vs M0,79,-4.35,-7.744,-1.545,0.937,0.945,,,,,,,,,,,,,,,0.999,False
+E3 volatilité,y_d_spread,rf : M1 vs M0,79,-17.92,-14.034,1.013,0.157,0.994,,,,,,,,,,,,,,,0.999,False
+E3 volatilité,y_d_spread,xgb : M1 vs M0,79,-51.39,-37.628,1.195,0.118,1.0,,,,,,,,,,,,,,,0.999,False
+E3 volatilité,y_d_oat,ridge : M1 vs M0,79,3.258,2.022,-0.556,0.71,0.39,,,,,,,,,,,,,,,0.999,False
+E3 volatilité,y_d_oat,rf : M1 vs M0,79,2.803,4.179,0.397,0.346,0.342,,,,,,,,,,,,,,,0.999,False
+E3 volatilité,y_d_oat,xgb : M1 vs M0,79,-7.019,-6.453,0.086,0.466,0.658,,,,,,,,,,,,,,,0.999,False
+E3 volatilité,y_cac_ret,ridge : M1 vs M0,79,-1.318,-3.412,-0.787,0.783,0.681,,,,,,,,,,,,,,,0.999,False
+E3 volatilité,y_cac_ret,rf : M1 vs M0,79,9.618,6.394,-1.163,0.876,0.191,,,,,,,,,,,,,,,0.999,False
+E3 volatilité,y_cac_ret,xgb : M1 vs M0,79,3.81,0.36,-0.461,0.677,0.488,,,,,,,,,,,,,,,0.999,False
+E4 surprise,y_d_spread,ridge : M0 + surprise vs M0,74,-13.537,-16.431,-0.815,0.791,0.966,test jusqu'à 2026-02 (LFI 2026 indisponible),,,,,,,,,,,,,,0.999,False
+E4 surprise,y_d_spread,ridge : M1 + surprise vs M0,74,-13.537,-16.152,-0.386,0.65,0.977,test jusqu'à 2026-02,,,,,,,,,,,,,,0.999,False
+E4 surprise,y_d_spread,rf : M0 + surprise vs M0,74,-6.001,-11.135,-1.478,0.928,0.934,test jusqu'à 2026-02 (LFI 2026 indisponible),,,,,,,,,,,,,,0.999,False
+E4 surprise,y_d_spread,rf : M1 + surprise vs M0,74,-6.001,-12.354,-1.299,0.901,0.958,test jusqu'à 2026-02,,,,,,,,,,,,,,0.999,False
+E4 surprise,y_d_spread,xgb : M0 + surprise vs M0,74,-33.953,-51.034,-1.589,0.942,1.0,test jusqu'à 2026-02 (LFI 2026 indisponible),,,,,,,,,,,,,,0.999,False
+E4 surprise,y_d_spread,xgb : M1 + surprise vs M0,74,-33.953,-39.273,-0.42,0.662,0.994,test jusqu'à 2026-02,,,,,,,,,,,,,,0.999,False
+E4 surprise,y_d_oat,ridge : M0 + surprise vs M0,74,-11.928,-14.181,-1.601,0.943,0.893,test jusqu'à 2026-02 (LFI 2026 indisponible),,,,,,,,,,,,,,0.999,False
+E4 surprise,y_d_oat,ridge : M1 + surprise vs M0,74,-11.928,-11.953,-0.006,0.502,0.86,test jusqu'à 2026-02,,,,,,,,,,,,,,0.999,False
+E4 surprise,y_d_oat,rf : M0 + surprise vs M0,74,-7.089,-7.244,-0.104,0.541,0.749,test jusqu'à 2026-02 (LFI 2026 indisponible),,,,,,,,,,,,,,0.999,False
+E4 surprise,y_d_oat,rf : M1 + surprise vs M0,74,-7.089,-8.476,-0.343,0.634,0.787,test jusqu'à 2026-02,,,,,,,,,,,,,,0.999,False
+E4 surprise,y_d_oat,xgb : M0 + surprise vs M0,74,-29.596,-30.665,-0.213,0.584,0.95,test jusqu'à 2026-02 (LFI 2026 indisponible),,,,,,,,,,,,,,0.999,False
+E4 surprise,y_d_oat,xgb : M1 + surprise vs M0,74,-29.596,-35.24,-0.708,0.759,0.966,test jusqu'à 2026-02,,,,,,,,,,,,,,0.999,False
+E4 surprise,y_cac_ret,ridge : M0 + surprise vs M0,74,-1.449,-0.356,0.818,0.208,0.948,test jusqu'à 2026-02 (LFI 2026 indisponible),,,,,,,,,,,,,,0.999,False
+E4 surprise,y_cac_ret,ridge : M1 + surprise vs M0,74,-1.449,-2.064,-0.402,0.656,0.958,test jusqu'à 2026-02,,,,,,,,,,,,,,0.999,False
+E4 surprise,y_cac_ret,rf : M0 + surprise vs M0,74,-9.49,-11.616,-1.457,0.925,0.97,test jusqu'à 2026-02 (LFI 2026 indisponible),,,,,,,,,,,,,,0.999,False
+E4 surprise,y_cac_ret,rf : M1 + surprise vs M0,74,-9.49,-10.247,-0.21,0.583,0.973,test jusqu'à 2026-02,,,,,,,,,,,,,,0.999,False
+E4 surprise,y_cac_ret,xgb : M0 + surprise vs M0,74,-31.553,-35.57,-1.142,0.871,0.997,test jusqu'à 2026-02 (LFI 2026 indisponible),,,,,,,,,,,,,,0.999,False
+E4 surprise,y_cac_ret,xgb : M1 + surprise vs M0,74,-31.553,-30.602,0.136,0.446,0.995,test jusqu'à 2026-02,,,,,,,,,,,,,,0.999,False
+E5 régime,y_d_spread,ridge : M1 + interactions régime vs M0 + régime,79,-14.0,-29.538,-0.963,0.831,0.962,,,,,,,,,,,,,,,0.999,False
+E5 régime,y_d_oat,ridge : M1 + interactions régime vs M0 + régime,79,-12.248,-18.958,-1.376,0.914,0.923,,,,,,,,,,,,,,,0.999,False
+E5 régime,y_cac_ret,ridge : M1 + interactions régime vs M0 + régime,79,-4.797,-13.743,-1.731,0.956,0.99,,,,,,,,,,,,,,,0.999,False
+E6 réduit,y_d_spread,ridge : réduit + 2 dépenses vs réduit,79,-5.295,-4.69,0.465,0.322,0.849,,,,,,,,,,,,,,,0.999,False
+E6 réduit,y_d_spread,ridge : réduit + 2 CP des dépenses vs réduit,79,-5.295,-5.181,0.095,0.462,0.815,,,,,,,,,,,,,,,0.999,False
+E6 réduit,y_d_spread,rf : réduit + 2 dépenses vs réduit,79,-11.162,-13.474,-0.668,0.747,0.927,,,,,,,,,,,,,,,0.999,False
+E6 réduit,y_d_spread,rf : réduit + 2 CP des dépenses vs réduit,79,-11.162,-14.87,-1.153,0.874,0.939,,,,,,,,,,,,,,,0.999,False
+E6 réduit,y_d_spread,xgb : réduit + 2 dépenses vs réduit,79,-37.378,-41.918,-0.387,0.65,0.989,,,,,,,,,,,,,,,0.999,False
+E6 réduit,y_d_spread,xgb : réduit + 2 CP des dépenses vs réduit,79,-37.378,-40.349,-0.302,0.618,0.982,,,,,,,,,,,,,,,0.999,False
+E6 réduit,y_d_oat,ridge : réduit + 2 dépenses vs réduit,79,-6.142,-4.564,0.468,0.321,0.678,,,,,,,,,,,,,,,0.999,False
+E6 réduit,y_d_oat,ridge : réduit + 2 CP des dépenses vs réduit,79,-6.142,-6.319,-0.098,0.539,0.721,,,,,,,,,,,,,,,0.999,False
+E6 réduit,y_d_oat,rf : réduit + 2 dépenses vs réduit,79,-5.715,-8.92,-0.986,0.836,0.777,,,,,,,,,,,,,,,0.999,False
+E6 réduit,y_d_oat,rf : réduit + 2 CP des dépenses vs réduit,79,-5.715,-9.977,-1.163,0.876,0.807,,,,,,,,,,,,,,,0.999,False
+E6 réduit,y_d_oat,xgb : réduit + 2 dépenses vs réduit,79,-24.565,-34.538,-1.447,0.924,0.979,,,,,,,,,,,,,,,0.999,False
+E6 réduit,y_d_oat,xgb : réduit + 2 CP des dépenses vs réduit,79,-24.565,-32.765,-0.864,0.805,0.976,,,,,,,,,,,,,,,0.999,False
+E6 réduit,y_cac_ret,ridge : réduit + 2 dépenses vs réduit,79,-3.64,-2.641,0.995,0.161,0.822,,,,,,,,,,,,,,,0.999,False
+E6 réduit,y_cac_ret,ridge : réduit + 2 CP des dépenses vs réduit,79,-3.64,-2.562,0.764,0.224,0.85,,,,,,,,,,,,,,,0.999,False
+E6 réduit,y_cac_ret,rf : réduit + 2 dépenses vs réduit,79,-8.884,-8.2,0.206,0.418,0.967,,,,,,,,,,,,,,,0.999,False
+E6 réduit,y_cac_ret,rf : réduit + 2 CP des dépenses vs réduit,79,-8.884,-6.579,0.864,0.195,0.967,,,,,,,,,,,,,,,0.999,False
+E6 réduit,y_cac_ret,xgb : réduit + 2 dépenses vs réduit,79,-34.747,-31.524,0.383,0.351,0.992,,,,,,,,,,,,,,,0.999,False
+E6 réduit,y_cac_ret,xgb : réduit + 2 CP des dépenses vs réduit,79,-34.747,-30.887,0.614,0.271,0.999,,,,,,,,,,,,,,,0.999,False
+E7 tempérée,y_d_spread,ridge 50/50 avec la moyenne : M1 vs M0,79,-2.637,-4.004,-0.574,0.716,0.872,,,,,,,,,,,,,,,0.999,False
+E7 tempérée,y_d_spread,rf 50/50 avec la moyenne : M1 vs M0,79,-1.469,-2.827,-0.939,0.825,0.834,,,,,,,,,,,,,,,0.999,False
+E7 tempérée,y_d_spread,xgb 50/50 avec la moyenne : M1 vs M0,79,-10.517,-9.63,0.189,0.425,0.92,,,,,,,,,,,,,,,0.999,False
+E8 combinaison,y_d_spread,moyenne Ridge/RF/XGB : M1 vs M0,79,-13.356,-12.96,0.08,0.468,0.946,,,,,,,,,,,,,,,0.999,False
+E8 combinaison,y_d_spread,combinaison tempérée 50/50 : M1 vs M0,79,-3.456,-4.289,-0.355,0.638,0.864,,,,,,,,,,,,,,,0.999,False
+E7 tempérée,y_d_oat,ridge 50/50 avec la moyenne : M1 vs M0,79,-2.545,-2.714,-0.099,0.539,0.703,,,,,,,,,,,,,,,0.999,False
+E7 tempérée,y_d_oat,rf 50/50 avec la moyenne : M1 vs M0,79,-0.021,0.067,0.048,0.481,0.495,,,,,,,,,,,,,,,0.999,False
+E7 tempérée,y_d_oat,xgb 50/50 avec la moyenne : M1 vs M0,79,-5.706,-6.131,-0.143,0.557,0.757,,,,,,,,,,,,,,,0.999,False
+E8 combinaison,y_d_oat,moyenne Ridge/RF/XGB : M1 vs M0,79,-12.286,-12.657,-0.102,0.54,0.843,,,,,,,,,,,,,,,0.999,False
+E8 combinaison,y_d_oat,combinaison tempérée 50/50 : M1 vs M0,79,-1.789,-2.044,-0.141,0.556,0.634,,,,,,,,,,,,,,,0.999,False
+E7 tempérée,y_cac_ret,ridge 50/50 avec la moyenne : M1 vs M0,79,-0.627,-1.65,-0.92,0.82,0.918,,,,,,,,,,,,,,,0.999,False
+E7 tempérée,y_cac_ret,rf 50/50 avec la moyenne : M1 vs M0,79,-3.749,-4.356,-0.319,0.625,0.954,,,,,,,,,,,,,,,0.999,False
+E7 tempérée,y_cac_ret,xgb 50/50 avec la moyenne : M1 vs M0,79,-10.374,-9.071,0.353,0.362,0.954,,,,,,,,,,,,,,,0.999,False
+E8 combinaison,y_cac_ret,moyenne Ridge/RF/XGB : M1 vs M0,79,-10.248,-10.592,-0.101,0.54,0.974,,,,,,,,,,,,,,,0.999,False
+E8 combinaison,y_cac_ret,combinaison tempérée 50/50 : M1 vs M0,79,-3.926,-4.166,-0.141,0.556,0.941,,,,,,,,,,,,,,,0.999,False
+E9 Elastic Net,y_d_spread,enet : M1 vs M0,79,-2.711,-4.932,-0.902,0.815,0.866,,,,,,,,,,,,,,,0.999,False
+E9 Elastic Net,y_d_oat,enet : M1 vs M0,79,-6.714,-7.646,-0.337,0.631,0.771,,,,,,,,,,,,,,,0.999,False
+E9 Elastic Net,y_cac_ret,enet : M1 vs M0,79,-0.331,-3.801,-1.433,0.922,0.911,,,,,,,,,,,,,,,0.999,False
