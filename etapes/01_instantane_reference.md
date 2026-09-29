@@ -1,5 +1,7 @@
 # Étape 01 — Instantané de référence
 
+**Statut : ✅ fait (45 CSV, `.gitignore` : `tests/_snap/`).**
+
 **Pourquoi** : pouvoir prouver, après chaque changement, ce qui a bougé et ce qui n'a pas bougé.
 
 ## Actions
@@ -10,9 +12,9 @@
 3. Vérifier l'outil : `diff base base` doit dire « aucune différence » ; modifier une valeur dans une copie et vérifier qu'elle est détectée.
 
 ## Validation
-- [ ] `diff base base` : 0 différence.
-- [ ] Différence artificielle détectée (fichier, colonne, écart).
-- [ ] Le manifeste liste tous les CSV de `results/tables` (comparer avec `find results/tables -name '*.csv' | wc -l`).
+- [x] `diff base base` : 0 différence.
+- [x] Différence artificielle détectée (fichier, colonne, écart).
+- [x] Le manifeste liste tous les CSV de `results/tables` (comparer avec `find results/tables -name '*.csv' | wc -l`).
 
 ## Commit
 `tests : outil d'instantané pour comparer les sorties avant/après`

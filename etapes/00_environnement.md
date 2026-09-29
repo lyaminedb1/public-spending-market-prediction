@@ -1,5 +1,7 @@
 # Étape 00 — Environnement et tests de base
 
+**Statut : ✅ fait (31/31 contrôles OK).**
+
 **Pourquoi** : l'environnement actuel n'a ni numpy ni pandas ; aucune validation n'est possible sans lui.
 
 ## Actions
@@ -10,9 +12,9 @@
 4. Lancer `python tests/verifications.py`.
 
 ## Validation
-- [ ] `import pandas, numpy, sklearn, xgboost, shap, statsmodels, matplotlib` sans erreur.
-- [ ] `tests/verifications.py` termine sans échec (noter le nombre de contrôles, ex. « N/N OK »).
-- [ ] `git status` propre (aucun fichier suivi modifié).
+- [x] `import pandas, numpy, sklearn, xgboost, shap, statsmodels, matplotlib` sans erreur.
+- [x] `tests/verifications.py` termine sans échec (noter le nombre de contrôles, ex. « N/N OK »).
+- [x] `git status` propre (aucun fichier suivi modifié).
 
 ## Commit
 Aucun (environnement local). Consigner dans le message de l'étape 01 le nombre de contrôles OK.
