@@ -10,7 +10,7 @@ donné : c'est la référence exigeante (R² contre la moyenne = 90-97 % sur le 
 marche aléatoire).
 Entrées : results/tables/models_metrics.csv, results/tables/ext_summary.csv
 Sorties : results/figures/fig3_5_extensions.png (3 cibles françaises), results/figures/fig3_6_extensions_autres.png
-          (panel et actions), results/tables/ext_synthese.csv
+          (panel et actions), results/tables/ext_synthese.csv, results/tables/ext_significatifs.csv
 """
 import re
 
@@ -114,7 +114,28 @@ def dot_panel(ax, d, y, xlim, colors=(("sans", BLUE, "Sans dépenses", -0.13), (
     ax.grid(axis="x", color=GRID)
 
 
+def significatifs():
+    """Comparaisons dont la p-value brute est < 0,05 ou dont la p-value corrigée (BH, 10 %) est < 0,10.
+    Colonnes utiles pour juger : le modèle avec dépenses bat-il la moyenne (R² > 0) ? bat-il la version sans dépenses ?"""
+    s = pd.read_csv("results/tables/ext_summary.csv")
+    s = s[~s.extension.str.startswith("E12") & ~s.extension.str.contains("hors correction")].copy()
+    s["sans"], s["avec"] = first_col(s, XCOL["sans"]), first_col(s, XCOL["avec"])
+    s["p_brute_lt_005"] = s.p_avec_meilleur < 0.05
+    s["p_BH_lt_010"] = s.p_BH < 0.10
+    s["avec_bat_moyenne"] = s.avec > 0
+    s["avec_bat_sans"] = s.avec > s.sans
+    keep = s[s.p_brute_lt_005 | s.p_BH_lt_010]
+    cols = ["extension", "cible", "comparaison", "n_test", "sans", "avec", "p_avec_meilleur", "p_BH", "p_brute_lt_005",
+            "p_BH_lt_010", "avec_bat_moyenne", "avec_bat_sans"]
+    keep[cols].sort_values("p_avec_meilleur").round(3).to_csv("results/tables/ext_significatifs.csv", index=False)
+    print(f"Comparaisons dans la correction BH : {int(s.p_BH.notna().sum())} ; p brutes < 0,05 : "
+          f"{int(s.p_brute_lt_005.sum())} (attendu par hasard : {0.05 * s.p_BH.notna().sum():.0f}) ; "
+          f"significatives après BH : {int(s.p_BH_lt_010.sum())}")
+    return keep
+
+
 def main():
+    significatifs()
     syn, order, other_keys = build()
     out = syn.sort_values(["ordre", "cible"])[["cle", "cible", "libelle", "sans", "avec", "mrw_sans", "mrw_avec",
                                                  "p_min_BH", "n_comparaisons", "ordre"]]
