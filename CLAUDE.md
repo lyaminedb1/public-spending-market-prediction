@@ -123,7 +123,9 @@
 - **Ch. 1** restructuré le 29/09 selon la décision bibliographie (1.1 cadre · 1.2 finances publiques et spreads · 1.3 ML · 1.4 données ouvertes · 1.5 synthèse, tableau 1.1). Résumés des articles : à vérifier sur les articles.
 - **Ch. 2** à jour (grille Ridge 10⁶ ; corrélations partielles inflation + variation passée : 0,09 à 0,15). **Manque : considérations éthiques** (exigées par le guide ECE).
 - **Ch. 3** rédigé le 29/09 (3.1 descriptif · 3.2 modèles, tab. 3.2-3.3 · 3.3 solidité, tab. 3.4 · 3.4 SHAP vs bruit, tab. 3.5 · 3.5 extensions + BH, tab. 3.6 · 3.6 panel, tab. 3.7 · 3.7 hypothèses, tab. 3.8). Environ 9 pages : à réduire à 4-6 (annexes). Ajouter : robustesse du décalage (1 et 3 mois), BH sur H1, permutation hors échantillon (H4).
-- Word des ch. 1-3 : construit hors dépôt (pandoc + mise en forme ECE), envoyé le 29/09.
+- Exports Markdown des chapitres et outil de construction du Word (mise en forme ECE) : `redaction/` (voir `redaction/README.md`). Chapitre 1 vérifié contre les PDF des articles le 30/09 (corrigés : Garlanda-Longueville = communiqués annonçant les allocutions, pas des « fuites » ; Laubach ≈ 25 pb). Chapitre 4 (brouillon) : https://claude.ai/code/artifact/1404f95c-5b3d-4674-b6bf-26bd0aac23d2.
+- Fait pour la 4.4 : sur 2020-01 → 2025-02, la marche aléatoire (spread France, moyennes mensuelles OCDE) a un RMSE de 5,1 pb contre 7,3 pb pour le XGBoost de Bouillot et al. (tableau 11) ; définitions de série peut-être différentes. Chez Bouillot, 1 seule variable de finances publiques parmi les 50 principales (tableau 12).
+- Revue externe de la rédaction : prompt dans `docs/prompt_revue_redaction.md`.
 - Refus : pas de substitution de caractères (omicron) pour tromper les détecteurs ; déclaration d'usage de l'IA à rédiger.
 - 30/09 : PR n°1 (travail parallèle de Walid, 29-30/09) fusionnée dans main ; résultats identiques aux nôtres (écart max 0,15 pt de R²).
 
