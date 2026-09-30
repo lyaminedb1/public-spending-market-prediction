@@ -8,13 +8,28 @@ import pandas as pd
 
 ROOT = Path(__file__).resolve().parents[2]
 T = ROOT / "results" / "tables"
-CIBLES = {"y_d_spread": "Δ spread", "y_d_oat": "Δ OAT", "y_cac_ret": "CAC 40"}
+CIBLES = {"y_d_spread": "Δ spread", "y_d_oat": "Δ OAT", "y_cac_ret": "CAC 40",
+          "btp_concessions (excès CAC 40)": "BTP-concessions (excès sur le CAC 40)",
+          "defense (excès CAC 40)": "Défense (excès sur le CAC 40)",
+          "spread niveau": "Spread (niveau)", "spread variation": "Spread (variation)"}
+MODELES = {"ridge": "Ridge", "rf": "forêt", "xgb": "XGBoost", "enet": "Elastic Net", "logit": "logistique",
+           "combinaison": "combinaison"}
+
+
+def lib(c):
+    c = str(c)
+    for k, v in MODELES.items():
+        c = __import__("re").sub(rf"\b{k}\b", v, c)
+    return c.replace("vs", "contre").replace("2 CP", "2 composantes principales")
 
 
 def f(x, d=1):
+    """Arrondi commercial (0,605 -> 0,61), comme dans le texte."""
+    from decimal import Decimal, ROUND_HALF_UP
     if pd.isna(x):
         return "—"
-    return f"{x:.{d}f}".replace(".", ",").replace("-", "-")
+    q = Decimal(str(x)).quantize(Decimal(1).scaleb(-d), rounding=ROUND_HALF_UP)
+    return f"{q:.{d}f}".replace(".", ",")
 
 
 def md_table(df):
@@ -37,7 +52,7 @@ var = [
     ("M0", "inflation_yoy", "Inflation IPCH France sur un an (décalée d'un mois)"),
     ("M0", "ecb_dfr", "Taux de la facilité de dépôt de la BCE"),
     ("M1", "b_dep_totales, personnel, fonctionnement, charge_dette, investissement, intervention (_ytd_gap)",
-     "Écart du cumul depuis janvier par rapport à l'année précédente, en % du total annuel (décalé de 2 mois)"),
+     "Écart du cumul depuis janvier par rapport à l'année précédente, en % du montant des douze derniers mois (décalé de 2 mois)"),
     ("M1", "b_psr_total_ytd_gap", "Prélèvements sur recettes, même transformation"),
     ("M2", "b_rec_totales, b_rec_fiscales (_ytd_gap)", "Recettes totales et fiscales, même transformation"),
     ("M2", "b_solde_ytd_diff_yoy", "Solde d'exécution cumulé, écart sur un an"),
@@ -50,8 +65,10 @@ s = pd.read_csv(T / "ext_summary.csv")
 s["sans"] = s["R2oos_sans_%"].fillna(s.get("R2_vs_moyenne_sans_%"))
 s["avec"] = s["R2oos_avec_%"].fillna(s.get("R2_vs_moyenne_avec_%"))
 s["cible"] = s["cible"].map(lambda c: CIBLES.get(c, c))
+s["num"] = s["extension"].str.extract(r"E(\d+)")[0].astype(int)
+s = s.sort_values(["num", "extension"], kind="stable")
 b = pd.DataFrame({
-    "Extension": s["extension"], "Cible": s["cible"], "Comparaison": s["comparaison"],
+    "Extension": s["extension"], "Cible": s["cible"], "Comparaison": s["comparaison"].map(lib),
     "n": s["n_test"].map(lambda x: "—" if pd.isna(x) else int(x)),
     "R² sans (%)": s["sans"].map(f), "R² avec (%)": s["avec"].map(f),
     "p brute": s["p_avec_meilleur"].map(lambda x: f(x, 3)), "p corrigée (BH)": s["p_BH"].map(lambda x: f(x, 3)),
@@ -92,24 +109,24 @@ out += ["## Annexe D – Contrôle négatif : dépenses contre variables de brui
         "*Source : `results/tables/diag_04/bruit_*.csv`.*", ""]
 
 # E. Décalage
-r = pd.read_csv(T / "robustesse_lag.csv")
-r = pd.DataFrame({"Décalage (mois)": r["lag_mois"], "Cible": r["cible"].map(CIBLES), "Modèle": r["modele"],
+r = pd.read_csv(T / "robustesse_lag.csv"); r = r[r.cible != "TOUTES"]
+r = pd.DataFrame({"Décalage (mois)": r["lag_mois"], "Cible": r["cible"].map(CIBLES), "Modèle": r["modele"].map(lib),
                   "R² M0 (%)": r["R2_M0_%"].map(f), "R² M1 (%)": r["R2_M1_%"].map(f),
-                  "p DM (M1 contre M0)": r["p_DM_bilaterale_M1_vs_M0"].map(lambda x: f(x, 2)),
-                  "p corrigée (BH)": r["p_BH_H1"].map(lambda x: f(x, 2))})
+                  "p DM bilatérale (M1 contre M0)": r["p_DM_bilaterale_M1_vs_M0"].map(lambda x: f(x, 2)),
+                  "p corrigée (BH, unilatérale)": r["p_BH_H1"].map(lambda x: f(x, 2))})
 out += ["## Annexe E – Robustesse au décalage de publication", "",
         "**Tableau E.1 – Modèles principaux avec un décalage budgétaire de 1, 2 et 3 mois**", "", md_table(r), "",
-        "*Source : `results/tables/robustesse_lag.csv`.*", ""]
+        "*Source : `results/tables/robustesse_lag.csv`. La correction BH porte sur les p-values unilatérales « avec dépenses meilleur que sans » ; elle peut donc être inférieure à la p-value bilatérale affichée.*", ""]
 
 # F. Reproductibilité
 out += ["## Annexe F – Code et reproductibilité", "",
         "Le code, les données et les résultats sont conservés dans le dépôt GitHub du projet "
         "(`lyaminedb1/public-spending-market-prediction`, accessible sur demande). Le script `run_all.sh` relance "
-        "l'ensemble de la chaîne ; les versions des librairies sont figées dans `requirements.txt` et les fichiers de "
+        "l'ensemble de la chaîne ; les versions des bibliothèques logicielles sont figées dans `requirements.txt` et les fichiers de "
         "données brutes dans `data/MANIFEST.csv`. Le script `tests/verifications.py` exécute 63 contrôles automatiques "
         "(alignement des cibles, décalages de publication, absence de fuite d'information dans la validation glissante, "
         "mois incomplets). Les valeurs exactes des forêts aléatoires et de XGBoost peuvent varier légèrement selon les "
-        "versions des librairies ; les conclusions n'en dépendent pas.", ""]
+        "versions des bibliothèques logicielles ; les conclusions n'en dépendent pas.", ""]
 
 (ROOT / "redaction" / "annexes.md").write_text("\n".join(out))
 print("annexes.md :", len(b), "comparaisons")

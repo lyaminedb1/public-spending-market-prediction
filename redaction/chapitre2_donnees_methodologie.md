@@ -8,7 +8,7 @@ Ce chapitre explique d'où viennent nos données, comment nous les avons transfo
 
 Nous présentons d'abord les sources (2.1), puis la construction du jeu de données mensuel (2.2). Viennent ensuite les variables à prédire (2.3) et les variables explicatives (2.4). La section 2.5 justifie le choix des modèles, et la section 2.6 décrit la façon dont nous les évaluons. Pour finir, la section 2.7 présente les variantes testées pour vérifier la solidité des résultats.
 
-Le code et les données sont publiés sur GitHub. Chaque tableau et chaque figure de ce mémoire peut donc être recalculé à partir des fichiers bruts.
+Le code et les données sont conservés dans un dépôt GitHub (accessible sur demande). Chaque tableau et chaque figure de ce mémoire peut donc être recalculé à partir des fichiers bruts.
 
 ## 2.1 Sources des données
 
@@ -18,9 +18,9 @@ Le sujet impose des données ouvertes. Toutes nos sources sont donc publiques et
 | --- | --- | --- | --- |
 | Situations mensuelles budgétaires de l'État (séries longues) | DGFiP, data.economie.gouv.fr | Mensuelle, cumul depuis janvier | Variables de dépenses, recettes et solde |
 | Budget voté (lois de finances initiales) | DGFiP, data.economie.gouv.fr | Annuelle | Surprise budgétaire (extension E4) |
-| Taux à 10 ans France (OAT) et Allemagne (Bund) | OCDE, via FRED | Mensuelle (moyenne) | Cibles et contrôles |
+| Taux à 10 ans France (OAT) et Allemagne (Bund) | OCDE, via FRED | Mensuelle (moyenne) | Cibles (calcul du spread) |
 | CAC 40 | Yahoo Finance | Quotidienne, ramenée au dernier cours du mois | Cible et contrôle |
-| Taux directeurs de la BCE (refinancement, facilité de dépôt) | BCE | À chaque décision, prolongés jusqu'à la suivante | Contrôles |
+| Taux directeurs de la BCE (facilité de dépôt) | BCE | À chaque décision, prolongés jusqu'à la suivante | Contrôles |
 | VIX (volatilité implicite) | FRED | Quotidienne, moyenne mensuelle | Contrôle : aversion au risque |
 | Indice des prix harmonisé France | Eurostat, via FRED | Mensuelle | Contrôle : inflation sur un an |
 | Notations souveraines de la France | Communiqués des agences (Fitch, Moody's, S&P) | À chaque décision | Contrôle (extension E13) |
@@ -47,9 +47,9 @@ La DGFiP publie des montants **cumulés depuis le 1er janvier** : le chiffre de 
 L'État ne dépense pas au même rythme toute l'année. L'impôt sur les sociétés arrive à quelques échéances précises, et certaines dépenses se concentrent en fin d'année. Comparer un mois au mois précédent n'aurait donc pas de sens. Nous avons calculé deux transformations pour chaque ligne budgétaire :
 
 - **La somme des 12 derniers mois** (en milliards d'euros). Elle donne le niveau annuel, sans effet de saison.
-- **L'écart du cumul depuis janvier par rapport au même mois de l'année précédente, rapporté au total annuel** (en %). Une valeur de +1,2 en mai veut dire que, fin mai, l'État a dépensé l'équivalent de 1,2 % d'une année de plus que fin mai de l'année précédente. Comme on compare toujours le même mois, la saison s'annule.
+- **L'écart du cumul depuis janvier par rapport au même mois de l'année précédente, rapporté au montant des douze derniers mois** (en %). Une valeur de +1,2 en mai veut dire que, fin mai, l'État a dépensé l'équivalent de 1,2 % d'une année de plus que fin mai de l'année précédente. Comme on compare toujours le même mois, la saison s'annule.
 
-Nous n'avons pas utilisé un simple taux de croissance du cumul. En janvier, le cumul est presque nul, et le taux prend des valeurs absurdes : de -902 % à +1 789 % pour l'impôt sur les sociétés. Diviser par le total annuel règle ce problème.
+Nous n'avons pas utilisé un simple taux de croissance du cumul. En janvier, le cumul est presque nul, et le taux prend des valeurs absurdes : de -902 % à +1 789 % pour l'impôt sur les sociétés. Diviser par le montant des douze derniers mois règle ce problème.
 
 Cette mesure a tout de même une limite. En janvier, elle compare un seul mois de dépenses ; en décembre, une année entière. Ses variations sont donc beaucoup plus fortes en fin d'année : pour les dépenses totales, l'écart-type passe de 0,7 en janvier à 4,4 en décembre. Une même valeur n'a donc pas tout à fait le même sens selon le mois.
 
@@ -74,7 +74,7 @@ Premier contrôle : à partir des fichiers mensuels, nous avons recalculé le so
 | 2023 | -173,0 |
 | 2024 | -155,9 |
 
-Second contrôle : un script de vérification (`tests/verifications.py`, 31 contrôles) s'assure automatiquement que chaque cible correspond bien au mois suivant, que chaque variable budgétaire vient du mois t-2, que l'inflation vient du mois t-1, et qu'aucun mois ne manque. Pour nous assurer que ce script détecte vraiment les erreurs, nous l'avons lancé sur une version du code où les décalages avaient été retirés : il les signale tous. Le jeu de données n'a aucune valeur manquante, sauf la cible du dernier mois.
+Second contrôle : un script de vérification (`tests/verifications.py`, 63 contrôles) s'assure automatiquement que chaque cible correspond bien au mois suivant, que chaque variable budgétaire vient du mois t-2, que l'inflation vient du mois t-1, et qu'aucun mois ne manque. Pour nous assurer que ce script détecte vraiment les erreurs, nous l'avons lancé sur une version du code où les décalages avaient été retirés : il les signale tous. Le jeu de données n'a aucune valeur manquante, sauf la cible du dernier mois.
 
 ## 2.3 Variables cibles et stationnarité
 
@@ -90,7 +90,7 @@ Le spread est notre cible principale. En retirant le taux allemand, on enlève c
 
 ### Pourquoi prédire des variations plutôt que des niveaux
 
-Le test de Dickey-Fuller augmenté (ADF) confirme que les trois cibles, en variations, sont stationnaires, alors que les niveaux ne le sont pas :
+Le test de Dickey-Fuller augmenté (ADF ; Dickey et Fuller, 1979) confirme que les trois cibles, en variations, sont stationnaires, alors que les niveaux ne le sont pas :
 
 | Série | p-value ADF | Stationnaire |
 | --- | --- | --- |
@@ -104,7 +104,7 @@ Nous testons aussi une version plus simple dans les extensions : deviner seuleme
 
 ## 2.4 Variables explicatives
 
-Nous n'avons pas choisi les variables une par une selon leurs corrélations. Nous avons construit trois jeux emboités, chacun contenant le précédent. Le test central du mémoire compare M0 et M1 : la seule différence entre les deux, ce sont les dépenses. Si M1 prévoit mieux, l'amélioration vient donc des dépenses, **en plus** de ce que les marchés savent déjà.
+Nous n'avons pas choisi les variables une par une selon leurs corrélations. Nous avons construit trois jeux emboîtés, chacun contenant le précédent. Le test central du mémoire compare M0 et M1 : la seule différence entre les deux, ce sont les dépenses. Si M1 prévoit mieux, l'amélioration vient donc des dépenses, **en plus** de ce que les marchés savent déjà.
 
 | Jeu | Contenu | Nombre de variables |
 | --- | --- | --- |
@@ -116,9 +116,9 @@ Les recettes et le solde sont à part, dans M2. Le titre du mémoire parle des *
 
 ### Deux pièges mis en évidence par l'analyse exploratoire
 
-**Premier piège : les variables en niveau.** Les dépenses sur 12 mois, en milliards d'euros, montent presque sans arrêt, avec l'inflation et la dette. Depuis 2022, les taux montent aussi. Or deux séries qui montent en même temps sont corrélées, même si elles n'ont rien à voir : la corrélation entre ces niveaux et la variation de l'OAT atteint 0,34, sans aucun sens économique. Ces niveaux ne sont pas stationnaires (p-value ADF supérieure à 0,7). **Nos modèles utilisent donc les écarts annuels, pas les niveaux.** Ces écarts sont beaucoup plus proches de la stationnarité (p-values ADF entre 0,01 et 0,06).
+**Premier piège : les variables en niveau.** Les dépenses sur 12 mois, en milliards d'euros, montent presque sans arrêt, avec l'inflation et la dette. Depuis 2022, les taux montent aussi. Or deux séries qui montent en même temps sont corrélées, même si elles n'ont rien à voir : la corrélation entre ces niveaux et la variation de l'OAT atteint 0,34, sans aucun sens économique. Ces niveaux ne sont pas stationnaires (p-values ADF de 0,23 à 1,00, supérieures à 0,7 pour 10 lignes sur 12). **Nos modèles utilisent donc les écarts annuels, pas les niveaux.** Ces écarts sont stationnaires ou presque (p-values ADF de 0,000 à 0,057).
 
-**Second piège : l'inflation.** À première vue, les dépenses de personnel, de fonctionnement et la charge de la dette annoncent la variation de l'OAT (corrélations de Spearman de 0,17 à 0,23). Mais en 2022-2023, l'inflation a fait monter les deux en même temps : les taux, à cause de la BCE, et ces dépenses, à cause des salaires et de la dette indexée. Quand on retire l'effet de l'inflation et de la variation passée de l'OAT (les deux sont dans M0), ces corrélations tombent entre 0,09 et 0,15, sous le seuil de significativité (0,16). **Nous avons donc mis l'inflation dans M0**, pour ne pas attribuer aux dépenses un effet qui vient en réalité de l'inflation.
+**Second piège : l'inflation.** À première vue, les dépenses de personnel, de fonctionnement et la charge de la dette annoncent la variation de l'OAT (corrélations de Spearman de 0,17 à 0,23). Mais en 2022-2023, l'inflation semble avoir fait monter les deux en même temps : les taux, à cause de la BCE, et ces dépenses, à cause des salaires et de la dette indexée. Quand on retire l'effet de l'inflation et de la variation passée de l'OAT (les deux sont dans M0), ces corrélations tombent entre 0,09 et 0,15, sous le seuil de significativité (0,16). **Nous avons donc mis l'inflation dans M0**, pour ne pas attribuer aux dépenses un effet qui vient en réalité de l'inflation.
 
 ## 2.5 Modèles retenus
 
@@ -126,7 +126,7 @@ Nous traitons le problème comme une **régression** : le modèle prédit un nom
 
 | Modèle | Rôle | Justification |
 | --- | --- | --- |
-| Moyenne historique | Référence minimale | Un modèle qui ne la bat pas n'a pas de pouvoir prédictif (Welch et Goyal, 2008 ; Campbell et Thompson, 2008) |
+| Moyenne historique | Référence minimale | Un modèle qui ne la bat pas n'a pas de pouvoir prédictif utile (Welch et Goyal, 2008 ; Campbell et Thompson, 2008) |
 | Marche aléatoire (variation nulle) | Seconde référence | Prédit que le taux ou l'indice ne bougera pas ; référence classique pour les séries financières |
 | Ridge (régression linéaire régularisée) | Approche économétrique | Représente la tradition linéaire ; la régularisation limite le surapprentissage avec 18 variables |
 | Forêt aléatoire | Machine learning robuste | Capte les effets non linéaires, stable sur de petits échantillons (Breiman, 2001 ; Medeiros et al., 2021) |
@@ -138,9 +138,9 @@ Nous traitons le problème comme une **régression** : le modèle prédit un nom
 
 Nous n'avons pas cherché les meilleurs hyperparamètres sur la période de test. Quand on essaie beaucoup de réglages, on finit toujours par en trouver un qui « marche », mais par hasard. Nous avons donc retenu des valeurs usuelles :
 
-- **Ridge** : paramètre de régularisation choisi automatiquement sur les données d'entraînement, parmi 40 valeurs entre 0,01 et 1 000 000. La grille initiale s'arrêtait à 1 000 ; lors de la revue du code, nous avons constaté que cette borne était atteinte la plupart des mois pour le CAC 40, et nous l'avons élargie (le R² de Ridge change d'au plus 1,2 point).
+- **Ridge** : paramètre de régularisation choisi automatiquement par validation croisée interne (leave-one-out) sur les seules données d'entraînement, parmi 40 valeurs entre 0,01 et 1 000 000. La grille initiale s'arrêtait à 1 000 ; lors d'une vérification du code, nous avons constaté que cette borne était atteinte la plupart des mois pour le CAC 40, et nous l'avons élargie (le R² de Ridge change d'au plus 1,2 point).
 - **Forêt aléatoire** : 300 arbres, profondeur maximale 4, au moins 5 observations par feuille, 50 % des variables tirées à chaque division.
-- **XGBoost** : 200 arbres, profondeur maximale 2, taux d'apprentissage 0,05, sous-échantillonnage de 80 % des observations et des variables.
+- **XGBoost** : 200 arbres, profondeur maximale 2, taux d'apprentissage 0,05, sous-échantillonnage de 80 % des observations et des variables, au moins 5 observations par feuille (min\_child\_weight = 5), pénalité L2 égale à 1.
 
 Ces valeurs sont prudentes : des arbres peu profonds apprennent moins le bruit d'un petit échantillon. Nous devons toutefois être transparents sur un point. Contrairement aux extensions (section 2.7), ces réglages n'ont pas été datés dans le dépôt avant les premiers résultats : le code et les résultats ont été enregistrés ensemble. Pour vérifier que ce choix ne change pas les conclusions, nous l'avons remis en cause de deux façons : l'extension E10 règle XGBoost automatiquement par validation croisée temporelle, et un contrôle relance la forêt aléatoire et XGBoost avec plusieurs graines aléatoires (annexe).
 
@@ -152,11 +152,11 @@ Nous évaluons les modèles comme s'ils avaient été utilisés en vrai, mois ap
 
 Une validation croisée classique tire les mois au hasard. Le modèle pourrait alors apprendre sur 2024 pour prévoir 2021, ce qui n'a aucun sens pour une prévision. Nous utilisons donc une **validation glissante à fenêtre croissante** :
 
-1. Le modèle est entraîné sur mars 2014 – décembre 2019 (70 mois) et prédit janvier 2020.
-2. Il est réentraîné en ajoutant janvier 2020, puis prédit février 2020.
-3. L'opération est répétée chaque mois jusqu'à juillet 2026.
+1. Fin janvier 2020, le modèle est entraîné sur les 70 mois précédents et prévoit la variation de février 2020.
+2. Fin février 2020, il est réentraîné en ajoutant un mois, puis prévoit mars 2020.
+3. L'opération est répétée chaque mois jusqu'à fin juillet 2026 (prévision d'août 2026).
 
-La période de test compte **79 mois**, de janvier 2020 à juillet 2026. Elle traverse des contextes très différents : le Covid-19, la hausse des taux de la BCE à partir de 2022, puis les tensions politiques et budgétaires françaises de 2024 à 2026.
+La période de test compte **79 mois**. Dans tout le mémoire, elle est désignée par les mois où la prévision est faite (janvier 2020 à juillet 2026) ; les variations prévues vont de février 2020 à août 2026. Elle traverse des contextes très différents : le Covid-19, la hausse des taux de la BCE à partir de 2022, puis les tensions politiques et budgétaires françaises de 2024 à 2026.
 
 ### 2.6.2 Mesures de performance
 
@@ -180,16 +180,26 @@ où y\_t est la valeur observée, ŷ\_t la prévision du modèle et ȳ\_t la moy
 Un modèle peut faire un peu mieux qu'un autre par pur hasard. Pour le savoir, nous utilisons le **test de Diebold et Mariano (1995)**, avec la correction de Harvey, Leybourne et Newbold (1997) pour les petits échantillons. Il nous dit si l'écart d'erreurs entre deux modèles est assez grand pour ne pas être dû au hasard. Nous l'appliquons à trois comparaisons :
 
 - M1 contre M0 pour chaque modèle (test de l'hypothèse H1) ;
-- chaque modèle contre la moyenne historique ;
+- chaque modèle contre la prévision « variation nulle » ;
 - forêt aléatoire et XGBoost contre Ridge (hypothèse H3).
 
 ### 2.6.4 Importance des variables
 
 Pour savoir quelles dépenses le modèle utilise le plus (hypothèse H4), nous calculons les **valeurs SHAP** de XGBoost (Lundberg et Lee, 2017). Elles indiquent combien chaque variable pèse, en moyenne, dans les prédictions. Deux précautions s'imposent. D'abord, elles sont calculées sur tout l'échantillon : elles décrivent ce que le modèle utilise, pas ce qui améliore la prévision. Ensuite, une part d'importance ne veut rien dire sans point de comparaison. Nous la comparons donc à la part obtenue par sept variables de pur bruit, tirées au hasard, placées au même endroit que les dépenses.
 
-## 2.7 Extensions pré-enregistrées et correction des tests multiples
+### 2.6.5 Contrôles de solidité
 
-Un résultat pourrait dépendre d'un choix particulier : l'horizon, le modèle, la période. Pour le vérifier, nous avons décliné le protocole principal en vingt extensions. **Avant de lancer chaque extension, nous avons daté sa liste et son protocole dans le dépôt GitHub**, et nous rapportons tous les résultats, favorables ou non.
+Après les premiers résultats, nous avons ajouté cinq contrôles, décrits ici et rapportés au chapitre 3 :
+
+- **Graine aléatoire** : la forêt aléatoire et XGBoost sont réestimés avec 5 et 10 graines différentes.
+- **Contrôle positif (puissance)** : on ajoute à M0 une variable fictive construite pour avoir une corrélation ρ donnée avec la cible (ρ = 0,1 à 1), avec 10 tirages par valeur, pour mesurer ce que le dispositif est capable de détecter.
+- **Contrôle négatif** : on remplace les sept dépenses par sept variables de pur bruit (20 tirages pour Ridge, 5 pour la forêt, 10 pour XGBoost), pour savoir si les dépenses font mieux que des variables sans information.
+- **Décalage de publication** : les modèles principaux sont relancés avec un décalage budgétaire de 1 et de 3 mois au lieu de 2.
+- **Importance par permutation hors échantillon** : sur la période de test, on mélange au hasard les valeurs d'un groupe de variables et on mesure la hausse de l'erreur.
+
+## 2.7 Extensions datées avant exécution et correction des tests multiples
+
+Un résultat pourrait dépendre d'un choix particulier : l'horizon, le modèle, la période. Pour le vérifier, nous avons décliné le protocole principal en vingt extensions, dont dix-neuf ont pu être réalisées (E14 n'a pas pu l'être, faute de données quotidiennes). **Avant de lancer chaque extension, nous avons daté sa liste et son protocole dans le dépôt GitHub**, et nous rapportons tous les résultats, favorables ou non.
 
 Cette précaution répond à un risque bien décrit par Bailey et al. (2014) : à force d'essayer des configurations, on finit toujours par en trouver une qui semble marcher, par hasard.
 
@@ -206,7 +216,7 @@ Le pré-enregistrement s'est fait en plusieurs étapes, et nous préférons le d
 | E7 | Prévisions tempérées vers la moyenne | Campbell et Thompson (2008) |
 | E8 | Combinaison de prévisions | Robustesse des moyennes de modèles |
 | E9 | Elastic Net | Sélection automatique des variables |
-| E10 | XGBoost réglé par validation croisée temporelle emboitée | Vérifier que le choix des hyperparamètres n'est pas en cause |
+| E10 | XGBoost réglé par validation croisée temporelle emboîtée | Vérifier que le choix des hyperparamètres n'est pas en cause |
 | E11 | Fenêtre glissante de 60 mois | S'adapter au changement de régime de 2022 |
 | E12 | Évaluation par période (2020-2021, 2022-2026, marchés calmes ou agités) | Un apport peut être limité aux périodes de tension |
 | E13 | Notations souveraines de la France | Contrôle du risque perçu par les agences |
@@ -216,25 +226,27 @@ Le pré-enregistrement s'est fait en plusieurs étapes, et nous préférons le d
 | E17 | Panel annuel (valeurs de décembre) | Les finances publiques agiraient à basse fréquence |
 | E18 | Régime de crise (exploratoire) | Les marchés ne regarderaient le budget qu'en période de tension |
 | E19 | Actions des secteurs liés à la dépense publique (BTP, défense) | Canal des revenus des entreprises |
-| E20 | Incertitude de politique économique (indice européen de Baker, Bloom et Davis) | Contrôler l'incertitude politique ; l'indice français n'étant pas disponible, nous avons déclaré ce changement avant l'exécution |
+| E20 | Incertitude de politique économique (indice européen de Baker, Bloom et Davis, 2016) | Contrôler l'incertitude politique ; l'indice français n'étant pas disponible, nous avons déclaré ce changement avant l'exécution |
 
 Pour les horizons de plus d'un mois (E1), une difficulté apparaît : à la date de la prévision, les dernières cibles ne sont pas encore connues. Le modèle n'est donc entraîné que sur des cibles déjà observées, et le test de Diebold-Mariano tient compte du chevauchement des périodes.
 
 ### Correction des tests multiples
 
-Avec plus de 150 comparaisons, environ une sur vingt paraîtrait significative au seuil de 5 %, par pur hasard. Nous corrigeons donc toutes les p-values « avec dépenses contre sans dépenses » par la **procédure de Benjamini et Hochberg (1995)**, avec un taux de fausses découvertes de 10 %. Nous ne considérons comme significatifs que les résultats qui résistent à cette correction.
+Avec plus de 150 comparaisons, environ une sur vingt paraîtrait significative au seuil de 5 %, par pur hasard. Nous corrigeons donc toutes les p-values « avec dépenses contre sans dépenses » par la **procédure de Benjamini et Hochberg (1995)**, avec un taux de fausses découvertes de 10 %. Nous ne considérons comme significatifs que les résultats qui résistent à cette correction. Elle porte sur 168 comparaisons (dont E20a, qui compare avec et sans l'indice d'incertitude) ; les ventilations par sous-période (E12, E18) en sont exclues car elles ne sont pas des tests indépendants. La même correction est appliquée séparément aux 18 tests de H1 du modèle principal. Pour la correction, nous utilisons la p-value unilatérale (« avec dépenses meilleur que sans ») ; les tableaux descriptifs donnent la p-value bilatérale.
 
 ## 2.8 Considérations éthiques
 
-**Données.** Toutes les données utilisées sont publiques et en accès libre : situations budgétaires de l'État (data.economie.gouv.fr), séries de marché et macroéconomiques (FRED, BCE, Eurostat), indices boursiers. Elles ne contiennent aucune donnée personnelle. Les sources sont citées, et la liste des fichiers bruts est figée dans le dépôt (manifeste des données).
+**Données.** Toutes les données utilisées sont publiques et en accès libre : situations budgétaires de l'État (data.economie.gouv.fr), séries de marché et macroéconomiques (FRED, BCE, Eurostat), indices boursiers. Elles ne contiennent aucune donnée personnelle, et sont utilisées dans le respect des conditions de réutilisation de chaque fournisseur (licence ouverte pour les données publiques françaises). Les sources sont citées, et la liste des fichiers bruts est figée dans le dépôt (manifeste des données).
 
-**Transparence et résultats négatifs.** Le code, les données traitées et les résultats sont disponibles dans un dépôt GitHub, et l'ensemble peut être relancé avec un seul script. Le plan des extensions a été daté avant leur exécution. Nous rapportons tous les résultats, y compris négatifs, et corrigeons pour les tests multiples. Ne publier que les résultats favorables donnerait une image fausse de ce que les données permettent ; c'est un problème connu en finance empirique (Bailey et al., 2014).
+**Transparence et résultats négatifs.** Le code, les données traitées et les résultats sont conservés dans un dépôt GitHub (accessible sur demande), et l'ensemble peut être relancé avec un seul script. Le plan des extensions a été daté avant leur exécution. Nous rapportons tous les résultats, y compris négatifs, et corrigeons pour les tests multiples. Ne publier que les résultats favorables donnerait une image fausse de ce que les données permettent ; c'est un problème connu en finance empirique (Bailey et al., 2014).
 
 **Usage des résultats.** Ce travail n'est pas un conseil en investissement. Un modèle qui paraît prédire les marchés peut conduire à des décisions coûteuses s'il est mal évalué ; c'est pourquoi nous insistons sur la comparaison à des références simples.
 
 **Outils d'intelligence artificielle.** Des outils d'IA générative ont été utilisés pour l'aide à la programmation, la relecture du code et l'aide à la rédaction. Leur usage est décrit dans la déclaration prévue par le guide de l'ECE. Les choix de recherche, la validation des résultats et les interprétations relèvent de l'auteur.
 
 ## Références ajoutées par ce chapitre
+
+- Baker, S. R., Bloom, N., & Davis, S. J. (2016). Measuring economic policy uncertainty. *The Quarterly Journal of Economics*, 131(4), 1593–1636.
 
 À intégrer à la bibliographie générale (les autres références citées figurent déjà au chapitre 1).
 
@@ -247,4 +259,9 @@ Avec plus de 150 comparaisons, environ une sur vingt paraîtrait significative a
 
 - [Situations mensuelles budgétaires de l'État, séries longues](https://data.economie.gouv.fr/explore/assets/situations-mensuelles-budgetaires-series-longues/), data.economie.gouv.fr.
 - [La situation mensuelle de l'État](https://www.economie.gouv.fr/dgfip/la-situation-mensuelle-de-letat), DGFiP (dates de publication).
-- [Dépôt du projet](https://github.com/lyaminedb1/public-spending-market-prediction), GitHub (code, données, plan pré-enregistré `docs/plan_extensions.md`).
+- [Dépôt du projet](https://github.com/lyaminedb1/public-spending-market-prediction), GitHub (code, données, plan daté des extensions `docs/plan_extensions.md`).
+- [FRED](https://fred.stlouisfed.org), Federal Reserve Bank of St. Louis (taux OAT et Bund, séries OCDE, VIX).
+- [Portail de données de la BCE](https://data.ecb.europa.eu) (taux directeurs).
+- [Eurostat](https://ec.europa.eu/eurostat) (IPCH, finances publiques trimestrielles).
+- [Yahoo Finance](https://finance.yahoo.com) (CAC 40 et actions sectorielles).
+- [Economic Policy Uncertainty](https://www.policyuncertainty.com) (indice européen d'incertitude).

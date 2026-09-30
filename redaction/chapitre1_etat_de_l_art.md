@@ -46,7 +46,7 @@ Welch et Goyal testent les variables les plus connues pour prévoir le rendement
 
 - Un pouvoir prédictif faible, voire nul, est plausible dès le départ. Un résultat négatif serait cohérent avec Fama et Ramey, et il aurait un sens.
 - Il faut évaluer les modèles hors échantillon, sur des mois qu'ils n'ont jamais vus.
-- La référence à battre est simple : la moyenne historique. Un modèle qui ne la bat pas n'a pas de pouvoir prédictif.
+- La référence à battre est simple : la moyenne historique. Un modèle qui ne la bat pas n'a pas de pouvoir prédictif utile par rapport à cette référence.
 
 ## 1.2 Finances publiques et spreads souverains en zone euro
 
@@ -116,7 +116,7 @@ Les modèles à base d'arbres, comme les forêts aléatoires (Breiman, 2001) et 
 
 Les données publiques ouvertes sont gratuites, officielles et régulières. Pour la prévision, elles posent pourtant trois problèmes : le délai de publication, les révisions et la forme des données.
 
-### 1.4.1 L'open data budgétaire
+### 1.4.1 Les données budgétaires ouvertes
 
 Janssen, Charalabidis et Zuiderwijk (2012) rappellent que publier des données ne suffit pas à ce qu'elles soient utilisées : leur qualité, leur format et leur documentation comptent autant. En France, la loi pour une République numérique de 2016 fait de l'ouverture des données publiques la règle. Le ministère de l'Économie diffuse ainsi, sur data.economie.gouv.fr, la situation mensuelle budgétaire de l'État en séries longues depuis 2013 : dépenses par titre, recettes et solde.
 
@@ -153,7 +153,7 @@ Bailey et al. (2014) mettent en garde contre un piège fréquent : à force de t
 | Noyau européen | Afonso, Arghyrou et Kontonikas (2015) | Zone euro, 1999-2010 | Panel | Déficits attendus sanctionnés ; dette prise en compte seulement après 2009 | Explique, ne prévoit pas |
 | Noyau européen | Bernoth, von Hagen et Schuknecht (2012) | Europe ; spreads face à l'Allemagne | Panel | Dette et déficit expliquent une partie des spreads | Linéaire, données annuelles |
 | Noyau européen | Attinasi, Checherita et Nickel (2009) | Zone euro, 2007-2009 | Panel dynamique | Risque, liquidité, positions budgétaires attendues et annonces de sauvetage bancaire expliquent les spreads | Période de crise seulement |
-| Noyau européen | Garlanda-Longueville (2023) | **France** ; annonces du Covid | Étude d'événements | Les annonces budgétaires font bouger actions et spread | Annonces, pas dépenses exécutées |
+| Noyau européen | Garlanda-Longueville (2023) | **France** ; annonces du Covid | Étude d'événements | Les annonces du président de la République font en général monter les actions et baisser le spread | Annonces, pas dépenses exécutées |
 | Noyau européen | Barbier-Gauchard et Sofianos (2025) | 17 pays de la zone euro ; dette publique | ML (XGBoost) | Prévoit mieux la dette que la Commission et le FMI | Cible budgétaire, pas financière |
 | Cadre théorique | Fama (1970) | Général (études surtout américaines) | Synthèse théorique et empirique | Les prix intègrent l'information publique | Ne porte pas sur les données budgétaires |
 | Cadre théorique | Ramey (2011) | États-Unis ; trimestriel | VAR, chocs narratifs | Les chocs de dépenses sont anticipés | Explique, ne prévoit pas |
@@ -177,7 +177,7 @@ Un troisième constat s'ajoute : **la France est peu étudiée.** Six des quinze
 Bouillot, Candelon et Kool (2025) commencent à rapprocher les deux blocs. Notre travail s'en distingue sur trois points :
 
 - **Nous isolons l'apport des dépenses publiques.** Chez eux, les finances publiques sont mêlées à près de 5 000 variables. Ici, nous comparons explicitement le même modèle avec et sans dépenses.
-- **Nous utilisons les données détaillées d'exécution du budget français**, par catégorie de dépense, en open data.
+- **Nous utilisons les données détaillées d'exécution du budget français**, par catégorie de dépense, en données ouvertes.
 - **Nous comparons trois indicateurs** plus ou moins exposés au risque souverain : le spread, le taux OAT et le CAC 40.
 
 ### 1.5.2 Problématique et hypothèses
