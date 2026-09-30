@@ -62,8 +62,23 @@ while i < len(lines):
     out.append(l); i += 1
 assert k == len(caps), k
 b2 = "\n".join(out)
-# formule : bloc latex -> équation
-b2 = re.sub(r"```latex\n(.*?)\n```", "![](" + str(ROOT / "redaction" / "outils" / "formule_r2.png") + "){width=7.5cm}", b2, flags=re.S)
+# formules : chaque bloc latex est rendu en image (matplotlib mathtext), le Word et le PDF les affichent partout
+def _formule(m):
+    import hashlib, matplotlib
+    matplotlib.use("Agg")
+    import matplotlib.pyplot as plt
+    tex = " ".join(l.strip() for l in m.group(1).strip().splitlines())
+    tex = tex.replace("R^2_{OOS}", "R^2_{\\mathrm{OOS}}").replace("\\frac", "\\dfrac")
+    out = OUT / ("formule_" + hashlib.md5(tex.encode()).hexdigest()[:10] + ".png")
+    fig = plt.figure()
+    t = fig.text(0, 0, "$" + tex + "$", fontsize=13, math_fontfamily="stix")
+    fig.savefig(out, dpi=300, bbox_inches="tight", pad_inches=0.04, transparent=False)
+    w = fig.bbox_inches  # noqa
+    plt.close(fig)
+    from PIL import Image
+    px = Image.open(out).size[0]
+    return f"![]({out}){{width={min(px / 300 * 2.54, 15.5):.1f}cm}}"
+b2 = re.sub(r"```latex\n(.*?)\n```", _formule, b2, flags=re.S)
 b2 = b2.replace("où y\\_t est", "où *y*~t~ est").replace("ŷ\\_t la", "*ŷ*~t~ la").replace("ȳ\\_t la", "*ȳ*~t~ la")
 
 

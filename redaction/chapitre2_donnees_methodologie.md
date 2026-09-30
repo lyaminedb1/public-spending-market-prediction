@@ -38,6 +38,14 @@ Quatre caractéristiques de ces données comptent pour la suite :
 
 Le jeu de données final compte **150 mois, de mars 2014 à août 2026**, dont 149 avec une cible (le dernier mois n'a pas encore de « mois suivant »). Une ligne correspond à la fin d'un mois t. Elle ne contient que ce qui était connu à cette date : c'est la règle qui guide toutes les étapes ci-dessous.
 
+Formellement, pour chaque cible y, nous cherchons à prévoir la valeur du mois suivant à partir de l'information disponible à la fin du mois t :
+
+```latex
+y_{t+1} = f\left(M_t,\ B_{t-2}\right) + \varepsilon_{t+1}
+```
+
+où *M* regroupe les variables de marché et de contrôle connues à la fin du mois *t* (l'inflation étant celle du mois précédent), *B* les variables budgétaires du mois *t* − 2, *f* le modèle estimé et ε l'erreur de prévision.
+
 ### 2.2.1 Des cumuls aux flux mensuels
 
 La DGFiP publie des montants **cumulés depuis le 1er janvier** : le chiffre de mars additionne janvier, février et mars. Pour retrouver ce qui a été dépensé dans le mois, nous soustrayons le cumul du mois précédent. En janvier, le flux est simplement le cumul, puisque le compteur repart de zéro.
@@ -50,6 +58,14 @@ L'État ne dépense pas au même rythme toute l'année. L'impôt sur les sociét
 - **L'écart du cumul depuis janvier par rapport au même mois de l'année précédente, rapporté au montant des douze derniers mois** (en %). Une valeur de +1,2 en mai veut dire que, fin mai, l'État a dépensé l'équivalent de 1,2 % d'une année de plus que fin mai de l'année précédente. Comme on compare toujours le même mois, la saison s'annule.
 
 Nous n'avons pas utilisé un simple taux de croissance du cumul. En janvier, le cumul est presque nul, et le taux prend des valeurs absurdes : de -902 % à +1 789 % pour l'impôt sur les sociétés. Diviser par le montant des douze derniers mois règle ce problème.
+
+Pour une ligne budgétaire i et un mois t, la variable utilisée dans les modèles s'écrit :
+
+```latex
+g_{i,t} = 100 \times \frac{C_{i,t} - C_{i,t-12}}{\left| S_{i,t} \right|} \qquad \mathrm{avec} \qquad S_{i,t} = \sum_{k=0}^{11} F_{i,t-k}
+```
+
+où *C* est le cumul depuis janvier, *F* le flux mensuel et *S* la somme des douze derniers flux. Le numérateur compare le cumul au même mois de l'année précédente, ce qui retire la saisonnalité ; le dénominateur ne s'approche jamais de zéro, contrairement au cumul de début d'année.
 
 Cette mesure a tout de même une limite. En janvier, elle compare un seul mois de dépenses ; en décembre, une année entière. Ses variations sont donc beaucoup plus fortes en fin d'année : pour les dépenses totales, l'écart-type passe de 0,7 en janvier à 4,4 en décembre. Une même valeur n'a donc pas tout à fait le même sens selon le mois.
 
@@ -142,6 +158,14 @@ Nous n'avons pas cherché les meilleurs hyperparamètres sur la période de test
 - **Forêt aléatoire** : 300 arbres, profondeur maximale 4, au moins 5 observations par feuille, 50 % des variables tirées à chaque division.
 - **XGBoost** : 200 arbres, profondeur maximale 2, taux d'apprentissage 0,05, sous-échantillonnage de 80 % des observations et des variables, au moins 5 observations par feuille (min\_child\_weight = 5), pénalité L2 égale à 1.
 
+La régression Ridge estime les coefficients en pénalisant leur taille, sur des variables centrées réduites :
+
+```latex
+\hat{\beta} = \mathrm{arg\,min}_{\beta_0,\,\beta} \ \sum_{s} \left( y_{s+1} - \beta_0 - x_s^{\top}\beta \right)^2 + \alpha \sum_{j} \beta_j^2
+```
+
+Plus α est grand, plus les coefficients sont ramenés vers zéro. Quand α tend vers l'infini, la prévision se réduit à la constante, c'est-à-dire à la moyenne d'entraînement : choisir un α très élevé revient à dire que les variables n'apportent pas de signal.
+
 Ces valeurs sont prudentes : des arbres peu profonds apprennent moins le bruit d'un petit échantillon. Nous devons toutefois être transparents sur un point. Contrairement aux extensions (section 2.7), ces réglages n'ont pas été datés dans le dépôt avant les premiers résultats : le code et les résultats ont été enregistrés ensemble. Pour vérifier que ce choix ne change pas les conclusions, nous l'avons remis en cause de deux façons : l'extension E10 règle XGBoost automatiquement par validation croisée temporelle, et un contrôle relance la forêt aléatoire et XGBoost avec plusieurs graines aléatoires (annexe).
 
 ## 2.6 Protocole d'évaluation
@@ -182,6 +206,14 @@ Un modèle peut faire un peu mieux qu'un autre par pur hasard. Pour le savoir, n
 - M1 contre M0 pour chaque modèle (test de l'hypothèse H1) ;
 - chaque modèle contre la prévision « variation nulle » ;
 - forêt aléatoire et XGBoost contre Ridge (hypothèse H3).
+
+Pour deux prévisions concurrentes, dont les erreurs sur les *T* mois de test sont notées *e*1 et *e*2, le test porte sur l'écart des erreurs au carré :
+
+```latex
+d_t = e_{1,t}^2 - e_{2,t}^2, \qquad DM = \frac{\bar{d}}{\sqrt{\hat{\gamma}_0 / T}}, \qquad DM^{*} = DM \times \sqrt{\frac{T-1}{T}}
+```
+
+où le numérateur est la moyenne des écarts *d* et γ̂ leur variance. *DM*\* est la statistique corrigée de Harvey, Leybourne et Newbold (1997) pour un horizon d'un mois ; elle est comparée à une loi de Student à *T* − 1 degrés de liberté. Pour les horizons plus longs (extension E1), la variance tient compte de l'autocorrélation des écarts (*h* − 1 retards).
 
 ### 2.6.4 Importance des variables
 
@@ -233,6 +265,14 @@ Pour les horizons de plus d'un mois (E1), une difficulté apparaît : à la date
 ### Correction des tests multiples
 
 Avec plus de 150 comparaisons, environ une sur vingt paraîtrait significative au seuil de 5 %, par pur hasard. Nous corrigeons donc toutes les p-values « avec dépenses contre sans dépenses » par la **procédure de Benjamini et Hochberg (1995)**, avec un taux de fausses découvertes de 10 %. Nous ne considérons comme significatifs que les résultats qui résistent à cette correction. Elle porte sur 168 comparaisons (dont E20a, qui compare avec et sans l'indice d'incertitude) ; les ventilations par sous-période (E12, E18) en sont exclues car elles ne sont pas des tests indépendants. La même correction est appliquée séparément aux 18 tests de H1 du modèle principal. Pour la correction, nous utilisons la p-value unilatérale (« avec dépenses meilleur que sans ») ; les tableaux descriptifs donnent la p-value bilatérale.
+
+La procédure est la suivante. Les *m* p-values sont classées par ordre croissant, de la plus petite, *p*(1), à la plus grande, *p*(*m*). On cherche le plus grand rang *k* tel que :
+
+```latex
+p_{(k)} \leq \frac{k}{m}\, q, \qquad q = 0{,}10
+```
+
+et l'on déclare significatives les k premières comparaisons. De façon équivalente, chaque comparaison reçoit une p-value corrigée, qui est celle rapportée dans nos tableaux ; une comparaison est significative si sa p-value corrigée est inférieure à q. Avec m = 168, une p-value brute doit être au plus de 0,10/168, soit environ 0,0006, pour être retenue quand elle est la plus petite et que toutes les autres sont élevées.
 
 ## 2.8 Considérations éthiques
 
