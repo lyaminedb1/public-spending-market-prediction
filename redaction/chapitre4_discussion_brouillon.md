@@ -24,7 +24,7 @@ Le budget de l'État est voté en décembre, dans la loi de finances de l'année
 
 Or un prix de marché réagit à l'information nouvelle, pas à ce qui est déjà prévu (Fama, 1970). Ramey (2011) montre que, pour les dépenses publiques, ce qui compte est le moment de l'annonce, et non celui où l'argent est dépensé. L'extension E4 va dans ce sens : même l'écart entre l'exécution et le budget voté, qui mesure une forme de surprise, n'améliore pas la prévision. On retrouve la même idée chez Attinasi et al. (2009) : pendant la crise de 2007-2009, c'est l'annonce des plans de sauvetage bancaire qui a fait monter les spreads, et non le montant engagé.
 
-Cette explication reste une hypothèse. Pour la démontrer, il faudrait observer le spread le jour même de chaque publication (étude d'événement). Cette étude n'a pas pu être réalisée, faute de taux quotidiens accessibles (sections 4.6 et 4.7).
+Cette explication reste une hypothèse. Pour la démontrer, il faudrait observer le spread le jour même de chaque publication (étude d'événement). Cette étude n'a pas pu être réalisée, faute de taux quotidiens accessibles (sections 4.7 et 4.8).
 
 ### Ce qui fait bouger le spread n'est pas budgétaire
 
@@ -62,7 +62,33 @@ Pour les taux, la prévision « pas de variation » bat la moyenne historique. L
 
 Ces trois points ont un même message : un bon score ne suffit pas. Il faut toujours le comparer à une référence simple et à du bruit, et vérifier que la cible ne contient pas une régularité mécanique.
 
-## 4.4 Comparaison avec la littérature
+## 4.4 Retour sur les modèles : pourquoi le machine learning ne fait pas mieux, et ce qui reste prévisible
+
+### Pourquoi les modèles d'arbres font moins bien que Ridge (H3)
+
+On aurait pu attendre du machine learning qu'il trouve des relations non linéaires que la régression ne voit pas. C'est l'inverse qui se produit : XGBoost est le moins bon des trois modèles, et la forêt aléatoire ne fait pas mieux que Ridge. Deux éléments peuvent l'expliquer.
+
+Le premier est le rapport entre le signal et le bruit. Avec 70 à 148 mois d'entraînement et des cibles très bruitées, un modèle flexible trouve toujours des régularités dans l'échantillon d'apprentissage, mais ce sont surtout des coïncidences qui ne se répètent pas. L'instabilité de XGBoost en est un indice : son R² varie d'environ 9 points selon la seule graine aléatoire. Un modèle qui change autant avec le hasard du tirage apprend surtout du bruit.
+
+Le second est le comportement de Ridge. Quand il ne trouve pas de signal, Ridge augmente sa pénalité et rapproche sa prévision de la moyenne. C'est ce qui se passe pour le CAC 40 : la pénalité choisie est souvent très forte (supérieure à 10 000 dans 27 à 44 % des mois, contre moins de 100 le plus souvent pour le spread), et Ridge devient presque la moyenne historique, d'où son R² proche de zéro (-1,3 %). Autrement dit, le « meilleur » modèle est celui qui renonce le plus à prévoir. Ce résultat rejoint une observation de Bouillot et al. (2025) : même dans leur étude, des régressions pénalisées simples font mieux que XGBoost dans certains pays (Belgique, Espagne).
+
+Le machine learning n'est donc pas inutile en soi ; il a besoin de plus d'observations et d'un signal plus fort que ce que nos données offrent à un mois.
+
+### Pourquoi l'importance des variables ne dit rien ici (H4)
+
+L'hypothèse H4 supposait que la charge de la dette et les dépenses d'intervention seraient les plus prédictives. Les valeurs SHAP semblaient d'abord aller dans ce sens, avec les dépenses d'intervention en tête. Mais des variables de pur bruit obtiennent la même part d'importance, et mélanger les dépenses sur la période de test n'augmente pas l'erreur. Un modèle d'arbres utilise toutes les variables qu'on lui donne, même inutiles ; il faut donc toujours comparer leur importance à celle du bruit avant d'en tirer une conclusion.
+
+### Ce qui reste prévisible
+
+Le résultat n'est pas entièrement négatif. Certaines extensions battent la moyenne, mais **sans les dépenses** :
+
+- **La volatilité** (E3) : l'ampleur des mouvements du mois suivant est en partie prévisible (R² de +9,6 % pour le CAC 40, +3,3 % pour l'OAT). C'est cohérent avec un fait bien connu des marchés : les périodes agitées se suivent, et les périodes calmes aussi (Engle, 1982). On prévoit mieux l'intensité d'un mouvement que sa direction.
+- **Le sens de variation de l'OAT** (E2) : la classification hausse / baisse fait un peu mieux que la fréquence historique (score de Brier +2,5 %).
+- **Le CAC 40 à 12 mois** (E1 : +11,8 %). Ce résultat est fragile : il repose sur 68 prévisions qui se chevauchent, donc sur très peu d'informations indépendantes.
+
+Dans aucun de ces cas l'ajout des dépenses n'apporte un gain significatif. Ce qui est prévisible vient des marchés eux-mêmes, pas du budget de l'État.
+
+## 4.5 Comparaison avec la littérature
 
 ### Bouillot, Candelon et Kool (2025) : un R² élevé n'est pas une bonne prévision
 
@@ -86,7 +112,7 @@ Belly et al. (2023) trouvent que le machine learning suit mieux les spreads que 
 
 Enfin, Garlanda-Longueville (2023) trouve un effet des annonces budgétaires françaises sur le spread, avec des données quotidiennes. Ce résultat est compatible avec le nôtre : il suggère que ce sont les annonces, observées au jour le jour, qui font bouger les marchés, plutôt que l'exécution mensuelle publiée deux mois plus tard.
 
-## 4.5 Implications
+## 4.6 Implications
 
 **Pour la recherche.** Un résultat de prévision doit toujours être comparé à une référence naïve (moyenne historique et, pour les taux, variation nulle) et à du bruit. Sans ces deux repères, un R² élevé sur un niveau ou une forte part d'importance SHAP peuvent donner une impression de pouvoir prédictif qui n'existe pas. Publier les résultats négatifs, avec des contrôles de puissance, évite que la littérature ne retienne que les configurations qui semblent marcher.
 
@@ -94,7 +120,7 @@ Enfin, Garlanda-Longueville (2023) trouve un effet des annonces budgétaires fra
 
 **Pour les producteurs de données ouvertes.** L'intérêt des situations budgétaires pour la recherche serait plus grand avec un calendrier de publication archivé et la conservation des versions successives des chiffres. Ces deux éléments permettraient de travailler avec l'information réellement disponible à chaque date.
 
-## 4.6 Limites
+## 4.7 Limites
 
 ### Limites des données
 
@@ -113,7 +139,7 @@ Enfin, Garlanda-Longueville (2023) trouve un effet des annonces budgétaires fra
 - **Panel européen.** Pour E16, 25 des 68 séries de l'OCDE ne sont plus mises à jour depuis fin 2022 ou début 2024 ; environ 23 % des valeurs de la fin de la période de test sont donc complétées. Pour E19, les prix des actions n'incluent pas les dividendes.
 - **Pas d'étude d'événement.** Faute de taux quotidiens accessibles, nous n'avons pas pu mesurer la réaction du marché le jour de chaque publication. L'explication « l'information est déjà connue » (section 4.2) reste donc une hypothèse.
 
-## 4.7 Recherches futures
+## 4.8 Recherches futures
 
 - **Étude d'événement.** Avec des taux quotidiens (Banque de France, Bundesbank) et les dates exactes de publication des situations budgétaires, on pourrait mesurer la réaction du spread le jour même. C'est le test direct de l'explication « l'information est déjà connue ». Garlanda-Longueville (2023) montre qu'une telle approche trouve des effets pour les annonces budgétaires.
 - **Les annonces plutôt que l'exécution.** Le projet de loi de finances, les lois de finances rectificatives et les programmes de stabilité sont de l'information nouvelle pour les marchés. Ils pourraient être codés comme des surprises, par exemple l'écart entre le déficit annoncé et les prévisions des économistes.
@@ -123,4 +149,5 @@ Enfin, Garlanda-Longueville (2023) trouve un effet des annonces budgétaires fra
 
 ## Références ajoutées par ce chapitre
 
+- Engle, R. F. (1982). Autoregressive conditional heteroscedasticity with estimates of the variance of United Kingdom inflation. *Econometrica*, 50(4), 987–1007.
 - Working, H. (1960). Note on the correlation of first differences of averages in a random chain. *Econometrica*, 28(4), 916–918.
