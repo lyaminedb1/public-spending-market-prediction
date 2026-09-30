@@ -76,7 +76,7 @@ Nous avons aussi appliqué la correction de Benjamini et Hochberg aux 18 tests d
 
 Quatre contrôles complètent le tableau 3.2. Ils ont été ajoutés lors de la revue du code, après les premiers résultats.
 
-**Graine aléatoire.** La forêt aléatoire et XGBoost dépendent d'un tirage au hasard. Nous les avons réestimés avec 5 graines (forêt) et 10 graines (XGBoost). Le R² de XGBoost varie d'environ 9 points selon la graine (par exemple de -39,8 % à -30,8 % pour le spread, jeu M0), celui de la forêt d'environ 3 points. Avec toutes les graines, le R² reste négatif, et aucun test DM M1 contre M0 n'est significatif (plus petite p-value : 0,1).
+**Graine aléatoire.** La forêt aléatoire et XGBoost dépendent d'un tirage au hasard. Nous les avons réestimés avec 5 graines (forêt) et 10 graines (XGBoost). Le R² de XGBoost varie d'environ 9 points selon la graine (par exemple de -39,8 % à -30,8 % pour le spread, jeu M0), celui de la forêt d'environ 3 points. Avec toutes les graines, le R² reste négatif, et aucun test DM M1 contre M0 n'est significatif (plus petite p-value : 0,13).
 
 **Puissance du test (contrôle positif).** Pour savoir si notre dispositif peut détecter un vrai signal, nous avons ajouté à M0 une variable fictive corrélée à la cible (corrélation ρ), avec Ridge et 10 tirages par valeur de ρ (tableau 3.4).
 

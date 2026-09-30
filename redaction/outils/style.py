@@ -57,19 +57,33 @@ if "Bibliography" in [s.name for s in styles]:
 for name in ("Hyperlink",):
     if name in [s.name for s in styles]: STY[name].font.name = TNR
 
+from docx.enum.style import WD_STYLE_TYPE
+for nm in ("CaptionTable", "CaptionFigure"):
+    if nm not in STY:
+        st = d.styles.add_style(nm, WD_STYLE_TYPE.PARAGRAPH); st.base_style = STY["Normal"]; font(st, 11, bold=True); STY[nm] = st
+for nm, size in (("TitlePage1", 18), ("TitlePage2", 13)):
+    if nm in STY:
+        st = STY[nm]; font(st, size, bold=(nm == "TitlePage1"))
+        pf = st.paragraph_format; pf.alignment = WD_ALIGN_PARAGRAPH.CENTER; pf.line_spacing_rule = WD_LINE_SPACING.SINGLE
+        pf.space_before = Pt(40 if nm == "TitlePage1" else 14); pf.space_after = Pt(14)
+# Word met à jour le sommaire et les listes à l'ouverture
+_s = d.settings.element; _u = OxmlElement("w:updateFields"); _u.set(qn("w:val"), "true"); _s.append(_u)
+
 # Titres de niveau 3 : terminés par un point (guide ECE)
 for p in d.paragraphs:
     if p.style.name == "Heading 3" and p.runs:
         t = p.text.rstrip()
         if t and t[-1] not in ".?!:":
             p.runs[-1].text = p.runs[-1].text.rstrip() + "."
-    # légendes et sources de tableaux : simple interligne
-    if re.match(r"^(Tableau \d\.\d|Figure \d\.\d|Source :)", p.text):
+    # légendes (styles dédiés, pour les listes des tableaux et des figures) et sources : simple interligne
+    m = re.match(r"^(Tableau|Figure) [A-Z0-9]+\.\d+ –", p.text)
+    if m:
+        p.style = STY["CaptionTable" if m.group(1) == "Tableau" else "CaptionFigure"]
+    if m or p.text.startswith("Source :"):
         p.paragraph_format.line_spacing_rule = WD_LINE_SPACING.SINGLE
         p.paragraph_format.keep_with_next = p.text.startswith("Tableau")
-        if p.text.startswith("Figure"): p.paragraph_format.alignment = WD_ALIGN_PARAGRAPH.CENTER
-        p.paragraph_format.alignment = WD_ALIGN_PARAGRAPH.LEFT
-        p.paragraph_format.space_before = Pt(6 if p.text.startswith("Tableau") else 2)
+        p.paragraph_format.alignment = WD_ALIGN_PARAGRAPH.CENTER if p.text.startswith("Figure") else WD_ALIGN_PARAGRAPH.LEFT
+        p.paragraph_format.space_before = Pt(6 if m else 2)
         p.paragraph_format.space_after = Pt(4 if p.text.startswith("Tableau") else 12)
         for r in p.runs: r.font.size = Pt(10 if p.text.startswith("Source") else 11)
 

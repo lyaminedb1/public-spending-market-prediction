@@ -76,21 +76,47 @@ def fig(m):
 b3 = re.sub(r"\*\\\[(Figure 3\.\d – [^:]+?) : `results/figures/([^`]+)`\\\]\*", fig, b3)
 assert "\\[Figure" not in b3, re.findall(r".*Figure.*", b3)
 
+PB = ["```{=openxml}", '<w:p><w:r><w:br w:type="page"/></w:r></w:p>', "```", ""]
+def field(instr):
+    return ["```{=openxml}",
+            '<w:p><w:r><w:fldChar w:fldCharType="begin" w:dirty="true"/></w:r><w:r><w:instrText xml:space="preserve"> '
+            + instr + ' </w:instrText></w:r><w:r><w:fldChar w:fldCharType="separate"/></w:r><w:r><w:t>'
+            '(Clic droit puis « Mettre à jour les champs » dans Word)</w:t></w:r><w:r><w:fldChar w:fldCharType="end"/></w:r></w:p>',
+            "```", ""]
+
+lim = (MD / "pages_liminaires_intro_conclusion.md").read_text()
+def sec(title, level="## "):
+    i = lim.index(level + title)
+    j = min([k for k in (lim.find("\n## ", i + 3), lim.find("\n# ", i + 3)) if k > 0] + [len(lim)])
+    return lim[i + len(level + title):j].strip()
+titre = [l for l in sec("Page de titre").split("\n") if l.strip()]
+intro = lim[lim.index("# Introduction générale"):lim.index("# Conclusion générale")].strip()
+concl = lim[lim.index("# Conclusion générale"):].strip()
+
 doc = []
-doc += ["# Chapitre 1 – État de l'art", "", b1.replace("\n## ", "\n## ").strip(), ""]
-doc += ["```{=openxml}", '<w:p><w:r><w:br w:type="page"/></w:r></w:p>', "```", ""]
-doc += ["# Chapitre 2 – Données et méthodologie", "", b2.strip(), ""]
-doc += ["```{=openxml}", '<w:p><w:r><w:br w:type="page"/></w:r></w:p>', "```", ""]
-doc += ["# Chapitre 3 – Résultats", "", b3.strip(), ""]
-doc += ["```{=openxml}", '<w:p><w:r><w:br w:type="page"/></w:r></w:p>', "```", ""]
+for k, l in enumerate(titre):
+    doc += [f"::: {{custom-style=\"TitlePage{1 if k == 0 else 2}\"}}", l.replace("**", ""), ":::", ""]
+doc += PB
+for t in ("Remerciements", "Déclaration d'utilisation de l'intelligence artificielle"):
+    doc += [f"# {t}", "", sec(t), ""] + PB
+doc += ["# Résumé", "", sec("Résumé"), "", "# Abstract", "", sec("Abstract"), ""] + PB
+doc += ["# Sommaire", ""] + field('TOC \\o "1-2" \\h \\z \\u') + PB
+doc += ["# Liste des tableaux", ""] + field('TOC \\h \\z \\t "CaptionTable,1"')
+doc += ["# Liste des figures", ""] + field('TOC \\h \\z \\t "CaptionFigure,1"') + PB
+doc += ["# Liste des abréviations", "", sec("Liste des abréviations"), "", "# Glossaire", "", sec("Glossaire"), ""] + PB
+doc += [intro, ""] + PB
+doc += ["# Chapitre 1 – État de l'art", "", b1.strip(), ""] + PB
+doc += ["# Chapitre 2 – Données et méthodologie", "", b2.strip(), ""] + PB
+doc += ["# Chapitre 3 – Résultats", "", b3.strip(), ""] + PB
 c4 = (MD/"chapitre4_discussion_brouillon.md").read_text().split("\n")
-b4 = "\n".join(c4[3:]).strip()
+b4 = "\n".join(l for l in c4[3:] if not l.startswith("> **Statut")).strip()
 if "## Références ajoutées par ce chapitre" in b4:
     b4, refs4 = b4.split("## Références ajoutées par ce chapitre", 1)
     biblio = sorted(set(biblio + items(refs4)), key=key)
-doc += ["# Chapitre 4 – Discussion (brouillon en cours)", "", b4, ""]
-doc += ["```{=openxml}", '<w:p><w:r><w:br w:type="page"/></w:r></w:p>', "```", ""]
+doc += ["# Chapitre 4 – Discussion", "", b4.strip(), ""] + PB
+doc += [concl, ""] + PB
 doc += ["# Références", ""] + [f"::: {{custom-style=\"Bibliography\"}}\n{b}\n:::\n" for b in biblio]
 doc += ["## Sources en ligne", ""] + [f"::: {{custom-style=\"Bibliography\"}}\n{w}\n:::\n" for w in web2]
+doc += PB + [(MD / "annexes.md").read_text()]
 (OUT / "memoire.md").write_text("\n".join(doc))
-print("références:", len(biblio), "| sources en ligne:", len(web2), "| tableaux ch2:", k)
+print("références:", len(biblio))
