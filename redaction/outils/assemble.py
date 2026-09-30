@@ -85,6 +85,9 @@ doc += ["# Chapitre 3 – Résultats", "", b3.strip(), ""]
 doc += ["```{=openxml}", '<w:p><w:r><w:br w:type="page"/></w:r></w:p>', "```", ""]
 c4 = (MD/"chapitre4_discussion_brouillon.md").read_text().split("\n")
 b4 = "\n".join(c4[3:]).strip()
+if "## Références ajoutées par ce chapitre" in b4:
+    b4, refs4 = b4.split("## Références ajoutées par ce chapitre", 1)
+    biblio = sorted(set(biblio + items(refs4)), key=key)
 doc += ["# Chapitre 4 – Discussion (brouillon en cours)", "", b4, ""]
 doc += ["```{=openxml}", '<w:p><w:r><w:br w:type="page"/></w:r></w:p>', "```", ""]
 doc += ["# Références", ""] + [f"::: {{custom-style=\"Bibliography\"}}\n{b}\n:::\n" for b in biblio]

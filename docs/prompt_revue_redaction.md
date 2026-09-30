@@ -6,7 +6,7 @@
 ---
 
 Tu fais la revue complète de la rédaction du mémoire de MSc d'Elyamine Dali Braham (ECE Paris, remise le
-10 octobre 2026). Le code et les résultats sont terminés et vérifiés ; ta mission porte sur le **texte**.
+**vendredi 2 octobre 2026 à minuit** : le rapport doit être prêt jeudi soir). Le code et les résultats sont terminés et vérifiés ; ta mission porte sur le **texte**.
 
 ## À lire d'abord
 1. `CLAUDE.md` : contexte, périmètre, tous les chiffres de référence, guide de rédaction ECE, règles.

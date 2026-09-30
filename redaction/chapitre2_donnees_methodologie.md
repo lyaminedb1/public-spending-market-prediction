@@ -224,6 +224,16 @@ Pour les horizons de plus d'un mois (E1), une difficulté apparaît : à la date
 
 Avec plus de 150 comparaisons, environ une sur vingt paraîtrait significative au seuil de 5 %, par pur hasard. Nous corrigeons donc toutes les p-values « avec dépenses contre sans dépenses » par la **procédure de Benjamini et Hochberg (1995)**, avec un taux de fausses découvertes de 10 %. Nous ne considérons comme significatifs que les résultats qui résistent à cette correction.
 
+## 2.8 Considérations éthiques
+
+**Données.** Toutes les données utilisées sont publiques et en accès libre : situations budgétaires de l'État (data.economie.gouv.fr), séries de marché et macroéconomiques (FRED, BCE, Eurostat), indices boursiers. Elles ne contiennent aucune donnée personnelle. Les sources sont citées, et la liste des fichiers bruts est figée dans le dépôt (manifeste des données).
+
+**Transparence et résultats négatifs.** Le code, les données traitées et les résultats sont disponibles dans un dépôt GitHub, et l'ensemble peut être relancé avec un seul script. Le plan des extensions a été daté avant leur exécution. Nous rapportons tous les résultats, y compris négatifs, et corrigeons pour les tests multiples. Ne publier que les résultats favorables donnerait une image fausse de ce que les données permettent ; c'est un problème connu en finance empirique (Bailey et al., 2014).
+
+**Usage des résultats.** Ce travail n'est pas un conseil en investissement. Un modèle qui paraît prédire les marchés peut conduire à des décisions coûteuses s'il est mal évalué ; c'est pourquoi nous insistons sur la comparaison à des références simples.
+
+**Outils d'intelligence artificielle.** Des outils d'IA générative ont été utilisés pour l'aide à la programmation, la relecture du code et l'aide à la rédaction. Leur usage est décrit dans la déclaration prévue par le guide de l'ECE. Les choix de recherche, la validation des résultats et les interprétations relèvent de l'auteur.
+
 ## Références ajoutées par ce chapitre
 
 À intégrer à la bibliographie générale (les autres références citées figurent déjà au chapitre 1).

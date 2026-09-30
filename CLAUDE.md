@@ -5,7 +5,7 @@
 - **Problématique validée** : Peut-on prédire des indicateurs des marchés financiers à partir des données de dépenses publiques ouvertes en utilisant des techniques de machine learning ?
 - **Auteur** : Abdellah Elyamine DALI BRAHAM — MSc Data Management & IA, ECE Paris
 - **Encadrante** : Dr. Yosra Hajjaji
-- **Date limite de remise** : 10 octobre 2026
+- **Date limite de remise** : **vendredi 2 octobre 2026, minuit** (le report au 10/10 a été refusé, info du 30/09)
 - **Langue de rédaction** : français. Rédaction finale prévue en LaTeX.
 
 ## Périmètre (décidé, ne pas changer sans accord)
@@ -123,13 +123,14 @@
 - **Ch. 1** restructuré le 29/09 selon la décision bibliographie (1.1 cadre · 1.2 finances publiques et spreads · 1.3 ML · 1.4 données ouvertes · 1.5 synthèse, tableau 1.1). Résumés des articles : à vérifier sur les articles.
 - **Ch. 2** à jour (grille Ridge 10⁶ ; corrélations partielles inflation + variation passée : 0,09 à 0,15). **Manque : considérations éthiques** (exigées par le guide ECE).
 - **Ch. 3** rédigé le 29/09 (3.1 descriptif · 3.2 modèles, tab. 3.2-3.3 · 3.3 solidité, tab. 3.4 · 3.4 SHAP vs bruit, tab. 3.5 · 3.5 extensions + BH, tab. 3.6 · 3.6 panel, tab. 3.7 · 3.7 hypothèses, tab. 3.8). Environ 9 pages : à réduire à 4-6 (annexes). Ajouter : robustesse du décalage (1 et 3 mois), BH sur H1, permutation hors échantillon (H4).
-- Exports Markdown des chapitres et outil de construction du Word (mise en forme ECE) : `redaction/` (voir `redaction/README.md`). Chapitre 1 vérifié contre les PDF des articles le 30/09 (corrigés : Garlanda-Longueville = communiqués annonçant les allocutions, pas des « fuites » ; Laubach ≈ 25 pb). Chapitre 4 (brouillon) : https://claude.ai/code/artifact/1404f95c-5b3d-4674-b6bf-26bd0aac23d2.
+- Exports Markdown des chapitres et outil de construction du Word (mise en forme ECE) : `redaction/` (voir `redaction/README.md`). Chapitre 1 vérifié contre les PDF des articles le 30/09 (corrigés : Garlanda-Longueville = communiqués annonçant les allocutions, pas des « fuites » ; Laubach ≈ 25 pb). Chapitre 4 (brouillon complet 4.1-4.6 le 30/09 soir, à réécrire par Elyamine) : https://claude.ai/code/artifact/1404f95c-5b3d-4674-b6bf-26bd0aac23d2.
 - Fait pour la 4.4 : sur 2020-01 → 2025-02, la marche aléatoire (spread France, moyennes mensuelles OCDE) a un RMSE de 5,1 pb contre 7,3 pb pour le XGBoost de Bouillot et al. (tableau 11) ; définitions de série peut-être différentes. Chez Bouillot, 1 seule variable de finances publiques parmi les 50 principales (tableau 12).
 - Revue externe de la rédaction : prompt dans `docs/prompt_revue_redaction.md`.
 - Refus : pas de substitution de caractères (omicron) pour tromper les détecteurs ; déclaration d'usage de l'IA à rédiger.
 - 30/09 : PR n°1 (travail parallèle de Walid, 29-30/09) fusionnée dans main ; résultats identiques aux nôtres (écart max 0,15 pt de R²).
 
-## Prochaines étapes (au 30/09 ; remise le 10/10)
+## Prochaines étapes (au 30/09 soir ; remise le 2/10 à minuit)
+0. Plan serré : mercredi soir ch. 4 complet (brouillon) + éthique (ch. 2, fait : 2.8) ; jeudi introduction, conclusion, résumé, annexes, pages de garde, revue de Walid en parallèle ; vendredi corrections, PDF, envoi en fin d'après-midi. Abandonné : raccourcir le ch. 3, glossaire détaillé.
 1. Chapitre 4 (Discussion, 6-8 p.) à partir de `docs/plan_chapitre4.md` : l'interprétation vient d'Elyamine (règle ECE) ; méthode : questions guidées, il répond, Claude vérifie et corrige la langue.
 2. Ch. 2 : considérations éthiques ; ch. 3 : raccourcir + ajouts ci-dessus.
 3. Introduction, conclusion, résumé + mots-clés, déclaration d'usage de l'IA, annexes (détail E1-E20, graines, bruit), pages de garde.
@@ -151,7 +152,7 @@ Bouillot, Candelon & Kool (2025), *Forecasting European sovereign spreads using 
 - Ordre : page de titre (titre, nom complet, ECE, MSc Data Management & IA, encadrante, mois/année) · remerciements · résumé 150-300 mots + 5-7 mots-clés · sommaire · listes des figures et des tableaux · abréviations · glossaire · Introduction (3-5 p.) · État de l'art (10-15 p., ≥ 10 sources académiques, finir sur le manque/gap) · Méthodologie (5-8 p., inclure considérations éthiques) · Résultats (**4-6 p., sans interprétation**) · Discussion (6-8 p. : implications, limites, recherches futures) · Conclusion (2-3 p.) · Références (APA, IEEE ou Harvard, ordre alphabétique) · Annexes.
 - Mise en forme : Times New Roman ou Arial 12, double interligne (tableaux/notes/références simple), marges 2,54 cm, numéros de page en bas au centre ou en haut à droite ; titre niveau 1 centré gras, niveau 2 aligné à gauche gras, niveau 3 en retrait gras terminé par un point ; figures/tableaux numérotés par chapitre avec source.
 - **IA** : déclarer l'usage des outils d'IA (méthodologie ou remerciements) ; interdit de rendre des hypothèses, interprétations ou paragraphes générés par IA sans relecture critique et apport personnel.
-- Remise en PDF par e-mail à l'encadrante et au responsable du MSc ; retard = note F. Date du guide (15/09/2026) reportée au **10 octobre 2026** (confirmé par Elyamine) ; rédaction en français. Soutenance 20-30 min (10-20 min de présentation + 10-15 min de questions). Écrit 50 % / oral 50 %.
+- Remise en PDF par e-mail à l'encadrante et au responsable du MSc ; retard = note F. Date du guide (15/09/2026) ; report demandé au 10/10 **refusé** : remise le **2 octobre 2026 à minuit** ; rédaction en français. Soutenance 20-30 min (10-20 min de présentation + 10-15 min de questions). Écrit 50 % / oral 50 %.
 - Conséquence : les 20 extensions tiennent dans les Résultats sous forme d'un tableau de synthèse + figure ; le détail va en annexe ; les diagnostics (moyennes trimestrielles, marche aléatoire) sont interprétés dans la Discussion.
 
 ## Plan du mémoire
