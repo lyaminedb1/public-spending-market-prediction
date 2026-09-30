@@ -1,0 +1,57 @@
+hypothese,cible,indicateur,valeur,texte,source
+H1,y_d_spread,"meilleur gain de RMSE de M1 vs M0 (%, négatif = M1 meilleur)",-1.9719,,models_metrics.csv ; models_dm_tests.csv
+H1,y_d_spread,meilleur gain de R² de M1 vs M0 (points),5.306,,models_metrics.csv ; models_dm_tests.csv
+H1,y_d_spread,p bilatérale DM minimale M1 vs M0,0.577,,models_metrics.csv ; models_dm_tests.csv
+H1,y_d_spread,p unilatérale DM minimale M1 vs M0 (M1 meilleur),0.303,,models_metrics.csv ; models_dm_tests.csv
+H1,y_d_oat,"meilleur gain de RMSE de M1 vs M0 (%, négatif = M1 meilleur)",-0.0243,,models_metrics.csv ; models_dm_tests.csv
+H1,y_d_oat,meilleur gain de R² de M1 vs M0 (points),0.049,,models_metrics.csv ; models_dm_tests.csv
+H1,y_d_oat,p bilatérale DM minimale M1 vs M0,0.982,,models_metrics.csv ; models_dm_tests.csv
+H1,y_d_oat,p unilatérale DM minimale M1 vs M0 (M1 meilleur),0.494,,models_metrics.csv ; models_dm_tests.csv
+H1,y_cac_ret,"meilleur gain de RMSE de M1 vs M0 (%, négatif = M1 meilleur)",-1.4714,,models_metrics.csv ; models_dm_tests.csv
+H1,y_cac_ret,meilleur gain de R² de M1 vs M0 (points),3.842,,models_metrics.csv ; models_dm_tests.csv
+H1,y_cac_ret,p bilatérale DM minimale M1 vs M0,0.366,,models_metrics.csv ; models_dm_tests.csv
+H1,y_cac_ret,p unilatérale DM minimale M1 vs M0 (M1 meilleur),0.313,,models_metrics.csv ; models_dm_tests.csv
+H1,toutes,p_BH minimale (18 tests M1/M2 vs M0),0.809,,models_dm_tests.csv
+H1,toutes,VERDICT,,rejetée,"règle : rejetée si p_BH min >= 0,10"
+H2,y_d_spread,"gain moyen de R² de M1 vs M0 sur les 3 modèles (points, descriptif)",1.2787,,models_metrics.csv
+H2,y_d_oat,"gain moyen de R² de M1 vs M0 sur les 3 modèles (points, descriptif)",-0.025,,models_metrics.csv
+H2,y_cac_ret,"gain moyen de R² de M1 vs M0 sur les 3 modèles (points, descriptif)",0.1803,,models_metrics.csv
+H2,toutes,classement descriptif des gains moyens,,y_d_spread > y_cac_ret > y_d_oat,models_metrics.csv
+H2,toutes,VERDICT,,non évaluable (H1 rejetée : aucun apport significatif à classer),règle : non évaluable si H1 rejetée
+H3,y_d_spread,Forêt aléatoire vs Ridge (M1) : p unilatérale (ML meilleur),0.177,,models_dm_tests.csv ; models_metrics.csv
+H3,y_d_spread,Forêt aléatoire vs Ridge (M1) : p bilatérale,0.353,,models_dm_tests.csv ; models_metrics.csv
+H3,y_d_spread,Forêt aléatoire M1 : RMSE relatif à la moyenne historique (%),4.1301,,models_dm_tests.csv ; models_metrics.csv
+H3,y_d_spread,XGBoost vs Ridge (M1) : p unilatérale (ML meilleur),0.888,,models_dm_tests.csv ; models_metrics.csv
+H3,y_d_spread,XGBoost vs Ridge (M1) : p bilatérale,0.223,,models_dm_tests.csv ; models_metrics.csv
+H3,y_d_spread,XGBoost M1 : RMSE relatif à la moyenne historique (%),14.0662,,models_dm_tests.csv ; models_metrics.csv
+H3,y_d_oat,Forêt aléatoire vs Ridge (M1) : p unilatérale (ML meilleur),0.204,,models_dm_tests.csv ; models_metrics.csv
+H3,y_d_oat,Forêt aléatoire vs Ridge (M1) : p bilatérale,0.408,,models_dm_tests.csv ; models_metrics.csv
+H3,y_d_oat,Forêt aléatoire M1 : RMSE relatif à la moyenne historique (%),3.3987,,models_dm_tests.csv ; models_metrics.csv
+H3,y_d_oat,XGBoost vs Ridge (M1) : p unilatérale (ML meilleur),0.972,,models_dm_tests.csv ; models_metrics.csv
+H3,y_d_oat,XGBoost vs Ridge (M1) : p bilatérale,0.055,,models_dm_tests.csv ; models_metrics.csv
+H3,y_d_oat,XGBoost M1 : RMSE relatif à la moyenne historique (%),14.1852,,models_dm_tests.csv ; models_metrics.csv
+H3,y_cac_ret,Forêt aléatoire vs Ridge (M1) : p unilatérale (ML meilleur),0.91,,models_dm_tests.csv ; models_metrics.csv
+H3,y_cac_ret,Forêt aléatoire vs Ridge (M1) : p bilatérale,0.18,,models_dm_tests.csv ; models_metrics.csv
+H3,y_cac_ret,Forêt aléatoire M1 : RMSE relatif à la moyenne historique (%),5.2642,,models_dm_tests.csv ; models_metrics.csv
+H3,y_cac_ret,XGBoost vs Ridge (M1) : p unilatérale (ML meilleur),0.984,,models_dm_tests.csv ; models_metrics.csv
+H3,y_cac_ret,XGBoost vs Ridge (M1) : p bilatérale,0.032,,models_dm_tests.csv ; models_metrics.csv
+H3,y_cac_ret,XGBoost M1 : RMSE relatif à la moyenne historique (%),13.0711,,models_dm_tests.csv ; models_metrics.csv
+H3,toutes,"nombre de tests où le ML est significativement PIRE que Ridge (p bilatérale < 0,05)",1.0,y_cac_ret XGBoost vs Ridge (M1),models_dm_tests.csv
+H3,toutes,VERDICT,,rejetée,"règle : rejetée si aucun test ML vs Ridge n'a p unilatérale < 0,05"
+H4,y_d_spread,part SHAP des 7 dépenses (%),32.7809,,models_shap_importance.csv ; diag_04/shap_bruit.csv ; models_permutation_oos.csv
+H4,y_d_spread,part SHAP de 7 variables de bruit : min / moyenne / max (%),38.1231,34.3 / 38.1 / 43.5,models_shap_importance.csv ; diag_04/shap_bruit.csv ; models_permutation_oos.csv
+H4,y_d_spread,part des dépenses dans l'étendue du bruit,0.0,,models_shap_importance.csv ; diag_04/shap_bruit.csv ; models_permutation_oos.csv
+H4,y_d_spread,"permutation hors échantillon, groupe dépenses : ΔRMSE (z)",-0.1403,z = -1.04,models_shap_importance.csv ; diag_04/shap_bruit.csv ; models_permutation_oos.csv
+H4,y_d_spread,"permutation hors échantillon, groupe bruit : ΔRMSE (z)",0.0516,z = 0.46,models_shap_importance.csv ; diag_04/shap_bruit.csv ; models_permutation_oos.csv
+H4,y_d_oat,part SHAP des 7 dépenses (%),36.7663,,models_shap_importance.csv ; diag_04/shap_bruit.csv ; models_permutation_oos.csv
+H4,y_d_oat,part SHAP de 7 variables de bruit : min / moyenne / max (%),34.1714,26.5 / 34.2 / 41.6,models_shap_importance.csv ; diag_04/shap_bruit.csv ; models_permutation_oos.csv
+H4,y_d_oat,part des dépenses dans l'étendue du bruit,1.0,,models_shap_importance.csv ; diag_04/shap_bruit.csv ; models_permutation_oos.csv
+H4,y_d_oat,"permutation hors échantillon, groupe dépenses : ΔRMSE (z)",-0.3824,z = -0.85,models_shap_importance.csv ; diag_04/shap_bruit.csv ; models_permutation_oos.csv
+H4,y_d_oat,"permutation hors échantillon, groupe bruit : ΔRMSE (z)",-0.3122,z = -0.84,models_shap_importance.csv ; diag_04/shap_bruit.csv ; models_permutation_oos.csv
+H4,y_cac_ret,part SHAP des 7 dépenses (%),30.5795,,models_shap_importance.csv ; diag_04/shap_bruit.csv ; models_permutation_oos.csv
+H4,y_cac_ret,part SHAP de 7 variables de bruit : min / moyenne / max (%),37.1344,28.6 / 37.1 / 46.8,models_shap_importance.csv ; diag_04/shap_bruit.csv ; models_permutation_oos.csv
+H4,y_cac_ret,part des dépenses dans l'étendue du bruit,1.0,,models_shap_importance.csv ; diag_04/shap_bruit.csv ; models_permutation_oos.csv
+H4,y_cac_ret,"permutation hors échantillon, groupe dépenses : ΔRMSE (z)",-0.0864,z = -0.66,models_shap_importance.csv ; diag_04/shap_bruit.csv ; models_permutation_oos.csv
+H4,y_cac_ret,"permutation hors échantillon, groupe bruit : ΔRMSE (z)",-0.1219,z = -0.84,models_shap_importance.csv ; diag_04/shap_bruit.csv ; models_permutation_oos.csv
+H4,toutes,"classement des dépenses par ΔRMSE moyen (XGBoost, 3 cibles) — descriptif",,psr_total > dep_intervention > dep_personnel > dep_fonctionnement > dep_investissement > dep_totales > dep_charge_dette,models_permutation_oos.csv
+H4,toutes,VERDICT,,non soutenue,règle : soutenue seulement si la permutation hors échantillon distingue le groupe des dépenses du bruit (z > 2 pour une cible) ; SHAP ignoré s'il est dans l'étendue du bruit

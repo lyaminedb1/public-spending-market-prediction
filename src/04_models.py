@@ -17,10 +17,13 @@ Protocole
   test de Diebold-Mariano (correction Harvey-Leybourne-Newbold).
 - Importance des variables : valeurs SHAP de XGBoost estimé sur tout l'échantillon.
 
-Lancer depuis la racine du dépôt :  python src/04_models.py
+Lancer depuis la racine du dépôt :  python src/04_models.py            (~10 min)
+                                    python src/04_models.py --from-saved  (tableaux et figures depuis les prévisions sauvegardées)
+                                    python src/04_models.py --data CSV --suffix NOM  (robustesse -> results/tables/robustesse/)
 """
 
 from pathlib import Path
+import sys
 import warnings
 
 import matplotlib.pyplot as plt
@@ -41,7 +44,9 @@ TAB = Path("results/tables")
 FIG.mkdir(parents=True, exist_ok=True)
 TAB.mkdir(parents=True, exist_ok=True)
 
-TEST_START = "2020-01"
+sys.path.insert(0, str(Path(__file__).parent))
+from config import TEST_START  # noqa: E402  (source unique, voir src/config.py)
+
 SEED = 42
 
 TARGETS = {
@@ -68,7 +73,7 @@ MODEL_LABELS = {"ridge": "Ridge", "rf": "Forêt aléatoire", "xgb": "XGBoost"}
 
 def make_model(name: str):
     if name == "ridge":
-        return make_pipeline(StandardScaler(), RidgeCV(alphas=np.logspace(-2, 6, 40)))  # grille élargie (revue du 28/09 : borne 1000 atteinte pour le CAC 40)
+        return make_pipeline(StandardScaler(), RidgeCV(alphas=np.logspace(-2, 6, 40)))
     if name == "rf":
         return RandomForestRegressor(n_estimators=300, max_depth=4, min_samples_leaf=5,
                                      max_features=0.5, random_state=SEED, n_jobs=-1)
@@ -121,6 +126,7 @@ def diebold_mariano(e1: np.ndarray, e2: np.ndarray) -> tuple[float, float, float
 def metrics(preds: pd.DataFrame, target: str) -> pd.DataFrame:
     y = preds["y_true"].values
     sse_mean = ((y - preds["naif_moyenne"].values) ** 2).sum()
+    sse_zero = (y ** 2).sum()  # prévision « variation nulle »
     rows = []
     for col in preds.columns.drop("y_true"):
         p = preds[col].values
@@ -133,7 +139,8 @@ def metrics(preds: pd.DataFrame, target: str) -> pd.DataFrame:
             "variables": fset or "—",
             "RMSE": np.sqrt((e ** 2).mean()),
             "MAE": np.abs(e).mean(),
-            "R2_oos_%": (1 - (e ** 2).sum() / sse_mean) * 100,
+            "R2_oos_%": (1 - (e ** 2).sum() / sse_mean) * 100,  # relatif à la moyenne historique
+            "R2_vs_zero_%": (1 - (e ** 2).sum() / sse_zero) * 100,  # relatif à la variation nulle
             "bonne_direction_%": (np.sign(p[nonzero]) == np.sign(y[nonzero])).mean() * 100
             if model != "naif_zero" else np.nan,
         })
@@ -154,12 +161,35 @@ def dm_tests(preds: pd.DataFrame, target: str) -> pd.DataFrame:
         s, p2, p1 = diebold_mariano(err("naif_moyenne"), err(f"{model}|M1 + dépenses"))
         rows.append({"cible": target, "test": f"{MODEL_LABELS[model]} M1 vs moyenne historique",
                      "DM": s, "p_bilaterale": p2, "p_unilaterale": p1})
+        # chaque modèle contre la variation nulle (marche aléatoire) : référence exigeante pour les taux
+        s, p2, p1 = diebold_mariano(err("naif_zero"), err(f"{model}|M1 + dépenses"))
+        rows.append({"cible": target, "test": f"{MODEL_LABELS[model]} M1 vs variation nulle",
+                     "DM": s, "p_bilaterale": p2, "p_unilaterale": p1,
+                     "note": "référence peu pertinente pour le CAC 40 (rendement moyen positif)"
+                     if target == "y_cac_ret" else ""})
     # H3 : ML contre linéaire (jeu M1)
     for model in ["rf", "xgb"]:
         s, p2, p1 = diebold_mariano(err("ridge|M1 + dépenses"), err(f"{model}|M1 + dépenses"))
         rows.append({"cible": target, "test": f"{MODEL_LABELS[model]} vs Ridge (M1)",
                      "DM": s, "p_bilaterale": p2, "p_unilaterale": p1})
-    return pd.DataFrame(rows)
+    out = pd.DataFrame(rows)
+    out["note"] = out["note"].fillna("")
+    return out
+
+
+def add_bh(dm: pd.DataFrame) -> pd.DataFrame:
+    """Correction de Benjamini-Hochberg (10 %) sur les tests de H1 : M1 vs M0 et M2 vs M0, 3 modèles x 3 cibles
+    = 18 tests, p unilatérale « avec dépenses meilleur ». Même fonction que src/06_extensions.py."""
+    import importlib.util
+    spec = importlib.util.spec_from_file_location("ext06", Path(__file__).parent / "06_extensions.py")
+    ext = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(ext)
+    dm = dm.copy()
+    mask = dm["test"].str.contains(r" vs M0$")
+    adj, sig = ext.benjamini_hochberg(dm.loc[mask, "p_unilaterale"].values)
+    dm["p_BH_H1"] = np.nan
+    dm.loc[mask, "p_BH_H1"] = adj
+    return dm
 
 
 # ---------------------------------------------------------------------------
@@ -203,21 +233,36 @@ def fig_relative_rmse(met: pd.DataFrame) -> None:
             ax.bar(x + (k - 1) * w, vals, width=w, color=colors[fset], edgecolor="white", linewidth=1.5,
                    label=fset)
         ax.axhline(1, color=INK2, lw=1, ls="--")
+        zero = m.loc[m.modele == "naif_zero", "RMSE"].iloc[0] / ref
+        ax.axhline(zero, color=ORANGE, lw=1.2, ls=":", label="Variation nulle" if target == "y_d_spread" else None)
         ax.set_xticks(x)
         ax.set_xticklabels(MODEL_LABELS.values())
         ax.set_title(label)
         ax.set_ylim(0.8, 1.2)
         ax.grid(axis="x", visible=False)
     axes[0].set_ylabel("RMSE / RMSE moyenne historique")
-    axes[0].legend(loc="upper left", fontsize=8.5)
-    fig.text(0, -0.05, f"Validation glissante, test {TEST_START} → 2026-07. Ligne pointillée : moyenne historique "
-             "(sous 1 = meilleur que la moyenne).", fontsize=8, color=INK2)
+    handles, labels = axes[0].get_legend_handles_labels()
+    fig.legend(handles, labels, loc="lower center", ncol=4, fontsize=8.5, bbox_to_anchor=(0.5, -0.09))
+    fig.text(0, -0.15, f"Validation glissante, test {TEST_START} → 2026-07. Ligne pointillée : moyenne historique "
+             "(sous 1 = meilleur que la moyenne) ; pointillé orange : prévision « variation nulle ».", fontsize=8, color=INK2)
     fig.tight_layout()
     fig.savefig(FIG / "fig3_2_rmse_relatif.png")
     plt.close(fig)
 
 
+def shap_noise_reference() -> pd.DataFrame | None:
+    """Part SHAP obtenue par 7 variables de pur bruit (10 tirages, src/15_diag_04.py shap_bruit), par cible."""
+    f = TAB / "diag_04" / "shap_bruit.csv"
+    if not f.exists():
+        print("Avertissement : diag_04/shap_bruit.csv absent, figure 3.3 sans référence de bruit "
+              "(lancer : python src/15_diag_04.py shap_bruit)")
+        return None
+    g = pd.read_csv(f).groupby("cible")["part_SHAP_bruit_%"]
+    return pd.DataFrame({"min": g.min(), "moyenne": g.mean(), "max": g.max()})
+
+
 def fig_shap(imp: pd.DataFrame) -> None:
+    ref = shap_noise_reference()
     fig, axes = plt.subplots(1, 3, figsize=(12, 4.2))
     for ax, (target, label) in zip(axes, TARGETS.items()):
         s = imp[target].sort_values()
@@ -228,10 +273,18 @@ def fig_shap(imp: pd.DataFrame) -> None:
                             .replace("_ytd_gap", "") for c in s.index], fontsize=7.5)
         ax.set_title(label)
         ax.grid(axis="y", visible=False)
+        part = imp.loc[SPENDING, target].sum() / imp[target].sum() * 100
+        txt = f"Dépenses : {part:.0f} % de l'importance"
+        if ref is not None:
+            r = ref.loc[target]
+            txt += f"\n7 variables de bruit : {r['min']:.0f}-{r['max']:.0f} %\n(moyenne {r['moyenne']:.0f} %)"
+        ax.text(0.97, 0.04, txt, transform=ax.transAxes, ha="right", va="bottom", fontsize=8, color=INK2,
+                bbox=dict(facecolor="white", edgecolor=GRID, boxstyle="round,pad=0.3"))
     handles = [plt.Rectangle((0, 0), 1, 1, color=BLUE), plt.Rectangle((0, 0), 1, 1, color=ORANGE)]
     fig.legend(handles, ["Marchés et macro", "Dépenses publiques"], loc="lower center", ncol=2,
                bbox_to_anchor=(0.5, -0.06))
-    fig.text(0, -0.1, "Valeur SHAP absolue moyenne, XGBoost estimé sur tout l'échantillon, jeu M1.",
+    fig.text(0, -0.1, "Valeur SHAP absolue moyenne, XGBoost estimé sur tout l'échantillon, jeu M1. Encadré : part des dépenses, "
+             "et part obtenue par 7 variables de pur bruit (10 tirages) : elle n'indique pas de contenu prédictif.",
              fontsize=8, color=INK2)
     fig.tight_layout()
     fig.savefig(FIG / "fig3_3_importance_shap.png")
@@ -254,28 +307,40 @@ def fig_predictions(all_preds: dict) -> None:
 
 
 # ---------------------------------------------------------------------------
-def main() -> None:
-    df = pd.read_csv(DATA, index_col="mois")
+def main(from_saved: bool = False, data: Path = DATA, suffix: str = "") -> None:
+    """from_saved : ne réestime aucun modèle ; recalcule tableaux et figures depuis models_predictions_*.csv
+    et models_shap_importance.csv (utile pour vérifier les métriques ou refaire les figures en quelques secondes).
+    data / suffix : jeu de données alternatif (robustesse, ex. décalage de 3 mois). Avec un suffixe, les sorties
+    vont dans results/tables/robustesse/ (aucun résultat principal n'est écrasé), sans SHAP ni figures."""
+    df = pd.read_csv(data, index_col="mois")
     df = df.dropna(subset=list(TARGETS))  # la dernière ligne n'a pas de cible
+    out_dir = TAB / "robustesse" if suffix else TAB
+    tag = f"_{suffix}" if suffix else ""
+    out_dir.mkdir(parents=True, exist_ok=True)
 
     all_preds, all_met, all_dm = {}, [], []
     for target in TARGETS:
-        print(f"Validation glissante : {target} …", flush=True)
-        preds = walk_forward(df, target)
-        preds.to_csv(TAB / f"models_predictions_{target}.csv")
+        if from_saved:
+            preds = pd.read_csv(out_dir / f"models_predictions_{target}{tag}.csv", index_col=0)
+        else:
+            print(f"Validation glissante : {target} …", flush=True)
+            preds = walk_forward(df, target)
+            preds.to_csv(out_dir / f"models_predictions_{target}{tag}.csv")
         all_preds[target] = preds
         all_met.append(metrics(preds, target))
         all_dm.append(dm_tests(preds, target))
 
     met = pd.concat(all_met).round(3)
-    dm = pd.concat(all_dm).round(3)
-    met.to_csv(TAB / "models_metrics.csv", index=False)
-    dm.to_csv(TAB / "models_dm_tests.csv", index=False)
+    dm = add_bh(pd.concat(all_dm)).round(3)
+    met.to_csv(out_dir / f"models_metrics{tag}.csv", index=False)
+    dm.to_csv(out_dir / f"models_dm_tests{tag}.csv", index=False)
 
-    imp = shap_importance(df)
-    fig_relative_rmse(met)
-    fig_shap(imp)
-    fig_predictions(all_preds)
+    imp = None
+    if not suffix:
+        imp = pd.read_csv(TAB / "models_shap_importance.csv", index_col=0) if from_saved else shap_importance(df)
+        fig_relative_rmse(met)
+        fig_shap(imp)
+        fig_predictions(all_preds)
 
     pd.set_option("display.width", 200)
     pd.set_option("display.max_rows", 100)
@@ -284,10 +349,14 @@ def main() -> None:
     print(met.to_string(index=False))
     print("\nTests de Diebold-Mariano (DM > 0 : le second modèle fait mieux)\n")
     print(dm.to_string(index=False))
-    grp = pd.DataFrame({t: [imp.loc[SPENDING, t].sum() / imp[t].sum() * 100] for t in TARGETS},
-                       index=["part des dépenses dans l'importance SHAP (%)"]).round(1)
-    print("\n", grp.to_string())
+    if imp is not None:
+        grp = pd.DataFrame({t: [imp.loc[SPENDING, t].sum() / imp[t].sum() * 100] for t in TARGETS},
+                           index=["part des dépenses dans l'importance SHAP (%)"]).round(1)
+        print("\n", grp.to_string())
 
 
 if __name__ == "__main__":
-    main()
+    args = sys.argv
+    main(from_saved="--from-saved" in args,
+         data=Path(args[args.index("--data") + 1]) if "--data" in args else DATA,
+         suffix=args[args.index("--suffix") + 1] if "--suffix" in args else "")

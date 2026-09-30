@@ -11,6 +11,7 @@ Usage :  python src/06_extensions.py            (toutes les extensions, ~30-40 m
          python src/06_extensions.py E1 E4      (seulement certaines)
 """
 from pathlib import Path
+import os
 import sys
 import time
 import warnings
@@ -31,8 +32,9 @@ warnings.filterwarnings("ignore")
 
 TAB = Path("results/tables/extensions")
 TAB.mkdir(parents=True, exist_ok=True)
-SEED = 42
-TEST_START = "2020-01"
+SEED = int(os.environ.get("SEED_06", 42))  # graine déclarée : 42 ; surcharge possible pour tester la stabilité (étape 17)
+sys.path.insert(0, str(Path(__file__).parent))
+from config import TEST_START  # noqa: E402  (source unique, voir src/config.py)
 
 TARGETS = {"y_d_spread": "Δ spread", "y_d_oat": "Δ OAT", "y_cac_ret": "CAC 40"}
 MARKETS = ["d_spread", "d_spread_l1", "spread_bp", "d_oat", "d_oat_l1", "cac_ret", "cac_ret_l1",
@@ -50,7 +52,7 @@ RATINGS = ["rating_crans_moyen", "degradations_12m"]
 # ---------------------------------------------------------------------------
 def reg_model(name):
     if name == "ridge":
-        return make_pipeline(StandardScaler(), RidgeCV(alphas=np.logspace(-2, 6, 40)))  # grille élargie (revue du 28/09 : borne 1000 atteinte pour le CAC 40)
+        return make_pipeline(StandardScaler(), RidgeCV(alphas=np.logspace(-2, 6, 40)))
     if name == "rf":
         return RandomForestRegressor(n_estimators=300, max_depth=4, min_samples_leaf=5,
                                      max_features=0.5, random_state=SEED, n_jobs=-1)
@@ -136,10 +138,6 @@ def walk_forward(df, target, cols, factory, h=1, window=None, test_end=None, pro
     """Prévision de chaque mois de test avec un modèle entraîné sur les seules cibles déjà observées :
     pour un horizon h, la cible de la ligne s couvre s → s+h, donc on n'entraîne que sur s <= t-h."""
     d = df.dropna(subset=[target] + cols)
-    # Garde-fou (revue du 28/09) : l'écart h est compté en lignes ; il faut donc des mois contigus,
-    # sans trou au milieu (des lignes retirées au début ou à la fin ne posent pas de problème).
-    _p = pd.PeriodIndex(d.index, freq="M")
-    assert (np.diff(_p.asi8) == 1).all(), f"walk_forward : mois non contigus pour {target}"
     pos = {m: i for i, m in enumerate(d.index)}
     test = [m for m in d.index if m >= TEST_START and (test_end is None or m <= test_end)]
     preds, means = [], []

@@ -1,0 +1,148 @@
+bloc,cible,modele,cle,valeur
+puissance,y_cac_ret,ridge,rho=0.1 : % tirages où le modèle bat la moyenne,0.0
+puissance,y_cac_ret,ridge,"rho=0.1 : % tirages où DM détecte l'apport (p<0,05 et gain>0)",0.0
+puissance,y_cac_ret,ridge,"rho=0.1 : % tirages où Clark-West détecte l'apport (p<0,05)",0.0
+puissance,y_cac_ret,ridge,rho=0.2 : % tirages où le modèle bat la moyenne,20.0
+puissance,y_cac_ret,ridge,"rho=0.2 : % tirages où DM détecte l'apport (p<0,05 et gain>0)",0.0
+puissance,y_cac_ret,ridge,"rho=0.2 : % tirages où Clark-West détecte l'apport (p<0,05)",10.0
+puissance,y_cac_ret,ridge,rho=0.3 : % tirages où le modèle bat la moyenne,30.0
+puissance,y_cac_ret,ridge,"rho=0.3 : % tirages où DM détecte l'apport (p<0,05 et gain>0)",0.0
+puissance,y_cac_ret,ridge,"rho=0.3 : % tirages où Clark-West détecte l'apport (p<0,05)",20.0
+puissance,y_cac_ret,ridge,rho=0.5 : % tirages où le modèle bat la moyenne,100.0
+puissance,y_cac_ret,ridge,"rho=0.5 : % tirages où DM détecte l'apport (p<0,05 et gain>0)",30.0
+puissance,y_cac_ret,ridge,"rho=0.5 : % tirages où Clark-West détecte l'apport (p<0,05)",100.0
+puissance,y_cac_ret,ridge,rho=1.0 : % tirages où le modèle bat la moyenne,100.0
+puissance,y_cac_ret,ridge,"rho=1.0 : % tirages où DM détecte l'apport (p<0,05 et gain>0)",100.0
+puissance,y_cac_ret,ridge,"rho=1.0 : % tirages où Clark-West détecte l'apport (p<0,05)",100.0
+puissance,y_d_oat,ridge,rho=0.1 : % tirages où le modèle bat la moyenne,0.0
+puissance,y_d_oat,ridge,"rho=0.1 : % tirages où DM détecte l'apport (p<0,05 et gain>0)",0.0
+puissance,y_d_oat,ridge,"rho=0.1 : % tirages où Clark-West détecte l'apport (p<0,05)",0.0
+puissance,y_d_oat,ridge,rho=0.2 : % tirages où le modèle bat la moyenne,0.0
+puissance,y_d_oat,ridge,"rho=0.2 : % tirages où DM détecte l'apport (p<0,05 et gain>0)",30.0
+puissance,y_d_oat,ridge,"rho=0.2 : % tirages où Clark-West détecte l'apport (p<0,05)",50.0
+puissance,y_d_oat,ridge,rho=0.3 : % tirages où le modèle bat la moyenne,20.0
+puissance,y_d_oat,ridge,"rho=0.3 : % tirages où DM détecte l'apport (p<0,05 et gain>0)",50.0
+puissance,y_d_oat,ridge,"rho=0.3 : % tirages où Clark-West détecte l'apport (p<0,05)",80.0
+puissance,y_d_oat,ridge,rho=0.5 : % tirages où le modèle bat la moyenne,90.0
+puissance,y_d_oat,ridge,"rho=0.5 : % tirages où DM détecte l'apport (p<0,05 et gain>0)",80.0
+puissance,y_d_oat,ridge,"rho=0.5 : % tirages où Clark-West détecte l'apport (p<0,05)",100.0
+puissance,y_d_oat,ridge,rho=1.0 : % tirages où le modèle bat la moyenne,100.0
+puissance,y_d_oat,ridge,"rho=1.0 : % tirages où DM détecte l'apport (p<0,05 et gain>0)",100.0
+puissance,y_d_oat,ridge,"rho=1.0 : % tirages où Clark-West détecte l'apport (p<0,05)",100.0
+puissance,y_d_spread,ridge,rho=0.1 : % tirages où le modèle bat la moyenne,0.0
+puissance,y_d_spread,ridge,"rho=0.1 : % tirages où DM détecte l'apport (p<0,05 et gain>0)",0.0
+puissance,y_d_spread,ridge,"rho=0.1 : % tirages où Clark-West détecte l'apport (p<0,05)",10.0
+puissance,y_d_spread,ridge,rho=0.2 : % tirages où le modèle bat la moyenne,0.0
+puissance,y_d_spread,ridge,"rho=0.2 : % tirages où DM détecte l'apport (p<0,05 et gain>0)",30.0
+puissance,y_d_spread,ridge,"rho=0.2 : % tirages où Clark-West détecte l'apport (p<0,05)",80.0
+puissance,y_d_spread,ridge,rho=0.3 : % tirages où le modèle bat la moyenne,20.0
+puissance,y_d_spread,ridge,"rho=0.3 : % tirages où DM détecte l'apport (p<0,05 et gain>0)",10.0
+puissance,y_d_spread,ridge,"rho=0.3 : % tirages où Clark-West détecte l'apport (p<0,05)",70.0
+puissance,y_d_spread,ridge,rho=0.5 : % tirages où le modèle bat la moyenne,80.0
+puissance,y_d_spread,ridge,"rho=0.5 : % tirages où DM détecte l'apport (p<0,05 et gain>0)",30.0
+puissance,y_d_spread,ridge,"rho=0.5 : % tirages où Clark-West détecte l'apport (p<0,05)",100.0
+puissance,y_d_spread,ridge,rho=1.0 : % tirages où le modèle bat la moyenne,100.0
+puissance,y_d_spread,ridge,"rho=1.0 : % tirages où DM détecte l'apport (p<0,05 et gain>0)",100.0
+puissance,y_d_spread,ridge,"rho=1.0 : % tirages où Clark-West détecte l'apport (p<0,05)",100.0
+bruit,y_cac_ret,ridge,% tirages de bruit battus par les vraies dépenses,5.0
+bruit,y_cac_ret,ridge,gain des vraies dépenses vs M0 (pts de R²),-2.1545889674480456
+bruit,y_cac_ret,ridge,gain médian du bruit vs M0 (pts de R²),0.8863134111458115
+bruit,y_d_oat,ridge,% tirages de bruit battus par les vraies dépenses,10.0
+bruit,y_d_oat,ridge,gain des vraies dépenses vs M0 (pts de R²),0.049317073110954
+bruit,y_d_oat,ridge,gain médian du bruit vs M0 (pts de R²),3.6100581354044925
+bruit,y_d_spread,ridge,% tirages de bruit battus par les vraies dépenses,10.0
+bruit,y_d_spread,ridge,gain des vraies dépenses vs M0 (pts de R²),0.183747652575029
+bruit,y_d_spread,ridge,gain médian du bruit vs M0 (pts de R²),2.9703822281467183
+bruit,y_cac_ret,rf,% tirages de bruit battus par les vraies dépenses,0.0
+bruit,y_cac_ret,rf,gain des vraies dépenses vs M0 (pts de R²),-1.1470819645135857
+bruit,y_cac_ret,rf,gain médian du bruit vs M0 (pts de R²),3.9901201133743625
+bruit,y_d_oat,rf,% tirages de bruit battus par les vraies dépenses,0.0
+bruit,y_d_oat,rf,gain des vraies dépenses vs M0 (pts de R²),0.0312798642687628
+bruit,y_d_oat,rf,gain médian du bruit vs M0 (pts de R²),2.280389484665779
+bruit,y_d_spread,rf,% tirages de bruit battus par les vraies dépenses,20.0
+bruit,y_d_spread,rf,gain des vraies dépenses vs M0 (pts de R²),-1.6526966229160056
+bruit,y_d_spread,rf,gain médian du bruit vs M0 (pts de R²),1.3647393332229862
+bruit,y_cac_ret,xgb,% tirages de bruit battus par les vraies dépenses,50.0
+bruit,y_cac_ret,xgb,gain des vraies dépenses vs M0 (pts de R²),3.842186843063853
+bruit,y_cac_ret,xgb,gain médian du bruit vs M0 (pts de R²),5.456711330955111
+bruit,y_d_oat,xgb,% tirages de bruit battus par les vraies dépenses,40.0
+bruit,y_d_oat,xgb,gain des vraies dépenses vs M0 (pts de R²),-0.1556991047077858
+bruit,y_d_oat,xgb,gain médian du bruit vs M0 (pts de R²),2.0747799544745913
+bruit,y_d_spread,xgb,% tirages de bruit battus par les vraies dépenses,50.0
+bruit,y_d_spread,xgb,gain des vraies dépenses vs M0 (pts de R²),5.306205834913193
+bruit,y_d_spread,xgb,gain médian du bruit vs M0 (pts de R²),4.951705573017209
+clark_west,y_d_spread,ridge,p CW M1 vs M0,0.1248663672924201
+clark_west,y_d_spread,ridge,p DM bilatérale M1 vs M0,0.9711712156539448
+clark_west,y_d_spread,rf,p CW M1 vs M0,0.3967377153653006
+clark_west,y_d_spread,rf,p DM bilatérale M1 vs M0,0.5765791612656255
+clark_west,y_d_spread,xgb,p CW M1 vs M0,0.0178153103029614
+clark_west,y_d_spread,xgb,p DM bilatérale M1 vs M0,0.6053192641949323
+clark_west,y_d_oat,ridge,p CW M1 vs M0,0.2197416326700696
+clark_west,y_d_oat,ridge,p DM bilatérale M1 vs M0,0.9885769961515608
+clark_west,y_d_oat,rf,p CW M1 vs M0,0.2547383441701619
+clark_west,y_d_oat,rf,p DM bilatérale M1 vs M0,0.9933327500103156
+clark_west,y_d_oat,xgb,p CW M1 vs M0,0.0828897209159975
+clark_west,y_d_oat,xgb,p DM bilatérale M1 vs M0,0.9817212818584036
+clark_west,y_cac_ret,ridge,p CW M1 vs M0,0.8069648793619048
+clark_west,y_cac_ret,ridge,p DM bilatérale M1 vs M0,0.366428434848518
+clark_west,y_cac_ret,rf,p CW M1 vs M0,0.4600342066859791
+clark_west,y_cac_ret,rf,p DM bilatérale M1 vs M0,0.7689837833402748
+clark_west,y_cac_ret,xgb,p CW M1 vs M0,0.0297748414502138
+clark_west,y_cac_ret,xgb,p DM bilatérale M1 vs M0,0.6258817122038622
+taille_test,y_cac_ret,ridge,"% tirages de bruit « significatifs » (Clark-West, p<0,05)",5.0
+taille_test,y_cac_ret,ridge,"% tirages de bruit « significatifs » (DM bilatéral, p<0,05)",0.0
+taille_test,y_d_oat,ridge,"% tirages de bruit « significatifs » (Clark-West, p<0,05)",25.0
+taille_test,y_d_oat,ridge,"% tirages de bruit « significatifs » (DM bilatéral, p<0,05)",0.0
+taille_test,y_d_spread,ridge,"% tirages de bruit « significatifs » (Clark-West, p<0,05)",55.00000000000001
+taille_test,y_d_spread,ridge,"% tirages de bruit « significatifs » (DM bilatéral, p<0,05)",0.0
+taille_test,y_cac_ret,xgb,"% tirages de bruit « significatifs » (Clark-West, p<0,05)",75.0
+taille_test,y_cac_ret,xgb,"% tirages de bruit « significatifs » (DM bilatéral, p<0,05)",0.0
+taille_test,y_d_oat,xgb,"% tirages de bruit « significatifs » (Clark-West, p<0,05)",45.0
+taille_test,y_d_oat,xgb,"% tirages de bruit « significatifs » (DM bilatéral, p<0,05)",0.0
+taille_test,y_d_spread,xgb,"% tirages de bruit « significatifs » (Clark-West, p<0,05)",70.0
+taille_test,y_d_spread,xgb,"% tirages de bruit « significatifs » (DM bilatéral, p<0,05)",5.0
+shap_bruit,y_cac_ret,xgb,part SHAP du bruit : min (%),28.55829
+shap_bruit,y_cac_ret,xgb,part SHAP du bruit : moyenne (%),37.1343768
+shap_bruit,y_cac_ret,xgb,part SHAP du bruit : max (%),46.829254
+shap_bruit,y_d_oat,xgb,part SHAP du bruit : min (%),26.452595
+shap_bruit,y_d_oat,xgb,part SHAP du bruit : moyenne (%),34.1713615
+shap_bruit,y_d_oat,xgb,part SHAP du bruit : max (%),41.566402
+shap_bruit,y_d_spread,xgb,part SHAP du bruit : min (%),34.28137
+shap_bruit,y_d_spread,xgb,part SHAP du bruit : moyenne (%),38.123111800000004
+shap_bruit,y_d_spread,xgb,part SHAP du bruit : max (%),43.466995
+graines,y_cac_ret,rf,R² M0 min (%),-11.504522601264156
+graines,y_cac_ret,rf,R² M0 max (%),-8.42260290763248
+graines,y_cac_ret,rf,R² M1 min (%),-10.694972527677391
+graines,y_cac_ret,rf,R² M1 max (%),-7.132806971288619
+graines,y_cac_ret,rf,p DM M1 vs M0 minimale,0.5222152324417073
+graines,y_d_oat,rf,R² M0 min (%),-6.592611895628675
+graines,y_d_oat,rf,R² M0 max (%),-5.117282991547256
+graines,y_d_oat,rf,R² M1 min (%),-8.036422777102636
+graines,y_d_oat,rf,R² M1 max (%),-6.928414532678007
+graines,y_d_oat,rf,p DM M1 vs M0 minimale,0.4965186637123033
+graines,y_d_spread,rf,R² M0 min (%),-6.319483037021656
+graines,y_d_spread,rf,R² M0 max (%),-3.3421086125333237
+graines,y_d_spread,rf,R² M1 min (%),-9.733133056731113
+graines,y_d_spread,rf,R² M1 max (%),-6.233798558030168
+graines,y_d_spread,rf,p DM M1 vs M0 minimale,0.131487152143805
+graines,y_cac_ret,xgb,R² M0 min (%),-39.110429650283976
+graines,y_cac_ret,xgb,R² M0 max (%),-30.2700791634404
+graines,y_cac_ret,xgb,R² M1 min (%),-32.01406095336532
+graines,y_cac_ret,xgb,R² M1 max (%),-25.134054136091844
+graines,y_cac_ret,xgb,p DM M1 vs M0 minimale,0.1564309697909847
+graines,y_d_oat,xgb,R² M0 min (%),-33.51652629387893
+graines,y_d_oat,xgb,R² M0 max (%),-27.76101196310245
+graines,y_d_oat,xgb,R² M1 min (%),-35.39020453556074
+graines,y_d_oat,xgb,R² M1 max (%),-27.61508238319319
+graines,y_d_oat,xgb,p DM M1 vs M0 minimale,0.4633077156135239
+graines,y_d_spread,xgb,R² M0 min (%),-39.77859116254778
+graines,y_d_spread,xgb,R² M0 max (%),-30.760346582198107
+graines,y_d_spread,xgb,R² M1 min (%),-32.92259191352742
+graines,y_d_spread,xgb,R² M1 max (%),-25.43204797018885
+graines,y_d_spread,xgb,p DM M1 vs M0 minimale,0.1394042159899631
+references,y_d_spread,AR(1),R² hors échantillon (%),-2.722320234938991
+references,y_d_spread,variation nulle,R² hors échantillon (%),1.7277108606467806
+references,y_d_oat,AR(1),R² hors échantillon (%),-2.322881552688516
+references,y_d_oat,variation nulle,R² hors échantillon (%),2.4164820902935813
+references,y_cac_ret,AR(1),R² hors échantillon (%),-1.9112315438068568
+references,y_cac_ret,variation nulle,R² hors échantillon (%),-0.2234494910844597

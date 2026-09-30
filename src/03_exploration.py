@@ -169,24 +169,26 @@ def fig_correlations(df: pd.DataFrame) -> pd.DataFrame:
 
 
 def partial_correlations(df: pd.DataFrame) -> pd.DataFrame:
-    """Corrélation de Spearman partielle budget / cible, en retirant l'inflation (IPCH t-1, variable du jeu).
-    Méthode : corrélation de Pearson entre les résidus des rangs après régression sur le rang de l'inflation.
-    Ajouté le 29/09 : le chiffre cité dans le mémoire n'était produit par aucun script."""
+    """Corrélation de Spearman partielle budget / cible, en retirant l'inflation (IPCH t-1) et la variation passée
+    de la cible (les deux sont dans M0). Méthode : corrélation de Pearson entre les résidus des rangs après
+    régression sur les rangs des contrôles (même calcul que src/21_verif_chiffres_03.py)."""
     from scipy import stats
     feats = {f"{k}_ytd_gap": v for k, v in BUDGET_LABELS.items()}
     rows = []
+    lagged = {"y_d_spread": "d_spread", "y_d_oat": "d_oat", "y_cac_ret": "cac_ret"}
     for t in TARGETS:
-        sub = df[list(feats) + [t, "inflation_yoy"]].dropna().rank()
-        X = np.c_[np.ones(len(sub)), sub["inflation_yoy"]]
+        ctrl = ["inflation_yoy", lagged[t]]
+        sub = df[list(feats) + [t] + ctrl].dropna().rank()
+        X = np.c_[np.ones(len(sub)), sub[ctrl]]
         res = lambda c: sub[c] - X @ np.linalg.lstsq(X, sub[c], rcond=None)[0]
         n = len(sub)
         for f, lab in feats.items():
             rho = np.corrcoef(res(f), res(t))[0, 1]
-            tstat = rho * np.sqrt((n - 3) / (1 - rho ** 2))
+            tstat = rho * np.sqrt((n - 4) / (1 - rho ** 2))
             rows.append({"cible": t, "variable": lab, "rho_partiel": rho,
-                         "p": 2 * (1 - stats.t.cdf(abs(tstat), n - 3)), "n": n})
+                         "p": 2 * (1 - stats.t.cdf(abs(tstat), n - 4)), "n": n})
     out = pd.DataFrame(rows).round(3)
-    out.to_csv(TAB / "eda_correlations_partielles_inflation.csv", index=False)
+    out.to_csv(TAB / "eda_correlations_partielles.csv", index=False)
     return out
 
 
@@ -218,7 +220,7 @@ if __name__ == "__main__":
     stats = stats_table(df)
     part = partial_correlations(df)
     pd.set_option("display.width", 160)
-    print("Corrélations partielles (inflation retirée) :\n", part, "\n")
+    print("Corrélations partielles (inflation et variation passée retirées) :\n", part, "\n")
     print("Statistiques descriptives et stationnarité :\n", stats, "\n")
     print("Corrélations de Spearman (budget t-2 / cibles t+1) :\n", corr)
     print(f"\nFigures enregistrées dans {FIG}/, tableaux dans {TAB}/")

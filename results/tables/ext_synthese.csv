@@ -1,59 +1,59 @@
-cle,cible,sans,avec,p_min_BH,ordre
-E19,btp_concessions (excès CAC 40),1.35,-0.72,1.0,
-E19,defense (excès CAC 40),-0.01,-1.74,1.0,
-E16,spread niveau,,,1.0,
-E16,spread variation,,,1.0,
-E0,y_cac_ret,-1.34,-3.5,,0.0
-E1 h=3,y_cac_ret,-9.1,-14.67,1.0,1.0
-E1 h=6,y_cac_ret,-30.32,-39.58,1.0,2.0
-E1 h=12,y_cac_ret,11.82,-16.52,1.0,3.0
-E2,y_cac_ret,-3.72,-6.78,1.0,4.0
-E3,y_cac_ret,9.62,6.39,1.0,5.0
-E4,y_cac_ret,-1.45,-0.36,1.0,6.0
-E5,y_cac_ret,-4.8,-13.74,1.0,7.0
-E6,y_cac_ret,-3.64,-2.56,1.0,8.0
-E7,y_cac_ret,-0.63,-1.65,1.0,9.0
-E8,y_cac_ret,-3.93,-4.17,1.0,10.0
-E9,y_cac_ret,-0.33,-3.8,1.0,11.0
-E10,y_cac_ret,-6.16,-2.99,1.0,12.0
-E11,y_cac_ret,-3.96,-7.55,1.0,13.0
-E13,y_cac_ret,0.01,-10.71,1.0,14.0
-E20a,y_cac_ret,-1.34,-0.28,1.0,
-E20b,y_cac_ret,-0.28,-2.64,1.0,
-E0,y_d_oat,-6.95,-6.92,,0.0
-E1 h=3,y_d_oat,-2.74,-7.59,1.0,1.0
-E1 h=6,y_d_oat,-27.52,-37.99,1.0,2.0
-E1 h=12,y_d_oat,-29.78,-28.17,1.0,3.0
-E2,y_d_oat,2.48,5.84,1.0,4.0
-E3,y_d_oat,3.26,4.18,1.0,5.0
-E4,y_d_oat,-7.09,-7.24,1.0,6.0
-E5,y_d_oat,-12.25,-18.96,1.0,7.0
-E6,y_d_oat,-5.72,-4.56,1.0,8.0
-E7,y_d_oat,-0.02,0.06,1.0,9.0
-E8,y_d_oat,-1.79,-2.04,1.0,10.0
-E9,y_d_oat,-6.71,-7.65,1.0,11.0
-E10,y_d_oat,-4.79,-5.38,1.0,12.0
-E11,y_d_oat,-8.73,-10.39,1.0,13.0
-E13,y_d_oat,-5.2,-6.79,1.0,14.0
-E20a,y_d_oat,-6.95,-4.75,1.0,
-E20b,y_d_oat,-4.75,-5.93,1.0,
-E0,y_d_spread,-6.79,-8.44,,0.0
-E1 h=3,y_d_spread,2.28,-8.65,1.0,1.0
-E1 h=6,y_d_spread,-12.15,-20.57,1.0,2.0
-E1 h=12,y_d_spread,-93.96,-97.27,1.0,3.0
-E2,y_d_spread,-2.37,0.51,1.0,4.0
-E3,y_d_spread,-4.35,-7.74,1.0,5.0
-E4,y_d_spread,-6.0,-11.14,1.0,6.0
-E5,y_d_spread,-14.0,-29.54,1.0,7.0
-E6,y_d_spread,-5.3,-4.69,1.0,8.0
-E7,y_d_spread,-1.47,-2.83,1.0,9.0
-E8,y_d_spread,-3.46,-4.29,1.0,10.0
-E9,y_d_spread,-2.71,-4.93,1.0,11.0
-E10,y_d_spread,-4.37,-6.2,1.0,12.0
-E11,y_d_spread,-6.21,-8.86,1.0,13.0
-E13,y_d_spread,-5.68,-8.64,1.0,14.0
-E20a,y_d_spread,-6.79,-6.12,1.0,
-E20b,y_d_spread,-6.12,-7.55,1.0,
-E17,Δ spread annuel (5 pays),-45.5,-19.78,1.0,
-E15,Δ spread trimestriel (5 pays),13.9,15.5,1.0,
-E18,Δ spread trimestriel fin de trimestre (5 pays),-3.32,-5.01,1.0,
+cle,cible,libelle,sans,avec,mrw_sans,mrw_avec,p_min_BH,n_comparaisons,ordre
+E0,y_cac_ret,Modèle principal (h = 1 mois),-1.34,-3.5,,,,,0.0
+E0,y_d_oat,Modèle principal (h = 1 mois),-6.94,-6.91,,,,,0.0
+E0,y_d_spread,Modèle principal (h = 1 mois),-6.79,-8.44,,,,,0.0
+E1 h=3,y_cac_ret,E1 Horizon 3 mois,-9.08,-14.67,,,1.0,3.0,1.0
+E1 h=3,y_d_oat,E1 Horizon 3 mois,-2.75,-7.59,,,1.0,3.0,1.0
+E1 h=3,y_d_spread,E1 Horizon 3 mois,2.28,-8.62,,,1.0,3.0,1.0
+E1 h=6,y_cac_ret,E1 Horizon 6 mois,-30.31,-39.52,,,1.0,3.0,2.0
+E1 h=6,y_d_oat,E1 Horizon 6 mois,-27.49,-37.99,,,1.0,3.0,2.0
+E1 h=6,y_d_spread,E1 Horizon 6 mois,-12.14,-20.57,,,1.0,3.0,2.0
+E1 h=12,y_cac_ret,E1 Horizon 12 mois,11.82,-16.52,,,1.0,3.0,3.0
+E1 h=12,y_d_oat,E1 Horizon 12 mois,-29.78,-28.17,,,1.0,3.0,3.0
+E1 h=12,y_d_spread,E1 Horizon 12 mois,-93.95,-97.31,,,1.0,3.0,3.0
+E2,y_cac_ret,E2 Hausse/baisse (Brier),-3.72,-6.78,,,1.0,3.0,4.0
+E2,y_d_oat,E2 Hausse/baisse (Brier),2.48,5.84,,,1.0,3.0,4.0
+E2,y_d_spread,E2 Hausse/baisse (Brier),-2.37,0.51,,,1.0,3.0,4.0
+E3,y_cac_ret,E3 Volatilité,9.62,6.39,,,1.0,3.0,5.0
+E3,y_d_oat,E3 Volatilité,3.26,4.18,,,1.0,3.0,5.0
+E3,y_d_spread,E3 Volatilité,-4.35,-7.74,,,1.0,3.0,5.0
+E4,y_cac_ret,E4 Surprise budgétaire,-1.45,-0.36,,,1.0,6.0,6.0
+E4,y_d_oat,E4 Surprise budgétaire,-7.09,-7.24,,,1.0,6.0,6.0
+E4,y_d_spread,E4 Surprise budgétaire,-6.0,-11.14,,,1.0,6.0,6.0
+E5,y_cac_ret,E5 Interactions régime,-4.8,-13.74,,,1.0,1.0,7.0
+E5,y_d_oat,E5 Interactions régime,-12.25,-18.96,,,1.0,1.0,7.0
+E5,y_d_spread,E5 Interactions régime,-14.0,-29.54,,,1.0,1.0,7.0
+E6,y_cac_ret,E6 Variables réduites / ACP,-3.64,-2.56,,,1.0,6.0,8.0
+E6,y_d_oat,E6 Variables réduites / ACP,-5.72,-4.56,,,1.0,6.0,8.0
+E6,y_d_spread,E6 Variables réduites / ACP,-5.3,-4.69,,,1.0,6.0,8.0
+E7,y_cac_ret,E7 Prévisions tempérées,-0.63,-1.65,,,1.0,3.0,9.0
+E7,y_d_oat,E7 Prévisions tempérées,-0.02,0.07,,,1.0,3.0,9.0
+E7,y_d_spread,E7 Prévisions tempérées,-1.47,-2.83,,,1.0,3.0,9.0
+E8,y_cac_ret,E8 Combinaison,-3.93,-4.17,,,1.0,2.0,10.0
+E8,y_d_oat,E8 Combinaison,-1.79,-2.04,,,1.0,2.0,10.0
+E8,y_d_spread,E8 Combinaison,-3.46,-4.29,,,1.0,2.0,10.0
+E9,y_cac_ret,E9 Elastic Net,-0.33,-3.8,,,1.0,1.0,11.0
+E9,y_d_oat,E9 Elastic Net,-6.71,-7.65,,,1.0,1.0,11.0
+E9,y_d_spread,E9 Elastic Net,-2.71,-4.93,,,1.0,1.0,11.0
+E10,y_cac_ret,E10 XGBoost réglé,-6.16,-2.99,,,1.0,1.0,12.0
+E10,y_d_oat,E10 XGBoost réglé,-4.79,-5.38,,,1.0,1.0,12.0
+E10,y_d_spread,E10 XGBoost réglé,-4.37,-6.2,,,1.0,1.0,12.0
+E11,y_cac_ret,E11 Fenêtre 60 mois,-3.96,-7.55,,,1.0,3.0,13.0
+E11,y_d_oat,E11 Fenêtre 60 mois,-8.73,-10.37,,,1.0,3.0,13.0
+E11,y_d_spread,E11 Fenêtre 60 mois,-6.21,-8.86,,,1.0,3.0,13.0
+E13,y_cac_ret,E13 Notations,0.01,-10.77,,,1.0,3.0,14.0
+E13,y_d_oat,E13 Notations,-5.2,-6.78,,,1.0,3.0,14.0
+E13,y_d_spread,E13 Notations,-5.68,-8.64,,,1.0,3.0,14.0
+E20a,y_cac_ret,E20 Incertitude politique (M0+EPU vs M0),-1.34,-0.28,,,1.0,3.0,15.0
+E20a,y_d_oat,E20 Incertitude politique (M0+EPU vs M0),-6.94,-4.76,,,1.0,3.0,15.0
+E20a,y_d_spread,E20 Incertitude politique (M0+EPU vs M0),-6.79,-6.11,,,1.0,3.0,15.0
+E20b,y_cac_ret,E20 Dépenses | incertitude (M1+EPU vs M0+EPU),-0.28,-2.64,,,1.0,3.0,16.0
+E20b,y_d_oat,E20 Dépenses | incertitude (M1+EPU vs M0+EPU),-4.76,-5.93,,,1.0,3.0,16.0
+E20b,y_d_spread,E20 Dépenses | incertitude (M1+EPU vs M0+EPU),-6.11,-7.55,,,1.0,3.0,16.0
+E15,Δ spread trimestriel (5 pays),E15 Panel trimestriel (moyennes),13.9,15.5,,13.73,1.0,3.0,100.0
+E16,spread niveau,"E16 Panel mensuel, niveau du spread",96.98,97.02,-32.49,-30.85,1.0,3.0,101.0
+E16,spread variation,"E16 Panel mensuel, variation du spread",-3.67,-3.79,-9.56,-9.7,1.0,3.0,102.0
+E17,Δ spread annuel (5 pays),E17 Panel annuel (décembre),-45.35,-19.8,-62.32,-33.79,1.0,3.0,103.0
+E18,Δ spread trimestriel fin de trimestre (5 pays),"E18 Panel, régime de crise (exploratoire)",-3.32,-4.94,-5.5,-7.16,1.0,3.0,104.0
+E19,btp_concessions (excès CAC 40),E19 Actions BTP-concessions (excès CAC 40),1.35,-0.74,,,1.0,6.0,105.0
+E19,defense (excès CAC 40),E19 Actions défense (excès CAC 40),-0.01,-1.74,,,1.0,6.0,106.0

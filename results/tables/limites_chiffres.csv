@@ -1,0 +1,35 @@
+limite,cible,valeur,unite,texte,source
+écart-type de l'écart YTD : décembre / janvier,dep_totales,6.298,rapport,,02_build_dataset.build_budget
+écart-type de l'écart YTD : décembre / janvier,dep_personnel,6.701,rapport,,02_build_dataset.build_budget
+écart-type de l'écart YTD : décembre / janvier,dep_fonctionnement,9.4,rapport,,02_build_dataset.build_budget
+écart-type de l'écart YTD : décembre / janvier,dep_charge_dette,12.358,rapport,,02_build_dataset.build_budget
+écart-type de l'écart YTD : décembre / janvier,dep_investissement,0.962,rapport,,02_build_dataset.build_budget
+écart-type de l'écart YTD : décembre / janvier,dep_intervention,5.309,rapport,,02_build_dataset.build_budget
+écart-type de l'écart YTD : décembre / janvier,psr_total,3.532,rapport,,02_build_dataset.build_budget
+écart-type de l'écart YTD : décembre / janvier (médiane des 7 lignes),,6.298,rapport,min 1.0 ; max 12.4 ; revendiqué : environ x6,02_build_dataset.build_budget
+"témoin : flux i.i.d., écart-type décembre / janvier (moyenne de 300 simulations)",,3.664,rapport,attendu sqrt(12) = 3.46 : l'inflation de variance en fin d'année est en grande partie mécanique,simulation
+observations d'entraînement au premier mois de test,,70.0,mois,premier mois de test 2020-01,dataset_monthly.csv
+observations d'entraînement au dernier mois de test,,148.0,mois,dernier mois de test 2026-07,dataset_monthly.csv
+mois de test (04),,79.0,mois,,dataset_monthly.csv
+"observations de test, E1 h=3",,77.0,observations,valeurs distinctes : [77],extensions/E1.csv
+"observations de test, E1 h=6",,74.0,observations,valeurs distinctes : [74],extensions/E1.csv
+"observations de test, E1 h=12",,68.0,observations,valeurs distinctes : [68],extensions/E1.csv
+"observations de test, E4",,74.0,observations,valeurs distinctes : [74],extensions/E4.csv
+"observations de test, E19 h=1",,79.0,observations,valeurs distinctes : [79],extensions/E19.csv
+"observations de test, E19 h=3",,77.0,observations,valeurs distinctes : [77],extensions/E19.csv
+"observations de test, E15 (trimestres x pays)",,330.0,observations,valeurs distinctes : [330],extensions/E15.csv
+"observations de test, E16 (mois x pays)",,874.0,observations,valeurs distinctes : [874],extensions/E16.csv
+"observations de test, E17 (années x pays)",,75.0,observations,valeurs distinctes : [75],extensions/E17.csv
+E16 : séries dans la base élargie,,68.0,séries,,large/base_elargie_mensuelle.csv
+E16 : séries dont la dernière valeur observée est antérieure à 2024-06,,25.0,séries,sur 68 ; fin de la base 2026-09,large/base_elargie_mensuelle.csv
+E16 : séries dont la dernière valeur observée est antérieure à 2025-01,,25.0,séries,sur 68 ; fin de la base 2026-09,large/base_elargie_mensuelle.csv
+E16 : observations de test (mois x pays),,874.0,observations,,11_panel_models.build_monthly
+E16 : variables retenues (dont finances publiques),,150.0,variables,dont finances publiques : 18,11_panel_models.build_monthly
+E16 : part des cellules manquantes (donc imputées) sur les 144 dernières observations de test,,23.426,%,moyenne de toutes les cellules,11_panel_models.build_monthly
+"E16 : idem, médiane sur les lignes",,24.0,%,,11_panel_models.build_monthly
+"E16 : idem, médiane sur les variables",,0.0,%,"revendiqué : 23,6 % (médiane)",11_panel_models.build_monthly
+autocorrélation d'ordre 1 de la variation mensuelle,y_d_spread,0.146,corrélation,taux : variations de MOYENNES mensuelles (autocorrélation en partie mécanique) ; CAC 40 : fin de mois,dataset_monthly.csv
+autocorrélation d'ordre 1 de la variation mensuelle,y_d_oat,0.236,corrélation,taux : variations de MOYENNES mensuelles (autocorrélation en partie mécanique) ; CAC 40 : fin de mois,dataset_monthly.csv
+autocorrélation d'ordre 1 de la variation mensuelle,y_cac_ret,-0.09,corrélation,taux : variations de MOYENNES mensuelles (autocorrélation en partie mécanique) ; CAC 40 : fin de mois,dataset_monthly.csv
+"puissance : rho = 0.3, % de tirages où le modèle bat la moyenne (min-max sur les 3 cibles)",,23.333,%,20-30,diag_04/resume.csv
+"puissance : rho = 0.5, % de tirages où le modèle bat la moyenne (min-max sur les 3 cibles)",,90.0,%,80-100,diag_04/resume.csv

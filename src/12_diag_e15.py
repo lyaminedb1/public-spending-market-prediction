@@ -39,10 +39,15 @@ def run(how="mean", start="2010Q1", models=("ridge","rf","xgb")):
             rows.append((how,mod,name,lab,len(sub),round(r2,1),round(rw,1)))
     return pd.DataFrame(rows,columns=["agregation","modele","jeu","periode","n","R2_vs_moy","gain_vs_RW"])
 pd.set_option("display.width",200)
-print(run("mean",models=("ridge",)).to_string(index=False))
-print(run("last",models=("ridge",)).to_string(index=False))
+d_mean, d_last = run("mean",models=("ridge",)), run("last",models=("ridge",))
+print(d_mean.to_string(index=False))
+print(d_last.to_string(index=False))
+pd.concat([d_mean, d_last]).to_csv("results/tables/diag_e15.csv", index=False)
 # autocorrélation des variations trimestrielles, moyenne vs fin de trimestre
 q=df.copy(); q["q"]=q.index.asfreq("Q")
+ar1 = []
 for how in ("mean","last"):
     s=q.groupby(["pays","q"]).spread.agg(how).groupby(level=0).diff()
-    print(how, "AR1 Δspread trimestriel (panel) :", round(s.groupby(level=0).apply(lambda x: x.autocorr()).mean(),3))
+    ar1.append({"agregation": how, "AR1_delta_spread_trimestriel_moyenne_pays": round(s.groupby(level=0).apply(lambda x: x.autocorr()).mean(),3)})
+    print(how, "AR1 Δspread trimestriel (panel) :", ar1[-1]["AR1_delta_spread_trimestriel_moyenne_pays"])
+pd.DataFrame(ar1).to_csv("results/tables/diag_e15_ar1.csv", index=False)

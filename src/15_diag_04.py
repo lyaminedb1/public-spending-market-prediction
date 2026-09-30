@@ -19,6 +19,8 @@ Diagnostics :
   bruit_*      : contrôle négatif : 7 variables de bruit à la place des 7 dépenses ; compare le gain par rapport à M0.
   graines_*    : sensibilité de RF et XGBoost à la graine aléatoire (M0 et M1).
   cw_bruit_*   : taille du test de Clark-West : part des tirages de bruit jugés « significatifs ».
+  ecarts_revue : compare resume.csv aux chiffres écrits dans docs/revue_04_models.md -> ecarts_revue.csv
+  resume       : agrège tous les CSV ci-dessus en un tableau long (bloc, cible, modele, cle, valeur) -> resume.csv
 """
 import importlib.util
 from pathlib import Path
@@ -184,11 +186,110 @@ def cw_bruit(model, n=20):
     return pd.DataFrame(rows)
 
 
+def resume():
+    """Agrège les diagnostics déjà calculés (lecture seule des CSV) ; échoue si un fichier manque."""
+    rows = []
+
+    def add(bloc, cible, modele, cle, valeur):
+        rows.append({"bloc": bloc, "cible": cible, "modele": modele, "cle": cle, "valeur": float(valeur)})
+
+    def read(name):
+        f = OUT / f"{name}.csv"
+        if not f.exists():
+            raise FileNotFoundError(f"{f} manquant : lancer d'abord le job « {name} »")
+        return pd.read_csv(f)
+
+    # puissance : variable fictive de corrélation rho ajoutée à M0 (Ridge)
+    for (t, rho), g in read("positif").groupby(["cible", "rho"]):
+        better = g["R2_avec_signal_%"] > g["R2_M0_%"]
+        add("puissance", t, "ridge", f"rho={rho} : % tirages où le modèle bat la moyenne", (g["R2_avec_signal_%"] > 0).mean() * 100)
+        add("puissance", t, "ridge", f"rho={rho} : % tirages où DM détecte l'apport (p<0,05 et gain>0)", ((g.p_DM < 0.05) & better).mean() * 100)
+        add("puissance", t, "ridge", f"rho={rho} : % tirages où Clark-West détecte l'apport (p<0,05)", (g.p_CW < 0.05).mean() * 100)
+    # contrôle négatif : rang des vraies dépenses parmi les tirages de bruit (part des tirages de bruit battus)
+    for mod in ("ridge", "rf", "xgb"):
+        for t, g in read(f"bruit_{mod}").groupby("cible"):
+            reel = g.loc[g.jeu == "dépenses réelles", "gain_vs_M0_pts"].iloc[0]
+            bruit_ = g.loc[g.jeu != "dépenses réelles", "gain_vs_M0_pts"]
+            add("bruit", t, mod, "% tirages de bruit battus par les vraies dépenses", (reel > bruit_).mean() * 100)
+            add("bruit", t, mod, "gain des vraies dépenses vs M0 (pts de R²)", reel)
+            add("bruit", t, mod, "gain médian du bruit vs M0 (pts de R²)", bruit_.median())
+    # Clark-West sur les prévisions de 04, et taille du test sur du bruit
+    for _, r in read("cw").iterrows():
+        add("clark_west", r.cible, r.modele, "p CW M1 vs M0", r.p_CW_M1_vs_M0)
+        add("clark_west", r.cible, r.modele, "p DM bilatérale M1 vs M0", r.p_DM_bilat_M1_vs_M0)
+    for mod in ("ridge", "xgb"):
+        for t, g in read(f"cw_bruit_{mod}").groupby("cible"):
+            add("taille_test", t, mod, "% tirages de bruit « significatifs » (Clark-West, p<0,05)", (g.p_CW < 0.05).mean() * 100)
+            add("taille_test", t, mod, "% tirages de bruit « significatifs » (DM bilatéral, p<0,05)", (g.p_DM < 0.05).mean() * 100)
+    # SHAP : part de 7 variables de bruit (en échantillon)
+    for t, g in read("shap_bruit").groupby("cible"):
+        add("shap_bruit", t, "xgb", "part SHAP du bruit : min (%)", g["part_SHAP_bruit_%"].min())
+        add("shap_bruit", t, "xgb", "part SHAP du bruit : moyenne (%)", g["part_SHAP_bruit_%"].mean())
+        add("shap_bruit", t, "xgb", "part SHAP du bruit : max (%)", g["part_SHAP_bruit_%"].max())
+    # sensibilité à la graine
+    for mod in ("rf", "xgb"):
+        for t, g in read(f"graines_{mod}").groupby("cible"):
+            add("graines", t, mod, "R² M0 min (%)", g["R2_M0_%"].min())
+            add("graines", t, mod, "R² M0 max (%)", g["R2_M0_%"].max())
+            add("graines", t, mod, "R² M1 min (%)", g["R2_M1_%"].min())
+            add("graines", t, mod, "R² M1 max (%)", g["R2_M1_%"].max())
+            add("graines", t, mod, "p DM M1 vs M0 minimale", g.p_DM.min())
+    for _, r in read("ar1").iterrows():
+        add("references", r.cible, "AR(1)", "R² hors échantillon (%)", r["R2_AR1_%"])
+        add("references", r.cible, "variation nulle", "R² hors échantillon (%)", r["R2_variation_nulle_%"])
+    return pd.DataFrame(rows)
+
+
+def ecarts_revue():
+    """Compare resume.csv aux chiffres de docs/revue_04_models.md (fourchettes [min, max] écrites dans la revue)."""
+    r = pd.read_csv(OUT / "resume.csv")
+    # (constat, bloc, texte de la clé, modele, cible, min, max, tolérance)
+    attendu = [
+        (1, "puissance", "rho=0.3 : % tirages où le modèle bat", None, None, 10, 30, 0),
+        (1, "puissance", "rho=0.3 : % tirages où DM", None, None, 0, 50, 0),
+        (1, "puissance", "rho=0.5 : % tirages où le modèle bat", None, None, 80, 100, 0),
+        (1, "puissance", "rho=0.5 : % tirages où DM", None, None, 30, 80, 0),
+        (1, "puissance", "rho=1.0 : % tirages où le modèle bat", None, None, 100, 100, 0),
+        (2, "bruit", "% tirages de bruit battus", "ridge", None, 0, 10, 0),
+        (2, "bruit", "% tirages de bruit battus", "rf", None, 0, 20, 0),
+        (2, "bruit", "% tirages de bruit battus", "xgb", None, 40, 50, 0),
+        (3, "clark_west", "p CW M1 vs M0", "xgb", "y_d_spread", 0.018, 0.018, 0.005),
+        (3, "clark_west", "p CW M1 vs M0", "xgb", "y_cac_ret", 0.030, 0.030, 0.005),
+        (3, "clark_west", "p CW M1 vs M0", "xgb", "y_d_oat", 0.083, 0.083, 0.005),
+        (3, "taille_test", "Clark-West", "xgb", None, 45, 75, 0),
+        (3, "taille_test", "Clark-West", "ridge", ["y_d_spread", "y_d_oat"], 40, 50, 0),
+        (3, "taille_test", "DM bilatéral", None, None, 0, 5, 0),
+        (4, "shap_bruit", "moyenne", None, None, 34, 38, 0.2),
+        (5, "graines", "R² M0 min", "xgb", "y_d_spread", -39.8, -39.8, 0.1),
+        (5, "graines", "R² M0 max", "xgb", "y_d_spread", -30.8, -30.8, 0.1),
+        (5, "graines", "R² M0 min", "rf", "y_d_spread", -6.3, -6.3, 0.1),
+        (5, "graines", "R² M0 max", "rf", "y_d_spread", -3.3, -3.3, 0.1),
+        (5, "graines", "p DM M1 vs M0 minimale", "xgb", "y_d_spread", 0.14, 0.14, 0.01),
+        (5, "graines", "p DM M1 vs M0 minimale", "rf", "y_d_spread", 0.13, 0.13, 0.01),
+        (6, "references", "R²", "AR(1)", None, -2.7, -1.9, 0.06),
+        (6, "references", "R²", "variation nulle", "y_d_spread", 1.7, 1.7, 0.06),
+        (6, "references", "R²", "variation nulle", "y_d_oat", 2.4, 2.4, 0.06),
+        (6, "references", "R²", "variation nulle", "y_cac_ret", -0.2, -0.2, 0.06),
+    ]
+    rows = []
+    for constat, bloc, cle, modele, cible, lo, hi, tol in attendu:
+        sel = r[(r.bloc == bloc) & r.cle.str.contains(cle, regex=False)]
+        if modele:
+            sel = sel[sel.modele == modele]
+        if cible:
+            sel = sel[sel.cible.isin([cible] if isinstance(cible, str) else cible)]
+        for _, x in sel.iterrows():
+            ok = lo - tol <= x.valeur <= hi + tol
+            rows.append({"constat_revue": constat, "bloc": bloc, "cle": x.cle, "modele": x.modele, "cible": x.cible,
+                         "revue_min": lo, "revue_max": hi, "recalcule": round(x.valeur, 3), "conforme": ok})
+    return pd.DataFrame(rows)
+
+
 JOBS = {
     "identite": identite, "ar1": ar1, "cw": cw, "shap_bruit": shap_bruit, "positif": positif,
     "bruit_ridge": lambda: bruit("ridge", 20), "bruit_rf": lambda: bruit("rf", 5), "bruit_xgb": lambda: bruit("xgb", 10),
     "graines_rf": lambda: graines("rf", 5), "graines_xgb": lambda: graines("xgb", 10),
-    "cw_bruit_ridge": lambda: cw_bruit("ridge"), "cw_bruit_xgb": lambda: cw_bruit("xgb"),
+    "cw_bruit_ridge": lambda: cw_bruit("ridge"), "cw_bruit_xgb": lambda: cw_bruit("xgb"), "resume": resume, "ecarts_revue": ecarts_revue,
 }
 
 if __name__ == "__main__":

@@ -12,19 +12,22 @@ Convention temporelle (ligne = fin du mois t) :
 - budget      : données du mois t-2 (la situation du mois M est publiée début M+2,
                 ex. juin 2026 publié le 4 août 2026) -> pas de biais d'anticipation
 
-Lancer depuis la racine du dépôt :  python src/02_build_dataset.py
+Lancer depuis la racine du dépôt :  python src/02_build_dataset.py            (décalage de config.py, 2 mois)
+                                    python src/02_build_dataset.py --lag 3    (robustesse -> dataset_monthly_lag3.csv)
 """
 
 from pathlib import Path
+import sys
 
 import numpy as np
 import pandas as pd
 
+sys.path.insert(0, str(Path(__file__).parent))
+from config import BUDGET_LAG  # noqa: E402  (source unique du décalage, voir src/config.py)
+
 RAW = Path("data/raw")
 OUT = Path("data/processed")
 OUT.mkdir(parents=True, exist_ok=True)
-
-BUDGET_LAG = 2  # mois
 
 # ---------------------------------------------------------------------------
 # 1. Budget de l'État : situations mensuelles budgétaires (cumuls depuis janvier, en euros)
@@ -138,7 +141,7 @@ def build_markets() -> pd.DataFrame:
 # ---------------------------------------------------------------------------
 # 3. Assemblage : cibles, retards, décalage de publication
 # ---------------------------------------------------------------------------
-def main() -> None:
+def main(lag: int = BUDGET_LAG) -> None:
     mk = build_markets()
     bud = build_budget()
 
@@ -170,9 +173,9 @@ def main() -> None:
 
     # Budget décalé de 2 mois
     bud_lag = bud.copy()
-    bud_lag.index = bud_lag.index + BUDGET_LAG
+    bud_lag.index = bud_lag.index + lag
     df = df.join(bud_lag.add_prefix("b_"), how="left")
-    df["b_source_month"] = (df.index - BUDGET_LAG).astype(str)
+    df["b_source_month"] = (df.index - lag).astype(str)
 
     # Période d'étude : premières lignes où toutes les variables budgétaires existent
     b_cols = [c for c in df.columns if c.startswith("b_") and c != "b_source_month"]
@@ -181,7 +184,9 @@ def main() -> None:
 
     df.index = df.index.astype(str)
     df.index.name = "mois"
-    df.to_csv(OUT / "dataset_monthly.csv")
+    name = "dataset_monthly.csv" if lag == BUDGET_LAG else f"dataset_monthly_lag{lag}.csv"
+    df.to_csv(OUT / name)
+    print(f"Écrit : {OUT / name} (décalage budgétaire {lag} mois)")
 
     n_train = df["y_d_spread"].notna().sum()
     print(f"Jeu de données : {df.shape[0]} mois ({df.index[0]} -> {df.index[-1]}), {df.shape[1]} colonnes")
@@ -192,4 +197,5 @@ def main() -> None:
 
 
 if __name__ == "__main__":
-    main()
+    lag_arg = int(sys.argv[sys.argv.index("--lag") + 1]) if "--lag" in sys.argv else BUDGET_LAG
+    main(lag_arg)

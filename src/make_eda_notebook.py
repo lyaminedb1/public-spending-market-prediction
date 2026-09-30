@@ -237,7 +237,7 @@ adf["stationnaire ?"] = np.where(adf["p-value ADF"] < 0.05, "oui", "non")
 adf.round(3)
 """)
 md("""
-**Lecture** : les trois cibles (des variations) sont clairement stationnaires ; les niveaux (spread, OAT, solde, dépenses `_12m`) ne le sont pas du tout (p > 0,7). Les variables `_ytd_gap` sont nettement plus proches de la stationnarité (p entre 0,01 et 0,06) : c'est ce qui justifie de prédire des **variations** et de privilégier les `_ytd_gap` comme variables explicatives.
+**Lecture** : les trois cibles (des variations) sont clairement stationnaires ; les niveaux (spread, OAT, solde, dépenses `_12m`) ne le sont pas (p entre 0,2 et 1,0 : 0,31 pour le spread ; 0,94 pour l'OAT ; 0,60 pour les dépenses d'intervention `_12m`). Les variables `_ytd_gap` sont stationnaires ou presque (p entre 0,000 et 0,057 ; seules les dépenses totales dépassent 0,05) : c'est ce qui justifie de prédire des **variations** et de privilégier les `_ytd_gap` comme variables explicatives.
 
 **Autocorrélation** : est-ce que la variation d'un mois ressemble à celle du mois précédent ? Si oui, la valeur passée de la cible est un bon prédicteur (c'est ce que trouvent Bouillot et al., 2025).
 """)

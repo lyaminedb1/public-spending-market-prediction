@@ -1,0 +1,22 @@
+cible,variable,rho_partiel,p,n
+y_d_spread,Dépenses totales,-0.024,0.775,149
+y_d_spread,Personnel,-0.02,0.809,149
+y_d_spread,Fonctionnement,-0.012,0.884,149
+y_d_spread,Charge de la dette,-0.018,0.826,149
+y_d_spread,Investissement,-0.153,0.064,149
+y_d_spread,Intervention,-0.029,0.724,149
+y_d_spread,Prélèvements sur recettes,-0.005,0.954,149
+y_d_oat,Dépenses totales,0.12,0.147,149
+y_d_oat,Personnel,0.147,0.075,149
+y_d_oat,Fonctionnement,0.094,0.258,149
+y_d_oat,Charge de la dette,0.098,0.236,149
+y_d_oat,Investissement,0.033,0.695,149
+y_d_oat,Intervention,0.064,0.438,149
+y_d_oat,Prélèvements sur recettes,0.042,0.617,149
+y_cac_ret,Dépenses totales,0.075,0.366,149
+y_cac_ret,Personnel,-0.008,0.927,149
+y_cac_ret,Fonctionnement,0.045,0.59,149
+y_cac_ret,Charge de la dette,0.091,0.274,149
+y_cac_ret,Investissement,0.142,0.087,149
+y_cac_ret,Intervention,-0.006,0.942,149
+y_cac_ret,Prélèvements sur recettes,0.075,0.369,149
