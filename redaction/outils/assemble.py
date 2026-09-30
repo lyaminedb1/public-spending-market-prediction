@@ -99,7 +99,7 @@ for k, l in enumerate(titre):
 doc += PB
 for t in ("Remerciements", "Déclaration d'utilisation de l'intelligence artificielle"):
     doc += [f"# {t}", "", sec(t), ""] + PB
-doc += ["# Résumé", "", sec("Résumé"), "", "# Abstract", "", sec("Abstract"), ""] + PB
+doc += ["# Résumé", "", sec("Résumé"), ""] + PB
 doc += ["# Sommaire", ""] + field('TOC \\o "1-2" \\h \\z \\u') + PB
 doc += ["# Liste des tableaux", ""] + field('TOC \\h \\z \\t "CaptionTable,1"')
 doc += ["# Liste des figures", ""] + field('TOC \\h \\z \\t "CaptionFigure,1"') + PB

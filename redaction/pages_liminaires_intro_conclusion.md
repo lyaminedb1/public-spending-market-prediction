@@ -24,15 +24,7 @@ Je remercie également mon encadrante, Dr Yosra Hajjaji, pour son suivi et ses c
 
 ## Déclaration d'utilisation de l'intelligence artificielle
 
-> **À vérifier par Elyamine avant la remise** : chaque phrase doit être exacte. Supprimer ou corriger ce qui ne correspond pas à ce que tu as réellement fait.
-
-Conformément au guide de rédaction de l'ECE, je déclare avoir utilisé un outil d'intelligence artificielle générative, Claude (Anthropic), pendant ce travail.
-
-**Usages.** L'outil a été utilisé pour : écrire et relire le code Python (collecte, construction des données, modèles, tests) ; réaliser des revues du code destinées à détecter les erreurs de méthode (fuites d'information, décalages de dates) ; rechercher des sources et vérifier les chiffres cités ; proposer des premières versions du texte à partir des résultats et de nos échanges ; corriger la langue.
-
-**Ce qui relève de l'auteur.** Le choix du sujet et de la problématique, validés par l'école ; le choix du périmètre (France, données mensuelles) et des trois indicateurs étudiés ; les décisions de méthode, prises après discussion des options ; la règle suivie tout au long du travail : ne corriger une analyse qu'en cas d'erreur de méthode, jamais pour obtenir un meilleur résultat ; l'organisation d'une seconde revue indépendante du code et du texte ; la relecture critique et la réécriture du texte, en particulier des interprétations du chapitre 4.
-
-**Contrôles.** Les chiffres du mémoire sont comparés automatiquement aux fichiers de résultats, et les affirmations sur les articles cités ont été vérifiées sur les textes originaux. Le code, les données et les résultats sont conservés dans le dépôt GitHub du projet (accessible sur demande), ce qui permet de tout vérifier.
+Conformément au guide de rédaction de l'ECE, je déclare avoir utilisé un outil d'intelligence artificielle générative (Claude, d'Anthropic) comme assistant pour la programmation, la relecture du code et l'aide à la rédaction. Le choix du sujet, de la problématique et du périmètre, les décisions de méthode et les interprétations relèvent de l'auteur, qui a relu et validé l'ensemble du texte. Les chiffres cités ont été vérifiés sur les résultats et les affirmations sur la littérature sur les articles originaux.
 
 ## Résumé
 
@@ -41,12 +33,6 @@ Ce mémoire cherche à savoir si les données ouvertes de dépenses publiques pe
 Nous ne trouvons aucune preuve que les dépenses améliorent la prévision : aucune des 168 comparaisons n'est significative après correction pour tests multiples. Aucun modèle ne bat la moyenne historique, et pour les taux, la prévision « pas de variation » fait mieux que tous les modèles. Des contrôles avec un signal fictif et avec des variables de bruit montrent que notre dispositif aurait détecté un effet fort, mais pas forcément un effet faible. Enfin, nous montrons qu'un R² très élevé sur le niveau du spread, comme dans la littérature récente, ne suffit pas : les modèles perdent face à la simple reconduction du spread du mois précédent.
 
 **Mots-clés :** dépenses publiques, données ouvertes, spread souverain, prévision, machine learning, validation glissante, marchés efficients.
-
-## Abstract
-
-This thesis asks whether open public spending data can forecast financial markets. Using the French State's monthly budget execution data (2013-2026), lagged by their two-month publication delay, we forecast three indicators one month ahead: the change in the 10-year OAT–Bund spread, the change in the 10-year OAT yield, and the CAC 40 return. We compare a model with market and macroeconomic variables only to a model that adds spending, using Ridge regression, random forests and XGBoost, walk-forward validation and Diebold-Mariano tests, plus twenty extensions including a five-country European panel. We find no evidence that spending improves forecasts: none of 168 comparisons is significant after multiple-testing correction. No model beats the historical mean, and for yields a no-change forecast beats all models. Positive and negative (noise) controls show that a strong effect would have been detected, but a weak one might not. We also show that a very high R² on the spread level, as reported in recent studies, is not sufficient: the models lose to a simple random walk.
-
-**Keywords:** public spending, open data, sovereign spread, forecasting, machine learning, walk-forward validation, market efficiency.
 
 ## Liste des abréviations
 
