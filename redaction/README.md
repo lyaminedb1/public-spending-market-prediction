@@ -26,3 +26,6 @@ python3 redaction/outils/maj_index_pdf.py  # sommaire + listes (LibreOffice) -> 
 ```
 
 Les figures viennent de `results/figures/` ; la formule du R² hors échantillon est une image (`outils/formule_r2.png`).
+
+## Citations
+Les chapitres (Claude Docs et exports `.md`) sont écrits en auteur-année (APA). À l'assemblage, `outils/citations.py` remplace chaque citation par un numéro [n] cliquable (style IEEE) qui renvoie à la référence n ; la liste des références reste en ordre alphabétique (guide ECE). Pas de numéro dans les titres : il passe à la première mention du paragraphe suivant.

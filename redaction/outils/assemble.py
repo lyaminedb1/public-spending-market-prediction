@@ -130,8 +130,15 @@ if "## Références ajoutées par ce chapitre" in b4:
     biblio = sorted(set(biblio + items(refs4)), key=key)
 doc += ["# Chapitre 4 – Discussion", "", b4.strip(), ""] + PB
 doc += [concl, ""] + PB
-doc += ["# Références", ""] + [f"::: {{custom-style=\"Bibliography\"}}\n{b}\n:::\n" for b in biblio]
+# citations numérotées [n] cliquables (style IEEE, liste en ordre alphabétique)
+from citations import numeroter
+corps, refs_num, non_cites = numeroter("\n".join(doc), biblio)
+annexes, _, _ = numeroter((MD / "annexes.md").read_text(), biblio) if re.search(r"\((?:19|20)\d\d\)", (MD / "annexes.md").read_text()) else ((MD / "annexes.md").read_text(), 0, 0)
+doc = [corps]
+if non_cites:
+    print("références jamais citées dans le texte :", non_cites)
+doc += ["# Références", ""] + [f"::: {{custom-style=\"Bibliography\"}}\n{b}\n:::\n" for b in refs_num]
 doc += ["## Sources en ligne", ""] + [f"::: {{custom-style=\"Bibliography\"}}\n{w}\n:::\n" for w in web2]
-doc += PB + [(MD / "annexes.md").read_text()]
+doc += PB + [annexes]
 (OUT / "memoire.md").write_text("\n".join(doc))
 print("références:", len(biblio))
