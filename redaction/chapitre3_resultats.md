@@ -78,7 +78,7 @@ Quatre contrôles complètent le tableau 3.2 ; un cinquième, la permutation hor
 
 **Graine aléatoire.** La forêt aléatoire et XGBoost dépendent d'un tirage au hasard. Nous les avons réestimés avec 5 graines (forêt) et 10 graines (XGBoost). Le R² de XGBoost varie d'environ 9 points selon la graine (par exemple de -39,8 % à -30,8 % pour le spread, jeu M0), celui de la forêt d'environ 3 points. Avec toutes les graines, le R² reste négatif, et aucun test DM M1 contre M0 n'est significatif (plus petite p-value : 0,13).
 
-**Puissance du test (contrôle positif).** Pour savoir si notre dispositif peut détecter un vrai signal, nous avons ajouté à M0 une variable fictive corrélée à la cible (corrélation ρ), avec Ridge et 10 tirages par valeur de ρ (tableau 3.4).
+**Puissance du test (contrôle positif).** Pour savoir si notre dispositif peut détecter un vrai signal, nous avons ajouté à M0 une variable fictive corrélée à la cible (corrélation ρ), avec Ridge et 10 tirages par valeur de ρ, un seul pour ρ = 1 (tableau 3.4).
 
 **Tableau 3.4 – Contrôle positif : part des tirages où le signal est retrouvé (Ridge, 10 tirages par valeur de ρ, 1 pour ρ = 1)**
 
@@ -118,7 +118,7 @@ Nous avons aussi remplacé les sept dépenses par sept variables de pur bruit, t
 
 Pour l'OAT et le CAC 40, la part des dépenses se situe dans l'intervalle obtenu avec du bruit. Pour le spread, elle est inférieure au plus petit des dix tirages de bruit.
 
-Une seconde mesure, calculée hors échantillon, a été ajoutée après les premiers résultats : l'importance par permutation, calculée sur deux modèles : M1 auquel on ajoute sept variables de bruit, et M1 auquel on ajoute un signal fictif. Ces ajouts servent de repères. On mélange au hasard les valeurs d'un groupe de variables sur la période de test, puis on mesure la hausse de l'erreur. Quand on mélange les sept dépenses, l'erreur n'augmente pas : le RMSE baisse légèrement, de 0,1 % à 2,5 % selon la cible et le modèle (Ridge et XGBoost). Quand on mélange le signal fictif du contrôle positif (ρ = 0,5), le RMSE augmente de 7,6 % à 18,8 %.
+Une seconde mesure, calculée hors échantillon, a été ajoutée après les premiers résultats : l'importance par permutation, calculée avec Ridge et XGBoost sur deux versions de M1, qui servent de repères : l'une avec sept variables de bruit, l'autre avec le signal fictif (ρ = 0,5). On mélange au hasard les valeurs d'un groupe de variables sur la période de test, puis on mesure la hausse de l'erreur. Quand on mélange les sept dépenses dans la version avec bruit, l'erreur n'augmente pas : le RMSE baisse légèrement, de 0,1 % à 2,5 % selon la cible et le modèle. Dans la version avec signal, l'effet des dépenses va de -3,9 % à +0,1 %. Quand on mélange le signal fictif du contrôle positif (ρ = 0,5), le RMSE augmente de 7,6 % à 18,8 %.
 
 *Source : calculs de l'auteur (`results/tables/models_permutation_oos.csv`).*
 

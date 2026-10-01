@@ -226,3 +226,8 @@ E1 (déclaration IA, formulation prudente **à valider par Elyamine** : liste ex
 **Figures** : nouveau module `src/fr_format.py` ; figures 3.1 (distributions), 3.2 et 3.3 régénérées avec la virgule décimale (`03`, `04 --from-saved`, `07`). Aucun CSV de résultats ne change ; `tests/verifications.py` et `tests/check_claude_md.py` passent.
 
 **Non appliquées** (décision de l'auteur ou impossible ici) : E2 (réécriture du chapitre 4 par Elyamine), P4 (relecture des articles : réseau bloqué), P6 (verdicts du tableau 3.8), P10 (dépôt public ou privé), longueurs des chapitres 2 à 4, format des références, mise en forme du Word. Le Word et le PDF de `redaction/build/` ne sont **pas reconstruits** (`pandoc` absent de cette session) : il faut reporter les corrections dans Claude Docs puis relancer la chaîne décrite dans `redaction/README.md`.
+
+## 11. Synchronisation avec le `main` d'Elyamine (01/10/2026)
+
+Le commit `14e16fd` de son `main` applique déjà E1, E3, E4, E5, E7 et la précision sur Bouillot et al., avec sa propre rédaction. En cas de doublon, **sa version est retenue** (5 passages en conflit). Ses chiffres nouveaux ont été recalculés : impôt sur les sociétés −449 % à +470 % en janvier et −902 % à +1 789 % en février ; permutation avec signal fictif −3,9 % à +0,1 % : **corrects** (ma proposition E4 était donc incomplète). Mes modifications non chevauchantes sont conservées : E6, P1, P2, P3, P5, P7, renvois 3.3/3.4 et 2.8, passe de style, figures en virgules.
+Rappel : `redaction/build/*.docx|pdf` (son `main`) ne contiennent pas ces dernières retouches ; à régénérer après report dans Claude Docs.

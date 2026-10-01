@@ -94,11 +94,11 @@ Dans aucun de ces cas l'ajout des dépenses n'apporte un gain significatif (pour
 
 L'étude la plus proche de la nôtre annonce d'excellents résultats : un R² de 0,81 à 0,99 selon les pays (0,86 pour la France), et une erreur de 7,3 points de base pour la France sur 2020-2025. Nos résultats semblent contraires aux leurs. En réalité, ils ne mesurent pas la même chose.
 
-Bouillot et al. prévoient le **niveau** du spread, et comparent leurs modèles à la moyenne et à des régressions linéaires. Or le spread d'un mois est très proche de celui du mois précédent. Un modèle qui recopie simplement le dernier spread obtient déjà un R² très élevé face à la moyenne. Leur propre analyse le confirme : le spread passé est la variable dominante dans tous les pays.
+Bouillot et al. prévoient le **niveau** du spread, mesurent leur R² par rapport à la moyenne et comparent treize méthodes entre elles (régressions pénalisées, arbres, réseaux de neurones), sans comparaison à la marche aléatoire. Or le spread d'un mois est très proche de celui du mois précédent. Un modèle qui recopie simplement le dernier spread obtient déjà un R² très élevé face à la moyenne. Leur propre analyse le confirme : le spread passé est la variable dominante dans tous les pays.
 
 Nous avons testé cette comparaison de deux façons. D'abord, dans notre panel européen (E16), nous retrouvons un R² de 92 à 97 % sur le niveau du spread, comme eux ; mais tous nos modèles font moins bien que la marche aléatoire, qui prévoit le spread du mois précédent (XGBoost : erreur de 21,1 points de base contre 18,4). Ensuite, sur la France et la même période qu'eux (janvier 2020 à février 2025), la marche aléatoire a une erreur de 5,1 points de base dans nos données, contre 7,3 pour leur XGBoost. Cette dernière comparaison doit être lue avec prudence : nos séries sont des moyennes mensuelles, et leur définition exacte du spread peut différer.
 
-Notre conclusion n'est pas que leur travail est faux, mais qu'un R² sur le niveau ne suffit pas à juger une prévision. La comparaison à la marche aléatoire est indispensable. Il faut aussi noter un point commun : chez eux aussi, les finances publiques pèsent très peu (une seule variable parmi les 50 plus importantes).
+Notre conclusion n'est pas que leur travail est faux, mais qu'un R² sur le niveau ne suffit pas à juger une prévision. La comparaison à la marche aléatoire est indispensable. Il faut aussi noter un point commun : chez eux aussi, les finances publiques pèsent très peu (une seule variable de finances publiques parmi les cinq plus importantes de chacun des dix pays, soit 50 au total).
 
 ### Welch et Goyal (2008) : un résultat attendu
 
