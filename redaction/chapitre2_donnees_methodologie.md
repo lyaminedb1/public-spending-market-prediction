@@ -231,7 +231,7 @@ Après les premiers résultats, nous avons ajouté cinq contrôles, décrits ici
 
 ## 2.7 Extensions datées avant exécution et correction des tests multiples
 
-Un résultat pourrait dépendre d'un choix particulier : l'horizon, le modèle, la période. Pour le vérifier, nous avons décliné le protocole principal en vingt extensions, dont dix-neuf ont pu être réalisées (E14 n'a pas pu l'être, faute de données quotidiennes). Avant de lancer chaque extension, nous avons daté sa liste et son protocole dans le dépôt GitHub, et nous rapportons tous les résultats, favorables ou non.
+Un résultat pourrait dépendre d'un choix particulier : l'horizon, le modèle, la période. Pour le vérifier, nous avons décliné le protocole principal en vingt extensions, dont dix-neuf ont pu être réalisées (E14 n'a pas pu l'être sur le spread, faute de taux quotidiens ; une version limitée au CAC 40 a été faite après coup, annexe G). Avant de lancer chaque extension, nous avons daté sa liste et son protocole dans le dépôt GitHub, et nous rapportons tous les résultats, favorables ou non.
 
 Cette précaution répond à un risque bien décrit par Bailey et al. (2014) : à force d'essayer des configurations, on finit toujours par en trouver une qui semble marcher, par hasard.
 
@@ -252,7 +252,7 @@ Le pré-enregistrement s'est fait en plusieurs étapes, et nous préférons le d
 | E11 | Fenêtre glissante de 60 mois | S'adapter au changement de régime de 2022 |
 | E12 | Évaluation par période (2020-2021, 2022-2026, marchés calmes ou agités) | Un apport peut être limité aux périodes de tension |
 | E13 | Notations souveraines de la France | Contrôle du risque perçu par les agences |
-| E14 | Étude d'événement autour des dates de publication (non réalisée : taux quotidiens introuvables) | Le marché intègre-t-il l'information budgétaire le jour même ? |
+| E14 | Étude d'événement autour des dates de publication (non réalisée sur le spread, faute de taux quotidiens ; version préliminaire sur le CAC 40, annexe G) | Le marché intègre-t-il l'information budgétaire le jour même ? |
 | E15 | Panel européen trimestriel (5 pays, Eurostat) | Plus d'observations, inclusion de la crise de la dette 2010-2012 |
 | E16 | Panel européen mensuel avec une base large de variables | Répliquer le cadre de Bouillot et al. (2025) en le comparant à la marche aléatoire |
 | E17 | Panel annuel (valeurs de décembre) | Les finances publiques agiraient à basse fréquence |

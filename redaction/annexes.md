@@ -313,3 +313,17 @@ Chaque ligne compare le même modèle sans et avec les dépenses (ou les finance
 ## Annexe F : Code et reproductibilité
 
 Le code, les données et les résultats sont conservés dans le dépôt GitHub du projet (`lyaminedb1/public-spending-market-prediction`, accessible sur demande). Le script `run_all.sh` relance l'ensemble de la chaîne ; les versions des bibliothèques logicielles sont figées dans `requirements.txt` et les fichiers de données brutes dans `data/MANIFEST.csv`. Le script `tests/verifications.py` exécute 63 contrôles automatiques (alignement des cibles, décalages de publication, absence de fuite d'information dans la validation glissante, mois incomplets). Les valeurs exactes des forêts aléatoires et de XGBoost peuvent varier légèrement selon les versions des bibliothèques logicielles ; les conclusions n'en dépendent pas.
+
+## Annexe G : Étude d'événement préliminaire sur le CAC 40
+
+Les dates de publication de la situation mensuelle budgétaire ont été relevées sur le site de presse du ministère de l'Économie : 40 publications, d'octobre 2017 à janvier 2026 (le moteur de recherche du site n'en renvoie pas davantage). Le délai entre la fin du mois concerné et la publication va de 29 à 47 jours (médiane de 33). L'innovation budgétaire est la variation, entre deux publications consécutives, de l'écart du solde cumulé par rapport à l'année précédente (en % du total annuel). Le plan du test a été daté avant son exécution (`docs/plan_etude_evenement.md`). Faute de taux quotidiens accessibles, le test ne porte pas sur le spread.
+
+**Tableau G.1 : Réaction du CAC 40 aux publications de la situation mensuelle budgétaire**
+
+| Test | Événements | Statistique | p-value |
+|---|---|---|---|
+| Corrélation de Spearman entre l'innovation budgétaire et le rendement du CAC 40 le jour de la publication | 40 | -0,13 | 0,42 |
+| Corrélation de Spearman entre l'innovation budgétaire et le rendement du CAC 40 le jour suivant | 40 | 0,00 | 0,99 |
+| Rendement absolu moyen du CAC 40 le jour de la publication (%), comparé à tous les jours de bourse | 40 | 0,70 | 0,74 |
+
+*Source : calculs de l'auteur (`src/23_event_study.py`, `results/tables/event_study.csv`) ; dates : presse.economie.gouv.fr ; cours : Yahoo Finance. Le dernier test est unilatéral (rendement absolu plus élevé les jours de publication).*

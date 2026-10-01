@@ -144,6 +144,10 @@
 - Dates de publication de la SMB 2017-2026 (40 publications, 29 à 47 jours après la fin du mois) : `data/raw/smb_publication_dates.csv` (branche `claude/relaxed-gauss-3dvh8s` uniquement). Étude d'événement CAC 40 (plan daté `docs/plan_etude_evenement.md`, `src/23_event_study.py`) : nulle (ρ = −0,13, p = 0,42, n = 40) ; rien ajouté au mémoire. Spread quotidien : sources inaccessibles.
 - Style (demande d'Elyamine : moins de tics typographiques) : passe de lisibilité sur tout le mémoire : gras retiré du texte courant (sauf deux résultats clés), légendes « Tableau 3.1 : … » et titres « Chapitre 1 : … » avec deux-points, plus de tirets demi-cadratins ni de barres obliques entre mots, listes « Ce que nous en retenons » du ch. 1 en paragraphes. Déclaration IA inchangée (courte). Pas de manœuvre contre les détecteurs.
 
+## Mise à jour du 2/10 (matin)
+- Étude d'événement préliminaire sur le CAC 40 intégrée au mémoire (annexe G, section 3.5, ch. 4.2) : 40 publications 2017-2026, ρ = −0,13 (p = 0,42), jour +1 ρ = 0,00 (p = 0,99), |rendement| 0,70 % vs 0,79 % (p = 0,74). Plan daté avant exécution (`docs/plan_etude_evenement.md`), `src/23_event_study.py`, `data/raw/smb_publication_dates.csv`, `data/raw/cac40_daily.csv` ; manifeste régénéré. Le spread reste non testé en quotidien (E14 non réalisée sur le spread). Les « dix-neuf extensions » restent les 19 pré-enregistrées.
+- Chapitre 4 : arguments ajoutés (retard de publication non en cause : lag 1 et 3 mois ; sens de l'effet ambigu, E5/E18 ; plus de données ne suffiraient probablement pas : E15/E16).
+
 ## Prochaines étapes (au 30/09 soir ; remise le 2/10 à minuit)
 0. Plan serré : mercredi soir ch. 4 complet (brouillon) + éthique (ch. 2, fait : 2.8) ; jeudi introduction, conclusion, résumé, annexes, pages de garde, revue de Walid en parallèle ; vendredi corrections, PDF, envoi en fin d'après-midi. Abandonné : raccourcir le ch. 3, glossaire détaillé.
 1. Chapitre 4 (Discussion, 6-8 p.) à partir de `docs/plan_chapitre4.md` : l'interprétation vient d'Elyamine (règle ECE) ; méthode : questions guidées, il répond, Claude vérifie et corrige la langue.

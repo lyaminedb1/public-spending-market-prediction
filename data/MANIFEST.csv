@@ -6,6 +6,7 @@ data/raw/budget/textes législatifs open data_2013-2023.csv,46726,b9a9b33dc128a2
 data/raw/budget/textes législatifs_2024-xx.csv,14702,b2641989745e5d33d6224e1bfa0bb342
 data/raw/bund_10y.csv,5115,cb92ca70fc29776275f2c9542b3830d1
 data/raw/cac40.csv,115498,2a8cbf500bf24dc2906145272275105f
+data/raw/cac40_daily.csv,87119,1cb210cd6cce4b9c48c17c8489651f9e
 data/raw/ecb_dfr.csv,508,7b1dc1ce835af4ba76f97f0a0ce64bf3
 data/raw/ecb_mro.csv,509,2741e884bdae7db042c0a52ba55848e1
 data/raw/events_html/presse_00.html,134738,ad76ae23d388b62a03e80abcddacd74f
@@ -39,4 +40,5 @@ data/raw/panel/eurostat_gov_10q_ggnfa.csv,130493,d3ff900e29ce066238264c1d46857d0
 data/raw/panel/eurostat_gov_10q_ggnfa_raw.json,105065,4ff4c36bba89a243296bc2727c372db7
 data/raw/panel/taux_10y_mensuels.csv,39450,366eed8ff1d8378c7127e224a3d2c6e0
 data/raw/ratings_france.csv,1028,4a49cebe320c82ca78d5d502a2bf5b70
+data/raw/smb_publication_dates.csv,6742,3e125b1fc31301a9aa8832b6e3465e0c
 data/raw/vix.csv,73067,11a88eb3514303320f441de04fbd4764

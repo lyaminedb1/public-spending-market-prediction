@@ -14,19 +14,27 @@ Il faut bien lire ce que cela veut dire. Nous ne montrons pas que les dépenses 
 
 Le second constat va au-delà des dépenses : **aucun modèle ne bat la moyenne historique**, même sans elles. Pour les taux, la prévision « pas de variation le mois prochain » fait mieux que la moyenne et mieux que tous nos modèles, même si l'écart n'est significatif que dans quelques cas. À un mois, ces marchés restent très difficiles à prévoir avec les variables dont nous disposons.
 
-## 4.2 Pourquoi les dépenses n'aident pas : trois pistes
+## 4.2 Pourquoi les dépenses n'aident pas : des pistes
 
-Voici trois explications possibles. Elles peuvent se cumuler, et aucune n'est démontrée par nos tests.
+Voici plusieurs explications possibles. Elles peuvent se cumuler, et aucune n'est démontrée par nos tests. Nous indiquons à chaque fois ce qui les appuie et ce qui les limite.
 
 ### L'information est peut-être déjà connue
 
 Le budget de l'État est voté en décembre pour l'année suivante. Les marchés peuvent donc intégrer le plan de dépenses avant même le début de l'année, et la situation mensuelle, publiée deux mois plus tard, ne ferait que confirmer ce qui était attendu. Un prix réagit à ce qui est nouveau, pas à ce qui est déjà prévu (Fama, 1970). Ramey (2011) va dans le même sens : pour les dépenses publiques, c'est le moment de l'annonce qui compte, plus que celui de la dépense. Attinasi et al. (2009) observent la même chose pendant la crise de 2007-2009 : ce sont les annonces de plans de sauvetage bancaire qui ont pesé sur les spreads, pas les montants engagés. Notre extension E4 pointe aussi dans cette direction, puisque l'écart entre l'exécution et le budget voté, qui mesure une forme de surprise, n'améliore pas la prévision.
 
-Pour vérifier cette idée, il faudrait observer le spread le jour même de chaque publication, avec une étude d'événement. Nous n'avons pas pu la faire, faute de taux quotidiens accessibles (sections 4.7 et 4.8).
+Une vérification préliminaire va dans ce sens, sans le démontrer. Sur les 40 publications que nous avons pu dater (2017-2026), le CAC 40 ne réagit pas le jour de la publication à la variation du solde publiée (corrélation de -0,13, p = 0,42, section 3.5 et annexe G). Elle ne porte pas sur le spread, faute de taux quotidiens accessibles, et n'aurait détecté qu'une réaction forte avec si peu d'événements. Pour aller plus loin, il faudrait observer le spread lui-même le jour de chaque publication (sections 4.7 et 4.8).
 
 ### Ce qui fait bouger le spread n'est pas budgétaire
 
 Les plus fortes variations mensuelles du spread tombent en mars 2020 (+20,5 pb), en février et mai 2017 (+16,3 et −18,1 pb) et en juin 2024 (+15,5 pb). Elles coïncident avec le début de la crise du Covid-19, la campagne présidentielle de 2017 et l'annonce de la dissolution de l'Assemblée nationale le 9 juin 2024. Ce dernier cas touche bien les finances publiques, mais par un canal politique : on craint qu'une nouvelle majorité ne tienne pas la trajectoire budgétaire. C'est une anticipation, et elle n'apparaît dans aucune ligne de dépense déjà exécutée.
+
+### Le retard de publication n'explique pas à lui seul le résultat
+
+On pourrait penser que les dépenses n'aident pas parce que l'information arrive trop tard, deux mois après les faits. Notre test avec un décalage d'un mois, plus favorable aux dépenses, donne pourtant le même résultat : aucun R² n'est positif (le meilleur vaut -0,7 %) et la plus petite p-value corrigée est de 0,81 (section 3.3). Avec trois mois, la plus petite p-value corrigée est de 0,51 et aucun R² n'est positif non plus. Le problème ne vient donc pas de la fraîcheur des chiffres.
+
+### Le sens de l'effet n'est pas évident
+
+La théorie ne dit pas dans quel sens les dépenses devraient jouer. Une hausse financée par l'emprunt peut faire monter les taux (vision keynésienne), ou n'avoir aucun effet si les ménages anticipent les impôts futurs, selon l'équivalence ricardienne de Barro (1974), comme le rappelle la section 1.1.1. Si l'effet change de signe selon les périodes, il se compense dans un modèle estimé sur toute la période. Nous avons essayé de tenir compte de cela avec des interactions selon le régime de taux (E5) et selon les périodes de tension (E18). Elles n'améliorent pas la prévision, mais cela ne prouve pas que l'effet n'existe dans aucun régime, car chaque sous-période contient peu de mois.
 
 ### Une information lente et tardive pour une cible rapide
 
@@ -36,11 +44,15 @@ La littérature européenne trouve pourtant un lien entre finances publiques et 
 
 ## 4.3 Ce que le résultat négatif veut dire, et ce qu'il ne veut pas dire
 
-Un résultat négatif n'a de valeur que si l'on sait ce que le test aurait pu détecter. Nous avons trois éléments pour en juger.
+Un résultat négatif n'a de valeur que si l'on sait ce que le test aurait pu détecter. Quatre éléments permettent d'en juger.
 
 ### La puissance du test
 
 Le contrôle positif (section 3.3) ajoute à M0 une variable fictive corrélée à la cible. Avec une corrélation de 0,5, le modèle bat la moyenne historique dans 80 à 100 % des tirages ; avec 0,3, dans 20 à 30 % seulement. Notre dispositif repère donc un signal fort mais manquerait souvent un signal moyen. Nos tests écartent un fort pouvoir prédictif des dépenses, pas un effet faible. La cause principale est la taille de l'échantillon : les séries budgétaires ouvertes commencent en 2013, ce qui ne laisse que 79 mois de test, et le choix de commencer le test en 2020 pour garder assez de mois d'entraînement y contribue.
+
+### Plus de données suffiraient-elles ?
+
+On pourrait croire qu'il suffit d'ajouter des données. Nos panels vont plutôt à l'encontre de cette idée. E15 compte 330 prévisions trimestrielles. E16 en compte 874, avec 150 variables dont 18 de finances publiques, et les finances publiques n'améliorent aucune prévision (p de 0,08 à 0,81). Davantage de données augmenterait la puissance, c'est-à-dire la capacité à repérer un effet plus faible, mais rien n'indique qu'elles feraient apparaître un fort pouvoir prédictif que nous n'avons pas trouvé dans celles dont nous disposons.
 
 ### Le contrôle négatif
 
@@ -101,9 +113,9 @@ Pour les producteurs de données ouvertes. Un calendrier de publication archivé
 - Variables budgétaires inégales dans l'année. L'écart-type de l'écart cumulé est en médiane 6,3 fois plus grand en décembre qu'en janvier.
 - Petit échantillon. Avec 70 à 148 mois d'entraînement et 79 mois de test, seul un effet fort pouvait être détecté. Les écarts de quelques points de R² entre deux modèles ne sont pas interprétables.
 - Hyperparamètres. Ils ont été fixés à des valeurs usuelles, sans réglage sur la période de test, mais le code et les résultats des modèles principaux ont été enregistrés ensemble : nous ne pouvons pas prouver qu'ils ont été choisis avant de voir les résultats. Seules les extensions ont un plan daté avant leur exécution. Les chiffres de XGBoost et de la forêt aléatoire dépendent aussi des versions des bibliothèques logicielles, pas les conclusions.
-- Extensions ajoutées en cours de route. E17 à E20 ont été ajoutées après avoir vu les résultats d'E15 et E16, et E18 est exploratoire. E14 (étude d'événement) n'a pas pu être réalisée.
+- Extensions ajoutées en cours de route. E17 à E20 ont été ajoutées après avoir vu les résultats d'E15 et E16, et E18 est exploratoire. E14 (étude d'événement) n'a pas pu être réalisée sur le spread, et sa version sur le CAC 40 a été faite après coup (annexe G).
 - Panel européen. Pour E16, 25 des 68 séries de l'OCDE ne sont plus mises à jour depuis fin 2022 ou début 2024 : environ 23 % des valeurs de la fin de la période de test sont donc complétées. Pour E19, les prix des actions n'incluent pas les dividendes.
-- Pas d'étude d'événement. L'explication « l'information est déjà connue » (section 4.2) reste donc une hypothèse.
+- Pas d'étude d'événement sur le spread. L'explication « l'information est déjà connue » (section 4.2) reste donc une hypothèse : la vérification sur le CAC 40 repose sur 40 publications seulement, celles que nous avons pu dater.
 
 ## 4.8 Recherches futures
 

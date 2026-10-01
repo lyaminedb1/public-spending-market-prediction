@@ -128,5 +128,24 @@ out += ["## Annexe F : Code et reproductibilité", "",
         "mois incomplets). Les valeurs exactes des forêts aléatoires et de XGBoost peuvent varier légèrement selon les "
         "versions des bibliothèques logicielles ; les conclusions n'en dépendent pas.", ""]
 
+# G. Étude d'événement préliminaire (CAC 40)
+es = pd.read_csv(T / "event_study.csv")
+lab = {0: "Corrélation de Spearman entre l'innovation budgétaire et le rendement du CAC 40 le jour de la publication",
+       1: "Corrélation de Spearman entre l'innovation budgétaire et le rendement du CAC 40 le jour suivant",
+       2: "Rendement absolu moyen du CAC 40 le jour de la publication (%), comparé à tous les jours de bourse"}
+g = pd.DataFrame({"Test": [lab[i] for i in range(3)], "Événements": es["n"].astype(int),
+                  "Statistique": [f(es.stat[0], 2), f(abs(es.stat[1]) if abs(es.stat[1]) < 0.005 else es.stat[1], 2), f(es.stat[2], 2)],
+                  "p-value": [f(x, 2) for x in es["p_bilaterale"]]})
+out += ["## Annexe G : Étude d'événement préliminaire sur le CAC 40", "",
+        "Les dates de publication de la situation mensuelle budgétaire ont été relevées sur le site de presse du ministère de "
+        "l'Économie : 40 publications, d'octobre 2017 à janvier 2026 (le moteur de recherche du site n'en renvoie pas davantage). "
+        "Le délai entre la fin du mois concerné et la publication va de 29 à 47 jours (médiane de 33). "
+        "L'innovation budgétaire est la variation, entre deux publications consécutives, de l'écart du solde cumulé par rapport "
+        "à l'année précédente (en % du total annuel). Le plan du test a été daté avant son exécution "
+        "(`docs/plan_etude_evenement.md`). Faute de taux quotidiens accessibles, le test ne porte pas sur le spread.", "",
+        "**Tableau G.1 : Réaction du CAC 40 aux publications de la situation mensuelle budgétaire**", "", md_table(g), "",
+        "*Source : calculs de l'auteur (`src/23_event_study.py`, `results/tables/event_study.csv`) ; dates : presse.economie.gouv.fr ; "
+        "cours : Yahoo Finance. Le dernier test est unilatéral (rendement absolu plus élevé les jours de publication).*", ""]
+
 (ROOT / "redaction" / "annexes.md").write_text("\n".join(out))
 print("annexes.md :", len(b), "comparaisons")

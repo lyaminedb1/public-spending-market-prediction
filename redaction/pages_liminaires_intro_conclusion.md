@@ -132,10 +132,10 @@ Nous répondons d'abord à une question précise, avec une méthode qui isole l'
 
 ## Limites
 
-Les principales limites sont la taille de l'échantillon (79 mois de test), qui ne permet de détecter qu'un effet fort ; l'utilisation de données budgétaires révisées plutôt que des chiffres connus à chaque date ; l'absence de crise de la dette française sur la période ; et l'absence d'étude d'événement, qui aurait permis de tester directement si les marchés réagissent à la publication des chiffres.
+Les principales limites sont la taille de l'échantillon (79 mois de test), qui ne permet de détecter qu'un effet fort ; l'utilisation de données budgétaires révisées plutôt que des chiffres connus à chaque date ; l'absence de crise de la dette française sur la période ; et l'absence d'étude d'événement sur le spread, qui aurait permis de tester directement si les marchés réagissent à la publication des chiffres (une vérification préliminaire sur le CAC 40 ne montre pas de réaction).
 
 ## Perspectives
 
-Deux pistes nous semblent les plus prometteuses. La première est une étude d'événement à fréquence quotidienne, autour des dates de publication des situations budgétaires. La seconde consiste à étudier les annonces budgétaires (projet de loi de finances, programmes de stabilité) plutôt que l'exécution, car c'est au moment de l'annonce que l'information devient nouvelle pour les marchés.
+Deux pistes nous semblent les plus prometteuses. La première est une étude d'événement à fréquence quotidienne sur le spread, autour des dates de publication des situations budgétaires. La seconde consiste à étudier les annonces budgétaires (projet de loi de finances, programmes de stabilité) plutôt que l'exécution, car c'est au moment de l'annonce que l'information devient nouvelle pour les marchés.
 
 Ce résultat invite à la prudence. Avec des finances publiques françaises qui inquiètent, il est tentant de chercher dans chaque publication budgétaire un signal pour les marchés. Nos résultats suggèrent que ce signal, s'il existe dans l'exécution mensuelle du budget, est trop faible pour être exploité.

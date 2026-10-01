@@ -1,0 +1,4 @@
+test,n,stat,p_bilaterale,reference
+PRINCIPAL : Spearman innovation vs rendement CAC 40 jour 0,40,-0.1313,0.4192,
+secondaire : Spearman innovation vs rendement jour +1,40,-0.0011,0.9945,
+"secondaire : |rendement| moyen jour 0 (%) vs tous les jours (permutation, unilatéral)",40,0.703,0.7384,moyenne tous jours = 0.787 %

@@ -66,6 +66,7 @@ $PY src/07_extensions_summary.py
 $PY src/18_hypotheses.py
 $PY src/20_limites_chiffres.py
 $PY src/21_verif_chiffres_03.py
+$PY src/23_event_study.py
 
 step "Contrôles automatiques"
 $PY tests/verifications.py
