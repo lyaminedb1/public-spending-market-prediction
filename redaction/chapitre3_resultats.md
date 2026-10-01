@@ -4,7 +4,7 @@ Sep 29, 2026 · @elyamine
 
 ## Introduction du chapitre
 
-Ce chapitre présente les résultats, sans les interpréter : l'interprétation vient au chapitre 4. Nous décrivons d'abord les données (3.1), puis les performances des modèles principaux (3.2). Nous vérifions ensuite la solidité de ces résultats (3.3) et l'importance des variables (3.4). Les sections 3.5 et 3.6 résument les dix-neuf extensions réalisées ; leur détail est en annexe. La section 3.7 fait le point sur les hypothèses.
+Ce chapitre présente les résultats sans les interpréter, ce qui est l'objet du chapitre 4. Il décrit les données (3.1), les performances des modèles principaux (3.2), la solidité de ces résultats (3.3) et l'importance des variables (3.4). Les sections 3.5 et 3.6 résument les dix-neuf extensions réalisées, dont le détail est en annexe, et la 3.7 fait le point sur les hypothèses.
 
 Tous les résultats portent sur la période de test de janvier 2020 à juillet 2026 (79 mois), en validation glissante. Un R² hors échantillon positif signifie que le modèle fait mieux que la moyenne historique ; un R² négatif, qu'il fait moins bien.
 

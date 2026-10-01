@@ -4,7 +4,7 @@ Sep 29, 2026 · @elyamine
 
 ## Introduction du chapitre
 
-Ce chapitre fait le point sur ce que l'on sait déjà. Il part d'une question simple : quelqu'un a-t-il déjà utilisé les données ouvertes de dépenses de l'État français, avec des méthodes de machine learning, pour prévoir les marchés financiers ? À notre connaissance, non. Les sections qui suivent montrent pourquoi ce vide existe et pourquoi il mérite d'être exploré.
+Ce chapitre fait le point sur ce que l'on sait déjà. Il part d'une question simple : quelqu'un a-t-il déjà utilisé les données ouvertes de dépenses de l'État français, avec du machine learning, pour prévoir les marchés financiers ? À notre connaissance, non. Les sections qui suivent expliquent pourquoi ce vide existe et pourquoi il vaut la peine d'être exploré.
 
 Nous étudions trois indicateurs, plus ou moins liés aux finances publiques :
 

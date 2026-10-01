@@ -4,9 +4,9 @@ Sep 28, 2026 · @elyamine
 
 ## Introduction du chapitre
 
-Ce chapitre explique d'où viennent nos données, comment nous les avons transformées et comment nous avons évalué les modèles. Tout le protocole répond à une seule contrainte : ne jamais donner au modèle une information qu'un investisseur n'aurait pas eue au moment de sa décision.
+Ce chapitre décrit d'où viennent nos données, comment nous les avons transformées et comment nous avons évalué les modèles. Une seule règle guide tout le protocole : ne jamais donner au modèle une information qu'un investisseur n'aurait pas eue au moment de décider.
 
-Nous présentons d'abord les sources (2.1), puis la construction du jeu de données mensuel (2.2). Viennent ensuite les variables à prédire (2.3) et les variables explicatives (2.4). La section 2.5 justifie le choix des modèles, et la section 2.6 décrit la façon dont nous les évaluons. Pour finir, la section 2.7 présente les variantes testées pour vérifier la solidité des résultats.
+Nous commençons par les sources (2.1) et la construction du jeu de données mensuel (2.2), puis nous présentons les variables à prédire (2.3) et les variables explicatives (2.4). La section 2.5 justifie le choix des modèles, la 2.6 explique comment nous les évaluons, et la 2.7 décrit les variantes testées pour vérifier la solidité des résultats.
 
 Le code et les données sont conservés dans un dépôt GitHub (accessible sur demande). Chaque tableau et chaque figure de ce mémoire peut donc être recalculé à partir des fichiers bruts.
 
@@ -27,7 +27,7 @@ Le sujet impose des données ouvertes. Toutes nos sources sont donc publiques et
 
 La situation mensuelle budgétaire (SMB) décrit l'exécution du budget de l'État, et seulement de l'État : la Sécurité sociale et les collectivités locales n'y figurent pas. On y trouve les dépenses du budget général par titre (personnel, fonctionnement, charge de la dette, investissement, intervention, opérations financières), les prélèvements sur recettes, les principales recettes et le solde. En revanche, ces fichiers ne donnent pas le détail par mission : il est impossible, par exemple, d'isoler les dépenses de défense.
 
-Quatre caractéristiques de ces données comptent pour la suite :
+Quatre particularités de ces données comptent pour la suite :
 
 - **Les taux de l'OCDE sont des moyennes mensuelles**, pas des valeurs de fin de mois. Or la variation d'une moyenne à la suivante est un peu corrélée d'un mois sur l'autre, par simple construction. Le CAC 40, lui, est pris au dernier jour du mois.
 - **Le CAC 40 est un indice de prix**, qui ne compte pas les dividendes.
@@ -114,7 +114,7 @@ Le test de Dickey-Fuller augmenté (ADF ; Dickey et Fuller, 1979) confirme que l
 | Niveau du spread | 0,31 | non |
 | Niveau de l'OAT | 0,94 | non |
 
-Pourquoi ne pas prédire directement le niveau du spread ? Parce que le spread d'un mois ressemble beaucoup à celui du mois précédent. Un modèle qui recopie la dernière valeur obtient donc un R² très élevé, sans rien avoir appris. En prédisant la variation, on oblige le modèle à anticiper ce qui change vraiment. Nous verrons au chapitre 3 que ce piège n'est pas théorique : dans le panel européen (extension E16), nos modèles atteignent plus de 90 % de R² sur le niveau du spread, tout en faisant moins bien que la simple recopie du mois précédent.
+Pourquoi ne pas prédire directement le niveau du spread ? Parce que le spread d'un mois ressemble beaucoup à celui du mois précédent : un modèle qui recopie la dernière valeur obtient un R² très élevé sans rien avoir appris. En prédisant la variation, on le force à anticiper ce qui change vraiment. Nous verrons au chapitre 3 que ce piège n'est pas théorique : dans le panel européen (extension E16), nos modèles atteignent plus de 90 % de R² sur le niveau du spread, tout en faisant moins bien que la simple recopie du mois précédent.
 
 Nous testons aussi une version plus simple dans les extensions : deviner seulement si le spread va monter ou baisser. Sur notre échantillon, il a monté dans 52 % des mois.
 
