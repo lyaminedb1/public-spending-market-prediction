@@ -88,7 +88,7 @@ Nous ne trouvons aucune preuve que les dépenses améliorent la prévision : auc
 
 ## Contexte
 
-Les finances publiques françaises sont redevenues un sujet central pour les marchés. Le déficit du budget de l'État a atteint 173 milliards d'euros en 2023 et 156 milliards en 2024. Entre 2023 et 2025, les agences de notation ont abaissé cinq fois la note de la France. Sur les marchés, l'écart de taux entre la France et l'Allemagne à 10 ans (le spread OAT–Bund), qui mesure le supplément de rendement exigé pour prêter à la France, est passé d'environ 26 points de base en 2016 à plus de 80 points de base début 2025. En juin 2024, l'annonce de la dissolution de l'Assemblée nationale l'a fait monter de près de 16 points de base en un mois.
+Les finances publiques françaises sont redevenues un sujet central pour les marchés. Le déficit du budget de l'État a atteint 173 milliards d'euros en 2023 et 156 milliards en 2024 (DGFiP, situations mensuelles budgétaires de l'État). Entre 2023 et 2025, les agences de notation (Fitch, Moody's, S&P) ont abaissé cinq fois la note de la France. Sur les marchés, l'écart de taux entre la France et l'Allemagne à 10 ans (le spread OAT–Bund), qui mesure le supplément de rendement exigé pour prêter à la France, est passé d'environ 26 points de base en 2016 à plus de 80 points de base début 2025. En juin 2024, l'annonce de la dissolution de l'Assemblée nationale l'a fait monter de près de 16 points de base en un mois.
 
 Dans le même temps, les données publiques sont de plus en plus ouvertes. Le ministère de l'Économie publie chaque mois la situation budgétaire de l'État, en séries longues ouvertes depuis 2013 : dépenses de personnel, de fonctionnement, d'investissement, d'intervention, charge de la dette, recettes. Ces séries sont gratuites, détaillées et disponibles environ deux mois après la fin de chaque mois.
 
@@ -106,7 +106,7 @@ Nous étudions trois indicateurs, plus ou moins exposés au risque souverain fra
 
 La démarche repose sur une comparaison directe. Un premier modèle n'utilise que des variables de marché et macroéconomiques. Un second ajoute les dépenses de l'État. Si les dépenses contiennent une information utile, le second modèle doit mieux prévoir. Nous testons trois méthodes (régression Ridge, forêt aléatoire, XGBoost), toujours évaluées sur des mois qu'elles n'ont pas vus, avec des tests statistiques pour juger les écarts.
 
-Une attention particulière est portée à la rigueur de l'évaluation. Les données budgétaires sont décalées de leur délai réel de publication, pour ne jamais utiliser une information qui n'était pas encore connue. Dix-neuf extensions testent d'autres horizons, d'autres cibles et un panel de cinq pays européens. Enfin, des contrôles avec un signal fictif et avec des variables de bruit permettent de savoir ce que notre dispositif est capable de détecter.
+Nous accordons une attention particulière à la rigueur de l'évaluation : les données budgétaires sont décalées de leur délai réel de publication, pour ne jamais utiliser une information qui n'était pas encore connue. Dix-neuf extensions testent d'autres horizons, d'autres cibles et un panel de cinq pays européens. Enfin, des contrôles avec un signal fictif et avec des variables de bruit permettent de savoir ce que notre dispositif est capable de détecter.
 
 ## Apports
 
@@ -124,7 +124,7 @@ Ce mémoire posait une question simple : les données ouvertes de dépenses publ
 
 La réponse est négative, pour l'instant. Nous ne trouvons aucune preuve que les dépenses de l'État améliorent la prévision à un mois. Ce résultat tient pour les trois méthodes, pour les dix-neuf extensions réalisées, avec un décalage de publication d'un à trois mois, et après correction pour les tests multiples (168 comparaisons d'extensions et 18 tests du modèle principal). Aucune des hypothèses de départ n'est validée : les dépenses n'apportent pas de gain significatif (H1) ; il n'y a donc pas d'apport à classer entre les indicateurs (H2, non testable) ; le machine learning ne fait pas mieux qu'une régression linéaire (H3) ; et aucune ligne de dépense ne se détache (H4, non soutenue).
 
-Plus largement, dans le modèle principal, aucun modèle ne bat la moyenne historique, et pour les taux, la prévision « pas de variation » fait mieux que tous les modèles. À un mois, ces marchés restent très difficiles à prévoir.
+Plus largement, aucun des modèles principaux ne bat la moyenne historique, et pour les taux, la prévision « pas de variation » fait mieux que tous. À un mois, ces marchés restent très difficiles à prévoir.
 
 ## Apports
 

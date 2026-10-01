@@ -6,13 +6,13 @@ Sep 28, 2026 · @elyamine
 
 Ce chapitre explique d'où viennent nos données, comment nous les avons transformées et comment nous avons évalué les modèles. Tout le protocole répond à une seule contrainte : ne jamais donner au modèle une information qu'un investisseur n'aurait pas eue au moment de sa décision.
 
-Nous présentons d'abord les sources (2.1), puis la construction du jeu de données mensuel (2.2). Viennent ensuite les variables à prédire (2.3) et les variables explicatives (2.4). La section 2.5 justifie le choix des modèles, et la section 2.6 décrit la façon dont nous les évaluons. Pour finir, la section 2.7 présente les variantes testées pour vérifier la solidité des résultats.
+Nous présentons d'abord les sources (2.1), puis la construction du jeu de données mensuel (2.2). Viennent ensuite les variables à prédire (2.3) et les variables explicatives (2.4). La section 2.5 justifie le choix des modèles, et la section 2.6 décrit la façon dont nous les évaluons. Puis la section 2.7 présente les variantes testées pour vérifier la solidité des résultats, et la section 2.8 les considérations éthiques.
 
 Le code et les données sont conservés dans un dépôt GitHub (accessible sur demande). Chaque tableau et chaque figure de ce mémoire peut donc être recalculé à partir des fichiers bruts.
 
 ## 2.1 Sources des données
 
-Le sujet impose des données ouvertes. Toutes nos sources sont donc publiques et gratuites. Elles couvrent la période de janvier 2013 à août 2026, en fréquence mensuelle.
+Le sujet impose des données ouvertes : toutes nos sources sont publiques et gratuites. Elles couvrent la période de janvier 2013 à août 2026, en fréquence mensuelle.
 
 | Donnée | Source | Fréquence | Usage |
 | --- | --- | --- | --- |
@@ -77,7 +77,7 @@ La SMB d'un mois M paraît au début du mois M+2. Nous l'avons vérifié sur plu
 
 Le même raisonnement vaut pour l'inflation. L'INSEE publie une estimation provisoire à la fin du mois, puis l'indice définitif vers le milieu du mois suivant (pour août 2026 : le 28 août, puis le 15 septembre). Nos données sont les valeurs définitives. **L'inflation est donc décalée d'un mois.**
 
-Sans ces décalages, le modèle utiliserait des chiffres que personne ne connaissait encore au moment de la prévision. Ses performances seraient alors gonflées artificiellement. C'est le biais d'anticipation, bien connu pour les données macroéconomiques (Croushore, 2011).
+Sans ces décalages, le modèle utiliserait des chiffres que personne ne connaissait encore au moment de la prévision, et ses performances seraient gonflées artificiellement. C'est le biais d'anticipation, bien connu pour les données macroéconomiques (Croushore, 2011).
 
 ### 2.2.4 Vérification de la qualité des données
 
@@ -94,7 +94,7 @@ Second contrôle : un script de vérification (`tests/verifications.py`, 63 cont
 
 ## 2.3 Variables cibles et stationnarité
 
-Nous cherchons à prévoir trois indicateurs **pour le mois suivant (t+1)**. Nous les avons choisis avant d'explorer les données. Si nous avions retenu les cibles les plus corrélées aux dépenses, nous aurions trouvé un lien par construction, même sans lien réel.
+Nous cherchons à prévoir trois indicateurs **pour le mois suivant (t+1)**, choisis avant d'explorer les données. Retenir les cibles les plus corrélées aux dépenses aurait créé un lien par construction, même sans lien réel.
 
 | Cible | Définition | Unité | Moyenne | Écart-type |
 | --- | --- | --- | --- | --- |
@@ -120,7 +120,7 @@ Nous testons aussi une version plus simple dans les extensions : deviner seuleme
 
 ## 2.4 Variables explicatives
 
-Nous n'avons pas choisi les variables une par une selon leurs corrélations. Nous avons construit trois jeux emboîtés, chacun contenant le précédent. Le test central du mémoire compare M0 et M1 : la seule différence entre les deux, ce sont les dépenses. Si M1 prévoit mieux, l'amélioration vient donc des dépenses, **en plus** de ce que les marchés savent déjà.
+Nous n'avons pas choisi les variables une à une selon leurs corrélations : nous avons construit trois jeux emboîtés, chacun contenant le précédent. Le test central du mémoire compare M0 et M1, qui ne diffèrent que par les dépenses. Si M1 prévoit mieux, l'amélioration vient donc des dépenses, **en plus** de ce que les marchés savent déjà.
 
 | Jeu | Contenu | Nombre de variables |
 | --- | --- | --- |
@@ -166,7 +166,7 @@ La régression Ridge estime les coefficients en pénalisant leur taille, sur des
 
 Plus α est grand, plus les coefficients sont ramenés vers zéro. Quand α tend vers l'infini, la prévision se réduit à la constante, c'est-à-dire à la moyenne d'entraînement : choisir un α très élevé revient à dire que les variables n'apportent pas de signal.
 
-Ces valeurs sont prudentes : des arbres peu profonds apprennent moins le bruit d'un petit échantillon. Nous devons toutefois être transparents sur un point. Contrairement aux extensions (section 2.7), ces réglages n'ont pas été datés dans le dépôt avant les premiers résultats : le code et les résultats ont été enregistrés ensemble. Pour vérifier que ce choix ne change pas les conclusions, nous l'avons remis en cause de deux façons : l'extension E10 règle XGBoost automatiquement par validation croisée temporelle, et un contrôle relance la forêt aléatoire et XGBoost avec plusieurs graines aléatoires (annexe).
+Ces valeurs sont prudentes : des arbres peu profonds apprennent moins le bruit d'un petit échantillon. Un point demande toutefois de la transparence : contrairement aux extensions (section 2.7), ces réglages n'ont pas été datés dans le dépôt avant les premiers résultats : le code et les résultats ont été enregistrés ensemble. Pour vérifier que ce choix ne change pas les conclusions, nous l'avons remis en cause de deux façons : l'extension E10 règle XGBoost automatiquement par validation croisée temporelle, et un contrôle relance la forêt aléatoire et XGBoost avec plusieurs graines aléatoires (annexe).
 
 ## 2.6 Protocole d'évaluation
 
@@ -221,7 +221,7 @@ Pour savoir quelles dépenses le modèle utilise le plus (hypothèse H4), nous c
 
 ### 2.6.5 Contrôles de solidité
 
-Après les premiers résultats, nous avons ajouté cinq contrôles, décrits ici et rapportés au chapitre 3 :
+Après les premiers résultats, nous avons ajouté cinq contrôles, décrits ici et rapportés au chapitre 3 (quatre en section 3.3, le cinquième en section 3.4) :
 
 - **Graine aléatoire** : la forêt aléatoire et XGBoost sont réestimés avec 5 et 10 graines différentes.
 - **Contrôle positif (puissance)** : on ajoute à M0 une variable fictive construite pour avoir une corrélation ρ donnée avec la cible (ρ = 0,1 ; 0,2 ; 0,3 ; 0,5 et 1), avec 10 tirages par valeur (un seul pour ρ = 1, où le résultat ne dépend pas du tirage), pour mesurer ce que le dispositif est capable de détecter.

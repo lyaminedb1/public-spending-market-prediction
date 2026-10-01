@@ -46,6 +46,7 @@ TAB.mkdir(parents=True, exist_ok=True)
 
 sys.path.insert(0, str(Path(__file__).parent))
 from config import TEST_START  # noqa: E402  (source unique, voir src/config.py)
+from fr_format import fr  # noqa: E402  (virgule décimale dans les figures)
 
 SEED = 42
 
@@ -246,6 +247,7 @@ def fig_relative_rmse(met: pd.DataFrame) -> None:
     fig.text(0, -0.15, f"Validation glissante, test {TEST_START} → 2026-07. Ligne pointillée : moyenne historique "
              "(sous 1 = meilleur que la moyenne) ; pointillé orange : prévision « variation nulle ».", fontsize=8, color=INK2)
     fig.tight_layout()
+    fr(fig)
     fig.savefig(FIG / "fig3_2_rmse_relatif.png")
     plt.close(fig)
 
@@ -287,6 +289,7 @@ def fig_shap(imp: pd.DataFrame) -> None:
              "et part obtenue par 7 variables de pur bruit (10 tirages) : elle n'indique pas de contenu prédictif.",
              fontsize=8, color=INK2)
     fig.tight_layout()
+    fr(fig)
     fig.savefig(FIG / "fig3_3_importance_shap.png")
     plt.close(fig)
 
@@ -302,6 +305,7 @@ def fig_predictions(all_preds: dict) -> None:
     ax.set_ylabel("points de base")
     ax.set_title("Variation mensuelle du spread OAT–Bund : observée et prévue (hors échantillon)")
     ax.legend(ncol=3, loc="upper left", fontsize=8.5)
+    fr(fig)
     fig.savefig(FIG / "fig3_4_previsions_spread.png")
     plt.close(fig)
 
