@@ -99,7 +99,7 @@ Enfin, Barbier-Gauchard et Sofianos (2025) appliquent le machine learning aux fi
 
 ### 1.3.2 Le contexte américain, en bref
 
-Ces travaux européens suivent une littérature américaine plus large. Gu, Kelly et Xiu (2020) montrent que les arbres de décision et les réseaux de neurones prévoient mieux les rendements des actions que les modèles linéaires, grâce aux effets non linéaires. Bianchi, Büchner et Tamoni (2021) trouvent le même type de gain pour les obligations d'État. En macroéconomie, Medeiros et al. (2021) et Goulet Coulombe et al. (2022) montrent que les forêts aléatoires prévoient bien l'inflation, surtout en période d'incertitude.
+Ces travaux européens suivent une littérature américaine plus large. Gu, Kelly et Xiu (2020) montrent que les arbres de décision et les réseaux de neurones prévoient mieux les rendements des actions que les modèles linéaires, grâce aux effets non linéaires. Bianchi, Büchner et Tamoni (2021) trouvent le même type de gain pour les obligations d'État. En macroéconomie, Medeiros et al. (2021) trouvent que la forêt aléatoire domine les autres modèles pour prévoir l'inflation américaine, et Goulet Coulombe et al. (2022) que les gains du machine learning sur les variables macroéconomiques viennent surtout de la non-linéarité, plus utile en période d'incertitude ou de tension financière.
 
 ### 1.3.3 Quels modèles avec peu de données
 
@@ -197,38 +197,38 @@ En suivant Fama (1970) et Ramey (2011), un rejet de H1 reste un résultat plausi
 
 ## Références bibliographiques
 
-Format APA. Volumes et pages à vérifier sur Google Scholar avant le dépôt.
+Format APA. Volumes, pages et DOI recoupés par recherche en ligne le 01/10/2026 pour la plupart des références ; seuls les DOI retrouvés sont indiqués (liste des points à contrôler dans `docs/notes_chapitre4_biblio.md`).
 
-- Afonso, A., Arghyrou, M. G., & Kontonikas, A. (2015). *[The determinants of sovereign bond yield spreads in the EMU](https://www.ecb.europa.eu/pub/pdf/scpwps/ecbwp1781.en.pdf)*. ECB Working Paper No. 1781.
-- Afonso, A., & Sousa, R. M. (2011). What are the effects of fiscal policy on asset markets? *Economic Modelling*, 28(4), 1871–1890.
-- Ardagna, S. (2009). Financial markets' behavior around episodes of large changes in the fiscal stance. *European Economic Review*, 53(1), 37–55.
-- Attinasi, M.-G., Checherita, C., & Nickel, C. (2009). *What explains the surge in euro area sovereign spreads during the financial crisis of 2007-09?* ECB Working Paper No. 1131.
-- Bailey, D. H., Borwein, J. M., López de Prado, M., & Zhu, Q. J. (2014). Pseudo-mathematics and financial charlatanism: The effects of backtest overfitting on out-of-sample performance. *Notices of the American Mathematical Society*, 61(5), 458–471.
-- Barbier-Gauchard, A., & Sofianos, E. (2025). [Forecasting public debt in the euro area using machine learning: Decision tools for financial markets](https://link.springer.com/article/10.1007/s10614-025-11106-9). *Computational Economics*. https://doi.org/10.1007/s10614-025-11106-9
-- Barro, R. J. (1974). Are government bonds net wealth? *Journal of Political Economy*, 82(6), 1095–1117.
-- Belly, G., Boeckelmann, L., Caicedo Graciano, C. M., Di Iorio, A., Istrefi, K., Siakoulis, V., & Stalla-Bourdillon, A. (2023). [Forecasting sovereign risk in the Euro area via machine learning](https://ideas.repec.org/a/wly/jforec/v42y2023i3p657-684.html). *Journal of Forecasting*, 42(3), 657–684.
-- Bernoth, K., von Hagen, J., & Schuknecht, L. (2012). Sovereign risk premiums in the European government bond market. *Journal of International Money and Finance*, 31(5), 975–995.
-- Bianchi, D., Büchner, M., & Tamoni, A. (2021). [Bond risk premiums with machine learning](https://academic.oup.com/rfs/article-abstract/34/2/1046/5843806). *The Review of Financial Studies*, 34(2), 1046–1089.
-- Blanchard, O., & Perotti, R. (2002). An empirical characterization of the dynamic effects of changes in government spending and taxes on output. *The Quarterly Journal of Economics*, 117(4), 1329–1368.
-- Bouillot, R., Candelon, B., & Kool, C. (2025). *[Forecasting European sovereign spreads using machine learning](https://research.dial.uclouvain.be/server/api/core/bitstreams/f99c9d92-b208-429f-84ec-256595aa55a5/content)*. LIDAM Discussion Paper LFIN 2025/04, UCLouvain.
-- Breiman, L. (2001). Random forests. *Machine Learning*, 45(1), 5–32.
-- Campbell, J. Y., & Thompson, S. B. (2008). Predicting excess stock returns out of sample: Can anything beat the historical average? *The Review of Financial Studies*, 21(4), 1509–1531.
-- Chen, T., & Guestrin, C. (2016). XGBoost: A scalable tree boosting system. *Proceedings of the 22nd ACM SIGKDD International Conference on Knowledge Discovery and Data Mining*, 785–794.
-- Croushore, D. (2011). Frontiers of real-time data analysis. *Journal of Economic Literature*, 49(1), 72–100.
-- Diebold, F. X., & Mariano, R. S. (1995). Comparing predictive accuracy. *Journal of Business & Economic Statistics*, 13(3), 253–263.
-- Fama, E. F. (1970). Efficient capital markets: A review of theory and empirical work. *The Journal of Finance*, 25(2), 383–417.
-- Favero, C. A. (2013). [Modelling and forecasting government bond spreads in the euro area: A GVAR model](https://www.sciencedirect.com/science/article/abs/pii/S030440761300081X). *Journal of Econometrics*, 177(2), 343–356.
-- Fischer, T., & Krauss, C. (2018). Deep learning with long short-term memory networks for financial market predictions. *European Journal of Operational Research*, 270(2), 654–669.
-- Garlanda-Longueville, L. (2023). *[Fiscalité bancaire, politique monétaire et annonces budgétaires : trois essais en économie bancaire et financière internationale](https://theses.fr/2023PA100145)* \[Thèse de doctorat, Université Paris Nanterre, dir. V. Mignon\].
-- Giannone, D., Reichlin, L., & Small, D. (2008). Nowcasting: The real-time informational content of macroeconomic data. *Journal of Monetary Economics*, 55(4), 665–676.
-- Goulet Coulombe, P., Leroux, M., Stevanovic, D., & Surprenant, S. (2022). How is machine learning useful for macroeconomic forecasting? *Journal of Applied Econometrics*, 37(5), 920–964.
-- Gu, S., Kelly, B., & Xiu, D. (2020). Empirical asset pricing via machine learning. *The Review of Financial Studies*, 33(5), 2223–2273.
-- Janssen, M., Charalabidis, Y., & Zuiderwijk, A. (2012). Benefits, adoption barriers and myths of open data and open government. *Information Systems Management*, 29(4), 258–268.
-- Laubach, T. (2009). New evidence on the interest rate effects of budget deficits and debt. *Journal of the European Economic Association*, 7(4), 858–885.
-- McCracken, M. W., & Ng, S. (2016). FRED-MD: A monthly database for macroeconomic research. *Journal of Business & Economic Statistics*, 34(4), 574–589.
-- Medeiros, M. C., Vasconcelos, G. F. R., Veiga, Á., & Zilberman, E. (2021). Forecasting inflation in a data-rich environment: The benefits of machine learning methods. *Journal of Business & Economic Statistics*, 39(1), 98–119.
-- Ramey, V. A. (2011). Identifying government spending shocks: It's all in the timing. *The Quarterly Journal of Economics*, 126(1), 1–50.
-- Welch, I., & Goyal, A. (2008). A comprehensive look at the empirical performance of equity premium prediction. *The Review of Financial Studies*, 21(4), 1455–1508.
+- Afonso, A., Arghyrou, M. G., & Kontonikas, A. (2015). *The determinants of sovereign bond yield spreads in the EMU* (ECB Working Paper No. 1781). European Central Bank. https://www.ecb.europa.eu/pub/pdf/scpwps/ecbwp1781.en.pdf
+- Afonso, A., & Sousa, R. M. (2011). What are the effects of fiscal policy on asset markets? *Economic Modelling*, *28*(4), 1871–1890.
+- Ardagna, S. (2009). Financial markets' behavior around episodes of large changes in the fiscal stance. *European Economic Review*, *53*(1), 37–55.
+- Attinasi, M.-G., Checherita, C., & Nickel, C. (2009). *What explains the surge in euro area sovereign spreads during the financial crisis of 2007-09?* (ECB Working Paper No. 1131). European Central Bank. https://www.ecb.europa.eu/pub/pdf/scpwps/ecbwp1131.pdf
+- Bailey, D. H., Borwein, J. M., López de Prado, M., & Zhu, Q. J. (2014). Pseudo-mathematics and financial charlatanism: The effects of backtest overfitting on out-of-sample performance. *Notices of the American Mathematical Society*, *61*(5), 458–471. https://doi.org/10.1090/noti1105
+- Barbier-Gauchard, A., & Sofianos, E. (2025). Forecasting public debt in the euro area using machine learning: Decision tools for financial markets. *Computational Economics*. https://doi.org/10.1007/s10614-025-11106-9
+- Barro, R. J. (1974). Are government bonds net wealth? *Journal of Political Economy*, *82*(6), 1095–1117. https://doi.org/10.1086/260266
+- Belly, G., Boeckelmann, L., Caicedo Graciano, C. M., Di Iorio, A., Istrefi, K., Siakoulis, V., & Stalla-Bourdillon, A. (2023). Forecasting sovereign risk in the Euro area via machine learning. *Journal of Forecasting*, *42*(3), 657–684. https://doi.org/10.1002/for.2938
+- Bernoth, K., von Hagen, J., & Schuknecht, L. (2012). Sovereign risk premiums in the European government bond market. *Journal of International Money and Finance*, *31*(5), 975–995.
+- Bianchi, D., Büchner, M., & Tamoni, A. (2021). Bond risk premiums with machine learning. *The Review of Financial Studies*, *34*(2), 1046–1089. https://doi.org/10.1093/rfs/hhaa062
+- Blanchard, O., & Perotti, R. (2002). An empirical characterization of the dynamic effects of changes in government spending and taxes on output. *The Quarterly Journal of Economics*, *117*(4), 1329–1368.
+- Bouillot, R., Candelon, B., & Kool, C. (2025). *Forecasting European sovereign spreads using machine learning* (LIDAM Discussion Paper LFIN 2025/04). Université catholique de Louvain, Louvain Finance. https://research.dial.uclouvain.be/server/api/core/bitstreams/f99c9d92-b208-429f-84ec-256595aa55a5/content
+- Breiman, L. (2001). Random forests. *Machine Learning*, *45*(1), 5–32. https://doi.org/10.1023/A:1010933404324
+- Campbell, J. Y., & Thompson, S. B. (2008). Predicting excess stock returns out of sample: Can anything beat the historical average? *The Review of Financial Studies*, *21*(4), 1509–1531. https://doi.org/10.1093/rfs/hhm055
+- Chen, T., & Guestrin, C. (2016). XGBoost: A scalable tree boosting system. In *Proceedings of the 22nd ACM SIGKDD International Conference on Knowledge Discovery and Data Mining* (pp. 785–794). ACM. https://doi.org/10.1145/2939672.2939785
+- Croushore, D. (2011). Frontiers of real-time data analysis. *Journal of Economic Literature*, *49*(1), 72–100. https://doi.org/10.1257/jel.49.1.72
+- Diebold, F. X., & Mariano, R. S. (1995). Comparing predictive accuracy. *Journal of Business & Economic Statistics*, *13*(3), 253–263. https://doi.org/10.1080/07350015.1995.10524599
+- Fama, E. F. (1970). Efficient capital markets: A review of theory and empirical work. *The Journal of Finance*, *25*(2), 383–417. https://doi.org/10.2307/2325486
+- Favero, C. A. (2013). Modelling and forecasting government bond spreads in the euro area: A GVAR model. *Journal of Econometrics*, *177*(2), 343–356. https://www.sciencedirect.com/science/article/abs/pii/S030440761300081X
+- Fischer, T., & Krauss, C. (2018). Deep learning with long short-term memory networks for financial market predictions. *European Journal of Operational Research*, *270*(2), 654–669. https://doi.org/10.1016/j.ejor.2017.11.054
+- Garlanda-Longueville, L. (2023). *Fiscalité bancaire, politique monétaire et annonces budgétaires : trois essais en économie bancaire et financière internationale* [Thèse de doctorat, Université Paris Nanterre]. theses.fr. https://theses.fr/2023PA100145
+- Giannone, D., Reichlin, L., & Small, D. (2008). Nowcasting: The real-time informational content of macroeconomic data. *Journal of Monetary Economics*, *55*(4), 665–676. https://doi.org/10.1016/j.jmoneco.2008.05.010
+- Goulet Coulombe, P., Leroux, M., Stevanovic, D., & Surprenant, S. (2022). How is machine learning useful for macroeconomic forecasting? *Journal of Applied Econometrics*, *37*(5), 920–964. https://doi.org/10.1002/jae.2910
+- Gu, S., Kelly, B., & Xiu, D. (2020). Empirical asset pricing via machine learning. *The Review of Financial Studies*, *33*(5), 2223–2273. https://doi.org/10.1093/rfs/hhaa009
+- Janssen, M., Charalabidis, Y., & Zuiderwijk, A. (2012). Benefits, adoption barriers and myths of open data and open government. *Information Systems Management*, *29*(4), 258–268. https://doi.org/10.1080/10580530.2012.716740
+- Laubach, T. (2009). New evidence on the interest rate effects of budget deficits and debt. *Journal of the European Economic Association*, *7*(4), 858–885. https://doi.org/10.1162/JEEA.2009.7.4.858
+- McCracken, M. W., & Ng, S. (2016). FRED-MD: A monthly database for macroeconomic research. *Journal of Business & Economic Statistics*, *34*(4), 574–589. https://doi.org/10.1080/07350015.2015.1086655
+- Medeiros, M. C., Vasconcelos, G. F. R., Veiga, Á., & Zilberman, E. (2021). Forecasting inflation in a data-rich environment: The benefits of machine learning methods. *Journal of Business & Economic Statistics*, *39*(1), 98–119. https://doi.org/10.1080/07350015.2019.1637745
+- Ramey, V. A. (2011). Identifying government spending shocks: It's all in the timing. *The Quarterly Journal of Economics*, *126*(1), 1–50. https://doi.org/10.1093/qje/qjq008
+- Welch, I., & Goyal, A. (2008). A comprehensive look at the empirical performance of equity premium prediction. *The Review of Financial Studies*, *21*(4), 1455–1508. https://doi.org/10.1093/rfs/hhm014
 
 ### Sources en ligne
 

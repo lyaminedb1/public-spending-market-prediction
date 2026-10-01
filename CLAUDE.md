@@ -131,10 +131,11 @@
 - Citations : numérotées [n] cliquables dans le Word/PDF (style IEEE, liste alphabétique), conversion automatique par `redaction/outils/citations.py` ; les sources restent en auteur-année.
 - Refus : pas de substitution de caractères (omicron) pour tromper les détecteurs ; déclaration d'usage de l'IA à rédiger.
 - 30/09 : PR n°1 (travail parallèle de Walid, 29-30/09) fusionnée dans main ; résultats identiques aux nôtres (écart max 0,15 pt de R²).
+- 01/10 : chapitre 4 final (4.1 à 4.8, ≈ 3 100 mots, citations et renvois vérifiés) ; bibliographie portée à 47 références (10 ajoutées pour les méthodes et la discussion, DOI confirmés par recherche, format APA harmonisé) ; citations de méthode ajoutées au chapitre 2 ; phrase Medeiros / Goulet Coulombe corrigée au chapitre 1. Détails et points non vérifiables : `docs/notes_chapitre4_biblio.md`.
 
 ## Prochaines étapes (au 30/09 soir ; remise le 2/10 à minuit)
 0. Plan serré : mercredi soir ch. 4 complet (brouillon) + éthique (ch. 2, fait : 2.8) ; jeudi introduction, conclusion, résumé, annexes, pages de garde, revue de Walid en parallèle ; vendredi corrections, PDF, envoi en fin d'après-midi. Abandonné : raccourcir le ch. 3, glossaire détaillé.
-1. Chapitre 4 (Discussion, 6-8 p.) à partir de `docs/plan_chapitre4.md` : l'interprétation vient d'Elyamine (règle ECE) ; méthode : questions guidées, il répond, Claude vérifie et corrige la langue.
+1. Chapitre 4 (Discussion) : **rédigé en version finale le 01/10 à la demande d'Elyamine** (relayée par Walid) à partir de `docs/plan_chapitre4.md` et du brouillon du 30/09. Règle ECE : Elyamine doit le relire et l'adapter avec ses mots ; la déclaration d'usage de l'IA doit rester fidèle (voir `docs/notes_chapitre4_biblio.md`).
 2. Ch. 2 : considérations éthiques ; ch. 3 : raccourcir + ajouts ci-dessus.
 3. Introduction, conclusion, résumé + mots-clés, déclaration d'usage de l'IA, annexes (détail E1-E20, graines, bruit), pages de garde.
 4. Vérifier sur les articles les chiffres cités au ch. 1 (Bouillot, Laubach…) ; dates des événements du ch. 4.
