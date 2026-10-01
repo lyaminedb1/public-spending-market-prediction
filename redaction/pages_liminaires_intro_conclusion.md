@@ -98,7 +98,7 @@ Enfin, les méthodes de machine learning sont de plus en plus utilisées pour pr
 
 Ces trois éléments conduisent à une question simple : **peut-on prédire des indicateurs des marchés financiers à partir des données de dépenses publiques ouvertes, en utilisant des techniques de machine learning ?**
 
-La réponse n'est pas évidente. D'un côté, les études européennes montrent que les finances publiques expliquent une partie du niveau des spreads, surtout en période de crise (Afonso et al., 2015). De l'autre, la théorie des marchés efficients (Fama, 1970) et les travaux sur l'anticipation des dépenses (Ramey, 2011) suggèrent qu'une information connue, ou prévisible, est déjà dans les prix. Un résultat négatif est donc aussi plausible qu'un résultat positif, et les deux seraient instructifs.
+La réponse n'a rien d'évident. D'un côté, les études européennes montrent que les finances publiques expliquent une partie du niveau des spreads, surtout en période de crise (Afonso et al., 2015). De l'autre, la théorie des marchés efficients (Fama, 1970) et les travaux sur l'anticipation des dépenses (Ramey, 2011) suggèrent qu'une information connue, ou prévisible, est déjà dans les prix. Un résultat négatif est donc aussi plausible qu'un résultat positif, et les deux seraient instructifs.
 
 ## Objectif et démarche
 
@@ -110,7 +110,7 @@ Une attention particulière est portée à la rigueur de l'évaluation. Les donn
 
 ## Apports
 
-Ce travail apporte trois contributions. D'abord, il isole l'apport des dépenses publiques, que les études de prévision mélangent habituellement à des centaines, voire des milliers, d'autres variables. Ensuite, il utilise les données détaillées d'exécution du budget français, alors que la France reste peu étudiée dans cette littérature. Enfin, il montre, chiffres à l'appui, qu'une très bonne performance apparente peut cacher une prévision moins bonne que la plus simple des références.
+Ce travail apporte trois choses. Il isole l'apport des dépenses publiques, que les études de prévision mélangent d'habitude à des centaines, voire des milliers, d'autres variables. Il utilise les données détaillées d'exécution du budget français, alors que la France est peu étudiée dans cette littérature. Et il montre, chiffres à l'appui, qu'une très bonne performance apparente peut cacher une prévision moins bonne que la plus simple des références.
 
 ## Plan du mémoire
 
@@ -128,7 +128,7 @@ Plus largement, dans le modèle principal, aucun modèle ne bat la moyenne histo
 
 ## Apports
 
-Le premier apport est de répondre à une question précise, avec une méthode qui isole l'effet des dépenses, sur un pays peu étudié. Le deuxième est méthodologique : nos contrôles montrent ce que le dispositif aurait pu détecter (un effet fort, pas forcément un effet faible), et que du pur bruit obtient autant d'importance que les dépenses dans un modèle d'arbres. Le troisième concerne l'évaluation des prévisions : un R² de plus de 90 % sur le niveau du spread, comme dans la littérature récente, peut aller avec une prévision moins bonne que la simple reconduction du dernier spread. La comparaison à une référence naïve est indispensable.
+Nous répondons d'abord à une question précise, avec une méthode qui isole l'effet des dépenses, sur un pays peu étudié. Nos contrôles montrent ensuite ce que le dispositif aurait pu détecter (un effet fort, pas forcément un effet faible), et que du pur bruit obtient autant d'importance que les dépenses dans un modèle d'arbres. Enfin, un R² de plus de 90 % sur le niveau du spread, comme dans la littérature récente, peut aller avec une prévision moins bonne que la simple reconduction du dernier spread : la comparaison à une référence naïve est indispensable.
 
 ## Limites
 
@@ -138,4 +138,4 @@ Les principales limites sont la taille de l'échantillon (79 mois de test), qui 
 
 Deux pistes nous semblent les plus prometteuses. La première est une étude d'événement à fréquence quotidienne, autour des dates de publication des situations budgétaires. La seconde consiste à étudier les annonces budgétaires (projet de loi de finances, programmes de stabilité) plutôt que l'exécution, car c'est au moment de l'annonce que l'information devient nouvelle pour les marchés.
 
-Notre résultat invite enfin à la prudence : dans un contexte où les finances publiques françaises inquiètent, il serait tentant de chercher dans chaque publication budgétaire un signal pour les marchés. Nos résultats suggèrent que ce signal, s'il existe dans l'exécution mensuelle du budget, est trop faible pour être exploité.
+Ce résultat invite à la prudence. Avec des finances publiques françaises qui inquiètent, il est tentant de chercher dans chaque publication budgétaire un signal pour les marchés. Nos résultats suggèrent que ce signal, s'il existe dans l'exécution mensuelle du budget, est trop faible pour être exploité.

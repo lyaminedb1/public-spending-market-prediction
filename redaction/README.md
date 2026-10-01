@@ -5,19 +5,19 @@
 Une correction faite ici doit être reportée dans le document Claude Docs (ou signalée à Elyamine), sinon elle sera
 écrasée au prochain export.
 
-| Fichier | État au 30/09/2026 (soir) |
+| Fichier | État au 2/10/2026 |
 |---|---|
 | `chapitre1_etat_de_l_art.md` | Rédigé ; articles principaux vérifiés contre les PDF le 30/09 (Bouillot, Afonso, Attinasi, Belly, Ramey, Laubach, Garlanda-Longueville ; Barbier-Gauchard via le résumé) |
 | `chapitre2_donnees_methodologie.md` | Rédigé ; considérations éthiques ajoutées (2.8) le 30/09 |
 | `chapitre3_resultats.md` | Rédigé (≈ 9 pages, trop long pour le guide ECE : 4-6) |
-| `chapitre4_discussion_brouillon.md` | **Brouillon complet** (4.1 à 4.6) ; à réécrire par Elyamine (règle ECE sur l'IA) |
+| `chapitre4_discussion_brouillon.md` | Version du 2/10 (4.1 à 4.8, ≈ 9 p.), à relire et reformuler par Elyamine après la remise |
 | `pages_liminaires_intro_conclusion.md` | Page de titre, remerciements, déclaration IA courte (à valider par Elyamine), résumé (sans abstract anglais : non demandé par le guide), abréviations, glossaire, introduction, conclusion (30/09 soir) |
 | `annexes.md` | Généré par `outils/annexes.py` depuis les CSV (variables, 210 comparaisons, graines, bruit, décalage, reproductibilité) |
 
 ## Construire le Word (mise en forme ECE)
 
 ```bash
-pip install python-docx   # pandoc doit être installé
+pip install python-docx pypandoc_binary   # pandoc ; LibreOffice : apt install libreoffice-writer fonts-liberation
 python redaction/outils/annexes.py
 python redaction/outils/assemble.py
 pandoc redaction/build/memoire.md -o redaction/build/brut.docx

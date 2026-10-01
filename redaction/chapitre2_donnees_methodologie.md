@@ -90,7 +90,7 @@ Premier contrôle : à partir des fichiers mensuels, nous avons recalculé le so
 | 2023 | -173,0 |
 | 2024 | -155,9 |
 
-Second contrôle : un script de vérification (`tests/verifications.py`, 63 contrôles) s'assure automatiquement que chaque cible correspond bien au mois suivant, que chaque variable budgétaire vient du mois t-2, que l'inflation vient du mois t-1, et qu'aucun mois ne manque. Pour nous assurer que ce script détecte vraiment les erreurs, nous l'avons lancé sur une version du code où les décalages avaient été retirés : il les signale tous. Le jeu de données n'a aucune valeur manquante, sauf la cible du dernier mois.
+Second contrôle : un script de vérification (`tests/verifications.py`, 63 contrôles) s'assure automatiquement que chaque cible correspond bien au mois suivant, que chaque variable budgétaire vient du mois t-2, que l'inflation vient du mois t-1, et qu'aucun mois ne manque. Pour vérifier que ce script détecte bien les erreurs, nous l'avons relancé après avoir modifié volontairement le décalage budgétaire (0 puis 1 mois au lieu de 2) : il signale chaque fois un échec. Le jeu de données n'a aucune valeur manquante, sauf la cible du dernier mois.
 
 ## 2.3 Variables cibles et stationnarité
 
