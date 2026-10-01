@@ -13,10 +13,15 @@ Sorties : results/figures/fig3_5_extensions.png (3 cibles françaises), results/
           (panel et actions), results/tables/ext_synthese.csv, results/tables/ext_significatifs.csv
 """
 import re
+import sys
+from pathlib import Path
 
 import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
+
+sys.path.insert(0, str(Path(__file__).parent))
+from fr_format import fr  # noqa: E402  (virgule décimale dans les figures)
 
 BLUE, ORANGE, INK2, GRID = "#2a78d6", "#eb6834", "#52514e", "#e4e3df"
 TARGETS = {"y_d_spread": "Δ spread OAT–Bund", "y_d_oat": "Δ OAT 10 ans", "y_cac_ret": "Rendement CAC 40"}
@@ -157,6 +162,7 @@ def main():
              "la moyenne historique. Triangles : valeurs hors de l'échelle (valeur indiquée). Test 2020-01 → 2026-07 "
              "(E4 : → 2026-02).", fontsize=8, color=INK2)
     fig.tight_layout()
+    fr(fig)
     fig.savefig("results/figures/fig3_5_extensions.png")
     plt.close(fig)
 
@@ -177,6 +183,7 @@ def main():
              "2010-2024, E18 2010T1 (exploratoire), E19 2020-01 → 2026-07. E15 : gain apparent dû à l'autocorrélation mécanique des "
              "moyennes trimestrielles (il disparaît en fin de trimestre).", fontsize=8, color=INK2)
     fig.tight_layout()
+    fr(fig)
     fig.savefig("results/figures/fig3_6_extensions_autres.png")
     plt.close(fig)
     pd.set_option("display.width", 220)

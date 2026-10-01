@@ -218,3 +218,11 @@ EOF
 git log --format='%h %ad %s' --date=format:'%m-%d %H:%M' -- docs/plan_extensions.md results/tables/extensions/E15.csv results/tables/extensions/E17.csv
 # Références citées dans le PDF : toutes les notices [1] à [37] sont citées (extraction de texte du PDF)
 ```
+
+## 10. Corrections appliquées (01/10/2026, commits suivants de la branche)
+
+**Appliquées** (exports `redaction/*.md` ; à reporter dans les documents Claude Docs, source de vérité) :
+E1 (déclaration IA, formulation prudente **à valider par Elyamine** : liste exacte des articles relus ; la phrase « a relu et validé l'ensemble du texte » est inchangée et n'est vraie que si le chapitre 4 a été relu), E3, E4, E5, E6, E7, P1, P2, P3 (chapitre 4 : précisions factuelles seulement, aucune nouvelle interprétation), P5, P7, P8 (`CLAUDE.md` : p = 0,37), P9 ; fourchette périmée de la corrélation partielle dans `src/21_verif_chiffres_03.py` (relancé : seules ces trois lignes de `verif_chiffres_03.csv` changent, `conforme = True`).
+**Figures** : nouveau module `src/fr_format.py` ; figures 3.1 (distributions), 3.2 et 3.3 régénérées avec la virgule décimale (`03`, `04 --from-saved`, `07`). Aucun CSV de résultats ne change ; `tests/verifications.py` et `tests/check_claude_md.py` passent.
+
+**Non appliquées** (décision de l'auteur ou impossible ici) : E2 (réécriture du chapitre 4 par Elyamine), P4 (relecture des articles : réseau bloqué), P6 (verdicts du tableau 3.8), P10 (dépôt public ou privé), longueurs des chapitres 2 à 4, format des références, mise en forme du Word. Le Word et le PDF de `redaction/build/` ne sont **pas reconstruits** (`pandoc` absent de cette session) : il faut reporter les corrections dans Claude Docs puis relancer la chaîne décrite dans `redaction/README.md`.
