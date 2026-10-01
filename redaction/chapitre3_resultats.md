@@ -102,7 +102,7 @@ Un signal de corrélation 0,3 avec la cible n'est retrouvé que dans une minorit
 
 ## 3.4 Importance des variables
 
-Dans un XGBoost estimé sur tout l'échantillon (jeu M1), les sept variables de dépenses représentent **31 à 37 %** de l'importance SHAP totale. Les dépenses d'intervention arrivent en tête pour le spread et l'OAT, l'investissement pour le CAC 40.
+Dans un XGBoost estimé sur tout l'échantillon (jeu M1), les sept variables de dépenses représentent **31 à 37 %** de l'importance SHAP totale. Parmi les sept dépenses, les dépenses d'intervention arrivent en tête pour le spread et l'OAT, l'investissement pour le CAC 40.
 
 Nous avons aussi remplacé les sept dépenses par sept variables de pur bruit, tirées au hasard (10 tirages). Ces variables obtiennent en moyenne **34 à 38 %** de l'importance SHAP.
 

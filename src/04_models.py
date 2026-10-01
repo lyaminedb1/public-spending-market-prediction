@@ -27,6 +27,8 @@ import sys
 import warnings
 
 import matplotlib.pyplot as plt
+
+import fr_format  # noqa: F401  (virgule décimale dans les figures)
 import numpy as np
 import pandas as pd
 from scipy import stats

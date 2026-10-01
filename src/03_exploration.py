@@ -14,6 +14,8 @@ Lancer depuis la racine du dépôt :  python src/03_exploration.py
 from pathlib import Path
 
 import matplotlib.pyplot as plt
+
+import fr_format  # noqa: F401  (virgule décimale dans les figures)
 import matplotlib.dates as mdates
 import numpy as np
 import pandas as pd

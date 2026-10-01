@@ -15,6 +15,8 @@ Sorties : results/figures/fig3_5_extensions.png (3 cibles françaises), results/
 import re
 
 import matplotlib.pyplot as plt
+
+import fr_format  # noqa: F401  (virgule décimale dans les figures)
 import numpy as np
 import pandas as pd
 
