@@ -24,7 +24,7 @@ Je remercie également mon encadrante, Dr Yosra Hajjaji, pour son suivi et ses c
 
 ## Déclaration d'utilisation de l'intelligence artificielle
 
-Conformément au guide de rédaction de l'ECE, je déclare avoir utilisé un outil d'intelligence artificielle générative (Claude, d'Anthropic) comme assistant pour la programmation, la relecture du code et l'aide à la rédaction. Le choix du sujet, de la problématique et du périmètre, les décisions de méthode et les interprétations relèvent de l'auteur, qui a relu et validé l'ensemble du texte. Les chiffres cités ont été vérifiés sur les fichiers de résultats, et les affirmations sur la littérature ont été vérifiées dans les articles originaux.
+Conformément au guide de rédaction de l'ECE, je déclare avoir utilisé un outil d'intelligence artificielle générative (Claude, d'Anthropic) comme assistant pour la programmation, la relecture du code et l'aide à la rédaction. Le choix du sujet, de la problématique et du périmètre, les décisions de méthode et les interprétations relèvent de l'auteur, qui a relu et validé l'ensemble du texte. Les chiffres cités ont été vérifiés sur les fichiers de résultats, et les affirmations sur les principales études citées ont été vérifiées dans les textes originaux.
 
 ## Résumé
 
