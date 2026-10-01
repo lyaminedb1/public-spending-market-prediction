@@ -24,7 +24,7 @@ Je remercie également mon encadrante, Dr Yosra Hajjaji, pour son suivi et ses c
 
 ## Déclaration d'utilisation de l'intelligence artificielle
 
-Conformément au guide de rédaction de l'ECE, je déclare avoir utilisé un outil d'intelligence artificielle générative (Claude, d'Anthropic) comme assistant pour la programmation, la relecture du code et l'aide à la rédaction. Le choix du sujet, de la problématique et du périmètre, les décisions de méthode et les interprétations relèvent de l'auteur, qui a relu et validé l'ensemble du texte. Les chiffres cités ont été vérifiés sur les fichiers de résultats, et les affirmations sur la littérature ont été vérifiées dans les articles originaux.
+Conformément au guide de rédaction de l'ECE, je déclare avoir utilisé un outil d'intelligence artificielle générative (Claude, d'Anthropic) comme assistant pour la programmation, la relecture du code et l'aide à la rédaction. Le choix du sujet, de la problématique et du périmètre, les décisions de méthode et les interprétations relèvent de l'auteur, qui a relu et validé l'ensemble du texte. Les chiffres cités ont été vérifiés sur les fichiers de résultats. Les articles centraux de l'état de l'art ont été relus dans leur version originale ; les autres références sont citées d'après leurs résumés.
 
 ## Résumé
 
@@ -88,7 +88,7 @@ Nous ne trouvons aucune preuve que les dépenses améliorent la prévision : auc
 
 ## Contexte
 
-Les finances publiques françaises sont redevenues un sujet central pour les marchés. Le déficit du budget de l'État a atteint 173 milliards d'euros en 2023 et 156 milliards en 2024. Entre 2023 et 2025, les agences de notation ont abaissé cinq fois la note de la France. Sur les marchés, l'écart de taux entre la France et l'Allemagne à 10 ans (le spread OAT–Bund), qui mesure le supplément de rendement exigé pour prêter à la France, est passé d'environ 26 points de base en 2016 à plus de 80 points de base début 2025. En juin 2024, l'annonce de la dissolution de l'Assemblée nationale l'a fait monter de près de 16 points de base en un mois.
+Les finances publiques françaises sont redevenues un sujet central pour les marchés. Le déficit du budget de l'État a atteint 173 milliards d'euros en 2023 et 156 milliards en 2024 (DGFiP, situations mensuelles budgétaires de l'État). Entre 2023 et 2025, les agences de notation (Fitch, Moody's, S&P) ont abaissé cinq fois la note de la France. Sur les marchés, l'écart de taux entre la France et l'Allemagne à 10 ans (le spread OAT–Bund), qui mesure le supplément de rendement exigé pour prêter à la France, est passé d'environ 26 points de base en 2016 à plus de 80 points de base début 2025. En juin 2024, l'annonce de la dissolution de l'Assemblée nationale l'a fait monter de près de 16 points de base en un mois.
 
 Dans le même temps, les données publiques sont de plus en plus ouvertes. Le ministère de l'Économie publie chaque mois la situation budgétaire de l'État, en séries longues ouvertes depuis 2013 : dépenses de personnel, de fonctionnement, d'investissement, d'intervention, charge de la dette, recettes. Ces séries sont gratuites, détaillées et disponibles environ deux mois après la fin de chaque mois.
 

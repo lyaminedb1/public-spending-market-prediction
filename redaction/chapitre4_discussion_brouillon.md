@@ -70,7 +70,7 @@ On aurait pu attendre du machine learning qu'il trouve des relations non linéai
 
 Le premier est le rapport entre le signal et le bruit. Avec 70 à 148 mois d'entraînement et des cibles très bruitées, un modèle flexible trouve toujours des régularités dans l'échantillon d'apprentissage, mais ce sont surtout des coïncidences qui ne se répètent pas. L'instabilité de XGBoost en est un indice : son R² varie d'environ 9 points selon la seule graine aléatoire. Un modèle qui change autant avec le hasard du tirage apprend surtout du bruit.
 
-Le second est le comportement de Ridge. Quand il ne trouve pas de signal, Ridge augmente sa pénalité et rapproche sa prévision de la moyenne. C'est ce qui se passe pour le CAC 40 : la pénalité choisie est souvent très forte (supérieure à 10 000 dans 27 à 44 % des mois, contre moins de 100 le plus souvent pour le spread), et Ridge devient presque la moyenne historique, d'où son R² proche de zéro (-1,3 %). Autrement dit, le « meilleur » modèle est celui qui renonce le plus à prévoir. Ce résultat rejoint une observation de Bouillot et al. (2025) : même dans leur étude, des régressions pénalisées simples font mieux que XGBoost dans certains pays (Belgique, Espagne).
+Le second est le comportement de Ridge. Quand il ne trouve pas de signal, Ridge augmente sa pénalité et rapproche sa prévision de la moyenne. C'est ce qui se passe pour le CAC 40 : la pénalité choisie est souvent très forte (avec les jeux M0 et M1, supérieure à 10 000 dans 27 à 44 % des mois, et dans 90 % des mois avec M2 ; contre moins de 100 le plus souvent pour le spread), et Ridge devient presque la moyenne historique, d'où son R² proche de zéro (-1,3 %). Autrement dit, le « meilleur » modèle est celui qui renonce le plus à prévoir. Ce résultat rejoint une observation de Bouillot et al. (2025) : même dans leur étude, des régressions pénalisées simples font mieux que XGBoost dans certains pays (Belgique, Espagne).
 
 Le machine learning n'est donc pas inutile en soi ; il a besoin de plus d'observations et d'un signal plus fort que ce que nos données offrent à un mois.
 
@@ -80,13 +80,13 @@ L'hypothèse H4 supposait que la charge de la dette et les dépenses d'intervent
 
 ### Ce qui reste prévisible
 
-Le résultat n'est pas entièrement négatif. Certaines extensions battent la moyenne, mais **sans les dépenses** :
+Le résultat n'est pas entièrement négatif. Certaines extensions battent la moyenne, sans que les dépenses y apportent un gain significatif :
 
 - **La volatilité** (E3) : l'ampleur des mouvements du mois suivant est en partie prévisible (R² de +9,6 % pour le CAC 40, +3,3 % pour l'OAT). C'est cohérent avec un fait bien connu des marchés : les périodes agitées se suivent, et les périodes calmes aussi (Engle, 1982). On prévoit mieux l'intensité d'un mouvement que sa direction.
 - **Le sens de variation de l'OAT** (E2) : la classification hausse / baisse fait un peu mieux que la fréquence historique (score de Brier +2,5 %).
 - **Le CAC 40 à 12 mois** (E1 : +11,8 %). Ce résultat est fragile : il repose sur 68 prévisions qui se chevauchent, donc sur très peu d'informations indépendantes.
 
-Dans aucun de ces cas l'ajout des dépenses n'apporte un gain significatif. Ce qui est prévisible vient des marchés eux-mêmes, pas du budget de l'État.
+Dans aucun de ces cas l'ajout des dépenses n'apporte un gain significatif (pour l'OAT, E2 et E3 donnent un R² un peu plus élevé avec les dépenses, sans différence significative). Ce qui est prévisible semble venir des marchés eux-mêmes plutôt que du budget de l'État.
 
 ## 4.5 Comparaison avec la littérature
 
@@ -110,7 +110,7 @@ Afonso et al. (2015) et Bernoth et al. (2012) trouvent un lien entre finances pu
 
 Belly et al. (2023) trouvent que le machine learning suit mieux les spreads que les modèles économétriques, y compris en variation mensuelle, sur 2004-2019. Notre question est différente : nous testons l'apport d'un bloc de variables, pas la supériorité d'une famille de modèles. Sur ce second point, nous ne trouvons pas d'avantage du machine learning (H3) : XGBoost est même le moins bon de nos modèles.
 
-Enfin, Garlanda-Longueville (2023) trouve un effet des annonces budgétaires françaises sur le spread, avec des données quotidiennes. Ce résultat est compatible avec le nôtre : il suggère que ce sont les annonces, observées au jour le jour, qui font bouger les marchés, plutôt que l'exécution mensuelle publiée deux mois plus tard.
+Enfin, Garlanda-Longueville (2023) étudie, avec des données quotidiennes, les allocutions du président de la République pendant la crise du Covid, qui contenaient des engagements budgétaires : ces annonces ont en général fait baisser le spread. Ce résultat est compatible avec le nôtre : il suggère que ce sont les annonces, observées au jour le jour, qui font bouger les marchés, plutôt que l'exécution mensuelle publiée deux mois plus tard.
 
 ## 4.6 Implications
 
@@ -141,7 +141,7 @@ Enfin, Garlanda-Longueville (2023) trouve un effet des annonces budgétaires fra
 
 ## 4.8 Recherches futures
 
-- **Étude d'événement.** Avec des taux quotidiens (Banque de France, Bundesbank) et les dates exactes de publication des situations budgétaires, on pourrait mesurer la réaction du spread le jour même. C'est le test direct de l'explication « l'information est déjà connue ». Garlanda-Longueville (2023) montre qu'une telle approche trouve des effets pour les annonces budgétaires.
+- **Étude d'événement.** Avec des taux quotidiens (Banque de France, Bundesbank) et les dates exactes de publication des situations budgétaires, on pourrait mesurer la réaction du spread le jour même. C'est le test direct de l'explication « l'information est déjà connue ». Garlanda-Longueville (2023) montre qu'une telle approche trouve des effets pour les annonces de dépenses liées au Covid.
 - **Les annonces plutôt que l'exécution.** Le projet de loi de finances, les lois de finances rectificatives et les programmes de stabilité sont de l'information nouvelle pour les marchés. Ils pourraient être codés comme des surprises, par exemple l'écart entre le déficit annoncé et les prévisions des économistes.
 - **Données en temps réel.** Conserver chaque version publiée des situations budgétaires permettrait de travailler avec l'information réellement disponible à chaque date.
 - **Plus d'observations.** Un panel de pays plus long, incluant la crise de 2010-2012, avec des cibles de fin de période (et non des moyennes), augmenterait la puissance des tests.

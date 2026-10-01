@@ -58,7 +58,7 @@ add("CAC 40 : plus forte |corrélation de Spearman| avec les 7 dépenses (aucune
     note="seuil ±0,16")
 # corrélations partielles (inflation et ΔOAT passée contrôlées)
 for lab in ("personnel", "fonctionnement", "charge de la dette"):
-    add(f"corrélation partielle {lab} / ΔOAT (inflation, ΔOAT passée contrôlées)", 0.07, 0.13,
+    add(f"corrélation partielle {lab} / ΔOAT (inflation, ΔOAT passée contrôlées)", 0.09, 0.15,
         abs(corr_partielle(d, sp[lab], "y_d_oat", ["inflation_yoy", "d_oat"])), tol=0.006)
 # stationnarité (ADF)
 for t in tg:

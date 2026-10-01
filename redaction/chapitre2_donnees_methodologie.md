@@ -6,7 +6,7 @@ Sep 28, 2026 · @elyamine
 
 Ce chapitre explique d'où viennent nos données, comment nous les avons transformées et comment nous avons évalué les modèles. Tout le protocole répond à une seule contrainte : ne jamais donner au modèle une information qu'un investisseur n'aurait pas eue au moment de sa décision.
 
-Nous présentons d'abord les sources (2.1), puis la construction du jeu de données mensuel (2.2). Viennent ensuite les variables à prédire (2.3) et les variables explicatives (2.4). La section 2.5 justifie le choix des modèles, et la section 2.6 décrit la façon dont nous les évaluons. Pour finir, la section 2.7 présente les variantes testées pour vérifier la solidité des résultats.
+Nous présentons d'abord les sources (2.1), puis la construction du jeu de données mensuel (2.2). Viennent ensuite les variables à prédire (2.3) et les variables explicatives (2.4). La section 2.5 justifie le choix des modèles, et la section 2.6 décrit la façon dont nous les évaluons. Puis la section 2.7 présente les variantes testées pour vérifier la solidité des résultats, et la section 2.8 les considérations éthiques.
 
 Le code et les données sont conservés dans un dépôt GitHub (accessible sur demande). Chaque tableau et chaque figure de ce mémoire peut donc être recalculé à partir des fichiers bruts.
 
@@ -57,7 +57,7 @@ L'État ne dépense pas au même rythme toute l'année. L'impôt sur les sociét
 - **La somme des 12 derniers mois** (en milliards d'euros). Elle donne le niveau annuel, sans effet de saison.
 - **L'écart du cumul depuis janvier par rapport au même mois de l'année précédente, rapporté au montant des douze derniers mois** (en %). Une valeur de +1,2 en mai veut dire que, fin mai, l'État a dépensé l'équivalent de 1,2 % d'une année de plus que fin mai de l'année précédente. Comme on compare toujours le même mois, la saison s'annule.
 
-Nous n'avons pas utilisé un simple taux de croissance du cumul. En janvier, le cumul est presque nul, et le taux prend des valeurs absurdes : de -902 % à +1 789 % pour l'impôt sur les sociétés. Diviser par le montant des douze derniers mois règle ce problème.
+Nous n'avons pas utilisé un simple taux de croissance du cumul. En janvier, le cumul est presque nul, et le taux prend des valeurs absurdes : sur l'ensemble des mois, de -902 % à +1 789 % pour l'impôt sur les sociétés. Diviser par le montant des douze derniers mois règle ce problème.
 
 Pour une ligne budgétaire i et un mois t, la variable utilisée dans les modèles s'écrit :
 
@@ -221,10 +221,10 @@ Pour savoir quelles dépenses le modèle utilise le plus (hypothèse H4), nous c
 
 ### 2.6.5 Contrôles de solidité
 
-Après les premiers résultats, nous avons ajouté cinq contrôles, décrits ici et rapportés au chapitre 3 :
+Après les premiers résultats, nous avons ajouté cinq contrôles, décrits ici et rapportés au chapitre 3 (quatre en section 3.3, le cinquième en section 3.4) :
 
 - **Graine aléatoire** : la forêt aléatoire et XGBoost sont réestimés avec 5 et 10 graines différentes.
-- **Contrôle positif (puissance)** : on ajoute à M0 une variable fictive construite pour avoir une corrélation ρ donnée avec la cible (ρ = 0,1 à 1), avec 10 tirages par valeur, pour mesurer ce que le dispositif est capable de détecter.
+- **Contrôle positif (puissance)** : on ajoute à M0 une variable fictive construite pour avoir une corrélation ρ donnée avec la cible (ρ = 0,1 à 1), avec 10 tirages par valeur de ρ inférieure à 1 (un seul pour ρ = 1), pour mesurer ce que le dispositif est capable de détecter.
 - **Contrôle négatif** : on remplace les sept dépenses par sept variables de pur bruit (20 tirages pour Ridge, 5 pour la forêt, 10 pour XGBoost), pour savoir si les dépenses font mieux que des variables sans information.
 - **Décalage de publication** : les modèles principaux sont relancés avec un décalage budgétaire de 1 et de 3 mois au lieu de 2.
 - **Importance par permutation hors échantillon** : sur la période de test, on mélange au hasard les valeurs d'un groupe de variables et on mesure la hausse de l'erreur.
@@ -235,7 +235,7 @@ Un résultat pourrait dépendre d'un choix particulier : l'horizon, le modèle, 
 
 Cette précaution répond à un risque bien décrit par Bailey et al. (2014) : à force d'essayer des configurations, on finit toujours par en trouver une qui semble marcher, par hasard.
 
-Le pré-enregistrement s'est fait en plusieurs étapes, et nous préférons le dire clairement. E1 à E13 ont été fixées ensemble le 26 septembre 2026, après les résultats du modèle principal mais avant toute extension. E14 à E16 ont été ajoutées avant leur collecte de données. E17 à E20, en revanche, ont été ajoutées le 27 septembre **après** avoir vu les résultats d'E15 et E16, mais avant leurs propres données. E18 est donc présentée comme exploratoire, car son idée vient directement d'un résultat d'E15.
+Le pré-enregistrement s'est fait en plusieurs étapes, et nous préférons le dire clairement. E1 à E13 ont été fixées ensemble le 26 septembre 2026, après les résultats du modèle principal mais avant toute extension. E14 à E16 ont été ajoutées avant leur collecte de données. E17 à E20, en revanche, ont été ajoutées le 27 septembre **après** avoir vu les résultats d'E15 et E16. E19 et E20 ont été datées avant la collecte de leurs données (actions, indice d'incertitude) ; E17 et E18 réutilisent le panel déjà collecté pour E15 et E16. E18 est donc présentée comme exploratoire, car son idée vient directement d'un résultat d'E15.
 
 | # | Extension | Justification |
 | --- | --- | --- |

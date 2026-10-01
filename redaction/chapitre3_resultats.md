@@ -12,7 +12,7 @@ Tous les résultats portent sur la période de test de janvier 2020 à juillet 2
 
 Les trois cibles, en variations, sont stationnaires (p-value ADF inférieure à 0,001). Elles sont très dispersées par rapport à leur moyenne, et peu corrélées d'un mois sur l'autre.
 
-**Tableau 3.1 – Statistiques des variables cibles (mars 2014 – juillet 2026, 149 mois)**
+**Tableau 3.1 – Statistiques des variables cibles (149 mois ; prévisions faites de mars 2014 à juillet 2026)**
 
 | Cible | Moyenne | Écart-type | Minimum | Maximum | Autocorrélation d'ordre 1 |
 | --- | --- | --- | --- | --- | --- |
@@ -74,7 +74,7 @@ Nous avons aussi appliqué la correction de Benjamini et Hochberg aux 18 tests d
 
 ## 3.3 Solidité des résultats
 
-Quatre contrôles complètent le tableau 3.2. Ils ont été ajoutés après les premiers résultats, lors d'une vérification du code.
+Quatre contrôles complètent le tableau 3.2 ; un cinquième, la permutation hors échantillon, est présenté en section 3.4. Ils ont été ajoutés après les premiers résultats, lors d'une vérification du code.
 
 **Graine aléatoire.** La forêt aléatoire et XGBoost dépendent d'un tirage au hasard. Nous les avons réestimés avec 5 graines (forêt) et 10 graines (XGBoost). Le R² de XGBoost varie d'environ 9 points selon la graine (par exemple de -39,8 % à -30,8 % pour le spread, jeu M0), celui de la forêt d'environ 3 points. Avec toutes les graines, le R² reste négatif, et aucun test DM M1 contre M0 n'est significatif (plus petite p-value : 0,13).
 
@@ -102,7 +102,7 @@ Un signal de corrélation 0,3 avec la cible n'est retrouvé que dans une minorit
 
 ## 3.4 Importance des variables
 
-Dans un XGBoost estimé sur tout l'échantillon (jeu M1), les sept variables de dépenses représentent **31 à 37 %** de l'importance SHAP totale. Les dépenses d'intervention arrivent en tête pour le spread et l'OAT, l'investissement pour le CAC 40.
+Dans un XGBoost estimé sur tout l'échantillon (jeu M1), les sept variables de dépenses représentent **31 à 37 %** de l'importance SHAP totale. Parmi les dépenses, les dépenses d'intervention arrivent en tête pour le spread et l'OAT, l'investissement pour le CAC 40.
 
 Nous avons aussi remplacé les sept dépenses par sept variables de pur bruit, tirées au hasard (10 tirages). Ces variables obtiennent en moyenne **34 à 38 %** de l'importance SHAP.
 
@@ -118,7 +118,7 @@ Nous avons aussi remplacé les sept dépenses par sept variables de pur bruit, t
 
 Pour l'OAT et le CAC 40, la part des dépenses se situe dans l'intervalle obtenu avec du bruit. Pour le spread, elle est inférieure au plus petit des dix tirages de bruit.
 
-Une seconde mesure, calculée hors échantillon, a été ajoutée après les premiers résultats : l'importance par permutation, calculée sur un modèle M1 auquel on ajoute les variables de bruit et le signal fictif, qui servent de repères. On mélange au hasard les valeurs d'un groupe de variables sur la période de test, puis on mesure la hausse de l'erreur. Quand on mélange les sept dépenses, l'erreur n'augmente pas : le RMSE baisse légèrement, de 0,1 % à 2,5 % selon la cible et le modèle (Ridge et XGBoost). Quand on mélange le signal fictif du contrôle positif (ρ = 0,5), le RMSE augmente de 7,6 % à 18,8 %.
+Une seconde mesure, calculée hors échantillon, a été ajoutée après les premiers résultats : l'importance par permutation, calculée sur deux modèles : M1 auquel on ajoute sept variables de bruit, et M1 auquel on ajoute un signal fictif. Ces ajouts servent de repères. On mélange au hasard les valeurs d'un groupe de variables sur la période de test, puis on mesure la hausse de l'erreur. Quand on mélange les sept dépenses, l'erreur n'augmente pas : le RMSE baisse légèrement, de 0,1 % à 2,5 % selon la cible et le modèle (Ridge et XGBoost). Quand on mélange le signal fictif du contrôle positif (ρ = 0,5), le RMSE augmente de 7,6 % à 18,8 %.
 
 *Source : calculs de l'auteur (`results/tables/models_permutation_oos.csv`).*
 
