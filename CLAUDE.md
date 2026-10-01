@@ -142,7 +142,7 @@
 ## Mise à jour du 2/10 (nuit)
 - Revue globale : jeu de données reconstruit à l'identique (écart 0), Ridge M0/M1/M2, DM et BH (H1 et 168 comparaisons) recalculés indépendamment (écarts < 0,001) ; 63 contrôles OK ; chiffres de ch. 2-3 recoupés (IS −449/+470 % janv., −902/+1 789 % févr., opérations financières −462 %, écart-type 0,7 → 4,4). Seule correction : 2.2.4 (le script de vérification signale un échec quand on modifie le décalage, il ne « les signale pas tous »).
 - Dates de publication de la SMB 2017-2026 (40 publications, 29 à 47 jours après la fin du mois) : `data/raw/smb_publication_dates.csv` (branche `claude/relaxed-gauss-3dvh8s` uniquement). Étude d'événement CAC 40 (plan daté `docs/plan_etude_evenement.md`, `src/23_event_study.py`) : nulle (ρ = −0,13, p = 0,42, n = 40) ; rien ajouté au mémoire. Spread quotidien : sources inaccessibles.
-- Style : passe de lisibilité sur les ch. 4, introduction, conclusion ; déclaration IA inchangée (courte).
+- Style (demande d'Elyamine : moins de tics typographiques) : passe de lisibilité sur tout le mémoire : gras retiré du texte courant (sauf deux résultats clés), légendes « Tableau 3.1 : … » et titres « Chapitre 1 : … » avec deux-points, plus de tirets demi-cadratins ni de barres obliques entre mots, listes « Ce que nous en retenons » du ch. 1 en paragraphes. Déclaration IA inchangée (courte). Pas de manœuvre contre les détecteurs.
 
 ## Prochaines étapes (au 30/09 soir ; remise le 2/10 à minuit)
 0. Plan serré : mercredi soir ch. 4 complet (brouillon) + éthique (ch. 2, fait : 2.8) ; jeudi introduction, conclusion, résumé, annexes, pages de garde, revue de Walid en parallèle ; vendredi corrections, PDF, envoi en fin d'après-midi. Abandonné : raccourcir le ch. 3, glossaire détaillé.

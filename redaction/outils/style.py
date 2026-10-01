@@ -76,7 +76,7 @@ for p in d.paragraphs:
         if t and t[-1] not in ".?!:":
             p.runs[-1].text = p.runs[-1].text.rstrip() + "."
     # légendes (styles dédiés, pour les listes des tableaux et des figures) et sources : simple interligne
-    m = re.match(r"^(Tableau|Figure) [A-Z0-9]+\.\d+ –", p.text)
+    m = re.match(r"^(Tableau|Figure) [A-Z0-9]+\.\d+ :", p.text)
     if m:
         p.style = STY["CaptionTable" if m.group(1) == "Tableau" else "CaptionFigure"]
     if m or p.text.startswith("Source :"):

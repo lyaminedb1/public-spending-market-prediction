@@ -8,13 +8,13 @@ Ce chapitre fait le point sur ce que l'on sait déjà. Il part d'une question si
 
 Nous étudions trois indicateurs, plus ou moins liés aux finances publiques :
 
-- **Le spread OAT–Bund à 10 ans** : l'écart entre le taux auquel la France emprunte sur dix ans (OAT, Obligation assimilable du Trésor) et celui de l'Allemagne (Bund). Comme la politique monétaire est la même pour les deux pays, cet écart mesure surtout le risque propre à la France.
-- **Le taux OAT à 10 ans** : le coût d'emprunt de l'État français. Il dépend à la fois des finances publiques et de la politique de la BCE.
-- **Le rendement mensuel du CAC 40** : l'évolution de la valeur des grandes entreprises cotées à Paris.
+- Le spread OAT-Bund à 10 ans : l'écart entre le taux auquel la France emprunte sur dix ans (OAT, Obligation assimilable du Trésor) et celui de l'Allemagne (Bund). Comme la politique monétaire est la même pour les deux pays, cet écart mesure surtout le risque propre à la France.
+- Le taux OAT à 10 ans : le coût d'emprunt de l'État français. Il dépend à la fois des finances publiques et de la politique de la BCE.
+- Le rendement mensuel du CAC 40 : l'évolution de la valeur des grandes entreprises cotées à Paris.
 
 Ces trois indicateurs vont du plus exposé au moins exposé aux finances publiques. Les comparer permet de voir où les dépenses apportent, ou non, de l'information.
 
-Notre terrain est la France, dans la zone euro. **Nous donnons donc la priorité aux études européennes.** Les grands travaux américains restent utiles, mais surtout comme cadre théorique ou comme référence de méthode : nous les présentons plus brièvement.
+Notre terrain est la France, dans la zone euro. Nous donnons donc la priorité aux études européennes. Les grands travaux américains restent utiles, mais surtout comme cadre théorique ou comme référence de méthode : nous les présentons plus brièvement.
 
 La section 1.1 pose le cadre théorique. La section 1.2 présente les travaux européens sur le lien entre finances publiques et spreads. La section 1.3 porte sur le machine learning appliqué à la prévision des spreads. La section 1.4, plus courte, traite des données ouvertes et des précautions de méthode. La section 1.5 fait la synthèse et formule nos hypothèses.
 
@@ -44,9 +44,7 @@ Welch et Goyal testent les variables les plus connues pour prévoir le rendement
 
 ### 1.1.5 Ce que nous en retenons
 
-- Un pouvoir prédictif faible, voire nul, est plausible dès le départ. Un résultat négatif serait cohérent avec Fama et Ramey, et il aurait un sens.
-- Il faut évaluer les modèles hors échantillon, sur des mois qu'ils n'ont jamais vus.
-- La référence à battre est simple : la moyenne historique (et, pour les taux, la variation nulle). Un modèle qui ne la bat pas n'a pas de pouvoir prédictif utile par rapport à cette référence.
+Un pouvoir prédictif faible, voire nul, est donc plausible dès le départ, et un résultat négatif serait cohérent avec Fama et Ramey. Il faudra évaluer les modèles hors échantillon, sur des mois qu'ils n'ont jamais vus, et les comparer à une référence simple : la moyenne historique et, pour les taux, la variation nulle. Un modèle qui ne la bat pas n'a pas de pouvoir prédictif utile.
 
 ## 1.2 Finances publiques et spreads souverains en zone euro
 
@@ -60,17 +58,17 @@ Dans une union monétaire, tous les pays ont la même banque centrale. L'écart 
 
 Bernoth, von Hagen et Schuknecht (2012) étudient les spreads des obligations européennes face à l'Allemagne. La dette, le déficit et la charge de la dette en expliquent une partie, y compris après l'entrée dans l'euro. L'aversion au risque mondiale renforce cet effet.
 
-Attinasi, Checherita et Nickel (2009) cherchent ce qui a fait monter les spreads pendant la crise, de fin juillet 2007 à fin mars 2009. Ils trouvent trois moteurs : l'aversion au risque internationale, la liquidité des marchés obligataires et les positions budgétaires attendues. Les annonces de plans de sauvetage bancaire ont aussi pesé. Détail important pour nous : c'est l'annonce elle-même qui a compté, et non le montant engagé, dont l'effet n'est pas significatif.
+Attinasi, Checherita et Nickel (2009) cherchent ce qui a fait monter les spreads pendant la crise, de fin juillet 2007 à fin mars 2009. Ils trouvent trois moteurs : l'aversion au risque internationale, la liquidité des marchés obligataires et les positions budgétaires attendues. Les annonces de plans de sauvetage bancaire ont aussi pesé. Pour nous, ce qui compte, c'est que l'annonce elle-même qui a compté, et non le montant engagé, dont l'effet n'est pas significatif.
 
-Afonso, Arghyrou et Kontonikas (2015) couvrent la zone euro de 1999 à 2010. Les marchés tiennent compte des déficits attendus sur toute la période, mais les sanctionnent beaucoup plus fort après mars 2009. La dette, elle, ne compte vraiment qu'à partir de la crise des dettes souveraines. **L'effet des finances publiques sur les spreads n'est donc pas stable dans le temps** : il apparaît surtout en période de tension.
+Afonso, Arghyrou et Kontonikas (2015) couvrent la zone euro de 1999 à 2010. Les marchés tiennent compte des déficits attendus sur toute la période, mais les sanctionnent beaucoup plus fort après mars 2009. La dette, elle, ne compte vraiment qu'à partir de la crise des dettes souveraines. L'effet des finances publiques sur les spreads n'est donc pas stable dans le temps : il apparaît surtout en période de tension.
 
-Favero (2013) est l'un des rares à **prévoir** les spreads, et non seulement à les expliquer. Avec un modèle économétrique (un VAR global), il fait dépendre le spread de chaque pays de ceux des autres, pondérés selon la ressemblance de leurs finances publiques. Son modèle prévoit mieux, hors échantillon, que les spécifications classiques.
+Favero (2013) est l'un des rares à prévoir les spreads, et non seulement à les expliquer. Avec un modèle économétrique (un VAR global), il fait dépendre le spread de chaque pays de ceux des autres, pondérés selon la ressemblance de leurs finances publiques. Son modèle prévoit mieux, hors échantillon, que les spécifications classiques.
 
 ### 1.2.3 Le cas français
 
-Les études consacrées à la France sont rares. Garlanda-Longueville (2023) consacre un chapitre de sa thèse aux allocutions du président de la République pendant la crise du Covid (mars 2020 à décembre 2021), qui contenaient des engagements budgétaires. Avec des données quotidiennes, elle montre que ces annonces ont en général fait monter le CAC 40 et baisser le spread France–Allemagne. Fait notable : les communiqués annonçant à l'avance une allocution ont un effet plus significatif que l'allocution elle-même. Ce résultat va dans le sens de Ramey (2011) : le marché réagit aux annonces.
+Les études consacrées à la France sont rares. Garlanda-Longueville (2023) consacre un chapitre de sa thèse aux allocutions du président de la République pendant la crise du Covid (mars 2020 à décembre 2021), qui contenaient des engagements budgétaires. Avec des données quotidiennes, elle montre que ces annonces ont en général fait monter le CAC 40 et baisser le spread France–Allemagne. Les communiqués annonçant à l'avance une allocution ont un effet plus significatif que l'allocution elle-même. Ce résultat va dans le sens de Ramey (2011) : le marché réagit aux annonces.
 
-L'actualité récente le confirme. Après la dissolution de l'Assemblée nationale en juin 2024, l'incertitude sur la trajectoire budgétaire a nettement élargi le spread OAT–Bund : dans nos données, sa moyenne mensuelle augmente de 15,5 points de base en juin 2024, l'une des plus fortes hausses de la période.
+L'actualité récente le confirme. Après la dissolution de l'Assemblée nationale en juin 2024, l'incertitude sur la trajectoire budgétaire a nettement élargi le spread OAT-Bund : dans nos données, sa moyenne mensuelle augmente de 15,5 points de base en juin 2024, l'une des plus fortes hausses de la période.
 
 ### 1.2.4 Les travaux fondateurs, surtout américains
 
@@ -78,10 +76,7 @@ Ces travaux européens s'appuient sur une littérature plus ancienne, surtout am
 
 ### 1.2.5 Ce que nous en retenons
 
-- Le spread OAT–Bund est la cible la plus directement liée aux finances publiques françaises.
-- L'aversion au risque et la liquidité comptent beaucoup : elles doivent être dans le modèle comme variables de contrôle.
-- L'effet des finances publiques dépend de la période. Il faudra regarder séparément les périodes calmes et agitées.
-- Presque tous ces travaux utilisent des modèles linéaires, des données annuelles ou trimestrielles, et cherchent à expliquer plutôt qu'à prévoir. Aucun ne teste le machine learning sur des données budgétaires mensuelles.
+Le spread OAT-Bund est la cible la plus directement liée aux finances publiques françaises. L'aversion au risque et la liquidité comptent beaucoup, et doivent donc figurer dans le modèle comme variables de contrôle. Comme l'effet des finances publiques dépend de la période, il faudra regarder séparément les périodes calmes et les périodes agitées. Enfin, presque tous ces travaux utilisent des modèles linéaires et des données annuelles ou trimestrielles, et cherchent à expliquer plutôt qu'à prévoir. Aucun ne teste le machine learning sur des données budgétaires mensuelles.
 
 ## 1.3 Machine learning et prévision des spreads
 
@@ -93,7 +88,7 @@ Belly et al. (2023) utilisent le machine learning pour évaluer le risque souver
 
 Bouillot, Candelon et Kool (2025) sont les plus proches de notre travail. Ils prévoient à un mois le spread à 10 ans face au Bund de dix pays de la zone euro, dont la France, sur des données mensuelles de décembre 2008 à février 2025. Ils comparent treize méthodes sur près de 5 000 variables (4 948 séries), dont des variables de finances publiques. XGBoost donne les meilleures prévisions : sur 2020-2025, son erreur (RMSE) est de 4 à 8 points de base pour les pays du cœur de la zone euro, et de 7,3 points de base pour la France. La cible est le niveau du spread. Dans la version du document de travail que nous avons consultée, les modèles sont comparés entre eux, à la moyenne et à des régressions linéaires, mais pas à la prévision naïve « spread du mois précédent ». Le résumé d'une version plus récente indique que l'AR(1) et la marche aléatoire ont des erreurs plus faibles que les modèles de machine learning dans chaque pays, quand les modèles sont réestimés à chaque date.
 
-Deux de leurs résultats comptent pour nous. D'abord, **c'est le spread passé qui domine les prévisions**, complété par les conditions financières, les prix et les indicateurs de marché mondiaux. Les finances publiques y pèsent très peu : parmi les cinq variables les plus importantes de chacun des dix pays (50 au total), une seule relève des finances publiques. Ensuite, la France et la Belgique se détachent des autres pays du cœur de la zone euro à partir de mi-2024.
+Deux de leurs résultats comptent pour nous. D'abord, c'est le spread passé qui domine les prévisions, complété par les conditions financières, les prix et les indicateurs de marché mondiaux. Les finances publiques y pèsent très peu : parmi les cinq variables les plus importantes de chacun des dix pays (50 au total), une seule relève des finances publiques. Ensuite, la France et la Belgique se détachent des autres pays du cœur de la zone euro à partir de mi-2024.
 
 Enfin, Barbier-Gauchard et Sofianos (2025) appliquent le machine learning aux finances publiques elles-mêmes. Ils prévoient la dette publique de 17 pays de la zone euro, et XGBoost y fait mieux que les projections de la Commission européenne et du FMI.
 
@@ -107,10 +102,7 @@ Les modèles à base d'arbres, comme les forêts aléatoires (Breiman, 2001) et 
 
 ### 1.3.4 Ce que nous en retenons
 
-- Il faut comparer le machine learning à des références simples : la moyenne historique, la variation nulle et un modèle linéaire.
-- Le spread passé, principal prédicteur chez Bouillot et al. (2025), doit être dans tous les modèles. Sinon, on attribuerait aux dépenses ce qui vient en réalité du spread lui-même.
-- La forêt aléatoire et XGBoost sont adaptés à notre volume de données ; le deep learning ne l'est pas.
-- Aucun de ces travaux ne mesure séparément ce qu'apportent les dépenses publiques. C'est la question précise de ce mémoire.
+Le machine learning doit être comparé à des références simples : la moyenne historique, la variation nulle et un modèle linéaire. Le spread passé, qui est le principal prédicteur chez Bouillot et al., doit figurer dans tous les modèles, sinon on attribuerait aux dépenses ce qui vient en réalité du spread lui-même. La forêt aléatoire et XGBoost conviennent à notre volume de données, pas le deep learning. Enfin, aucun de ces travaux ne mesure séparément ce qu'apportent les dépenses publiques, et c'est la question précise de ce mémoire.
 
 ## 1.4 Données ouvertes et précautions de méthode
 
@@ -134,16 +126,13 @@ Bailey et al. (2014) mettent en garde contre un piège fréquent : à force de t
 
 ### 1.4.4 Ce que nous en retenons
 
-- Les données budgétaires d'un mois ne peuvent servir qu'après leur publication : nous les décalons de deux mois.
-- Les montants cumulés doivent être transformés pour enlever la saisonnalité.
-- Les révisions seront discutées comme une limite.
-- Construire un jeu de données mensuel français qui croise budget et marchés est déjà, en soi, une contribution.
+Les données budgétaires d'un mois ne peuvent servir qu'après leur publication, nous les décalons donc de deux mois. Les montants cumulés doivent être transformés pour enlever la saisonnalité, et les révisions seront discutées comme une limite. Construire un jeu de données mensuel français qui croise budget et marchés est déjà, en soi, une contribution.
 
 ## 1.5 Synthèse et positionnement du mémoire
 
 À notre connaissance, aucun travail ne prévoit des indicateurs des marchés financiers français à partir des données ouvertes de dépenses publiques mensuelles avec du machine learning. Le tableau 1.1 résume les travaux clés, classés selon leur rôle dans ce mémoire.
 
-**Tableau 1.1 – Principaux travaux recensés**
+**Tableau 1.1 : Principaux travaux recensés**
 
 | Rôle | Auteurs (année) | Pays et données | Méthode | Résultat principal | Limite pour ce mémoire |
 | --- | --- | --- | --- | --- | --- |
@@ -153,7 +142,7 @@ Bailey et al. (2014) mettent en garde contre un piège fréquent : à force de t
 | Noyau européen | Afonso, Arghyrou et Kontonikas (2015) | Zone euro, 1999-2010 | Panel | Déficits attendus sanctionnés ; dette prise en compte seulement après 2009 | Explique, ne prévoit pas |
 | Noyau européen | Bernoth, von Hagen et Schuknecht (2012) | Europe ; spreads face à l'Allemagne | Panel | Dette et déficit expliquent une partie des spreads | Linéaire, données annuelles |
 | Noyau européen | Attinasi, Checherita et Nickel (2009) | Zone euro, 2007-2009 | Panel dynamique | Risque, liquidité, positions budgétaires attendues et annonces de sauvetage bancaire expliquent les spreads | Période de crise seulement |
-| Noyau européen | Garlanda-Longueville (2023) | **France** ; annonces du Covid | Étude d'événements | Les annonces du président de la République font en général monter les actions et baisser le spread | Annonces, pas dépenses exécutées |
+| Noyau européen | Garlanda-Longueville (2023) | France ; annonces du Covid | Étude d'événements | Les annonces du président de la République font en général monter les actions et baisser le spread | Annonces, pas dépenses exécutées |
 | Noyau européen | Barbier-Gauchard et Sofianos (2025) | 17 pays de la zone euro ; dette publique | ML (XGBoost) | Prévoit mieux la dette que la Commission et le FMI | Cible budgétaire, pas financière |
 | Cadre théorique | Fama (1970) | Général (études surtout américaines) | Synthèse théorique et empirique | Les prix intègrent l'information publique | Ne porte pas sur les données budgétaires |
 | Cadre théorique | Ramey (2011) | États-Unis ; trimestriel | VAR, chocs narratifs | Les chocs de dépenses sont anticipés | Explique, ne prévoit pas |
@@ -169,29 +158,29 @@ Bailey et al. (2014) mettent en garde contre un piège fréquent : à force de t
 
 La littérature se partage en deux blocs qui se croisent peu :
 
-- **Le bloc macro-budgétaire** relie finances publiques et taux souverains. Il utilise des modèles linéaires et des données annuelles ou trimestrielles, et il cherche à expliquer plutôt qu'à prévoir.
-- **Le bloc machine learning** montre des gains de prévision sur les marchés financiers. Mais il n'utilise pas les données d'exécution budgétaire.
+- Le bloc macro-budgétaire relie finances publiques et taux souverains. Il utilise des modèles linéaires et des données annuelles ou trimestrielles, et il cherche à expliquer plutôt qu'à prévoir.
+- Le bloc machine learning montre des gains de prévision sur les marchés financiers. Mais il n'utilise pas les données d'exécution budgétaire.
 
-Un troisième constat s'ajoute : **la France est peu étudiée.** Six des quinze travaux du tableau portent uniquement sur les États-Unis. Un seul, Garlanda-Longueville (2023), se concentre sur la France, et il porte sur les annonces, pas sur les dépenses exécutées. Même Bouillot et al. (2025) traitent la France comme un pays parmi dix. Pourtant, la question budgétaire française est devenue centrale pour les marchés : la note de la France a été abaissée cinq fois par les agences entre 2023 et 2025. Et ses données d'exécution budgétaire sont disponibles en séries longues ouvertes.
+Un troisième constat s'ajoute : la France est peu étudiée. Six des quinze travaux du tableau portent uniquement sur les États-Unis. Un seul, Garlanda-Longueville (2023), se concentre sur la France, et il porte sur les annonces, pas sur les dépenses exécutées. Même Bouillot et al. (2025) traitent la France comme un pays parmi dix. Pourtant, la question budgétaire française est devenue centrale pour les marchés : la note de la France a été abaissée cinq fois par les agences entre 2023 et 2025. Et ses données d'exécution budgétaire sont disponibles en séries longues ouvertes.
 
 Bouillot, Candelon et Kool (2025) commencent à rapprocher les deux blocs. Notre travail s'en distingue sur trois points :
 
-- **Nous isolons l'apport des dépenses publiques.** Chez eux, les finances publiques sont mêlées à près de 5 000 variables. Ici, nous comparons explicitement le même modèle avec et sans dépenses.
-- **Nous utilisons les données détaillées d'exécution du budget français**, par catégorie de dépense, en données ouvertes.
-- **Nous comparons trois indicateurs** plus ou moins exposés au risque souverain : le spread, le taux OAT et le CAC 40.
+- Nous isolons l'apport des dépenses publiques. Chez eux, les finances publiques sont mêlées à près de 5 000 variables. Ici, nous comparons explicitement le même modèle avec et sans dépenses.
+- Nous utilisons les données détaillées d'exécution du budget français, par catégorie de dépense, en données ouvertes.
+- Nous comparons trois indicateurs plus ou moins exposés au risque souverain : le spread, le taux OAT et le CAC 40.
 
 ### 1.5.2 Problématique et hypothèses
 
-Notre problématique est la suivante : **peut-on prédire des indicateurs des marchés financiers à partir des données de dépenses publiques ouvertes en utilisant des techniques de machine learning ?**
+Notre problématique est la suivante : peut-on prédire des indicateurs des marchés financiers à partir des données de dépenses publiques ouvertes en utilisant des techniques de machine learning ?
 
-Concrètement, nous testons si les dépenses de l'État améliorent la prévision mensuelle de trois indicateurs : la variation du spread OAT–Bund à 10 ans, la variation du taux OAT à 10 ans et le rendement du CAC 40. L'apport est mesuré par rapport à des modèles qui n'utilisent que des variables de marché et macroéconomiques.
+Concrètement, nous testons si les dépenses de l'État améliorent la prévision mensuelle de trois indicateurs : la variation du spread OAT-Bund à 10 ans, la variation du taux OAT à 10 ans et le rendement du CAC 40. L'apport est mesuré par rapport à des modèles qui n'utilisent que des variables de marché et macroéconomiques.
 
 Nous formulons quatre hypothèses :
 
-- **H1.** Pour au moins un des trois indicateurs, un modèle qui intègre les dépenses publiques prévoit mieux qu'un modèle qui n'utilise que les variables de contrôle.
-- **H2.** L'apport des dépenses diminue du spread au taux OAT, puis au CAC 40, à mesure que l'indicateur est moins exposé au risque souverain.
-- **H3.** Les modèles de machine learning (forêt aléatoire, XGBoost) prévoient mieux que les modèles linéaires.
-- **H4.** Parmi les dépenses, la charge de la dette et les dépenses d'intervention sont les plus prédictives.
+- H1. Pour au moins un des trois indicateurs, un modèle qui intègre les dépenses publiques prévoit mieux qu'un modèle qui n'utilise que les variables de contrôle.
+- H2. L'apport des dépenses diminue du spread au taux OAT, puis au CAC 40, à mesure que l'indicateur est moins exposé au risque souverain.
+- H3. Les modèles de machine learning (forêt aléatoire, XGBoost) prévoient mieux que les modèles linéaires.
+- H4. Parmi les dépenses, la charge de la dette et les dépenses d'intervention sont les plus prédictives.
 
 En suivant Fama (1970) et Ramey (2011), un rejet de H1 reste un résultat plausible, et il nous apprendrait quelque chose.
 

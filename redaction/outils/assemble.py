@@ -41,14 +41,14 @@ for w in web:
         seen.add(k); web2.append(w)
 
 # Chapitre 2 : légendes et sources des tableaux (guide ECE)
-caps = [("Tableau 2.1 – Sources des données", "élaboration de l'auteur."),
-        ("Tableau 2.2 – Soldes annuels reconstitués", "calculs de l'auteur à partir des situations mensuelles budgétaires (DGFiP)."),
-        ("Tableau 2.3 – Variables cibles", "calculs de l'auteur (OCDE via FRED, Yahoo Finance), mars 2014 – juillet 2026."),
-        ("Tableau 2.4 – Test de stationnarité (Dickey-Fuller augmenté)", "calculs de l'auteur."),
-        ("Tableau 2.5 – Jeux de variables emboîtés", "élaboration de l'auteur."),
-        ("Tableau 2.6 – Modèles comparés", "élaboration de l'auteur."),
-        ("Tableau 2.7 – Mesures de performance", "élaboration de l'auteur."),
-        ("Tableau 2.8 – Extensions testées", "élaboration de l'auteur ; plan daté dans docs/plan_extensions.md.")]
+caps = [("Tableau 2.1 : Sources des données", "élaboration de l'auteur."),
+        ("Tableau 2.2 : Soldes annuels reconstitués", "calculs de l'auteur à partir des situations mensuelles budgétaires (DGFiP)."),
+        ("Tableau 2.3 : Variables cibles", "calculs de l'auteur (OCDE via FRED, Yahoo Finance), mars 2014 à juillet 2026."),
+        ("Tableau 2.4 : Test de stationnarité (Dickey-Fuller augmenté)", "calculs de l'auteur."),
+        ("Tableau 2.5 : Jeux de variables emboîtés", "élaboration de l'auteur."),
+        ("Tableau 2.6 : Modèles comparés", "élaboration de l'auteur."),
+        ("Tableau 2.7 : Mesures de performance", "élaboration de l'auteur."),
+        ("Tableau 2.8 : Extensions testées", "élaboration de l'auteur ; plan daté dans docs/plan_extensions.md.")]
 out, lines, k, i = [], b2.split("\n"), 0, 0
 while i < len(lines):
     l = lines[i]
@@ -87,8 +87,8 @@ assert c3[0].startswith("# ")
 b3 = "\n".join(c3[3:]).replace("Figure 3.5 – Synthèse", "Figure 3.4 – Synthèse").replace("## Introduction du chapitre\n\n", "")
 FIG = str(ROOT / "results" / "figures") + "/"
 def fig(m):
-    return f"![]({FIG}{m.group(2)}){{width=15.5cm}}\n\n**{m.group(1)}**\n\n*Source : calculs de l'auteur.*"
-b3 = re.sub(r"\*\\\[(Figure 3\.\d – [^:]+?) : `results/figures/([^`]+)`\\\]\*", fig, b3)
+    return f"![]({FIG}{m.group(3)}){{width=15.5cm}}\n\n**{m.group(1)} : {m.group(2)}**\n\n*Source : calculs de l'auteur.*"
+b3 = re.sub(r"\*\\\[(Figure 3\.\d) – ([^:]+?) : `results/figures/([^`]+)`\\\]\*", fig, b3)
 assert "\\[Figure" not in b3, re.findall(r".*Figure.*", b3)
 
 PB = ["```{=openxml}", '<w:p><w:r><w:br w:type="page"/></w:r></w:p>', "```", ""]
@@ -120,15 +120,15 @@ doc += ["# Liste des tableaux", ""] + field('TOC \\h \\z \\t "CaptionTable,1"')
 doc += ["# Liste des figures", ""] + field('TOC \\h \\z \\t "CaptionFigure,1"') + PB
 doc += ["# Liste des abréviations", "", sec("Liste des abréviations"), "", "# Glossaire", "", sec("Glossaire"), ""] + PB
 doc += [intro, ""] + PB
-doc += ["# Chapitre 1 – État de l'art", "", b1.strip(), ""] + PB
-doc += ["# Chapitre 2 – Données et méthodologie", "", b2.strip(), ""] + PB
-doc += ["# Chapitre 3 – Résultats", "", b3.strip(), ""] + PB
+doc += ["# Chapitre 1 : État de l'art", "", b1.strip(), ""] + PB
+doc += ["# Chapitre 2 : Données et méthodologie", "", b2.strip(), ""] + PB
+doc += ["# Chapitre 3 : Résultats", "", b3.strip(), ""] + PB
 c4 = (MD/"chapitre4_discussion_brouillon.md").read_text().split("\n")
 b4 = "\n".join(l for l in c4[3:] if not l.startswith("> **Statut")).strip()
 if "## Références ajoutées par ce chapitre" in b4:
     b4, refs4 = b4.split("## Références ajoutées par ce chapitre", 1)
     biblio = sorted(set(biblio + items(refs4)), key=key)
-doc += ["# Chapitre 4 – Discussion", "", b4.strip(), ""] + PB
+doc += ["# Chapitre 4 : Discussion", "", b4.strip(), ""] + PB
 doc += [concl, ""] + PB
 # citations numérotées [n] cliquables (style IEEE, liste en ordre alphabétique)
 from citations import numeroter

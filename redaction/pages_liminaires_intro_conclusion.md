@@ -4,11 +4,11 @@ Sep 30, 2026 · @elyamine
 
 ## Page de titre
 
-**Prédiction d'indicateurs des marchés financiers à partir des données de dépenses publiques ouvertes : une approche par machine learning**
+Prédiction d'indicateurs des marchés financiers à partir des données de dépenses publiques ouvertes : une approche par machine learning
 
 Abdellah Elyamine DALI BRAHAM
 
-ECE Paris — MSc Data Management & Intelligence Artificielle
+ECE Paris, MSc Data Management & Intelligence Artificielle
 
 Mémoire de fin d'études
 
@@ -28,11 +28,11 @@ Conformément au guide de rédaction de l'ECE, je déclare avoir utilisé un out
 
 ## Résumé
 
-Ce mémoire cherche à savoir si les données ouvertes de dépenses publiques permettent de prévoir les marchés financiers. Nous utilisons les situations mensuelles budgétaires de l'État français (2013-2026), en tenant compte de leur délai de publication de deux mois, pour prévoir le mois suivant trois indicateurs : la variation du spread OAT–Bund à 10 ans, la variation du taux OAT à 10 ans et le rendement du CAC 40. Nous comparons un modèle qui n'utilise que des variables de marché et macroéconomiques à un modèle qui ajoute les dépenses, avec trois méthodes (régression Ridge, forêt aléatoire, XGBoost), une validation glissante et des tests de Diebold-Mariano. Dix-neuf extensions, dont un panel de cinq pays européens, complètent l'analyse.
+Ce mémoire cherche à savoir si les données ouvertes de dépenses publiques permettent de prévoir les marchés financiers. Nous utilisons les situations mensuelles budgétaires de l'État français (2013-2026), en tenant compte de leur délai de publication de deux mois, pour prévoir le mois suivant trois indicateurs : la variation du spread OAT-Bund à 10 ans, la variation du taux OAT à 10 ans et le rendement du CAC 40. Nous comparons un modèle qui n'utilise que des variables de marché et macroéconomiques à un modèle qui ajoute les dépenses, avec trois méthodes (régression Ridge, forêt aléatoire, XGBoost), une validation glissante et des tests de Diebold-Mariano. Dix-neuf extensions, dont un panel de cinq pays européens, complètent l'analyse.
 
 Nous ne trouvons aucune preuve que les dépenses améliorent la prévision : aucune des 168 comparaisons n'est significative après correction pour tests multiples. Aucun modèle ne bat la moyenne historique, et pour les taux, la prévision « pas de variation » fait mieux que tous les modèles, même si l'écart est rarement significatif. Des contrôles avec un signal fictif et avec des variables de bruit montrent que notre dispositif aurait le plus souvent détecté un effet fort, mais pas forcément un effet faible. Enfin, nous montrons qu'un R² très élevé sur le niveau du spread, comme dans la littérature récente, ne suffit pas : les modèles perdent face à la simple reconduction du spread du mois précédent.
 
-**Mots-clés :** dépenses publiques, données ouvertes, spread souverain, prévision, machine learning, validation glissante, marchés efficients.
+Mots-clés : dépenses publiques, données ouvertes, spread souverain, prévision, machine learning, validation glissante, marchés efficients.
 
 ## Liste des abréviations
 
@@ -70,25 +70,25 @@ Nous ne trouvons aucune preuve que les dépenses améliorent la prévision : auc
 
 ## Glossaire
 
-**Spread OAT–Bund.** Écart entre le taux de l'emprunt d'État français à 10 ans et celui de l'emprunt allemand de même durée. Il mesure le supplément de rendement exigé par les investisseurs pour prêter à la France plutôt qu'à l'Allemagne.
+Spread OAT-Bund. Écart entre le taux de l'emprunt d'État français à 10 ans et celui de l'emprunt allemand de même durée. Il mesure le supplément de rendement exigé par les investisseurs pour prêter à la France plutôt qu'à l'Allemagne.
 
-**R² hors échantillon.** Part de l'erreur de la moyenne historique que le modèle évite, sur des données qu'il n'a pas vues. Positif : le modèle fait mieux que la moyenne ; négatif : il fait moins bien.
+R² hors échantillon. Part de l'erreur de la moyenne historique que le modèle évite, sur des données qu'il n'a pas vues. Positif : le modèle fait mieux que la moyenne ; négatif : il fait moins bien.
 
-**Marche aléatoire (variation nulle).** Prévision naïve selon laquelle la valeur du mois prochain sera égale à celle du mois en cours.
+Marche aléatoire (variation nulle). Prévision naïve selon laquelle la valeur du mois prochain sera égale à celle du mois en cours.
 
-**Validation glissante.** Méthode d'évaluation où le modèle est réestimé chaque mois avec les seules données passées, puis prévoit le mois suivant.
+Validation glissante. Méthode d'évaluation où le modèle est réestimé chaque mois avec les seules données passées, puis prévoit le mois suivant.
 
-**Biais d'anticipation (look-ahead bias).** Erreur qui consiste à utiliser une information qui n'était pas encore publiée à la date de la prévision.
+Biais d'anticipation (look-ahead bias). Erreur qui consiste à utiliser une information qui n'était pas encore publiée à la date de la prévision.
 
-**Contrôle positif / négatif.** Test du dispositif avec une variable fictive construite pour contenir un signal (positif), ou avec des variables de pur bruit (négatif).
+Contrôle positif et contrôle négatif. Test du dispositif avec une variable fictive construite pour contenir un signal (positif), ou avec des variables de pur bruit (négatif).
 
-**Puissance d'un test.** Probabilité qu'un test détecte un effet qui existe réellement.
+Puissance d'un test. Probabilité qu'un test détecte un effet qui existe réellement.
 
 # Introduction générale
 
 ## Contexte
 
-Les finances publiques françaises sont redevenues un sujet central pour les marchés. Le déficit du budget de l'État a atteint 173 milliards d'euros en 2023 et 156 milliards en 2024. Entre 2023 et 2025, les agences de notation ont abaissé cinq fois la note de la France. Sur les marchés, l'écart de taux entre la France et l'Allemagne à 10 ans (le spread OAT–Bund), qui mesure le supplément de rendement exigé pour prêter à la France, est passé d'environ 26 points de base en 2016 à plus de 80 points de base début 2025. En juin 2024, l'annonce de la dissolution de l'Assemblée nationale l'a fait monter de près de 16 points de base en un mois.
+Les finances publiques françaises sont redevenues un sujet central pour les marchés. Le déficit du budget de l'État a atteint 173 milliards d'euros en 2023 et 156 milliards en 2024. Entre 2023 et 2025, les agences de notation ont abaissé cinq fois la note de la France. Sur les marchés, l'écart de taux entre la France et l'Allemagne à 10 ans (le spread OAT-Bund), qui mesure le supplément de rendement exigé pour prêter à la France, est passé d'environ 26 points de base en 2016 à plus de 80 points de base début 2025. En juin 2024, l'annonce de la dissolution de l'Assemblée nationale l'a fait monter de près de 16 points de base en un mois.
 
 Dans le même temps, les données publiques sont de plus en plus ouvertes. Le ministère de l'Économie publie chaque mois la situation budgétaire de l'État, en séries longues ouvertes depuis 2013 : dépenses de personnel, de fonctionnement, d'investissement, d'intervention, charge de la dette, recettes. Ces séries sont gratuites, détaillées et disponibles environ deux mois après la fin de chaque mois.
 
@@ -96,13 +96,13 @@ Enfin, les méthodes de machine learning sont de plus en plus utilisées pour pr
 
 ## Problématique
 
-Ces trois éléments conduisent à une question simple : **peut-on prédire des indicateurs des marchés financiers à partir des données de dépenses publiques ouvertes, en utilisant des techniques de machine learning ?**
+Ces trois éléments conduisent à une question simple : peut-on prédire des indicateurs des marchés financiers à partir des données de dépenses publiques ouvertes, en utilisant des techniques de machine learning ?
 
 La réponse n'a rien d'évident. D'un côté, les études européennes montrent que les finances publiques expliquent une partie du niveau des spreads, surtout en période de crise (Afonso et al., 2015). De l'autre, la théorie des marchés efficients (Fama, 1970) et les travaux sur l'anticipation des dépenses (Ramey, 2011) suggèrent qu'une information connue, ou prévisible, est déjà dans les prix. Un résultat négatif est donc aussi plausible qu'un résultat positif, et les deux seraient instructifs.
 
 ## Objectif et démarche
 
-Nous étudions trois indicateurs, plus ou moins exposés au risque souverain français : la variation du spread OAT–Bund à 10 ans, la variation du taux OAT à 10 ans et le rendement du CAC 40. Pour chacun, nous prévoyons la valeur du mois suivant, sur la période 2014-2026.
+Nous étudions trois indicateurs, plus ou moins exposés au risque souverain français : la variation du spread OAT-Bund à 10 ans, la variation du taux OAT à 10 ans et le rendement du CAC 40. Pour chacun, nous prévoyons la valeur du mois suivant, sur la période 2014-2026.
 
 La démarche repose sur une comparaison directe. Un premier modèle n'utilise que des variables de marché et macroéconomiques. Un second ajoute les dépenses de l'État. Si les dépenses contiennent une information utile, le second modèle doit mieux prévoir. Nous testons trois méthodes (régression Ridge, forêt aléatoire, XGBoost), toujours évaluées sur des mois qu'elles n'ont pas vus, avec des tests statistiques pour juger les écarts.
 
@@ -118,13 +118,13 @@ Le chapitre 1 présente l'état de l'art : le cadre théorique, les travaux euro
 
 # Conclusion générale
 
-Ce mémoire posait une question simple : les données ouvertes de dépenses publiques permettent-elles de prévoir les marchés financiers ? Pour y répondre, nous avons construit un jeu de données mensuel à partir des situations budgétaires de l'État français, en respectant leur délai réel de publication, et nous avons comparé des modèles avec et sans dépenses pour trois indicateurs : le spread OAT–Bund, le taux OAT et le CAC 40.
+Ce mémoire posait une question simple : les données ouvertes de dépenses publiques permettent-elles de prévoir les marchés financiers ? Pour y répondre, nous avons construit un jeu de données mensuel à partir des situations budgétaires de l'État français, en respectant leur délai réel de publication, et nous avons comparé des modèles avec et sans dépenses pour trois indicateurs : le spread OAT-Bund, le taux OAT et le CAC 40.
 
 ## Principaux résultats
 
 La réponse est négative, pour l'instant. Nous ne trouvons aucune preuve que les dépenses de l'État améliorent la prévision à un mois. Ce résultat tient pour les trois méthodes, pour les dix-neuf extensions réalisées, avec un décalage de publication d'un à trois mois, et après correction pour les tests multiples (168 comparaisons d'extensions et 18 tests du modèle principal). Aucune des hypothèses de départ n'est validée : les dépenses n'apportent pas de gain significatif (H1) ; il n'y a donc pas d'apport à classer entre les indicateurs (H2, non testable) ; le machine learning ne fait pas mieux qu'une régression linéaire (H3) ; et aucune ligne de dépense ne se détache (H4, non soutenue).
 
-Plus largement, dans le modèle principal, aucun modèle ne bat la moyenne historique, et pour les taux, la prévision « pas de variation » fait mieux que tous les modèles. À un mois, ces marchés restent très difficiles à prévoir.
+Dans le modèle principal, plus généralement, aucun modèle ne bat la moyenne historique, et pour les taux, la prévision « pas de variation » fait mieux que tous les modèles. À un mois, ces marchés restent très difficiles à prévoir.
 
 ## Apports
 

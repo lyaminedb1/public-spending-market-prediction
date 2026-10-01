@@ -1,13 +1,13 @@
 # Annexes
 
-## Annexe A – Variables des modèles principaux
+## Annexe A : Variables des modèles principaux
 
-**Tableau A.1 – Variables des jeux emboîtés M0, M1 et M2**
+**Tableau A.1 : Variables des jeux emboîtés M0, M1 et M2**
 
 | Jeu | Variable | Définition |
 |---|---|---|
-| M0 | d_spread, d_spread_l1 | Variation du spread OAT–Bund (mois t et t-1), en points de base |
-| M0 | spread_bp | Niveau du spread OAT–Bund (mois t) |
+| M0 | d_spread, d_spread_l1 | Variation du spread OAT-Bund (mois t et t-1), en points de base |
+| M0 | spread_bp | Niveau du spread OAT-Bund (mois t) |
 | M0 | d_oat, d_oat_l1 | Variation du taux OAT 10 ans (mois t et t-1) |
 | M0 | cac_ret, cac_ret_l1 | Rendement du CAC 40 (mois t et t-1) |
 | M0 | vix, d_vix | Niveau et variation du VIX (aversion au risque) |
@@ -20,11 +20,11 @@
 
 *Source : `src/04_models.py`. M1 = M0 + dépenses ; M2 = M1 + recettes et solde.*
 
-## Annexe B – Détail des extensions E1 à E20
+## Annexe B : Détail des extensions E1 à E20
 
-Chaque ligne compare le même modèle sans et avec les dépenses (ou les finances publiques). « p brute » : test de Diebold-Mariano unilatéral « avec meilleur que sans » ; « p corrigée » : correction de Benjamini-Hochberg sur les 168 comparaisons retenues (E12 et ventilations exclues : « — »). E16 : R² par rapport à la moyenne.
+Chaque ligne compare le même modèle sans et avec les dépenses (ou les finances publiques). « p brute » : test de Diebold-Mariano unilatéral « avec meilleur que sans » ; « p corrigée » : correction de Benjamini-Hochberg sur les 168 comparaisons retenues (E12 et ventilations exclues : « sans objet »). E16 : R² par rapport à la moyenne.
 
-**Tableau B.1 – Résultats des 210 comparaisons**
+**Tableau B.1 : Résultats des 210 comparaisons**
 
 | Extension | Cible | Comparaison | n | R² sans (%) | R² avec (%) | p brute | p corrigée (BH) |
 |---|---|---|---|---|---|---|---|
@@ -142,42 +142,42 @@ Chaque ligne compare le même modèle sans et avec les dépenses (ou les finance
 | E11 fenêtre 60 mois | CAC 40 | Ridge : M1 contre M0 | 79 | -4,0 | -7,6 | 0,756 | 0,999 |
 | E11 fenêtre 60 mois | CAC 40 | forêt : M1 contre M0 | 79 | -14,0 | -12,9 | 0,400 | 0,999 |
 | E11 fenêtre 60 mois | CAC 40 | XGBoost : M1 contre M0 | 79 | -45,4 | -28,2 | 0,024 | 0,999 |
-| E12 par période | Δ spread | Ridge [2020-2021] : M1 contre M0 | 24 | 7,6 | -1,4 | 0,957 | — |
-| E12 par période | Δ spread | Ridge [2022-2026] : M1 contre M0 | 55 | -28,0 | -22,5 | 0,230 | — |
-| E12 par période | Δ spread | Ridge [VIX ≤ 20] : M1 contre M0 | 46 | -10,9 | -7,9 | 0,295 | — |
-| E12 par période | Δ spread | Ridge [VIX > 20] : M1 contre M0 | 33 | -27,1 | -35,8 | 0,783 | — |
-| E12 par période | Δ spread | forêt [2020-2021] : M1 contre M0 | 24 | -3,7 | -7,9 | 0,804 | — |
-| E12 par période | Δ spread | forêt [2022-2026] : M1 contre M0 | 55 | -8,6 | -8,7 | 0,512 | — |
-| E12 par période | Δ spread | forêt [VIX ≤ 20] : M1 contre M0 | 46 | -3,2 | -5,1 | 0,738 | — |
-| E12 par période | Δ spread | forêt [VIX > 20] : M1 contre M0 | 33 | -18,0 | -18,7 | 0,536 | — |
-| E12 par période | Δ spread | XGBoost [2020-2021] : M1 contre M0 | 24 | -26,7 | -39,7 | 0,726 | — |
-| E12 par période | Δ spread | XGBoost [2022-2026] : M1 contre M0 | 55 | -40,5 | -24,5 | 0,064 | — |
-| E12 par période | Δ spread | XGBoost [VIX ≤ 20] : M1 contre M0 | 46 | -24,0 | -22,4 | 0,440 | — |
-| E12 par période | Δ spread | XGBoost [VIX > 20] : M1 contre M0 | 33 | -70,5 | -54,0 | 0,260 | — |
-| E12 par période | Δ OAT | Ridge [2020-2021] : M1 contre M0 | 24 | -13,7 | -15,1 | 0,563 | — |
-| E12 par période | Δ OAT | Ridge [2022-2026] : M1 contre M0 | 55 | -11,0 | -10,7 | 0,473 | — |
-| E12 par période | Δ OAT | Ridge [VIX ≤ 20] : M1 contre M0 | 46 | -16,4 | -10,0 | 0,200 | — |
-| E12 par période | Δ OAT | Ridge [VIX > 20] : M1 contre M0 | 33 | -8,2 | -12,0 | 0,892 | — |
-| E12 par période | Δ OAT | forêt [2020-2021] : M1 contre M0 | 24 | -0,9 | 7,7 | 0,229 | — |
-| E12 par période | Δ OAT | forêt [2022-2026] : M1 contre M0 | 55 | -7,8 | -9,0 | 0,620 | — |
-| E12 par période | Δ OAT | forêt [VIX ≤ 20] : M1 contre M0 | 46 | -20,2 | -14,6 | 0,223 | — |
-| E12 par période | Δ OAT | forêt [VIX > 20] : M1 contre M0 | 33 | 1,2 | -2,2 | 0,799 | — |
-| E12 par période | Δ OAT | XGBoost [2020-2021] : M1 contre M0 | 24 | -24,3 | -22,4 | 0,456 | — |
-| E12 par période | Δ OAT | XGBoost [2022-2026] : M1 contre M0 | 55 | -31,1 | -31,5 | 0,524 | — |
-| E12 par période | Δ OAT | XGBoost [VIX ≤ 20] : M1 contre M0 | 46 | -48,8 | -36,3 | 0,106 | — |
-| E12 par période | Δ OAT | XGBoost [VIX > 20] : M1 contre M0 | 33 | -18,8 | -26,8 | 0,808 | — |
-| E12 par période | CAC 40 | Ridge [2020-2021] : M1 contre M0 | 24 | -0,5 | -0,7 | 0,664 | — |
-| E12 par période | CAC 40 | Ridge [2022-2026] : M1 contre M0 | 55 | -2,2 | -6,5 | 0,804 | — |
-| E12 par période | CAC 40 | Ridge [VIX ≤ 20] : M1 contre M0 | 46 | -1,3 | -1,0 | 0,278 | — |
-| E12 par période | CAC 40 | Ridge [VIX > 20] : M1 contre M0 | 33 | -1,4 | -5,6 | 0,834 | — |
-| E12 par période | CAC 40 | forêt [2020-2021] : M1 contre M0 | 24 | -11,0 | -11,2 | 0,512 | — |
-| E12 par période | CAC 40 | forêt [2022-2026] : M1 contre M0 | 55 | -8,1 | -10,3 | 0,737 | — |
-| E12 par période | CAC 40 | forêt [VIX ≤ 20] : M1 contre M0 | 46 | -12,8 | -11,4 | 0,372 | — |
-| E12 par période | CAC 40 | forêt [VIX > 20] : M1 contre M0 | 33 | -7,0 | -10,3 | 0,702 | — |
-| E12 par période | CAC 40 | XGBoost [2020-2021] : M1 contre M0 | 24 | -27,8 | -34,6 | 0,740 | — |
-| E12 par période | CAC 40 | XGBoost [2022-2026] : M1 contre M0 | 55 | -35,9 | -20,4 | 0,097 | — |
-| E12 par période | CAC 40 | XGBoost [VIX ≤ 20] : M1 contre M0 | 46 | -26,2 | -34,7 | 0,902 | — |
-| E12 par période | CAC 40 | XGBoost [VIX > 20] : M1 contre M0 | 33 | -36,1 | -22,2 | 0,149 | — |
+| E12 par période | Δ spread | Ridge [2020-2021] : M1 contre M0 | 24 | 7,6 | -1,4 | 0,957 | sans objet |
+| E12 par période | Δ spread | Ridge [2022-2026] : M1 contre M0 | 55 | -28,0 | -22,5 | 0,230 | sans objet |
+| E12 par période | Δ spread | Ridge [VIX ≤ 20] : M1 contre M0 | 46 | -10,9 | -7,9 | 0,295 | sans objet |
+| E12 par période | Δ spread | Ridge [VIX > 20] : M1 contre M0 | 33 | -27,1 | -35,8 | 0,783 | sans objet |
+| E12 par période | Δ spread | forêt [2020-2021] : M1 contre M0 | 24 | -3,7 | -7,9 | 0,804 | sans objet |
+| E12 par période | Δ spread | forêt [2022-2026] : M1 contre M0 | 55 | -8,6 | -8,7 | 0,512 | sans objet |
+| E12 par période | Δ spread | forêt [VIX ≤ 20] : M1 contre M0 | 46 | -3,2 | -5,1 | 0,738 | sans objet |
+| E12 par période | Δ spread | forêt [VIX > 20] : M1 contre M0 | 33 | -18,0 | -18,7 | 0,536 | sans objet |
+| E12 par période | Δ spread | XGBoost [2020-2021] : M1 contre M0 | 24 | -26,7 | -39,7 | 0,726 | sans objet |
+| E12 par période | Δ spread | XGBoost [2022-2026] : M1 contre M0 | 55 | -40,5 | -24,5 | 0,064 | sans objet |
+| E12 par période | Δ spread | XGBoost [VIX ≤ 20] : M1 contre M0 | 46 | -24,0 | -22,4 | 0,440 | sans objet |
+| E12 par période | Δ spread | XGBoost [VIX > 20] : M1 contre M0 | 33 | -70,5 | -54,0 | 0,260 | sans objet |
+| E12 par période | Δ OAT | Ridge [2020-2021] : M1 contre M0 | 24 | -13,7 | -15,1 | 0,563 | sans objet |
+| E12 par période | Δ OAT | Ridge [2022-2026] : M1 contre M0 | 55 | -11,0 | -10,7 | 0,473 | sans objet |
+| E12 par période | Δ OAT | Ridge [VIX ≤ 20] : M1 contre M0 | 46 | -16,4 | -10,0 | 0,200 | sans objet |
+| E12 par période | Δ OAT | Ridge [VIX > 20] : M1 contre M0 | 33 | -8,2 | -12,0 | 0,892 | sans objet |
+| E12 par période | Δ OAT | forêt [2020-2021] : M1 contre M0 | 24 | -0,9 | 7,7 | 0,229 | sans objet |
+| E12 par période | Δ OAT | forêt [2022-2026] : M1 contre M0 | 55 | -7,8 | -9,0 | 0,620 | sans objet |
+| E12 par période | Δ OAT | forêt [VIX ≤ 20] : M1 contre M0 | 46 | -20,2 | -14,6 | 0,223 | sans objet |
+| E12 par période | Δ OAT | forêt [VIX > 20] : M1 contre M0 | 33 | 1,2 | -2,2 | 0,799 | sans objet |
+| E12 par période | Δ OAT | XGBoost [2020-2021] : M1 contre M0 | 24 | -24,3 | -22,4 | 0,456 | sans objet |
+| E12 par période | Δ OAT | XGBoost [2022-2026] : M1 contre M0 | 55 | -31,1 | -31,5 | 0,524 | sans objet |
+| E12 par période | Δ OAT | XGBoost [VIX ≤ 20] : M1 contre M0 | 46 | -48,8 | -36,3 | 0,106 | sans objet |
+| E12 par période | Δ OAT | XGBoost [VIX > 20] : M1 contre M0 | 33 | -18,8 | -26,8 | 0,808 | sans objet |
+| E12 par période | CAC 40 | Ridge [2020-2021] : M1 contre M0 | 24 | -0,5 | -0,7 | 0,664 | sans objet |
+| E12 par période | CAC 40 | Ridge [2022-2026] : M1 contre M0 | 55 | -2,2 | -6,5 | 0,804 | sans objet |
+| E12 par période | CAC 40 | Ridge [VIX ≤ 20] : M1 contre M0 | 46 | -1,3 | -1,0 | 0,278 | sans objet |
+| E12 par période | CAC 40 | Ridge [VIX > 20] : M1 contre M0 | 33 | -1,4 | -5,6 | 0,834 | sans objet |
+| E12 par période | CAC 40 | forêt [2020-2021] : M1 contre M0 | 24 | -11,0 | -11,2 | 0,512 | sans objet |
+| E12 par période | CAC 40 | forêt [2022-2026] : M1 contre M0 | 55 | -8,1 | -10,3 | 0,737 | sans objet |
+| E12 par période | CAC 40 | forêt [VIX ≤ 20] : M1 contre M0 | 46 | -12,8 | -11,4 | 0,372 | sans objet |
+| E12 par période | CAC 40 | forêt [VIX > 20] : M1 contre M0 | 33 | -7,0 | -10,3 | 0,702 | sans objet |
+| E12 par période | CAC 40 | XGBoost [2020-2021] : M1 contre M0 | 24 | -27,8 | -34,6 | 0,740 | sans objet |
+| E12 par période | CAC 40 | XGBoost [2022-2026] : M1 contre M0 | 55 | -35,9 | -20,4 | 0,097 | sans objet |
+| E12 par période | CAC 40 | XGBoost [VIX ≤ 20] : M1 contre M0 | 46 | -26,2 | -34,7 | 0,902 | sans objet |
+| E12 par période | CAC 40 | XGBoost [VIX > 20] : M1 contre M0 | 33 | -36,1 | -22,2 | 0,149 | sans objet |
 | E13 notations | Δ spread | Ridge : M1 + notations contre M0 + notations | 79 | -8,8 | -8,6 | 0,475 | 0,999 |
 | E13 notations | Δ spread | forêt : M1 + notations contre M0 + notations | 79 | -5,7 | -9,2 | 0,827 | 0,999 |
 | E13 notations | Δ spread | XGBoost : M1 + notations contre M0 + notations | 79 | -35,5 | -27,5 | 0,195 | 0,999 |
@@ -202,12 +202,12 @@ Chaque ligne compare le même modèle sans et avec les dépenses (ou les finance
 | E18 régime de crise (exploratoire) | Δ spread trimestriel fin de trimestre (5 pays) | Ridge : M1 contre M0 | 330 | -3,3 | -19,7 | 0,816 | 0,999 |
 | E18 régime de crise (exploratoire) | Δ spread trimestriel fin de trimestre (5 pays) | forêt : M1 contre M0 | 330 | -10,4 | -4,9 | 0,195 | 0,999 |
 | E18 régime de crise (exploratoire) | Δ spread trimestriel fin de trimestre (5 pays) | XGBoost : M1 contre M0 | 330 | -20,2 | -26,2 | 0,719 | 0,999 |
-| E18 ventilation (hors correction) | Δ spread trimestriel fin de trimestre (5 pays) | Ridge : M1 contre M0, 2010-2014 | 100 | -4,1 | -22,4 | 0,799 | — |
-| E18 ventilation (hors correction) | Δ spread trimestriel fin de trimestre (5 pays) | Ridge : M1 contre M0, 2015+ | 230 | 1,1 | -4,3 | 0,875 | — |
-| E18 ventilation (hors correction) | Δ spread trimestriel fin de trimestre (5 pays) | forêt : M1 contre M0, 2010-2014 | 100 | -12,4 | -5,2 | 0,169 | — |
-| E18 ventilation (hors correction) | Δ spread trimestriel fin de trimestre (5 pays) | forêt : M1 contre M0, 2015+ | 230 | 0,8 | -3,3 | 0,675 | — |
-| E18 ventilation (hors correction) | Δ spread trimestriel fin de trimestre (5 pays) | XGBoost : M1 contre M0, 2010-2014 | 100 | -20,3 | -28,2 | 0,744 | — |
-| E18 ventilation (hors correction) | Δ spread trimestriel fin de trimestre (5 pays) | XGBoost : M1 contre M0, 2015+ | 230 | -19,7 | -14,4 | 0,365 | — |
+| E18 ventilation (hors correction) | Δ spread trimestriel fin de trimestre (5 pays) | Ridge : M1 contre M0, 2010-2014 | 100 | -4,1 | -22,4 | 0,799 | sans objet |
+| E18 ventilation (hors correction) | Δ spread trimestriel fin de trimestre (5 pays) | Ridge : M1 contre M0, 2015+ | 230 | 1,1 | -4,3 | 0,875 | sans objet |
+| E18 ventilation (hors correction) | Δ spread trimestriel fin de trimestre (5 pays) | forêt : M1 contre M0, 2010-2014 | 100 | -12,4 | -5,2 | 0,169 | sans objet |
+| E18 ventilation (hors correction) | Δ spread trimestriel fin de trimestre (5 pays) | forêt : M1 contre M0, 2015+ | 230 | 0,8 | -3,3 | 0,675 | sans objet |
+| E18 ventilation (hors correction) | Δ spread trimestriel fin de trimestre (5 pays) | XGBoost : M1 contre M0, 2010-2014 | 100 | -20,3 | -28,2 | 0,744 | sans objet |
+| E18 ventilation (hors correction) | Δ spread trimestriel fin de trimestre (5 pays) | XGBoost : M1 contre M0, 2015+ | 230 | -19,7 | -14,4 | 0,365 | sans objet |
 | E19 actions sectorielles | BTP-concessions (excès sur le CAC 40) | Ridge h=1 : M1 contre M0 | 79 | -0,0 | -1,2 | 0,844 | 0,999 |
 | E19 actions sectorielles | BTP-concessions (excès sur le CAC 40) | forêt h=1 : M1 contre M0 | 79 | -5,3 | -9,9 | 0,950 | 0,999 |
 | E19 actions sectorielles | BTP-concessions (excès sur le CAC 40) | XGBoost h=1 : M1 contre M0 | 79 | -18,6 | -31,5 | 0,968 | 0,999 |
@@ -241,9 +241,9 @@ Chaque ligne compare le même modèle sans et avec les dépenses (ou les finance
 
 *Source : `results/tables/ext_summary.csv`.*
 
-## Annexe C – Sensibilité à la graine aléatoire
+## Annexe C : Sensibilité à la graine aléatoire
 
-**Tableau C.1 – R² hors échantillon (%) selon la graine**
+**Tableau C.1 : R² hors échantillon (%) selon la graine**
 
 | Modèle | Cible | R² M0 (min à max) | R² M1 (min à max) | Plus petite p DM (M1 contre M0) |
 |---|---|---|---|---|
@@ -256,9 +256,9 @@ Chaque ligne compare le même modèle sans et avec les dépenses (ou les finance
 
 *Source : `results/tables/diag_04/graines_rf.csv`, `graines_xgb.csv`.*
 
-## Annexe D – Contrôle négatif : dépenses contre variables de bruit
+## Annexe D : Contrôle négatif : dépenses contre variables de bruit
 
-**Tableau D.1 – Gain de R² par rapport à M0 (points) : vraies dépenses et sept variables de bruit**
+**Tableau D.1 : Gain de R² par rapport à M0 (points) : vraies dépenses et sept variables de bruit**
 
 | Modèle | Cible | Tirages | Dépenses réelles | Bruit (min à max) | Tirages de bruit ≥ dépenses |
 |---|---|---|---|---|---|
@@ -274,9 +274,9 @@ Chaque ligne compare le même modèle sans et avec les dépenses (ou les finance
 
 *Source : `results/tables/diag_04/bruit_*.csv`.*
 
-## Annexe E – Robustesse au décalage de publication
+## Annexe E : Robustesse au décalage de publication
 
-**Tableau E.1 – Modèles principaux avec un décalage budgétaire de 1, 2 et 3 mois**
+**Tableau E.1 : Modèles principaux avec un décalage budgétaire de 1, 2 et 3 mois**
 
 | Décalage (mois) | Cible | Modèle | R² M0 (%) | R² M1 (%) | p DM bilatérale (M1 contre M0) | p corrigée (BH, unilatérale) |
 |---|---|---|---|---|---|---|
@@ -310,6 +310,6 @@ Chaque ligne compare le même modèle sans et avec les dépenses (ou les finance
 
 *Source : `results/tables/robustesse_lag.csv`. La correction BH porte sur les p-values unilatérales « avec dépenses meilleur que sans » ; elle peut donc être inférieure à la p-value bilatérale affichée.*
 
-## Annexe F – Code et reproductibilité
+## Annexe F : Code et reproductibilité
 
 Le code, les données et les résultats sont conservés dans le dépôt GitHub du projet (`lyaminedb1/public-spending-market-prediction`, accessible sur demande). Le script `run_all.sh` relance l'ensemble de la chaîne ; les versions des bibliothèques logicielles sont figées dans `requirements.txt` et les fichiers de données brutes dans `data/MANIFEST.csv`. Le script `tests/verifications.py` exécute 63 contrôles automatiques (alignement des cibles, décalages de publication, absence de fuite d'information dans la validation glissante, mois incomplets). Les valeurs exactes des forêts aléatoires et de XGBoost peuvent varier légèrement selon les versions des bibliothèques logicielles ; les conclusions n'en dépendent pas.
