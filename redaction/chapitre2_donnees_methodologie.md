@@ -282,7 +282,7 @@ et l'on déclare significatives les k premières comparaisons. De façon équiva
 
 **Usage des résultats.** Ce travail n'est pas un conseil en investissement. Un modèle qui paraît prédire les marchés peut conduire à des décisions coûteuses s'il est mal évalué ; c'est pourquoi nous insistons sur la comparaison à des références simples.
 
-**Outils d'intelligence artificielle.** Des outils d'IA générative ont été utilisés pour l'aide à la programmation, la relecture du code et l'aide à la rédaction. Leur usage est décrit dans la déclaration prévue par le guide de l'ECE. Les choix de recherche relèvent de l'auteur, qui a relu et validé les résultats et le texte.
+**Outils d'intelligence artificielle.** Des outils d'IA générative ont été utilisés pour l'aide à la programmation, la relecture du code et l'aide à la rédaction. Leur usage est décrit dans la déclaration prévue par le guide de l'ECE. Les choix de recherche relèvent de l'auteur, qui a relu l'ensemble du texte et en assume la responsabilité.
 
 ## Références ajoutées par ce chapitre
 

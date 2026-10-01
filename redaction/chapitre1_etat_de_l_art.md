@@ -46,7 +46,7 @@ Welch et Goyal testent les variables les plus connues pour prévoir le rendement
 
 - Un pouvoir prédictif faible, voire nul, est plausible dès le départ. Un résultat négatif serait cohérent avec Fama et Ramey, et il aurait un sens.
 - Il faut évaluer les modèles hors échantillon, sur des mois qu'ils n'ont jamais vus.
-- La référence à battre est simple : la moyenne historique. Un modèle qui ne la bat pas n'a pas de pouvoir prédictif utile par rapport à cette référence.
+- La référence à battre est simple : la moyenne historique (et, pour les taux, la variation nulle). Un modèle qui ne la bat pas n'a pas de pouvoir prédictif utile par rapport à cette référence.
 
 ## 1.2 Finances publiques et spreads souverains en zone euro
 

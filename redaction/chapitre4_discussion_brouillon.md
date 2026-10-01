@@ -2,7 +2,7 @@
 
 Oct 1, 2026 · @elyamine
 
-> **Statut : version rédigée le 1/10 avec l'aide de Claude, à partir des idées discutées avec Elyamine, pour tenir la date de remise. À relire et reformuler par l'auteur si le temps le permet (règle ECE sur l'IA). Chiffres et références vérifiés dans le dépôt et les sources.**
+> **Statut : version du 1/10, à relire et reformuler par l'auteur. Chiffres et références vérifiés dans le dépôt et les sources.**
 
 ## 4.1 Réponse à la problématique
 

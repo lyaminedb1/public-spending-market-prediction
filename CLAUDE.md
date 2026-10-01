@@ -134,8 +134,9 @@
 
 ## Mise à jour du 1/10 (soir)
 - **Bouillot et al. (2025) : le résumé de la version en ligne indique qu'un AR(1) et une marche aléatoire ont des erreurs plus faibles que le ML dans chaque pays (réestimation stricte) ; XGBoost n'est jamais significativement battu par les autres modèles de ML.** Les formulations « sans comparaison à la marche aléatoire » (ch. 1, tableau 1.1, ch. 4.5) ont été retirées. Texte intégral non relu ce jour (serveur indisponible) : les chiffres 0,81-0,99, 0,86 et 7,3 pb viennent de la lecture du 30/09, à recontrôler si possible. La phrase « régressions pénalisées meilleures que XGBoost en Belgique/Espagne » a été supprimée (non vérifiée).
-- Chapitre 4 réécrit et raccourci (9 p.) ; déclaration IA corrigée : la discussion a été rédigée avec l'aide de Claude puis relue par l'auteur (ne pas écrire que les interprétations « relèvent de l'auteur »).
+- Chapitre 4 réécrit et raccourci (9 p.) ; déclaration IA : version courte voulue par Elyamine (usage déclaré, sans détail ; on n'y affirme plus que les interprétations « relèvent de l'auteur », il réécrira le ch. 4 lui-même après la remise).
 - Références : DOI vérifiés par Crossref (31 liens), pages ECB, NeurIPS, theses.fr vérifiées ; numérotées [n] et cliquables. Figures en virgule décimale (`src/fr_format.py`). PDF : 86 p.
+- **Avant l'envoi : le PDF de ce dépôt est mis en page avec Liberation Serif (substitut de Times New Roman, absent du conteneur). Le Word (`Memoire_DaliBraham.docx`) est déjà en Times New Roman : l'ouvrir dans Word, mettre à jour les champs (Ctrl+A, F9) et exporter le PDF.**
 - Construction du Word/PDF : `pip install python-docx pypandoc_binary`, `apt install libreoffice-writer fonts-liberation`.
 
 ## Prochaines étapes (au 30/09 soir ; remise le 2/10 à minuit)
