@@ -22,7 +22,7 @@ Le budget de l'État est en principe voté avant le début de l'année, dans la 
 
 Cette explication reste une hypothèse : la tester demanderait une étude d'événement, que nous n'avons pas pu réaliser faute de taux quotidiens accessibles (sections 4.7 et 4.8).
 
-### Ce qui fait bouger le spread n'est pas budgétaire
+### Les grands mouvements du spread auraient d'autres causes
 
 Les plus fortes variations mensuelles du spread OAT–Bund coïncident avec des événements politiques ou mondiaux (section 3.1) : le début de la crise du Covid-19 en mars 2020 (+20,5 pb), la campagne présidentielle de 2017 (+16,3 pb en février, puis -18,1 pb en mai, après le second tour du 7 mai) et l'annonce de la dissolution de l'Assemblée nationale le 9 juin 2024 (+15,5 pb). Ce sont des variations de moyennes mensuelles : un choc de fin de mois peut apparaître en partie le mois suivant. Le cas de juin 2024 concerne bien les finances publiques, mais par un canal politique : l'incertitude sur la trajectoire budgétaire. C'est une anticipation sur l'avenir, absente de toute ligne de dépense déjà exécutée.
 
@@ -40,7 +40,7 @@ Un résultat négatif n'a de valeur que si l'on sait ce que le test aurait pu d�
 
 Le contrôle positif (section 3.3, tableau 3.4) ajoute à M0 une variable fictive corrélée à la cible. Avec une corrélation de 0,5, le modèle bat la moyenne historique dans 80 à 100 % des tirages ; avec une corrélation de 0,3, dans 20 à 30 % seulement. Notre dispositif repère donc un signal fort, mais manquerait souvent un signal modéré.
 
-Nos tests écartent donc un pouvoir prédictif fort des dépenses, mais pas un effet faible. La cause principale est la taille de l'échantillon : les séries budgétaires ouvertes commencent en 2013, ce qui laisse 79 mois de test, le choix de commencer le test en 2020 pour garder assez d'entraînement y contribuant aussi.
+Nos tests écartent un pouvoir prédictif fort des dépenses, mais pas un effet faible. La cause principale est la taille de l'échantillon : les séries budgétaires ouvertes commencent en 2013, ce qui laisse 79 mois de test, le choix de commencer le test en 2020 pour garder assez d'entraînement y contribuant aussi.
 
 ### Ce que fait du pur bruit : le contrôle négatif
 
