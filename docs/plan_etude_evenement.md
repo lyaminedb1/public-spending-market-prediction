@@ -23,3 +23,10 @@ Le rendement du CAC 40 le jour de la publication est-il lié à l'« innovation 
 
 ## Limites connues
 ~40 événements (puissance faible), heure de publication non vérifiée (une réaction intrajournalière peut être absente de la clôture), pas de spread quotidien.
+
+## Résultat (exécuté après le plan, `python src/23_event_study.py`)
+- **Test principal : nul.** 40 événements, Spearman = −0,13, p bilatérale = 0,42. Aucun lien entre l'innovation budgétaire publiée et le rendement du CAC 40 le jour de la publication.
+- Secondaires (non corrigés) : jour +1, ρ = 0,00 (p = 0,99) ; |rendement| moyen au jour 0 = 0,70 % contre 0,79 % pour l'ensemble des jours (p = 0,74) : pas de réaction particulière les jours de publication.
+- Règle de décision du plan : résultat non positif → rien n'est ajouté au mémoire. Aucune variante testée après coup.
+- Par construction, ce test n'a de puissance que contre un effet fort (40 événements, rendements quotidiens bruités).
+- Pistes non testables faute de données accessibles ici : spread OAT–Bund quotidien (sources bloquées), annonces budgétaires codées en surprises (pas de séries d'attentes d'économistes), versions successives des chiffres budgétaires (non archivées).
