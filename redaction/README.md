@@ -20,9 +20,10 @@ Une correction faite ici doit être reportée dans le document Claude Docs (ou s
 pip install python-docx pypandoc_binary   # pandoc ; LibreOffice : apt install libreoffice-writer fonts-liberation
 python redaction/outils/annexes.py
 python redaction/outils/assemble.py
-pandoc redaction/build/memoire.md -o redaction/build/brut.docx
+pandoc -M lang=fr-FR redaction/build/memoire.md -o redaction/build/brut.docx
 python redaction/outils/style.py         # -> redaction/build/Memoire_DaliBraham.docx
 python3 redaction/outils/maj_index_pdf.py  # sommaire + listes (LibreOffice) -> .docx et .pdf à jour
+python redaction/outils/langue_fr.py         # langue du Word : français (correcteur orthographique)
 ```
 
 Les figures viennent de `results/figures/` ; la formule du R² hors échantillon est une image (`outils/formule_r2.png`).
