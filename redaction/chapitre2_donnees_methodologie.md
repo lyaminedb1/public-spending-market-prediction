@@ -144,7 +144,7 @@ Nous traitons le problème comme une **régression** : le modèle prédit un nom
 | --- | --- | --- |
 | Moyenne historique | Référence minimale | Un modèle qui ne la bat pas n'a pas de pouvoir prédictif utile (Welch et Goyal, 2008 ; Campbell et Thompson, 2008) |
 | Marche aléatoire (variation nulle) | Seconde référence | Prédit que le taux ou l'indice ne bougera pas ; référence classique pour les séries financières |
-| Ridge (régression linéaire régularisée) | Approche économétrique | Représente la tradition linéaire ; la régularisation limite le surapprentissage avec 18 variables |
+| Ridge (régression linéaire régularisée) | Approche économétrique | Représente la tradition linéaire ; la régularisation limite le surapprentissage avec 18 variables (Hoerl et Kennard, 1970) |
 | Forêt aléatoire | Machine learning robuste | Capte les effets non linéaires, stable sur de petits échantillons (Breiman, 2001 ; Medeiros et al., 2021) |
 | XGBoost | Machine learning de référence | Meilleur modèle chez Bouillot et al. (2025) pour les spreads européens (Chen et Guestrin, 2016) |
 
@@ -158,7 +158,7 @@ Nous n'avons pas cherché les meilleurs hyperparamètres sur la période de test
 - **Forêt aléatoire** : 300 arbres, profondeur maximale 4, au moins 5 observations par feuille, 50 % des variables tirées à chaque division.
 - **XGBoost** : 200 arbres, profondeur maximale 2, taux d'apprentissage 0,05, sous-échantillonnage de 80 % des observations et des variables, au moins 5 observations par feuille (min\_child\_weight = 5), pénalité L2 égale à 1.
 
-La régression Ridge estime les coefficients en pénalisant leur taille, sur des variables centrées réduites :
+La régression Ridge (Hoerl et Kennard, 1970) estime les coefficients en pénalisant leur taille, sur des variables centrées réduites :
 
 ```latex
 \hat{\beta} = \mathrm{arg\,min}_{\beta_0,\,\beta} \ \sum_{s} \left( y_{s+1} - \beta_0 - x_s^{\top}\beta \right)^2 + \alpha \sum_{j} \beta_j^2
@@ -213,7 +213,7 @@ Pour deux prévisions concurrentes, dont les erreurs sur les *T* mois de test so
 d_t = e_{1,t}^2 - e_{2,t}^2, \qquad DM = \frac{\bar{d}}{\sqrt{\hat{\gamma}_0 / T}}, \qquad DM^{*} = DM \times \sqrt{\frac{T-1}{T}}
 ```
 
-où le numérateur est la moyenne des écarts *d* et γ̂ leur variance. *DM*\* est la statistique corrigée de Harvey, Leybourne et Newbold (1997) pour un horizon d'un mois ; elle est comparée à une loi de Student à *T* − 1 degrés de liberté. Pour les horizons plus longs (extension E1), la variance tient compte de l'autocorrélation des écarts (*h* − 1 retards).
+où le numérateur est la moyenne des écarts *d* et γ̂ leur variance. *DM*\* est la statistique corrigée de Harvey, Leybourne et Newbold (1997) pour un horizon d'un mois ; elle est comparée à une loi de Student à *T* − 1 degrés de liberté. Pour les horizons plus longs (extension E1), la variance tient compte de l'autocorrélation des écarts (*h* − 1 retards), selon la méthode de Newey et West (1987).
 
 ### 2.6.4 Importance des variables
 
@@ -240,23 +240,23 @@ Le pré-enregistrement s'est fait en plusieurs étapes, et nous préférons le d
 | # | Extension | Justification |
 | --- | --- | --- |
 | E1 | Horizons de 3, 6 et 12 mois | Les dépenses agissent lentement sur la dette |
-| E2 | Classification hausse ou baisse | Deviner le sens est plus facile que l'ampleur |
+| E2 | Classification hausse ou baisse | Deviner le sens est plus facile que l'ampleur ; évaluation par le score de Brier (Brier, 1950) |
 | E3 | Volatilité (ampleur du mouvement) | L'incertitude budgétaire peut agiter les marchés |
 | E4 | Surprise budgétaire : exécution par rapport au budget voté | Le marché réagit à l'information nouvelle (Ramey, 2011) |
 | E5 | Effet selon le régime de taux | La sensibilité aux finances publiques varie dans le temps (Afonso et al., 2015) |
 | E6 | Moins de variables, composantes principales | Réduire le surapprentissage |
 | E7 | Prévisions tempérées vers la moyenne | Campbell et Thompson (2008) |
-| E8 | Combinaison de prévisions | Robustesse des moyennes de modèles |
-| E9 | Elastic Net | Sélection automatique des variables |
+| E8 | Combinaison de prévisions | Robustesse des moyennes de modèles (Timmermann, 2006) |
+| E9 | Elastic Net | Sélection automatique des variables (Zou et Hastie, 2005) |
 | E10 | XGBoost réglé par validation croisée temporelle emboîtée | Vérifier que le choix des hyperparamètres n'est pas en cause |
-| E11 | Fenêtre glissante de 60 mois | S'adapter au changement de régime de 2022 |
+| E11 | Fenêtre glissante de 60 mois | S'adapter au changement de régime de 2022 (Pesaran et Timmermann, 2007) |
 | E12 | Évaluation par période (2020-2021, 2022-2026, marchés calmes ou agités) | Un apport peut être limité aux périodes de tension |
 | E13 | Notations souveraines de la France | Contrôle du risque perçu par les agences |
 | E14 | Étude d'événement autour des dates de publication (non réalisée : taux quotidiens introuvables) | Le marché intègre-t-il l'information budgétaire le jour même ? |
 | E15 | Panel européen trimestriel (5 pays, Eurostat) | Plus d'observations, inclusion de la crise de la dette 2010-2012 |
 | E16 | Panel européen mensuel avec une base large de variables | Répliquer le cadre de Bouillot et al. (2025) en le comparant à la marche aléatoire |
-| E17 | Panel annuel (valeurs de décembre) | Les finances publiques agiraient à basse fréquence |
-| E18 | Régime de crise (exploratoire) | Les marchés ne regarderaient le budget qu'en période de tension |
+| E17 | Panel annuel (valeurs de décembre) | Les finances publiques agiraient à basse fréquence (Codogno et al., 2003 ; Afonso et al., 2015) |
+| E18 | Régime de crise (exploratoire) | Les marchés ne regarderaient le budget qu'en période de tension (Afonso et al., 2015) |
 | E19 | Actions des secteurs liés à la dépense publique (BTP, défense) | Canal des revenus des entreprises |
 | E20 | Incertitude de politique économique (indice européen de Baker, Bloom et Davis, 2016) | Contrôler l'incertitude politique ; l'indice français n'étant pas disponible, nous avons déclaré ce changement avant l'exécution |
 
@@ -286,14 +286,18 @@ et l'on déclare significatives les k premières comparaisons. De façon équiva
 
 ## Références ajoutées par ce chapitre
 
-- Baker, S. R., Bloom, N., & Davis, S. J. (2016). Measuring economic policy uncertainty. *The Quarterly Journal of Economics*, 131(4), 1593–1636.
-
-À intégrer à la bibliographie générale (les autres références citées figurent déjà au chapitre 1).
-
-- Benjamini, Y., & Hochberg, Y. (1995). Controlling the false discovery rate: A practical and powerful approach to multiple testing. *Journal of the Royal Statistical Society: Series B*, 57(1), 289–300.
-- Dickey, D. A., & Fuller, W. A. (1979). Distribution of the estimators for autoregressive time series with a unit root. *Journal of the American Statistical Association*, 74(366), 427–431.
-- Harvey, D., Leybourne, S., & Newbold, P. (1997). Testing the equality of prediction mean squared errors. *International Journal of Forecasting*, 13(2), 281–291.
-- Lundberg, S. M., & Lee, S.-I. (2017). A unified approach to interpreting model predictions. *Advances in Neural Information Processing Systems*, 30.
+- Baker, S. R., Bloom, N., & Davis, S. J. (2016). Measuring economic policy uncertainty. *The Quarterly Journal of Economics*, *131*(4), 1593–1636. https://doi.org/10.1093/qje/qjw024
+- Benjamini, Y., & Hochberg, Y. (1995). Controlling the false discovery rate: A practical and powerful approach to multiple testing. *Journal of the Royal Statistical Society: Series B*, *57*(1), 289–300. https://doi.org/10.1111/j.2517-6161.1995.tb02031.x
+- Brier, G. W. (1950). Verification of forecasts expressed in terms of probability. *Monthly Weather Review*, *78*(1), 1–3. <https://doi.org/10.1175/1520-0493(1950)078%3C0001:VOFEIT%3E2.0.CO;2>
+- Codogno, L., Favero, C., & Missale, A. (2003). Yield spreads on EMU government bonds. *Economic Policy*, *18*(37), 503–532.
+- Dickey, D. A., & Fuller, W. A. (1979). Distribution of the estimators for autoregressive time series with a unit root. *Journal of the American Statistical Association*, *74*(366), 427–431. https://doi.org/10.1080/01621459.1979.10482531
+- Harvey, D., Leybourne, S., & Newbold, P. (1997). Testing the equality of prediction mean squared errors. *International Journal of Forecasting*, *13*(2), 281–291. https://doi.org/10.1016/S0169-2070(96)00719-4
+- Hoerl, A. E., & Kennard, R. W. (1970). Ridge regression: Biased estimation for nonorthogonal problems. *Technometrics*, *12*(1), 55–67. https://www.jstor.org/stable/1267351
+- Lundberg, S. M., & Lee, S.-I. (2017). A unified approach to interpreting model predictions. *Advances in Neural Information Processing Systems*, *30*.
+- Newey, W. K., & West, K. D. (1987). A simple, positive semi-definite, heteroskedasticity and autocorrelation consistent covariance matrix. *Econometrica*, *55*(3), 703–708. https://doi.org/10.2307/1913610
+- Pesaran, M. H., & Timmermann, A. (2007). Selection of estimation window in the presence of breaks. *Journal of Econometrics*, *137*(1), 134–161. https://doi.org/10.1016/j.jeconom.2006.03.010
+- Timmermann, A. (2006). Forecast combinations. In G. Elliott, C. W. J. Granger, & A. Timmermann (Eds.), *Handbook of economic forecasting* (Vol. 1, pp. 135–196). North-Holland.
+- Zou, H., & Hastie, T. (2005). Regularization and variable selection via the elastic net. *Journal of the Royal Statistical Society: Series B*, *67*(2), 301–320. https://doi.org/10.1111/j.1467-9868.2005.00503.x
 
 ## Sources en ligne
 
@@ -305,3 +309,4 @@ et l'on déclare significatives les k premières comparaisons. De façon équiva
 - [Eurostat](https://ec.europa.eu/eurostat) (IPCH, finances publiques trimestrielles).
 - [Yahoo Finance](https://finance.yahoo.com) (CAC 40 et actions sectorielles).
 - [Economic Policy Uncertainty](https://www.policyuncertainty.com) (indice européen d'incertitude).
+- Fitch Ratings, Moody's et S&P Global Ratings. Communiqués relatifs à la note de la France, 2023-2025 (liste datée dans `data/raw/ratings_france.csv` du dépôt du projet).

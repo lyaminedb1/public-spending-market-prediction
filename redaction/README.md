@@ -10,7 +10,7 @@ Une correction faite ici doit être reportée dans le document Claude Docs (ou s
 | `chapitre1_etat_de_l_art.md` | Rédigé ; articles principaux vérifiés contre les PDF le 30/09 (Bouillot, Afonso, Attinasi, Belly, Ramey, Laubach, Garlanda-Longueville ; Barbier-Gauchard via le résumé) |
 | `chapitre2_donnees_methodologie.md` | Rédigé ; considérations éthiques ajoutées (2.8) le 30/09 |
 | `chapitre3_resultats.md` | Rédigé (≈ 9 pages, trop long pour le guide ECE : 4-6) |
-| `chapitre4_discussion_brouillon.md` | **Brouillon complet** (4.1 à 4.6) ; à réécrire par Elyamine (règle ECE sur l'IA) |
+| `chapitre4_discussion_brouillon.md` | **Version finale** (4.1 à 4.8) rédigée le 01/10 à la demande d'Elyamine ; à relire et adapter par lui (règle ECE sur l'IA) ; nom de fichier conservé pour l'outil d'assemblage |
 | `pages_liminaires_intro_conclusion.md` | Page de titre, remerciements, déclaration IA courte (à valider par Elyamine), résumé (sans abstract anglais : non demandé par le guide), abréviations, glossaire, introduction, conclusion (30/09 soir) |
 | `annexes.md` | Généré par `outils/annexes.py` depuis les CSV (variables, 210 comparaisons, graines, bruit, décalage, reproductibilité) |
 
