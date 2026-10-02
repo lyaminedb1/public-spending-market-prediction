@@ -282,7 +282,7 @@ Transparence et résultats négatifs. Le code, les données traitées et les ré
 
 Usage des résultats. Ce travail n'est pas un conseil en investissement. Un modèle qui paraît prédire les marchés peut conduire à des décisions coûteuses s'il est mal évalué ; c'est pourquoi nous insistons sur la comparaison à des références simples.
 
-Outils d'intelligence artificielle. Des outils d'IA générative ont été utilisés pour l'aide à la programmation, la relecture du code et l'aide à la rédaction. Leur usage est décrit dans la déclaration prévue par le guide de l'ECE. Les choix de recherche relèvent de l'auteur, qui a relu l'ensemble du texte et en assume la responsabilité.
+Outils d'intelligence artificielle. Conformément au guide de l'ECE, nous déclarons avoir utilisé un outil d'intelligence artificielle générative (Claude, d'Anthropic) comme assistant pour la programmation, la relecture du code et la rédaction. Le choix du sujet, de la problématique et du périmètre et les décisions de méthode relèvent de l'auteur, qui a relu l'ensemble du texte et en assume la responsabilité.
 
 ## Références ajoutées par ce chapitre
 

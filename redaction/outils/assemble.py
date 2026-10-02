@@ -112,7 +112,7 @@ doc = []
 for k, l in enumerate(titre):
     doc += [f"::: {{custom-style=\"TitlePage{1 if k == 0 else 2}\"}}", l.replace("**", ""), ":::", ""]
 doc += PB
-for t in ("Remerciements", "Déclaration d'utilisation de l'intelligence artificielle"):
+for t in ("Remerciements",):
     doc += [f"# {t}", "", sec(t), ""] + PB
 doc += ["# Résumé", "", sec("Résumé"), ""] + PB
 doc += ["# Sommaire", ""] + field('TOC \\o "1-2" \\h \\z \\u') + PB
