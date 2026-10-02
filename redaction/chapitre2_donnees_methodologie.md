@@ -276,7 +276,7 @@ et l'on déclare significatives les k premières comparaisons. De façon équiva
 
 ## 2.8 Considérations éthiques
 
-Données. Toutes les données utilisées sont publiques et en accès libre : situations budgétaires de l'État (data.economie.gouv.fr), séries de marché et macroéconomiques (FRED, BCE, Eurostat), indices boursiers. Elles ne contiennent aucune donnée personnelle, et sont utilisées dans le respect des conditions de réutilisation de chaque fournisseur (licence ouverte pour les données publiques françaises). Les sources sont citées, et la liste des fichiers bruts est figée dans le dépôt (manifeste des données).
+Données. Toutes les données utilisées sont publiques et en accès libre : situations budgétaires de l'État (data.economie.gouv.fr), séries de marché et macroéconomiques (FRED, BCE, Eurostat), indices boursiers. Elles ne contiennent aucune donnée personnelle, et sont utilisées dans le respect des conditions de réutilisation de chaque fournisseur (licence ouverte pour les données publiques françaises). Les sources sont citées, et la liste des fichiers bruts est figée (manifeste des données).
 
 Transparence et résultats négatifs. Le code, les données traitées et les résultats sont conservés, et l'ensemble peut être relancé avec un seul script. Le plan des extensions a été daté avant leur exécution. Nous rapportons tous les résultats, y compris négatifs, et corrigeons pour les tests multiples. Ne publier que les résultats favorables donnerait une image fausse de ce que les données permettent ; c'est un problème connu en finance empirique (Bailey et al., 2014).
 
