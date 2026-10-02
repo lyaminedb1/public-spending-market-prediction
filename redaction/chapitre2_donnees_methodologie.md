@@ -8,7 +8,7 @@ Ce chapitre décrit d'où viennent nos données, comment nous les avons transfor
 
 Nous commençons par les sources (2.1) et la construction du jeu de données mensuel (2.2), puis nous présentons les variables à prédire (2.3) et les variables explicatives (2.4). La section 2.5 justifie le choix des modèles, la 2.6 explique comment nous les évaluons, la 2.7 décrit les variantes testées pour vérifier la solidité des résultats, et la 2.8 les considérations éthiques.
 
-Le code et les données sont conservés dans un dépôt GitHub dont le lien figure dans les sources en ligne. Chaque tableau et chaque figure de ce mémoire peut donc être recalculé à partir des fichiers bruts.
+Chaque tableau et chaque figure de ce mémoire peut être recalculé à partir des fichiers bruts, avec le code que nous avons écrit pour ce travail.
 
 ## 2.1 Sources des données
 
@@ -90,7 +90,7 @@ Premier contrôle : à partir des fichiers mensuels, nous avons recalculé le so
 | 2023 | -173,0 |
 | 2024 | -155,9 |
 
-Second contrôle : un script de vérification (`tests/verifications.py`, 63 contrôles) s'assure automatiquement que chaque cible correspond bien au mois suivant, que chaque variable budgétaire vient du mois t-2, que l'inflation vient du mois t-1, et qu'aucun mois ne manque. Pour vérifier que ce script détecte bien les erreurs, nous l'avons relancé après avoir modifié volontairement le décalage budgétaire (0 puis 1 mois au lieu de 2) : il signale chaque fois un échec. Le jeu de données n'a aucune valeur manquante, sauf la cible du dernier mois.
+Second contrôle : un script de vérification (63 contrôles) s'assure automatiquement que chaque cible correspond bien au mois suivant, que chaque variable budgétaire vient du mois t-2, que l'inflation vient du mois t-1, et qu'aucun mois ne manque. Pour vérifier que ce script détecte bien les erreurs, nous l'avons relancé après avoir modifié volontairement le décalage budgétaire (0 puis 1 mois au lieu de 2) : il signale chaque fois un échec. Le jeu de données n'a aucune valeur manquante, sauf la cible du dernier mois.
 
 ## 2.3 Variables cibles et stationnarité
 
@@ -166,7 +166,7 @@ La régression Ridge (Hoerl et Kennard, 1970) estime les coefficients en pénali
 
 Plus α est grand, plus les coefficients sont ramenés vers zéro. Quand α tend vers l'infini, la prévision se réduit à la constante, c'est-à-dire à la moyenne d'entraînement : choisir un α très élevé revient à dire que les variables n'apportent pas de signal.
 
-Ces valeurs sont prudentes : des arbres peu profonds apprennent moins le bruit d'un petit échantillon. Nous devons toutefois être transparents sur un point. Contrairement aux extensions (section 2.7), ces réglages n'ont pas été datés dans le dépôt avant les premiers résultats : le code et les résultats ont été enregistrés ensemble. Pour vérifier que ce choix ne change pas les conclusions, nous l'avons remis en cause de deux façons : l'extension E10 règle XGBoost automatiquement par validation croisée temporelle, et un contrôle relance la forêt aléatoire et XGBoost avec plusieurs graines aléatoires (annexe).
+Ces valeurs sont prudentes : des arbres peu profonds apprennent moins le bruit d'un petit échantillon. Nous devons toutefois être transparents sur un point. Contrairement aux extensions (section 2.7), ces réglages n'ont pas été datés avant les premiers résultats : le code et les résultats ont été enregistrés ensemble. Pour vérifier que ce choix ne change pas les conclusions, nous l'avons remis en cause de deux façons : l'extension E10 règle XGBoost automatiquement par validation croisée temporelle, et un contrôle relance la forêt aléatoire et XGBoost avec plusieurs graines aléatoires (annexe).
 
 ## 2.6 Protocole d'évaluation
 
@@ -231,7 +231,7 @@ Après les premiers résultats, nous avons ajouté cinq contrôles, décrits ici
 
 ## 2.7 Extensions datées avant exécution et correction des tests multiples
 
-Un résultat pourrait dépendre d'un choix particulier : l'horizon, le modèle, la période. Pour le vérifier, nous avons décliné le protocole principal en vingt extensions, dont dix-neuf ont pu être réalisées (E14 n'a pas pu l'être sur le spread, faute de taux quotidiens ; une version limitée au CAC 40 a été faite après coup, annexe G). Avant de lancer chaque extension, nous avons daté sa liste et son protocole dans le dépôt GitHub, et nous rapportons tous les résultats, favorables ou non.
+Un résultat pourrait dépendre d'un choix particulier : l'horizon, le modèle, la période. Pour le vérifier, nous avons décliné le protocole principal en vingt extensions, dont dix-neuf ont pu être réalisées (E14 n'a pas pu l'être sur le spread, faute de taux quotidiens ; une version limitée au CAC 40 a été faite après coup, annexe F). Avant de lancer chaque extension, nous avons daté sa liste et son protocole dans l'historique de notre travail, et nous rapportons tous les résultats, favorables ou non.
 
 Cette précaution répond à un risque bien décrit par Bailey et al. (2014) : à force d'essayer des configurations, on finit toujours par en trouver une qui semble marcher, par hasard.
 
@@ -252,7 +252,7 @@ Le pré-enregistrement s'est fait en plusieurs étapes, et nous préférons le d
 | E11 | Fenêtre glissante de 60 mois | S'adapter au changement de régime de 2022 (Pesaran et Timmermann, 2007) |
 | E12 | Évaluation par période (2020-2021, 2022-2026, marchés calmes ou agités) | Un apport peut être limité aux périodes de tension |
 | E13 | Notations souveraines de la France | Contrôle du risque perçu par les agences |
-| E14 | Étude d'événement autour des dates de publication (non réalisée sur le spread, faute de taux quotidiens ; version préliminaire sur le CAC 40, annexe G) | Le marché intègre-t-il l'information budgétaire le jour même ? |
+| E14 | Étude d'événement autour des dates de publication (non réalisée sur le spread, faute de taux quotidiens ; version préliminaire sur le CAC 40, annexe F) | Le marché intègre-t-il l'information budgétaire le jour même ? |
 | E15 | Panel européen trimestriel (5 pays, Eurostat) | Plus d'observations, inclusion de la crise de la dette 2010-2012 |
 | E16 | Panel européen mensuel avec une base large de variables | Répliquer le cadre de Bouillot et al. (2025) en le comparant à la marche aléatoire |
 | E17 | Panel annuel (valeurs de décembre) | Les finances publiques agiraient à basse fréquence |
@@ -278,7 +278,7 @@ et l'on déclare significatives les k premières comparaisons. De façon équiva
 
 Données. Toutes les données utilisées sont publiques et en accès libre : situations budgétaires de l'État (data.economie.gouv.fr), séries de marché et macroéconomiques (FRED, BCE, Eurostat), indices boursiers. Elles ne contiennent aucune donnée personnelle, et sont utilisées dans le respect des conditions de réutilisation de chaque fournisseur (licence ouverte pour les données publiques françaises). Les sources sont citées, et la liste des fichiers bruts est figée dans le dépôt (manifeste des données).
 
-Transparence et résultats négatifs. Le code, les données traitées et les résultats sont conservés dans un dépôt GitHub (lien dans les sources en ligne), et l'ensemble peut être relancé avec un seul script. Le plan des extensions a été daté avant leur exécution. Nous rapportons tous les résultats, y compris négatifs, et corrigeons pour les tests multiples. Ne publier que les résultats favorables donnerait une image fausse de ce que les données permettent ; c'est un problème connu en finance empirique (Bailey et al., 2014).
+Transparence et résultats négatifs. Le code, les données traitées et les résultats sont conservés, et l'ensemble peut être relancé avec un seul script. Le plan des extensions a été daté avant leur exécution. Nous rapportons tous les résultats, y compris négatifs, et corrigeons pour les tests multiples. Ne publier que les résultats favorables donnerait une image fausse de ce que les données permettent ; c'est un problème connu en finance empirique (Bailey et al., 2014).
 
 Usage des résultats. Ce travail n'est pas un conseil en investissement. Un modèle qui paraît prédire les marchés peut conduire à des décisions coûteuses s'il est mal évalué ; c'est pourquoi nous insistons sur la comparaison à des références simples.
 
@@ -305,7 +305,6 @@ Outils d'intelligence artificielle. Des outils d'IA générative ont été utili
 
 - [Situations mensuelles budgétaires de l'État, séries longues](https://data.economie.gouv.fr/explore/assets/situations-mensuelles-budgetaires-series-longues/), data.economie.gouv.fr.
 - [La situation mensuelle de l'État](https://www.economie.gouv.fr/dgfip/la-situation-mensuelle-de-letat), DGFiP (dates de publication).
-- [Dépôt du projet](https://github.com/lyaminedb1/public-spending-market-prediction), GitHub (code, données, plan daté des extensions `docs/plan_extensions.md`).
 - [FRED](https://fred.stlouisfed.org), Federal Reserve Bank of St. Louis (taux OAT et Bund, séries OCDE, VIX).
 - [Portail de données de la BCE](https://data.ecb.europa.eu) (taux directeurs).
 - [Eurostat](https://ec.europa.eu/eurostat) (IPCH, finances publiques trimestrielles).

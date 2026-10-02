@@ -18,7 +18,7 @@
 | M2 | b_rec_totales, b_rec_fiscales (_ytd_gap) | Recettes totales et fiscales, même transformation |
 | M2 | b_solde_ytd_diff_yoy | Solde d'exécution cumulé, écart sur un an |
 
-*Source : `src/04_models.py`. M1 = M0 + dépenses ; M2 = M1 + recettes et solde.*
+*Source : élaboration de l'auteur. M1 = M0 + dépenses ; M2 = M1 + recettes et solde.*
 
 ## Annexe B : Détail des extensions E1 à E20
 
@@ -239,7 +239,7 @@ Chaque ligne compare le même modèle sans et avec les dépenses (ou les finance
 | E20b dépenses + incertitude | CAC 40 | forêt : M1+EPU contre M0+EPU | 79 | -12,0 | -11,2 | 0,416 | 0,999 |
 | E20b dépenses + incertitude | CAC 40 | XGBoost : M1+EPU contre M0+EPU | 79 | -38,6 | -29,6 | 0,134 | 0,999 |
 
-*Source : `results/tables/ext_summary.csv`.*
+*Source : calculs de l'auteur.*
 
 ## Annexe C : Sensibilité à la graine aléatoire
 
@@ -254,7 +254,7 @@ Chaque ligne compare le même modèle sans et avec les dépenses (ou les finance
 | XGBoost (10 graines) | Δ OAT | -33,5 à -27,8 | -35,4 à -27,6 | 0,46 |
 | XGBoost (10 graines) | CAC 40 | -39,1 à -30,3 | -32,0 à -25,1 | 0,16 |
 
-*Source : `results/tables/diag_04/graines_rf.csv`, `graines_xgb.csv`.*
+*Source : calculs de l'auteur.*
 
 ## Annexe D : Contrôle négatif : dépenses contre variables de bruit
 
@@ -272,7 +272,7 @@ Chaque ligne compare le même modèle sans et avec les dépenses (ou les finance
 | XGBoost | Δ OAT | 10 | -0,2 | -10,4 à 13,9 | 60 % |
 | XGBoost | CAC 40 | 10 | 3,8 | -6,0 à 18,0 | 50 % |
 
-*Source : `results/tables/diag_04/bruit_*.csv`.*
+*Source : calculs de l'auteur.*
 
 ## Annexe E : Robustesse au décalage de publication
 
@@ -308,17 +308,13 @@ Chaque ligne compare le même modèle sans et avec les dépenses (ou les finance
 | 3 | CAC 40 | forêt | -9,4 | -11,4 | 0,49 | 0,91 |
 | 3 | CAC 40 | XGBoost | -32,2 | -35,5 | 0,63 | 0,90 |
 
-*Source : `results/tables/robustesse_lag.csv`. La correction BH porte sur les p-values unilatérales « avec dépenses meilleur que sans » ; elle peut donc être inférieure à la p-value bilatérale affichée.*
+*Source : calculs de l'auteur. La correction BH porte sur les p-values unilatérales « avec dépenses meilleur que sans » ; elle peut donc être inférieure à la p-value bilatérale affichée.*
 
-## Annexe F : Code et reproductibilité
+## Annexe F : Étude d'événement préliminaire sur le CAC 40
 
-Le code, les données et les résultats sont conservés dans le dépôt GitHub du projet (`lyaminedb1/public-spending-market-prediction`, lien dans les sources en ligne). Le script `run_all.sh` relance l'ensemble de la chaîne ; les versions des bibliothèques logicielles sont figées dans `requirements.txt` et les fichiers de données brutes dans `data/MANIFEST.csv`. Le script `tests/verifications.py` exécute 63 contrôles automatiques (alignement des cibles, décalages de publication, absence de fuite d'information dans la validation glissante, mois incomplets). Les valeurs exactes des forêts aléatoires et de XGBoost peuvent varier légèrement selon les versions des bibliothèques logicielles ; les conclusions n'en dépendent pas.
+Les dates de publication de la situation mensuelle budgétaire ont été relevées sur le site de presse du ministère de l'Économie : 40 publications, d'octobre 2017 à janvier 2026 (le moteur de recherche du site n'en renvoie pas davantage). Le délai entre la fin du mois concerné et la publication va de 29 à 47 jours (médiane de 33). L'innovation budgétaire est la variation, entre deux publications consécutives, de l'écart du solde cumulé par rapport à l'année précédente (en % du total annuel). Le plan du test a été fixé avant son exécution. Faute de taux quotidiens accessibles, le test ne porte pas sur le spread.
 
-## Annexe G : Étude d'événement préliminaire sur le CAC 40
-
-Les dates de publication de la situation mensuelle budgétaire ont été relevées sur le site de presse du ministère de l'Économie : 40 publications, d'octobre 2017 à janvier 2026 (le moteur de recherche du site n'en renvoie pas davantage). Le délai entre la fin du mois concerné et la publication va de 29 à 47 jours (médiane de 33). L'innovation budgétaire est la variation, entre deux publications consécutives, de l'écart du solde cumulé par rapport à l'année précédente (en % du total annuel). Le plan du test a été daté avant son exécution (`docs/plan_etude_evenement.md`). Faute de taux quotidiens accessibles, le test ne porte pas sur le spread.
-
-**Tableau G.1 : Réaction du CAC 40 aux publications de la situation mensuelle budgétaire**
+**Tableau F.1 : Réaction du CAC 40 aux publications de la situation mensuelle budgétaire**
 
 | Test | Événements | Statistique | p-value |
 |---|---|---|---|
@@ -326,4 +322,4 @@ Les dates de publication de la situation mensuelle budgétaire ont été relevé
 | Corrélation de Spearman entre l'innovation budgétaire et le rendement du CAC 40 le jour suivant | 40 | 0,00 | 0,99 |
 | Rendement absolu moyen du CAC 40 le jour de la publication (%), comparé à tous les jours de bourse | 40 | 0,70 | 0,74 |
 
-*Source : calculs de l'auteur (`src/23_event_study.py`, `results/tables/event_study.csv`) ; dates : presse.economie.gouv.fr ; cours : Yahoo Finance. Le dernier test est unilatéral (rendement absolu plus élevé les jours de publication).*
+*Source : calculs de l'auteur ; dates : presse.economie.gouv.fr ; cours : Yahoo Finance. Le dernier test est unilatéral (rendement absolu plus élevé les jours de publication).*

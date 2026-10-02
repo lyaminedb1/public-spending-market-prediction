@@ -152,6 +152,10 @@
 - PR n°2 (walidght, ouverte, non fusionnée : conflits avec `main`) examinée : rapport `docs/revue_redaction.md` et `docs/questions_chapitre4.md` repris dans `main` ; reprises vérifiées : correction Medeiros / Goulet Coulombe (ch. 1, résumé Crossref), 8 références de méthode ajoutées avec DOI contrôlés par Crossref (Hoerl et Kennard, Newey et West, Brier, Zou et Hastie, Timmermann, Pesaran et Timmermann, Strobl et al., MacKinlay ; 45 références au total), légende du tableau 3.1, « un cinquième contrôle » (3.3), sources de l'introduction, annonce de 2.8, fourchette périmée de `src/21`. Non reprises : son chapitre 4 (le nôtre est plus à jour), Codogno et al. et Leeper et al. (non vérifiés), sa version de `fr_format.py`. Nombre de pages du PDF : 90.
 - Le dépôt GitHub est **public** (API sans authentification : 200) : le texte « accessible sur demande » a été remplacé par « lien dans les sources en ligne ».
 
+## Mise à jour du 2/10 (midi)
+- Demande d'Elyamine : ne plus mentionner GitHub ni les chemins de fichiers dans le mémoire (non exigé). Fait : annexe « Code et reproductibilité » supprimée, annexe de l'étude d'événement devenue **annexe F**, lien et sources du dépôt retirés, légendes « Source : calculs de l'auteur » sans chemins. La datation des extensions est dite « dans l'historique de notre travail ».
+- Passe de naturalisation plus poussée sur le résumé, l'introduction, la conclusion et le ch. 4 (déclaration IA inchangée, courte). PDF : 90 p.
+
 ## Prochaines étapes (au 30/09 soir ; remise le 2/10 à minuit)
 0. Plan serré : mercredi soir ch. 4 complet (brouillon) + éthique (ch. 2, fait : 2.8) ; jeudi introduction, conclusion, résumé, annexes, pages de garde, revue de Walid en parallèle ; vendredi corrections, PDF, envoi en fin d'après-midi. Abandonné : raccourcir le ch. 3, glossaire détaillé.
 1. Chapitre 4 (Discussion, 6-8 p.) à partir de `docs/plan_chapitre4.md` : l'interprétation vient d'Elyamine (règle ECE) ; méthode : questions guidées, il répond, Claude vérifie et corrige la langue.

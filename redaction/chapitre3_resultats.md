@@ -48,7 +48,7 @@ Aucun modèle ne bat la moyenne historique, pour aucune des trois cibles. Le mei
 | XGBoost | M1 + dépenses | -30,1 | -30,4 | -27,8 |
 | XGBoost | M2 + budget complet | -28,4 | -33,1 | -26,7 |
 
-*Source : calculs de l'auteur (`results/tables/models_metrics.csv`). Graine aléatoire 42 pour la forêt et XGBoost.*
+*Source : calculs de l'auteur. Graine aléatoire 42 pour la forêt et XGBoost.*
 
 Le taux de bonne direction varie entre 42 % et 59 % selon les modèles. La moyenne historique obtient 53 % (spread), 57 % (OAT) et 61 % (CAC 40).
 
@@ -64,7 +64,7 @@ Le tableau 3.3 donne les tests de Diebold-Mariano (DM) pour les deux questions c
 | Forêt aléatoire contre Ridge (M1) | 0,35 | 0,41 | 0,18 |
 | XGBoost contre Ridge (M1) | 0,22 | 0,06 | 0,03 (XGBoost moins bon) |
 
-*Source : calculs de l'auteur (`results/tables/models_dm_tests.csv`).*
+*Source : calculs de l'auteur.*
 
 Aucune comparaison M1 contre M0 n'est significative : les p-values vont de 0,37 à 0,99. Entre modèles, la seule différence significative au seuil de 5 % concerne le CAC 40 : XGBoost y fait moins bien que Ridge (p = 0,03). Face à la prévision « variation nulle », les modèles avec dépenses (M1) sont significativement moins bons dans deux cas sur six pour les taux (Ridge et XGBoost sur le spread, p = 0,04 et 0,03) ; les autres écarts ne sont pas significatifs.
 
@@ -90,7 +90,7 @@ Puissance du test (contrôle positif). Pour savoir si notre dispositif peut dét
 | 0,5 | 80 à 100 % | 30 à 80 % |
 | 1,0 | 100 % | 100 % |
 
-*Source : calculs de l'auteur (`results/tables/diag_04/positif.csv`). Plages sur les trois cibles.*
+*Source : calculs de l'auteur. Plages sur les trois cibles.*
 
 Un signal de corrélation 0,3 avec la cible n'est retrouvé que dans une minorité de tirages. Un signal de corrélation 0,5 bat presque toujours la moyenne, mais le test DM ne le détecte pas toujours.
 
@@ -98,7 +98,7 @@ Contrôle négatif (variables de bruit). Nous avons remplacé les sept dépenses
 
 Décalage de publication. La date de publication des situations budgétaires n'est vérifiée que pour 2023-2026. Nous avons donc relancé les modèles principaux avec un décalage de 1 mois et de 3 mois, au lieu de 2. Aucun R² ne devient positif (meilleur R² : -0,7 % avec 1 mois, -2,7 % avec 3 mois, jeu M1). Aucun test M1 contre M0 n'est significatif après correction (plus petite p-value corrigée : 0,51).
 
-*Source : `results/tables/diag_04/bruit_*.csv`, `graines_*.csv` et `results/tables/robustesse_lag.csv`. Le détail des tirages est en annexe.*
+*Source : calculs de l'auteur. Le détail des tirages est en annexe.*
 
 ## 3.4 Importance des variables
 
@@ -114,13 +114,13 @@ Nous avons aussi remplacé les sept dépenses par sept variables de pur bruit, t
 | Sept variables de bruit (moyenne de 10 tirages) | 38,1 | 34,2 | 37,1 |
 | Sept variables de bruit (minimum à maximum) | 34,3 à 43,5 | 26,5 à 41,6 | 28,6 à 46,8 |
 
-*Source : calculs de l'auteur (`results/tables/models_shap_importance.csv`, `results/tables/diag_04/shap_bruit.csv`).*
+*Source : calculs de l'auteur.*
 
 Pour l'OAT et le CAC 40, la part des dépenses se situe dans l'intervalle obtenu avec du bruit. Pour le spread, elle est inférieure au plus petit des dix tirages de bruit.
 
 Une seconde mesure, calculée hors échantillon, a été ajoutée après les premiers résultats : l'importance par permutation, calculée avec Ridge et XGBoost sur deux versions de M1, qui servent de repères : l'une avec sept variables de bruit, l'autre avec le signal fictif (ρ = 0,5). On mélange au hasard les valeurs d'un groupe de variables sur la période de test, puis on mesure la hausse de l'erreur. Quand on mélange les sept dépenses dans la version avec bruit, l'erreur n'augmente pas : le RMSE baisse légèrement, de 0,1 % à 2,5 % selon la cible et le modèle. Dans la version avec signal, l'effet des dépenses va de -3,9 % à +0,1 %. Quand on mélange le signal fictif du contrôle positif (ρ = 0,5), le RMSE augmente de 7,6 % à 18,8 %.
 
-*Source : calculs de l'auteur (`results/tables/models_permutation_oos.csv`).*
+*Source : calculs de l'auteur.*
 
 *\[Figure 3.3 – Importance SHAP des variables : `results/figures/fig3_3_importance_shap.png`\]*
 
@@ -148,11 +148,11 @@ Les extensions E1 à E13 changent un seul élément à la fois : l'horizon, la f
 | E11 Fenêtre glissante de 60 mois | -6,2 ; -8,9 | -8,7 ; -10,4 | -4,0 ; -7,6 |
 | E13 Notations souveraines | -5,7 ; -8,6 | -5,2 ; -6,8 | 0,0 ; -10,8 |
 
-*Source : calculs de l'auteur (`results/tables/ext_synthese.csv`). Test de janvier 2020 à juillet 2026 (E4 : jusqu'à février 2026). E2 : amélioration du score de Brier par rapport à la fréquence historique. Pour E2, E3 et E7, la référence est différente de celle du tableau 3.2.*
+*Source : calculs de l'auteur. Test de janvier 2020 à juillet 2026 (E4 : jusqu'à février 2026). E2 : amélioration du score de Brier par rapport à la fréquence historique. Pour E2, E3 et E7, la référence est différente de celle du tableau 3.2.*
 
 Sur 45 cases, le modèle sans dépenses fait mieux que le modèle avec dépenses dans 34 cas. Les cases positives sans dépenses sont : la volatilité (E3) pour l'OAT et le CAC 40, la classification de l'OAT (E2), le spread à 3 mois (+2,3 %) et le CAC 40 à 12 mois (+11,8 %, sur 68 prévisions qui se chevauchent). Avec les dépenses, quatre cases sont positives et meilleures que sans : E2 pour le spread (+0,5 contre -2,4) et pour l'OAT (+5,8 contre +2,5), E3 pour l'OAT (+4,2 contre +3,3) et E7 pour l'OAT (+0,1 contre 0,0). Aucune de ces différences n'est significative (voir ci-dessous).
 
-Étude d'événement préliminaire. Nous avons retrouvé 40 dates de publication de la situation mensuelle (octobre 2017 à janvier 2026, annexe G). Le jour de la publication, le rendement du CAC 40 n'est pas lié à la variation du solde budgétaire publiée ce jour-là (corrélation de Spearman de -0,13, p = 0,42). Le jour suivant, la corrélation est de 0,00 (p = 0,99), et le rendement absolu moyen les jours de publication (0,70 %) n'est pas plus élevé que sur l'ensemble des jours (0,79 %, p = 0,74). Le spread n'a pas pu être testé, faute de taux quotidiens.
+Étude d'événement préliminaire. Nous avons retrouvé 40 dates de publication de la situation mensuelle (octobre 2017 à janvier 2026, annexe F). Le jour de la publication, le rendement du CAC 40 n'est pas lié à la variation du solde budgétaire publiée ce jour-là (corrélation de Spearman de -0,13, p = 0,42). Le jour suivant, la corrélation est de 0,00 (p = 0,99), et le rendement absolu moyen les jours de publication (0,70 %) n'est pas plus élevé que sur l'ensemble des jours (0,79 %, p = 0,74). Le spread n'a pas pu être testé, faute de taux quotidiens.
 
 Pour les actions sectorielles (E19, rendement en excès du CAC 40, horizons 1 et 3 mois), le meilleur R² est de +1,4 % sans dépenses et -0,7 % avec pour le BTP, de 0,0 % et -1,7 % pour la défense. Avec l'indice d'incertitude politique (E20), aucune cible n'a de R² positif, avec ou sans dépenses.
 
@@ -177,7 +177,7 @@ Réplication élargie de Bouillot et al. (E16). Le panel mensuel compte 150 vari
 | Forêt aléatoire | 94,5 | -141,6 | 28,6 |
 | Ridge | 92,4 | -232,3 | 33,6 |
 
-*Source : calculs de l'auteur (`results/tables/extensions/E16.csv`). Test à partir de janvier 2012, 5 pays.*
+*Source : calculs de l'auteur. Test à partir de janvier 2012, 5 pays.*
 
 Panel annuel (E17). Sur 75 prévisions annuelles, tous les modèles font moins bien que la moyenne (R² de -20 % à -338 %) et que la marche aléatoire. La forêt aléatoire avec dépenses est moins mauvaise que sans (-19,8 % contre -45,4 %, p = 0,04 avant correction).
 

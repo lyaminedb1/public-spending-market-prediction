@@ -48,7 +48,7 @@ caps = [("Tableau 2.1 : Sources des données", "élaboration de l'auteur."),
         ("Tableau 2.5 : Jeux de variables emboîtés", "élaboration de l'auteur."),
         ("Tableau 2.6 : Modèles comparés", "élaboration de l'auteur."),
         ("Tableau 2.7 : Mesures de performance", "élaboration de l'auteur."),
-        ("Tableau 2.8 : Extensions testées", "élaboration de l'auteur ; plan daté dans docs/plan_extensions.md.")]
+        ("Tableau 2.8 : Extensions testées", "élaboration de l'auteur ; plan daté avant l'exécution des extensions.")]
 out, lines, k, i = [], b2.split("\n"), 0, 0
 while i < len(lines):
     l = lines[i]

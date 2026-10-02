@@ -58,7 +58,7 @@ var = [
     ("M2", "b_solde_ytd_diff_yoy", "Solde d'exécution cumulé, écart sur un an"),
 ]
 out += [md_table(pd.DataFrame(var, columns=["Jeu", "Variable", "Définition"])), "",
-        "*Source : `src/04_models.py`. M1 = M0 + dépenses ; M2 = M1 + recettes et solde.*", ""]
+        "*Source : élaboration de l'auteur. M1 = M0 + dépenses ; M2 = M1 + recettes et solde.*", ""]
 
 # B. Extensions
 s = pd.read_csv(T / "ext_summary.csv")
@@ -78,7 +78,7 @@ out += ["## Annexe B : Détail des extensions E1 à E20", "",
         "Diebold-Mariano unilatéral « avec meilleur que sans » ; « p corrigée » : correction de Benjamini-Hochberg sur "
         "les 168 comparaisons retenues (E12 et ventilations exclues : « sans objet »). E16 : R² par rapport à la moyenne.", "",
         f"**Tableau B.1 : Résultats des {len(b)} comparaisons**", "", md_table(b), "",
-        "*Source : `results/tables/ext_summary.csv`.*", ""]
+        "*Source : calculs de l'auteur.*", ""]
 
 # C. Graines
 rows = []
@@ -91,7 +91,7 @@ out += ["## Annexe C : Sensibilité à la graine aléatoire", "",
         "**Tableau C.1 : R² hors échantillon (%) selon la graine**", "",
         md_table(pd.DataFrame(rows, columns=["Modèle", "Cible", "R² M0 (min à max)", "R² M1 (min à max)",
                                              "Plus petite p DM (M1 contre M0)"])), "",
-        "*Source : `results/tables/diag_04/graines_rf.csv`, `graines_xgb.csv`.*", ""]
+        "*Source : calculs de l'auteur.*", ""]
 
 # D. Bruit
 rows = []
@@ -106,7 +106,7 @@ out += ["## Annexe D : Contrôle négatif : dépenses contre variables de bruit"
         "**Tableau D.1 : Gain de R² par rapport à M0 (points) : vraies dépenses et sept variables de bruit**", "",
         md_table(pd.DataFrame(rows, columns=["Modèle", "Cible", "Tirages", "Dépenses réelles",
                                              "Bruit (min à max)", "Tirages de bruit ≥ dépenses"])), "",
-        "*Source : `results/tables/diag_04/bruit_*.csv`.*", ""]
+        "*Source : calculs de l'auteur.*", ""]
 
 # E. Décalage
 r = pd.read_csv(T / "robustesse_lag.csv"); r = r[r.cible != "TOUTES"]
@@ -116,19 +116,9 @@ r = pd.DataFrame({"Décalage (mois)": r["lag_mois"], "Cible": r["cible"].map(CIB
                   "p corrigée (BH, unilatérale)": r["p_BH_H1"].map(lambda x: f(x, 2))})
 out += ["## Annexe E : Robustesse au décalage de publication", "",
         "**Tableau E.1 : Modèles principaux avec un décalage budgétaire de 1, 2 et 3 mois**", "", md_table(r), "",
-        "*Source : `results/tables/robustesse_lag.csv`. La correction BH porte sur les p-values unilatérales « avec dépenses meilleur que sans » ; elle peut donc être inférieure à la p-value bilatérale affichée.*", ""]
+        "*Source : calculs de l'auteur. La correction BH porte sur les p-values unilatérales « avec dépenses meilleur que sans » ; elle peut donc être inférieure à la p-value bilatérale affichée.*", ""]
 
-# F. Reproductibilité
-out += ["## Annexe F : Code et reproductibilité", "",
-        "Le code, les données et les résultats sont conservés dans le dépôt GitHub du projet "
-        "(`lyaminedb1/public-spending-market-prediction`, lien dans les sources en ligne). Le script `run_all.sh` relance "
-        "l'ensemble de la chaîne ; les versions des bibliothèques logicielles sont figées dans `requirements.txt` et les fichiers de "
-        "données brutes dans `data/MANIFEST.csv`. Le script `tests/verifications.py` exécute 63 contrôles automatiques "
-        "(alignement des cibles, décalages de publication, absence de fuite d'information dans la validation glissante, "
-        "mois incomplets). Les valeurs exactes des forêts aléatoires et de XGBoost peuvent varier légèrement selon les "
-        "versions des bibliothèques logicielles ; les conclusions n'en dépendent pas.", ""]
-
-# G. Étude d'événement préliminaire (CAC 40)
+# F. Étude d'événement préliminaire (CAC 40)
 es = pd.read_csv(T / "event_study.csv")
 lab = {0: "Corrélation de Spearman entre l'innovation budgétaire et le rendement du CAC 40 le jour de la publication",
        1: "Corrélation de Spearman entre l'innovation budgétaire et le rendement du CAC 40 le jour suivant",
@@ -136,15 +126,14 @@ lab = {0: "Corrélation de Spearman entre l'innovation budgétaire et le rendeme
 g = pd.DataFrame({"Test": [lab[i] for i in range(3)], "Événements": es["n"].astype(int),
                   "Statistique": [f(es.stat[0], 2), f(abs(es.stat[1]) if abs(es.stat[1]) < 0.005 else es.stat[1], 2), f(es.stat[2], 2)],
                   "p-value": [f(x, 2) for x in es["p_bilaterale"]]})
-out += ["## Annexe G : Étude d'événement préliminaire sur le CAC 40", "",
+out += ["## Annexe F : Étude d'événement préliminaire sur le CAC 40", "",
         "Les dates de publication de la situation mensuelle budgétaire ont été relevées sur le site de presse du ministère de "
         "l'Économie : 40 publications, d'octobre 2017 à janvier 2026 (le moteur de recherche du site n'en renvoie pas davantage). "
         "Le délai entre la fin du mois concerné et la publication va de 29 à 47 jours (médiane de 33). "
         "L'innovation budgétaire est la variation, entre deux publications consécutives, de l'écart du solde cumulé par rapport "
-        "à l'année précédente (en % du total annuel). Le plan du test a été daté avant son exécution "
-        "(`docs/plan_etude_evenement.md`). Faute de taux quotidiens accessibles, le test ne porte pas sur le spread.", "",
-        "**Tableau G.1 : Réaction du CAC 40 aux publications de la situation mensuelle budgétaire**", "", md_table(g), "",
-        "*Source : calculs de l'auteur (`src/23_event_study.py`, `results/tables/event_study.csv`) ; dates : presse.economie.gouv.fr ; "
+        "à l'année précédente (en % du total annuel). Le plan du test a été fixé avant son exécution. Faute de taux quotidiens accessibles, le test ne porte pas sur le spread.", "",
+        "**Tableau F.1 : Réaction du CAC 40 aux publications de la situation mensuelle budgétaire**", "", md_table(g), "",
+        "*Source : calculs de l'auteur ; dates : presse.economie.gouv.fr ; "
         "cours : Yahoo Finance. Le dernier test est unilatéral (rendement absolu plus élevé les jours de publication).*", ""]
 
 (ROOT / "redaction" / "annexes.md").write_text("\n".join(out))

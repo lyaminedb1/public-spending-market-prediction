@@ -2,7 +2,7 @@
 
 Oct 2, 2026 · @elyamine
 
-> Statut : version du 2/10, à relire et reformuler par l'auteur. Chiffres et références vérifiés dans le dépôt et les sources.
+> Statut : version du 2/10, à relire et reformuler par l'auteur. Chiffres et références vérifiés.
 
 ## 4.1 Réponse à la problématique
 
@@ -10,7 +10,7 @@ Nous voulions savoir si les données ouvertes de dépenses publiques permettent 
 
 Pour la France et à un mois, la réponse est non : nous ne trouvons **aucune preuve** que les dépenses de l'État améliorent la prévision du spread OAT-Bund, du taux OAT ou du CAC 40. Ce résultat vaut pour les trois modèles, pour un décalage de publication d'un à trois mois, et pour les dix-neuf extensions une fois les tests multiples corrigés.
 
-Il faut bien lire ce que cela veut dire. Nous ne montrons pas que les dépenses n'ont aucun lien avec les marchés. Avec 79 mois de test, un lien faible ou moyen pourrait nous échapper (section 4.3). Et nous ne regardons que l'exécution mensuelle du budget de l'État, pas les annonces budgétaires ni l'ensemble des administrations publiques. C'est pourquoi nous écrivons « pas de preuve » et non « les dépenses ne permettent pas de prédire » : la première formule décrit ce que nos tests montrent, la seconde affirmerait une impossibilité que nos données ne peuvent pas démontrer.
+Ce que cela veut dire demande de la précision. Nous ne montrons pas que les dépenses n'ont aucun lien avec les marchés. Avec 79 mois de test, un lien faible ou moyen pourrait nous échapper (section 4.3). Et nous ne regardons que l'exécution mensuelle du budget de l'État, pas les annonces budgétaires ni l'ensemble des administrations publiques. C'est pourquoi nous écrivons « pas de preuve » et non « les dépenses ne permettent pas de prédire » : la première formule décrit ce que nos tests montrent, la seconde affirmerait une impossibilité que nos données ne peuvent pas démontrer.
 
 Le second constat va au-delà des dépenses : **aucun modèle ne bat la moyenne historique**, même sans elles. Pour les taux, la prévision « pas de variation le mois prochain » fait mieux que la moyenne et mieux que tous nos modèles, même si l'écart n'est significatif que dans quelques cas. À un mois, ces marchés restent très difficiles à prévoir avec les variables dont nous disposons.
 
@@ -22,7 +22,7 @@ Voici plusieurs explications possibles. Elles peuvent se cumuler, et aucune n'es
 
 Le budget de l'État est voté en décembre pour l'année suivante. Les marchés peuvent donc intégrer le plan de dépenses avant même le début de l'année, et la situation mensuelle, publiée deux mois plus tard, ne ferait que confirmer ce qui était attendu. Un prix réagit à ce qui est nouveau, pas à ce qui est déjà prévu (Fama, 1970). Ramey (2011) va dans le même sens : pour les dépenses publiques, c'est le moment de l'annonce qui compte, plus que celui de la dépense. Attinasi et al. (2009) observent la même chose pendant la crise de 2007-2009 : ce sont les annonces de plans de sauvetage bancaire qui ont pesé sur les spreads, pas les montants engagés. Notre extension E4 pointe aussi dans cette direction, puisque l'écart entre l'exécution et le budget voté, qui mesure une forme de surprise, n'améliore pas la prévision.
 
-Une vérification préliminaire, de type étude d'événement (MacKinlay, 1997), va dans ce sens sans le démontrer. Sur les 40 publications que nous avons pu dater (2017-2026), le CAC 40 ne réagit pas le jour de la publication à la variation du solde publiée (corrélation de -0,13, p = 0,42, section 3.5 et annexe G). Elle ne porte pas sur le spread, faute de taux quotidiens accessibles, et n'aurait détecté qu'une réaction forte avec si peu d'événements. Pour aller plus loin, il faudrait observer le spread lui-même le jour de chaque publication (sections 4.7 et 4.8).
+Une vérification préliminaire, de type étude d'événement (MacKinlay, 1997), va dans ce sens sans le démontrer. Sur les 40 publications que nous avons pu dater (2017-2026), le CAC 40 ne réagit pas le jour de la publication à la variation du solde publiée (corrélation de -0,13, p = 0,42, section 3.5 et annexe F). Elle ne porte pas sur le spread, faute de taux quotidiens accessibles, et n'aurait détecté qu'une réaction forte avec si peu d'événements. Pour aller plus loin, il faudrait observer le spread lui-même le jour de chaque publication (sections 4.7 et 4.8).
 
 ### Ce qui fait bouger le spread n'est pas budgétaire
 
@@ -66,7 +66,7 @@ Pour les taux, la prévision « pas de variation » bat la moyenne historique : 
 
 ### Les arbres ne font pas mieux que Ridge (H3)
 
-On pouvait espérer que le machine learning trouve des relations non linéaires. C'est le contraire : XGBoost est le moins bon des trois modèles et la forêt aléatoire ne fait pas mieux que Ridge. Deux éléments peuvent l'expliquer.
+On pouvait espérer que le machine learning trouve des relations non linéaires. Ce n'est pas le cas : XGBoost est le moins bon des trois modèles et la forêt aléatoire ne fait pas mieux que Ridge. Deux éléments peuvent l'expliquer.
 
 D'abord le rapport entre signal et bruit. Avec 70 à 148 mois d'entraînement et des cibles très bruitées, un modèle flexible peut s'ajuster à des coïncidences de l'échantillon d'apprentissage, qui ne se reproduisent pas ensuite. L'instabilité de XGBoost, dont le R² varie d'environ 9 points selon la seule graine aléatoire, est compatible avec cette idée.
 
@@ -78,7 +78,7 @@ Les valeurs SHAP semblaient d'abord soutenir H4, avec les dépenses d'interventi
 
 ### Ce qui reste prévisible
 
-Quelques extensions battent la moyenne, sans que les dépenses y apportent un gain significatif : la volatilité (E3 : +9,6 % pour le CAC 40, +3,3 % pour l'OAT), le sens de variation de l'OAT (E2 : score de Brier +2,5 %) et le CAC 40 à 12 mois (E1 : +11,8 %). Ce dernier résultat est fragile, car il repose sur 68 prévisions qui se chevauchent. Que la volatilité soit en partie prévisible n'a rien d'étonnant : les périodes agitées se suivent (Engle, 1982). Dans aucun de ces cas les dépenses n'apportent de gain significatif. Ce qui se prévoit un peu semble venir des marchés eux-mêmes plus que du budget.
+Quelques extensions battent la moyenne, sans que les dépenses y apportent un gain significatif : la volatilité (E3 : +9,6 % pour le CAC 40, +3,3 % pour l'OAT), le sens de variation de l'OAT (E2 : score de Brier +2,5 %) et le CAC 40 à 12 mois (E1 : +11,8 %). Ce dernier résultat est fragile, car il repose sur 68 prévisions qui se chevauchent. Que la volatilité soit en partie prévisible n'a rien d'étonnant : les périodes agitées se suivent (Engle, 1982). Ce qui se prévoit un peu semble donc venir des marchés eux-mêmes plus que du budget.
 
 ## 4.5 Comparaison avec la littérature
 
@@ -113,7 +113,7 @@ Pour les producteurs de données ouvertes. Un calendrier de publication archivé
 - Variables budgétaires inégales dans l'année. L'écart-type de l'écart cumulé est en médiane 6,3 fois plus grand en décembre qu'en janvier.
 - Petit échantillon. Avec 70 à 148 mois d'entraînement et 79 mois de test, seul un effet fort pouvait être détecté. Les écarts de quelques points de R² entre deux modèles ne sont pas interprétables.
 - Hyperparamètres. Ils ont été fixés à des valeurs usuelles, sans réglage sur la période de test, mais le code et les résultats des modèles principaux ont été enregistrés ensemble : nous ne pouvons pas prouver qu'ils ont été choisis avant de voir les résultats. Seules les extensions ont un plan daté avant leur exécution. Les chiffres de XGBoost et de la forêt aléatoire dépendent aussi des versions des bibliothèques logicielles, pas les conclusions.
-- Extensions ajoutées en cours de route. E17 à E20 ont été ajoutées après avoir vu les résultats d'E15 et E16, et E18 est exploratoire. E14 (étude d'événement) n'a pas pu être réalisée sur le spread, et sa version sur le CAC 40 a été faite après coup (annexe G).
+- Extensions ajoutées en cours de route. E17 à E20 ont été ajoutées après avoir vu les résultats d'E15 et E16, et E18 est exploratoire. E14 (étude d'événement) n'a pas pu être réalisée sur le spread, et sa version sur le CAC 40 a été faite après coup (annexe F).
 - Panel européen. Pour E16, 25 des 68 séries de l'OCDE ne sont plus mises à jour depuis fin 2022 ou début 2024 : environ 23 % des valeurs de la fin de la période de test sont donc complétées. Pour E19, les prix des actions n'incluent pas les dividendes.
 - Pas d'étude d'événement sur le spread. L'explication « l'information est déjà connue » (section 4.2) reste donc une hypothèse : la vérification sur le CAC 40 repose sur 40 publications seulement, celles que nous avons pu dater.
 
