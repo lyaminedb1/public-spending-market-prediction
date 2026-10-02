@@ -94,7 +94,7 @@ Enfin, Barbier-Gauchard et Sofianos (2025) appliquent le machine learning aux fi
 
 ### 1.3.2 Le contexte américain, en bref
 
-Ces travaux européens suivent une littérature américaine plus large. Gu, Kelly et Xiu (2020) montrent que les arbres de décision et les réseaux de neurones prévoient mieux les rendements des actions que les modèles linéaires, grâce aux effets non linéaires. Bianchi, Büchner et Tamoni (2021) trouvent le même type de gain pour les obligations d'État. En macroéconomie, Medeiros et al. (2021) et Goulet Coulombe et al. (2022) montrent que les forêts aléatoires prévoient bien l'inflation, surtout en période d'incertitude.
+Ces travaux européens suivent une littérature américaine plus large. Gu, Kelly et Xiu (2020) montrent que les arbres de décision et les réseaux de neurones prévoient mieux les rendements des actions que les modèles linéaires, grâce aux effets non linéaires. Bianchi, Büchner et Tamoni (2021) trouvent le même type de gain pour les obligations d'État. En macroéconomie, Medeiros et al. (2021) trouvent que la forêt aléatoire domine les autres modèles pour prévoir l'inflation américaine, et Goulet Coulombe et al. (2022) que les gains du machine learning sur les variables macroéconomiques viennent surtout de la non-linéarité, plus utile en période d'incertitude ou de tension financière.
 
 ### 1.3.3 Quels modèles avec peu de données
 

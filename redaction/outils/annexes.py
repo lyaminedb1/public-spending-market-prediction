@@ -121,7 +121,7 @@ out += ["## Annexe E : Robustesse au décalage de publication", "",
 # F. Reproductibilité
 out += ["## Annexe F : Code et reproductibilité", "",
         "Le code, les données et les résultats sont conservés dans le dépôt GitHub du projet "
-        "(`lyaminedb1/public-spending-market-prediction`, accessible sur demande). Le script `run_all.sh` relance "
+        "(`lyaminedb1/public-spending-market-prediction`, lien dans les sources en ligne). Le script `run_all.sh` relance "
         "l'ensemble de la chaîne ; les versions des bibliothèques logicielles sont figées dans `requirements.txt` et les fichiers de "
         "données brutes dans `data/MANIFEST.csv`. Le script `tests/verifications.py` exécute 63 contrôles automatiques "
         "(alignement des cibles, décalages de publication, absence de fuite d'information dans la validation glissante, "

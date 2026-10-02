@@ -12,7 +12,7 @@ Tous les résultats portent sur la période de test de janvier 2020 à juillet 2
 
 Les trois cibles, en variations, sont stationnaires (p-value ADF inférieure à 0,001). Elles sont très dispersées par rapport à leur moyenne, et peu corrélées d'un mois sur l'autre.
 
-**Tableau 3.1 : Statistiques des variables cibles (de mars 2014 à juillet 2026, 149 mois)**
+**Tableau 3.1 : Statistiques des variables cibles (149 mois ; prévisions faites de mars 2014 à juillet 2026)**
 
 | Cible | Moyenne | Écart-type | Minimum | Maximum | Autocorrélation d'ordre 1 |
 | --- | --- | --- | --- | --- | --- |
@@ -74,7 +74,7 @@ Nous avons aussi appliqué la correction de Benjamini et Hochberg aux 18 tests d
 
 ## 3.3 Solidité des résultats
 
-Quatre contrôles complètent le tableau 3.2. Ils ont été ajoutés après les premiers résultats, lors d'une vérification du code.
+Quatre contrôles complètent le tableau 3.2 ; un cinquième, la permutation hors échantillon, est présenté en section 3.4. Ils ont été ajoutés après les premiers résultats, lors d'une vérification du code.
 
 Graine aléatoire. La forêt aléatoire et XGBoost dépendent d'un tirage au hasard. Nous les avons réestimés avec 5 graines (forêt) et 10 graines (XGBoost). Le R² de XGBoost varie d'environ 9 points selon la graine (par exemple de -39,8 % à -30,8 % pour le spread, jeu M0), celui de la forêt d'environ 3 points. Avec toutes les graines, le R² reste négatif, et aucun test DM M1 contre M0 n'est significatif (plus petite p-value : 0,13).
 

@@ -312,7 +312,7 @@ Chaque ligne compare le même modèle sans et avec les dépenses (ou les finance
 
 ## Annexe F : Code et reproductibilité
 
-Le code, les données et les résultats sont conservés dans le dépôt GitHub du projet (`lyaminedb1/public-spending-market-prediction`, accessible sur demande). Le script `run_all.sh` relance l'ensemble de la chaîne ; les versions des bibliothèques logicielles sont figées dans `requirements.txt` et les fichiers de données brutes dans `data/MANIFEST.csv`. Le script `tests/verifications.py` exécute 63 contrôles automatiques (alignement des cibles, décalages de publication, absence de fuite d'information dans la validation glissante, mois incomplets). Les valeurs exactes des forêts aléatoires et de XGBoost peuvent varier légèrement selon les versions des bibliothèques logicielles ; les conclusions n'en dépendent pas.
+Le code, les données et les résultats sont conservés dans le dépôt GitHub du projet (`lyaminedb1/public-spending-market-prediction`, lien dans les sources en ligne). Le script `run_all.sh` relance l'ensemble de la chaîne ; les versions des bibliothèques logicielles sont figées dans `requirements.txt` et les fichiers de données brutes dans `data/MANIFEST.csv`. Le script `tests/verifications.py` exécute 63 contrôles automatiques (alignement des cibles, décalages de publication, absence de fuite d'information dans la validation glissante, mois incomplets). Les valeurs exactes des forêts aléatoires et de XGBoost peuvent varier légèrement selon les versions des bibliothèques logicielles ; les conclusions n'en dépendent pas.
 
 ## Annexe G : Étude d'événement préliminaire sur le CAC 40
 

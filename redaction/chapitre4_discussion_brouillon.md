@@ -22,7 +22,7 @@ Voici plusieurs explications possibles. Elles peuvent se cumuler, et aucune n'es
 
 Le budget de l'État est voté en décembre pour l'année suivante. Les marchés peuvent donc intégrer le plan de dépenses avant même le début de l'année, et la situation mensuelle, publiée deux mois plus tard, ne ferait que confirmer ce qui était attendu. Un prix réagit à ce qui est nouveau, pas à ce qui est déjà prévu (Fama, 1970). Ramey (2011) va dans le même sens : pour les dépenses publiques, c'est le moment de l'annonce qui compte, plus que celui de la dépense. Attinasi et al. (2009) observent la même chose pendant la crise de 2007-2009 : ce sont les annonces de plans de sauvetage bancaire qui ont pesé sur les spreads, pas les montants engagés. Notre extension E4 pointe aussi dans cette direction, puisque l'écart entre l'exécution et le budget voté, qui mesure une forme de surprise, n'améliore pas la prévision.
 
-Une vérification préliminaire va dans ce sens, sans le démontrer. Sur les 40 publications que nous avons pu dater (2017-2026), le CAC 40 ne réagit pas le jour de la publication à la variation du solde publiée (corrélation de -0,13, p = 0,42, section 3.5 et annexe G). Elle ne porte pas sur le spread, faute de taux quotidiens accessibles, et n'aurait détecté qu'une réaction forte avec si peu d'événements. Pour aller plus loin, il faudrait observer le spread lui-même le jour de chaque publication (sections 4.7 et 4.8).
+Une vérification préliminaire, de type étude d'événement (MacKinlay, 1997), va dans ce sens sans le démontrer. Sur les 40 publications que nous avons pu dater (2017-2026), le CAC 40 ne réagit pas le jour de la publication à la variation du solde publiée (corrélation de -0,13, p = 0,42, section 3.5 et annexe G). Elle ne porte pas sur le spread, faute de taux quotidiens accessibles, et n'aurait détecté qu'une réaction forte avec si peu d'événements. Pour aller plus loin, il faudrait observer le spread lui-même le jour de chaque publication (sections 4.7 et 4.8).
 
 ### Ce qui fait bouger le spread n'est pas budgétaire
 
@@ -56,7 +56,7 @@ On pourrait croire qu'il suffit d'ajouter des données. Nos panels vont plutôt 
 
 ### Le contrôle négatif
 
-Si l'on remplace les sept dépenses par sept variables tirées au hasard, 90 à 95 % des tirages de bruit font au moins aussi bien que les vraies dépenses avec Ridge. Les petits écarts entre M1 et M0 ne sont donc pas propres aux dépenses : n'importe quelles variables ajoutées donnent des écarts du même ordre. Cela change aussi la lecture de l'importance des variables. Les dépenses pèsent 31 à 37 % de l'importance SHAP, ce qui paraît beaucoup, mais du bruit en obtient 34 à 38 %. Une part d'importance élevée dans un modèle d'arbres ne prouve donc pas qu'une variable est utile.
+Si l'on remplace les sept dépenses par sept variables tirées au hasard, 90 à 95 % des tirages de bruit font au moins aussi bien que les vraies dépenses avec Ridge. Les petits écarts entre M1 et M0 ne sont donc pas propres aux dépenses : n'importe quelles variables ajoutées donnent des écarts du même ordre. Cela change aussi la lecture de l'importance des variables. Les dépenses pèsent 31 à 37 % de l'importance SHAP, ce qui paraît beaucoup, mais du bruit en obtient 34 à 38 %. Une part d'importance élevée dans un modèle d'arbres ne prouve donc pas qu'une variable est utile, et ces mesures peuvent être biaisées dans les forêts aléatoires (Strobl et al., 2007).
 
 ### Le choix de la référence
 
@@ -78,7 +78,7 @@ Les valeurs SHAP semblaient d'abord soutenir H4, avec les dépenses d'interventi
 
 ### Ce qui reste prévisible
 
-Quelques extensions battent la moyenne, mais sans les dépenses : la volatilité (E3 : +9,6 % pour le CAC 40, +3,3 % pour l'OAT), le sens de variation de l'OAT (E2 : score de Brier +2,5 %) et le CAC 40 à 12 mois (E1 : +11,8 %). Ce dernier résultat est fragile, car il repose sur 68 prévisions qui se chevauchent. Que la volatilité soit en partie prévisible n'a rien d'étonnant : les périodes agitées se suivent (Engle, 1982). Dans aucun de ces cas les dépenses n'apportent de gain significatif. Ce qui se prévoit un peu vient des marchés eux-mêmes.
+Quelques extensions battent la moyenne, sans que les dépenses y apportent un gain significatif : la volatilité (E3 : +9,6 % pour le CAC 40, +3,3 % pour l'OAT), le sens de variation de l'OAT (E2 : score de Brier +2,5 %) et le CAC 40 à 12 mois (E1 : +11,8 %). Ce dernier résultat est fragile, car il repose sur 68 prévisions qui se chevauchent. Que la volatilité soit en partie prévisible n'a rien d'étonnant : les périodes agitées se suivent (Engle, 1982). Dans aucun de ces cas les dépenses n'apportent de gain significatif. Ce qui se prévoit un peu semble venir des marchés eux-mêmes plus que du budget.
 
 ## 4.5 Comparaison avec la littérature
 
@@ -127,5 +127,7 @@ Pour les producteurs de données ouvertes. Un calendrier de publication archivé
 
 ## Références ajoutées par ce chapitre
 
+- MacKinlay, A. C. (1997). Event studies in economics and finance. *Journal of Economic Literature*, 35(1), 13–39. [https://www.jstor.org/stable/2729691](https://www.jstor.org/stable/2729691)
+- Strobl, C., Boulesteix, A.-L., Zeileis, A., & Hothorn, T. (2007). Bias in random forest variable importance measures: Illustrations, sources and a solution. *BMC Bioinformatics*, 8, Article 25. [https://doi.org/10.1186/1471-2105-8-25](https://doi.org/10.1186/1471-2105-8-25)
 - Engle, R. F. (1982). Autoregressive conditional heteroscedasticity with estimates of the variance of United Kingdom inflation. *Econometrica*, 50(4), 987–1007. [https://doi.org/10.2307/1912773](https://doi.org/10.2307/1912773)
 - Working, H. (1960). Note on the correlation of first differences of averages in a random chain. *Econometrica*, 28(4), 916–918. [https://doi.org/10.2307/1907574](https://doi.org/10.2307/1907574)
