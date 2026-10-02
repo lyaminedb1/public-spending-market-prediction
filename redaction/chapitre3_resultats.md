@@ -76,9 +76,9 @@ Nous avons aussi appliqué la correction de Benjamini et Hochberg aux 18 tests d
 
 Quatre contrôles complètent le tableau 3.2 ; un cinquième, la permutation hors échantillon, est présenté en section 3.4. Ils ont été ajoutés après les premiers résultats, lors d'une vérification du code.
 
-Graine aléatoire. La forêt aléatoire et XGBoost dépendent d'un tirage au hasard. Nous les avons réestimés avec 5 graines (forêt) et 10 graines (XGBoost). Le R² de XGBoost varie d'environ 9 points selon la graine (par exemple de -39,8 % à -30,8 % pour le spread, jeu M0), celui de la forêt d'environ 3 points. Avec toutes les graines, le R² reste négatif, et aucun test DM M1 contre M0 n'est significatif (plus petite p-value : 0,13).
+**Graine aléatoire.** La forêt aléatoire et XGBoost dépendent d'un tirage au hasard. Nous les avons réestimés avec 5 graines (forêt) et 10 graines (XGBoost). Le R² de XGBoost varie d'environ 9 points selon la graine (par exemple de -39,8 % à -30,8 % pour le spread, jeu M0), celui de la forêt d'environ 3 points. Avec toutes les graines, le R² reste négatif, et aucun test DM M1 contre M0 n'est significatif (plus petite p-value : 0,13).
 
-Puissance du test (contrôle positif). Pour savoir si notre dispositif peut détecter un vrai signal, nous avons ajouté à M0 une variable fictive corrélée à la cible (corrélation ρ), avec Ridge et 10 tirages par valeur de ρ, un seul pour ρ = 1 (tableau 3.4).
+**Puissance du test (contrôle positif).** Pour savoir si notre dispositif peut détecter un vrai signal, nous avons ajouté à M0 une variable fictive corrélée à la cible (corrélation ρ), avec Ridge et 10 tirages par valeur de ρ, un seul pour ρ = 1 (tableau 3.4).
 
 **Tableau 3.4 : Contrôle positif : part des tirages où le signal est retrouvé (Ridge, 10 tirages par valeur de ρ, 1 pour ρ = 1)**
 
@@ -94,9 +94,9 @@ Puissance du test (contrôle positif). Pour savoir si notre dispositif peut dét
 
 Un signal de corrélation 0,3 avec la cible n'est retrouvé que dans une minorité de tirages. Un signal de corrélation 0,5 bat presque toujours la moyenne, mais le test DM ne le détecte pas toujours.
 
-Contrôle négatif (variables de bruit). Nous avons remplacé les sept dépenses par sept variables de pur bruit, puis comparé le gain par rapport à M0. Avec Ridge (20 tirages), 90 à 95 % des tirages de bruit font au moins aussi bien que les vraies dépenses. Avec la forêt aléatoire (5 tirages), c'est 80 à 100 %. Avec XGBoost (10 tirages), c'est 50 à 60 %.
+**Contrôle négatif (variables de bruit).** Nous avons remplacé les sept dépenses par sept variables de pur bruit, puis comparé le gain par rapport à M0. Avec Ridge (20 tirages), 90 à 95 % des tirages de bruit font au moins aussi bien que les vraies dépenses. Avec la forêt aléatoire (5 tirages), c'est 80 à 100 %. Avec XGBoost (10 tirages), c'est 50 à 60 %.
 
-Décalage de publication. La date de publication des situations budgétaires n'est vérifiée que pour 2023-2026. Nous avons donc relancé les modèles principaux avec un décalage de 1 mois et de 3 mois, au lieu de 2. Aucun R² ne devient positif (meilleur R² : -0,7 % avec 1 mois, -2,7 % avec 3 mois, jeu M1). Aucun test M1 contre M0 n'est significatif après correction (plus petite p-value corrigée : 0,51).
+**Décalage de publication.** La date de publication des situations budgétaires n'est vérifiée que pour 2023-2026. Nous avons donc relancé les modèles principaux avec un décalage de 1 mois et de 3 mois, au lieu de 2. Aucun R² ne devient positif (meilleur R² : -0,7 % avec 1 mois, -2,7 % avec 3 mois, jeu M1). Aucun test M1 contre M0 n'est significatif après correction (plus petite p-value corrigée : 0,51).
 
 *Source : calculs de l'auteur. Le détail des tirages est en annexe.*
 
@@ -152,11 +152,11 @@ Les extensions E1 à E13 changent un seul élément à la fois : l'horizon, la f
 
 Sur 45 cases, le modèle sans dépenses fait mieux que le modèle avec dépenses dans 34 cas. Les cases positives sans dépenses sont : la volatilité (E3) pour l'OAT et le CAC 40, la classification de l'OAT (E2), le spread à 3 mois (+2,3 %) et le CAC 40 à 12 mois (+11,8 %, sur 68 prévisions qui se chevauchent). Avec les dépenses, quatre cases sont positives et meilleures que sans : E2 pour le spread (+0,5 contre -2,4) et pour l'OAT (+5,8 contre +2,5), E3 pour l'OAT (+4,2 contre +3,3) et E7 pour l'OAT (+0,1 contre 0,0). Aucune de ces différences n'est significative (voir ci-dessous).
 
-Étude d'événement préliminaire. Nous avons retrouvé 40 dates de publication de la situation mensuelle (octobre 2017 à janvier 2026, annexe F). Le jour de la publication, le rendement du CAC 40 n'est pas lié à la variation du solde budgétaire publiée ce jour-là (corrélation de Spearman de -0,13, p = 0,42). Le jour suivant, la corrélation est de 0,00 (p = 0,99), et le rendement absolu moyen les jours de publication (0,70 %) n'est pas plus élevé que sur l'ensemble des jours (0,79 %, p = 0,74). Le spread n'a pas pu être testé, faute de taux quotidiens.
+**Étude d'événement préliminaire.** Nous avons retrouvé 40 dates de publication de la situation mensuelle (octobre 2017 à janvier 2026, annexe F). Le jour de la publication, le rendement du CAC 40 n'est pas lié à la variation du solde budgétaire publiée ce jour-là (corrélation de Spearman de -0,13, p = 0,42). Le jour suivant, la corrélation est de 0,00 (p = 0,99), et le rendement absolu moyen les jours de publication (0,70 %) n'est pas plus élevé que sur l'ensemble des jours (0,79 %, p = 0,74). Le spread n'a pas pu être testé, faute de taux quotidiens.
 
 Pour les actions sectorielles (E19, rendement en excès du CAC 40, horizons 1 et 3 mois), le meilleur R² est de +1,4 % sans dépenses et -0,7 % avec pour le BTP, de 0,0 % et -1,7 % pour la défense. Avec l'indice d'incertitude politique (E20), aucune cible n'a de R² positif, avec ou sans dépenses.
 
-Correction pour tests multiples. Au total, 168 comparaisons « avec contre sans dépenses » entrent dans la correction de Benjamini et Hochberg (taux de fausses découvertes de 10 %). Aucune n'est significative après correction ; la plus petite p-value corrigée vaut 0,999. Avant correction, 6 p-values sont inférieures à 0,05, alors que 8,4 sont attendues par le seul hasard. Dans ces 6 cas, le modèle avec dépenses est moins mauvais que le modèle sans, mais son R² reste négatif.
+**Correction pour tests multiples.** Au total, 168 comparaisons « avec contre sans dépenses » entrent dans la correction de Benjamini et Hochberg (taux de fausses découvertes de 10 %). Aucune n'est significative après correction ; la plus petite p-value corrigée vaut 0,999. Avant correction, 6 p-values sont inférieures à 0,05, alors que 8,4 sont attendues par le seul hasard. Dans ces 6 cas, le modèle avec dépenses est moins mauvais que le modèle sans, mais son R² reste négatif.
 
 *\[Figure 3.4 – Synthèse des extensions : `results/figures/fig3_5_extensions.png`\]*
 
@@ -164,9 +164,9 @@ Correction pour tests multiples. Au total, 168 comparaisons « avec contre sans 
 
 Les extensions E15 à E18 utilisent un panel de cinq pays (France, Italie, Espagne, Portugal, Belgique), avec des finances publiques harmonisées par Eurostat. La cible est le spread de chaque pays face au Bund.
 
-Panel trimestriel (E15). Sur 330 prévisions (2010T1 à 2026T2), Ridge obtient +13,9 % sans dépenses et +15,5 % avec dépenses (p = 0,37). Un diagnostic complémentaire, non prévu au départ, donne l'autocorrélation d'ordre 1 de la cible : 0,32 en moyenne trimestrielle, contre 0,07 pour le spread de fin de trimestre. Sur 2010-2014, ajouter les dépenses améliore le R² de Ridge de 4,1 points en moyenne trimestrielle et de 3,4 points en fin de trimestre ; après 2015, il le dégrade de 12,8 et 11,2 points. Ces écarts par sous-période ne sont pas testés. Avec le spread de fin de trimestre, les deux R² deviennent négatifs : -4,1 % sans dépenses et -2,9 % avec.
+**Panel trimestriel (E15).** Sur 330 prévisions (2010T1 à 2026T2), Ridge obtient +13,9 % sans dépenses et +15,5 % avec dépenses (p = 0,37). Un diagnostic complémentaire, non prévu au départ, donne l'autocorrélation d'ordre 1 de la cible : 0,32 en moyenne trimestrielle, contre 0,07 pour le spread de fin de trimestre. Sur 2010-2014, ajouter les dépenses améliore le R² de Ridge de 4,1 points en moyenne trimestrielle et de 3,4 points en fin de trimestre ; après 2015, il le dégrade de 12,8 et 11,2 points. Ces écarts par sous-période ne sont pas testés. Avec le spread de fin de trimestre, les deux R² deviennent négatifs : -4,1 % sans dépenses et -2,9 % avec.
 
-Réplication élargie de Bouillot et al. (E16). Le panel mensuel compte 150 variables, dont 18 de finances publiques, et 874 prévisions. Sur le niveau du spread, le R² par rapport à la moyenne atteint 92 à 97 % avec les finances publiques. Mais tous les modèles font moins bien que la marche aléatoire, qui prévoit le spread du mois dernier (tableau 3.7). Sur la variation du spread, le R² est négatif pour tous les modèles. Les finances publiques n'améliorent aucune prévision (p de 0,08 à 0,81). Sur la France seule, de janvier 2020 à février 2025, la marche aléatoire a une erreur (RMSE) de 5,1 points de base sur le niveau du spread mensuel moyen.
+**Réplication élargie de Bouillot et al. (E16).** Le panel mensuel compte 150 variables, dont 18 de finances publiques, et 874 prévisions. Sur le niveau du spread, le R² par rapport à la moyenne atteint 92 à 97 % avec les finances publiques. Mais tous les modèles font moins bien que la marche aléatoire, qui prévoit le spread du mois dernier (tableau 3.7). Sur la variation du spread, le R² est négatif pour tous les modèles. Les finances publiques n'améliorent aucune prévision (p de 0,08 à 0,81). Sur la France seule, de janvier 2020 à février 2025, la marche aléatoire a une erreur (RMSE) de 5,1 points de base sur le niveau du spread mensuel moyen.
 
 **Tableau 3.7 : E16 : niveau du spread, comparaison à la marche aléatoire (avec finances publiques)**
 
@@ -179,9 +179,9 @@ Réplication élargie de Bouillot et al. (E16). Le panel mensuel compte 150 vari
 
 *Source : calculs de l'auteur. Test à partir de janvier 2012, 5 pays.*
 
-Panel annuel (E17). Sur 75 prévisions annuelles, tous les modèles font moins bien que la moyenne (R² de -20 % à -338 %) et que la marche aléatoire. La forêt aléatoire avec dépenses est moins mauvaise que sans (-19,8 % contre -45,4 %, p = 0,04 avant correction).
+**Panel annuel (E17).** Sur 75 prévisions annuelles, tous les modèles font moins bien que la moyenne (R² de -20 % à -338 %) et que la marche aléatoire. La forêt aléatoire avec dépenses est moins mauvaise que sans (-19,8 % contre -45,4 %, p = 0,04 avant correction).
 
-Régime de crise, exploratoire (E18). L'ajout d'interactions entre dépenses et période de tension (spread supérieur à 200 pb) dégrade la prévision pour Ridge (le R² passe de -3,3 % à -19,7 %) et pour XGBoost (de -20,2 % à -26,2 %). La forêt aléatoire passe de -10,4 % à -4,9 % (p = 0,20).
+**Régime de crise, exploratoire (E18).** L'ajout d'interactions entre dépenses et période de tension (spread supérieur à 200 pb) dégrade la prévision pour Ridge (le R² passe de -3,3 % à -19,7 %) et pour XGBoost (de -20,2 % à -26,2 %). La forêt aléatoire passe de -10,4 % à -4,9 % (p = 0,20).
 
 ## 3.7 Synthèse : état des hypothèses
 

@@ -158,6 +158,8 @@
 
 - Guide ECE relu (section 6.4, « Ethical Use of AI Tools ») : déclarer l'usage de l'IA « either in the methodology section or acknowledgements », sans page dédiée. Page « Déclaration d'utilisation de l'IA » supprimée ; la déclaration est dans 2.8 (« Outils d'intelligence artificielle », Claude d'Anthropic, programmation, relecture du code, rédaction). Interdit par le guide : rendre des interprétations générées par l'IA sans relecture critique ni apport personnel. PDF : 88 p.
 
+- Langue du Word fixée en fr-FR (`redaction/outils/langue_fr.py`, `pandoc -M lang=fr-FR`) : le correcteur soulignait tout. Intertitres de paragraphe en gras rétablis (« Données. », « Graine aléatoire. », glossaire, listes H1-H4, etc.) : sans le gras, on ne voyait plus que c'étaient des titres. PDF : 87 p.
+
 ## Prochaines étapes (au 30/09 soir ; remise le 2/10 à minuit)
 0. Plan serré : mercredi soir ch. 4 complet (brouillon) + éthique (ch. 2, fait : 2.8) ; jeudi introduction, conclusion, résumé, annexes, pages de garde, revue de Walid en parallèle ; vendredi corrections, PDF, envoi en fin d'après-midi. Abandonné : raccourcir le ch. 3, glossaire détaillé.
 1. Chapitre 4 (Discussion, 6-8 p.) à partir de `docs/plan_chapitre4.md` : l'interprétation vient d'Elyamine (règle ECE) ; méthode : questions guidées, il répond, Claude vérifie et corrige la langue.

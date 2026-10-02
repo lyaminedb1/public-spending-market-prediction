@@ -29,10 +29,10 @@ La situation mensuelle budgétaire (SMB) décrit l'exécution du budget de l'Ét
 
 Quatre particularités de ces données comptent pour la suite :
 
-- Les taux de l'OCDE sont des moyennes mensuelles, pas des valeurs de fin de mois. Or la variation d'une moyenne à la suivante est un peu corrélée d'un mois sur l'autre, par simple construction. Le CAC 40, lui, est pris au dernier jour du mois.
-- Le CAC 40 est un indice de prix, qui ne compte pas les dividendes.
-- Les séries budgétaires sont la dernière version publiée. Les chiffres de décembre, par exemple, sont d'abord provisoires puis révisés. Nous utilisons donc des valeurs un peu différentes de celles que le marché voyait en temps réel.
-- Le budget voté pour 2026 n'est pas dans les fichiers ouverts. L'extension qui l'utilise (E4) s'arrête donc en février 2026.
+- **Les taux de l'OCDE sont des moyennes mensuelles**, pas des valeurs de fin de mois. Or la variation d'une moyenne à la suivante est un peu corrélée d'un mois sur l'autre, par simple construction. Le CAC 40, lui, est pris au dernier jour du mois.
+- **Le CAC 40 est un indice de prix**, qui ne compte pas les dividendes.
+- **Les séries budgétaires sont la dernière version publiée.** Les chiffres de décembre, par exemple, sont d'abord provisoires puis révisés. Nous utilisons donc des valeurs un peu différentes de celles que le marché voyait en temps réel.
+- **Le budget voté pour 2026 n'est pas dans les fichiers ouverts.** L'extension qui l'utilise (E4) s'arrête donc en février 2026.
 
 ## 2.2 Construction du jeu de données
 
@@ -54,8 +54,8 @@ La DGFiP publie des montants cumulés depuis le 1er janvier : le chiffre de mars
 
 L'État ne dépense pas au même rythme toute l'année. L'impôt sur les sociétés arrive à quelques échéances précises, et certaines dépenses se concentrent en fin d'année. Comparer un mois au mois précédent n'aurait donc pas de sens. Nous avons calculé deux transformations pour chaque ligne budgétaire :
 
-- La somme des 12 derniers mois (en milliards d'euros). Elle donne le niveau annuel, sans effet de saison.
-- L'écart du cumul depuis janvier par rapport au même mois de l'année précédente, rapporté au montant des douze derniers mois (en %). Une valeur de +1,2 en mai veut dire que, fin mai, l'État a dépensé l'équivalent de 1,2 % d'une année de plus que fin mai de l'année précédente. Comme on compare toujours le même mois, la saison s'annule.
+- **La somme des 12 derniers mois** (en milliards d'euros). Elle donne le niveau annuel, sans effet de saison.
+- **L'écart du cumul depuis janvier par rapport au même mois de l'année précédente, rapporté au montant des douze derniers mois** (en %). Une valeur de +1,2 en mai veut dire que, fin mai, l'État a dépensé l'équivalent de 1,2 % d'une année de plus que fin mai de l'année précédente. Comme on compare toujours le même mois, la saison s'annule.
 
 Nous n'avons pas utilisé un simple taux de croissance du cumul. En début d'année, le cumul est presque nul, et le taux prend des valeurs absurdes : pour l'impôt sur les sociétés, il va de -449 % à +470 % en janvier et de -902 % à +1 789 % en février. Diviser par le montant des douze derniers mois règle ce problème.
 
@@ -132,9 +132,9 @@ Les recettes et le solde sont à part, dans M2. Le titre du mémoire parle des d
 
 ### Deux pièges mis en évidence par l'analyse exploratoire
 
-Premier piège : les variables en niveau. Les dépenses sur 12 mois, en milliards d'euros, montent presque sans arrêt, avec l'inflation et la dette. Depuis 2022, les taux montent aussi. Or deux séries qui montent en même temps sont corrélées, même si elles n'ont rien à voir : la corrélation entre ces niveaux et la variation de l'OAT atteint 0,34, sans aucun sens économique. Ces niveaux ne sont pas stationnaires (p-values ADF de 0,23 à 1,00, supérieures à 0,7 pour 10 lignes sur 12). Nos modèles utilisent donc les écarts annuels, pas les niveaux. Ces écarts sont stationnaires ou presque (p-values ADF de 0,000 à 0,057).
+**Premier piège : les variables en niveau.** Les dépenses sur 12 mois, en milliards d'euros, montent presque sans arrêt, avec l'inflation et la dette. Depuis 2022, les taux montent aussi. Or deux séries qui montent en même temps sont corrélées, même si elles n'ont rien à voir : la corrélation entre ces niveaux et la variation de l'OAT atteint 0,34, sans aucun sens économique. Ces niveaux ne sont pas stationnaires (p-values ADF de 0,23 à 1,00, supérieures à 0,7 pour 10 lignes sur 12). Nos modèles utilisent donc les écarts annuels, pas les niveaux. Ces écarts sont stationnaires ou presque (p-values ADF de 0,000 à 0,057).
 
-Second piège : l'inflation. À première vue, les dépenses de personnel, de fonctionnement et la charge de la dette annoncent la variation de l'OAT (corrélations de Spearman de 0,17 à 0,23). Mais en 2022-2023, l'inflation semble avoir fait monter les deux en même temps : les taux, à cause de la BCE, et ces dépenses, à cause des salaires et de la dette indexée. Quand on retire l'effet de l'inflation et de la variation passée de l'OAT (les deux sont dans M0), ces corrélations tombent entre 0,09 et 0,15, sous le seuil de significativité (0,16). Nous avons donc mis l'inflation dans M0, pour ne pas attribuer aux dépenses un effet qui vient en réalité de l'inflation.
+**Second piège : l'inflation.** À première vue, les dépenses de personnel, de fonctionnement et la charge de la dette annoncent la variation de l'OAT (corrélations de Spearman de 0,17 à 0,23). Mais en 2022-2023, l'inflation semble avoir fait monter les deux en même temps : les taux, à cause de la BCE, et ces dépenses, à cause des salaires et de la dette indexée. Quand on retire l'effet de l'inflation et de la variation passée de l'OAT (les deux sont dans M0), ces corrélations tombent entre 0,09 et 0,15, sous le seuil de significativité (0,16). Nous avons donc mis l'inflation dans M0, pour ne pas attribuer aux dépenses un effet qui vient en réalité de l'inflation.
 
 ## 2.5 Modèles retenus
 
@@ -148,15 +148,15 @@ Nous traitons le problème comme une régression : le modèle prédit un nombre,
 | Forêt aléatoire | Machine learning robuste | Capte les effets non linéaires, stable sur de petits échantillons (Breiman, 2001 ; Medeiros et al., 2021) |
 | XGBoost | Machine learning de référence | Meilleur modèle chez Bouillot et al. (2025) pour les spreads européens (Chen et Guestrin, 2016) |
 
-Nous n'utilisons pas de deep learning. Avec environ 150 mois de données, un réseau de neurones apprendrait surtout le bruit. Les études qui l'emploient avec succès, comme Fischer et Krauss (2018), travaillent sur des données quotidiennes de centaines d'actions, soit des centaines de milliers d'observations.
+**Nous n'utilisons pas de deep learning.** Avec environ 150 mois de données, un réseau de neurones apprendrait surtout le bruit. Les études qui l'emploient avec succès, comme Fischer et Krauss (2018), travaillent sur des données quotidiennes de centaines d'actions, soit des centaines de milliers d'observations.
 
 ### Hyperparamètres
 
 Nous n'avons pas cherché les meilleurs hyperparamètres sur la période de test. Quand on essaie beaucoup de réglages, on finit toujours par en trouver un qui « marche », mais par hasard. Nous avons donc retenu des valeurs usuelles :
 
-- Ridge : paramètre de régularisation choisi automatiquement par validation croisée interne (leave-one-out) sur les seules données d'entraînement, parmi 40 valeurs entre 0,01 et 1 000 000. La grille initiale s'arrêtait à 1 000 ; lors d'une vérification du code, nous avons constaté que cette borne était atteinte la plupart des mois pour le CAC 40, et nous l'avons élargie (le R² de Ridge change d'au plus 1,2 point).
-- Forêt aléatoire : 300 arbres, profondeur maximale 4, au moins 5 observations par feuille, 50 % des variables tirées à chaque division.
-- XGBoost : 200 arbres, profondeur maximale 2, taux d'apprentissage 0,05, sous-échantillonnage de 80 % des observations et des variables, au moins 5 observations par feuille (min\_child\_weight = 5), pénalité L2 égale à 1.
+- **Ridge** : paramètre de régularisation choisi automatiquement par validation croisée interne (leave-one-out) sur les seules données d'entraînement, parmi 40 valeurs entre 0,01 et 1 000 000. La grille initiale s'arrêtait à 1 000 ; lors d'une vérification du code, nous avons constaté que cette borne était atteinte la plupart des mois pour le CAC 40, et nous l'avons élargie (le R² de Ridge change d'au plus 1,2 point).
+- **Forêt aléatoire** : 300 arbres, profondeur maximale 4, au moins 5 observations par feuille, 50 % des variables tirées à chaque division.
+- **XGBoost** : 200 arbres, profondeur maximale 2, taux d'apprentissage 0,05, sous-échantillonnage de 80 % des observations et des variables, au moins 5 observations par feuille (min\_child\_weight = 5), pénalité L2 égale à 1.
 
 La régression Ridge (Hoerl et Kennard, 1970) estime les coefficients en pénalisant leur taille, sur des variables centrées réduites :
 
@@ -223,11 +223,11 @@ Pour savoir quelles dépenses le modèle utilise le plus (hypothèse H4), nous c
 
 Après les premiers résultats, nous avons ajouté cinq contrôles, décrits ici et rapportés au chapitre 3 :
 
-- Graine aléatoire : la forêt aléatoire et XGBoost sont réestimés avec 5 et 10 graines différentes.
-- Contrôle positif (puissance) : on ajoute à M0 une variable fictive construite pour avoir une corrélation ρ donnée avec la cible (ρ = 0,1 ; 0,2 ; 0,3 ; 0,5 et 1), avec 10 tirages par valeur (un seul pour ρ = 1, où le résultat ne dépend pas du tirage), pour mesurer ce que le dispositif est capable de détecter.
-- Contrôle négatif : on remplace les sept dépenses par sept variables de pur bruit (20 tirages pour Ridge, 5 pour la forêt, 10 pour XGBoost), pour savoir si les dépenses font mieux que des variables sans information.
-- Décalage de publication : les modèles principaux sont relancés avec un décalage budgétaire de 1 et de 3 mois au lieu de 2.
-- Importance par permutation hors échantillon : sur la période de test, on mélange au hasard les valeurs d'un groupe de variables et on mesure la hausse de l'erreur, avec Ridge et XGBoost.
+- **Graine aléatoire** : la forêt aléatoire et XGBoost sont réestimés avec 5 et 10 graines différentes.
+- **Contrôle positif (puissance)** : on ajoute à M0 une variable fictive construite pour avoir une corrélation ρ donnée avec la cible (ρ = 0,1 ; 0,2 ; 0,3 ; 0,5 et 1), avec 10 tirages par valeur (un seul pour ρ = 1, où le résultat ne dépend pas du tirage), pour mesurer ce que le dispositif est capable de détecter.
+- **Contrôle négatif** : on remplace les sept dépenses par sept variables de pur bruit (20 tirages pour Ridge, 5 pour la forêt, 10 pour XGBoost), pour savoir si les dépenses font mieux que des variables sans information.
+- **Décalage de publication** : les modèles principaux sont relancés avec un décalage budgétaire de 1 et de 3 mois au lieu de 2.
+- **Importance par permutation hors échantillon** : sur la période de test, on mélange au hasard les valeurs d'un groupe de variables et on mesure la hausse de l'erreur, avec Ridge et XGBoost.
 
 ## 2.7 Extensions datées avant exécution et correction des tests multiples
 
@@ -276,13 +276,13 @@ et l'on déclare significatives les k premières comparaisons. De façon équiva
 
 ## 2.8 Considérations éthiques
 
-Données. Toutes les données utilisées sont publiques et en accès libre : situations budgétaires de l'État (data.economie.gouv.fr), séries de marché et macroéconomiques (FRED, BCE, Eurostat), indices boursiers. Elles ne contiennent aucune donnée personnelle, et sont utilisées dans le respect des conditions de réutilisation de chaque fournisseur (licence ouverte pour les données publiques françaises). Les sources sont citées, et la liste des fichiers bruts est figée (manifeste des données).
+**Données.** Toutes les données utilisées sont publiques et en accès libre : situations budgétaires de l'État (data.economie.gouv.fr), séries de marché et macroéconomiques (FRED, BCE, Eurostat), indices boursiers. Elles ne contiennent aucune donnée personnelle, et sont utilisées dans le respect des conditions de réutilisation de chaque fournisseur (licence ouverte pour les données publiques françaises). Les sources sont citées, et la liste des fichiers bruts est figée (manifeste des données).
 
-Transparence et résultats négatifs. Le code, les données traitées et les résultats sont conservés, et l'ensemble peut être relancé avec un seul script. Le plan des extensions a été daté avant leur exécution. Nous rapportons tous les résultats, y compris négatifs, et corrigeons pour les tests multiples. Ne publier que les résultats favorables donnerait une image fausse de ce que les données permettent ; c'est un problème connu en finance empirique (Bailey et al., 2014).
+**Transparence et résultats négatifs.** Le code, les données traitées et les résultats sont conservés, et l'ensemble peut être relancé avec un seul script. Le plan des extensions a été daté avant leur exécution. Nous rapportons tous les résultats, y compris négatifs, et corrigeons pour les tests multiples. Ne publier que les résultats favorables donnerait une image fausse de ce que les données permettent ; c'est un problème connu en finance empirique (Bailey et al., 2014).
 
-Usage des résultats. Ce travail n'est pas un conseil en investissement. Un modèle qui paraît prédire les marchés peut conduire à des décisions coûteuses s'il est mal évalué ; c'est pourquoi nous insistons sur la comparaison à des références simples.
+**Usage des résultats.** Ce travail n'est pas un conseil en investissement. Un modèle qui paraît prédire les marchés peut conduire à des décisions coûteuses s'il est mal évalué ; c'est pourquoi nous insistons sur la comparaison à des références simples.
 
-Outils d'intelligence artificielle. Conformément au guide de l'ECE, nous déclarons avoir utilisé un outil d'intelligence artificielle générative (Claude, d'Anthropic) comme assistant pour la programmation, la relecture du code et la rédaction. Le choix du sujet, de la problématique et du périmètre et les décisions de méthode relèvent de l'auteur, qui a relu l'ensemble du texte et en assume la responsabilité.
+**Outils d'intelligence artificielle.** Conformément au guide de l'ECE, nous déclarons avoir utilisé un outil d'intelligence artificielle générative (Claude, d'Anthropic) comme assistant pour la programmation, la relecture du code et la rédaction. Le choix du sujet, de la problématique et du périmètre et les décisions de méthode relèvent de l'auteur, qui a relu l'ensemble du texte et en assume la responsabilité.
 
 ## Références ajoutées par ce chapitre
 

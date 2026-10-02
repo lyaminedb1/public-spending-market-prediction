@@ -8,9 +8,9 @@ Ce chapitre fait le point sur ce que l'on sait déjà. Il part d'une question si
 
 Nous étudions trois indicateurs, plus ou moins liés aux finances publiques :
 
-- Le spread OAT-Bund à 10 ans : l'écart entre le taux auquel la France emprunte sur dix ans (OAT, Obligation assimilable du Trésor) et celui de l'Allemagne (Bund). Comme la politique monétaire est la même pour les deux pays, cet écart mesure surtout le risque propre à la France.
-- Le taux OAT à 10 ans : le coût d'emprunt de l'État français. Il dépend à la fois des finances publiques et de la politique de la BCE.
-- Le rendement mensuel du CAC 40 : l'évolution de la valeur des grandes entreprises cotées à Paris.
+- **Le spread OAT-Bund à 10 ans** : l'écart entre le taux auquel la France emprunte sur dix ans (OAT, Obligation assimilable du Trésor) et celui de l'Allemagne (Bund). Comme la politique monétaire est la même pour les deux pays, cet écart mesure surtout le risque propre à la France.
+- **Le taux OAT à 10 ans** : le coût d'emprunt de l'État français. Il dépend à la fois des finances publiques et de la politique de la BCE.
+- **Le rendement mensuel du CAC 40** : l'évolution de la valeur des grandes entreprises cotées à Paris.
 
 Ces trois indicateurs vont du plus exposé au moins exposé aux finances publiques. Les comparer permet de voir où les dépenses apportent, ou non, de l'information.
 
@@ -158,16 +158,16 @@ Les données budgétaires d'un mois ne peuvent servir qu'après leur publication
 
 La littérature se partage en deux blocs qui se croisent peu :
 
-- Le bloc macro-budgétaire relie finances publiques et taux souverains. Il utilise des modèles linéaires et des données annuelles ou trimestrielles, et il cherche à expliquer plutôt qu'à prévoir.
-- Le bloc machine learning montre des gains de prévision sur les marchés financiers. Mais il n'utilise pas les données d'exécution budgétaire.
+- **Le bloc macro-budgétaire** relie finances publiques et taux souverains. Il utilise des modèles linéaires et des données annuelles ou trimestrielles, et il cherche à expliquer plutôt qu'à prévoir.
+- **Le bloc machine learning** montre des gains de prévision sur les marchés financiers. Mais il n'utilise pas les données d'exécution budgétaire.
 
 Un troisième constat s'ajoute : la France est peu étudiée. Six des quinze travaux du tableau portent uniquement sur les États-Unis. Un seul, Garlanda-Longueville (2023), se concentre sur la France, et il porte sur les annonces, pas sur les dépenses exécutées. Même Bouillot et al. (2025) traitent la France comme un pays parmi dix. Pourtant, la question budgétaire française est devenue centrale pour les marchés : la note de la France a été abaissée cinq fois par les agences entre 2023 et 2025. Et ses données d'exécution budgétaire sont disponibles en séries longues ouvertes.
 
 Bouillot, Candelon et Kool (2025) commencent à rapprocher les deux blocs. Notre travail s'en distingue sur trois points :
 
-- Nous isolons l'apport des dépenses publiques. Chez eux, les finances publiques sont mêlées à près de 5 000 variables. Ici, nous comparons explicitement le même modèle avec et sans dépenses.
-- Nous utilisons les données détaillées d'exécution du budget français, par catégorie de dépense, en données ouvertes.
-- Nous comparons trois indicateurs plus ou moins exposés au risque souverain : le spread, le taux OAT et le CAC 40.
+- **Nous isolons l'apport des dépenses publiques.** Chez eux, les finances publiques sont mêlées à près de 5 000 variables. Ici, nous comparons explicitement le même modèle avec et sans dépenses.
+- **Nous utilisons les données détaillées d'exécution du budget français**, par catégorie de dépense, en données ouvertes.
+- **Nous comparons trois indicateurs** plus ou moins exposés au risque souverain : le spread, le taux OAT et le CAC 40.
 
 ### 1.5.2 Problématique et hypothèses
 
@@ -177,10 +177,10 @@ Concrètement, nous testons si les dépenses de l'État améliorent la prévisio
 
 Nous formulons quatre hypothèses :
 
-- H1. Pour au moins un des trois indicateurs, un modèle qui intègre les dépenses publiques prévoit mieux qu'un modèle qui n'utilise que les variables de contrôle.
-- H2. L'apport des dépenses diminue du spread au taux OAT, puis au CAC 40, à mesure que l'indicateur est moins exposé au risque souverain.
-- H3. Les modèles de machine learning (forêt aléatoire, XGBoost) prévoient mieux que les modèles linéaires.
-- H4. Parmi les dépenses, la charge de la dette et les dépenses d'intervention sont les plus prédictives.
+- **H1.** Pour au moins un des trois indicateurs, un modèle qui intègre les dépenses publiques prévoit mieux qu'un modèle qui n'utilise que les variables de contrôle.
+- **H2.** L'apport des dépenses diminue du spread au taux OAT, puis au CAC 40, à mesure que l'indicateur est moins exposé au risque souverain.
+- **H3.** Les modèles de machine learning (forêt aléatoire, XGBoost) prévoient mieux que les modèles linéaires.
+- **H4.** Parmi les dépenses, la charge de la dette et les dépenses d'intervention sont les plus prédictives.
 
 En suivant Fama (1970) et Ramey (2011), un rejet de H1 reste un résultat plausible, et il nous apprendrait quelque chose.
 

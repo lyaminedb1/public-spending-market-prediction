@@ -32,7 +32,7 @@ Les finances publiques françaises inquiètent les marchés, et l'État publie c
 
 Nous ne trouvons aucune preuve que les dépenses améliorent la prévision : aucune des 168 comparaisons n'est significative une fois les tests multiples corrigés. Aucun modèle ne bat la moyenne historique, et pour les taux, ne rien changer au mois suivant fait mieux que tous les modèles, même si l'écart est rarement significatif. Des contrôles avec un signal fictif et du bruit montrent que notre dispositif aurait le plus souvent repéré un effet fort, mais pas forcément un effet faible. Enfin, un R² très élevé sur le niveau du spread, comme dans la littérature récente, ne prouve pas grand-chose : les modèles font moins bien que la simple reconduction du spread du mois précédent.
 
-Mots-clés : dépenses publiques, données ouvertes, spread souverain, prévision, machine learning, validation glissante, marchés efficients.
+**Mots-clés :** dépenses publiques, données ouvertes, spread souverain, prévision, machine learning, validation glissante, marchés efficients.
 
 ## Liste des abréviations
 
@@ -70,19 +70,19 @@ Mots-clés : dépenses publiques, données ouvertes, spread souverain, prévisio
 
 ## Glossaire
 
-Spread OAT-Bund. Écart entre le taux de l'emprunt d'État français à 10 ans et celui de l'emprunt allemand de même durée. Il mesure le supplément de rendement exigé par les investisseurs pour prêter à la France plutôt qu'à l'Allemagne.
+**Spread OAT-Bund.** Écart entre le taux de l'emprunt d'État français à 10 ans et celui de l'emprunt allemand de même durée. Il mesure le supplément de rendement exigé par les investisseurs pour prêter à la France plutôt qu'à l'Allemagne.
 
-R² hors échantillon. Part de l'erreur de la moyenne historique que le modèle évite, sur des données qu'il n'a pas vues. Positif : le modèle fait mieux que la moyenne ; négatif : il fait moins bien.
+**R² hors échantillon.** Part de l'erreur de la moyenne historique que le modèle évite, sur des données qu'il n'a pas vues. Positif : le modèle fait mieux que la moyenne ; négatif : il fait moins bien.
 
-Marche aléatoire (variation nulle). Prévision naïve selon laquelle la valeur du mois prochain sera égale à celle du mois en cours.
+**Marche aléatoire (variation nulle).** Prévision naïve selon laquelle la valeur du mois prochain sera égale à celle du mois en cours.
 
-Validation glissante. Méthode d'évaluation où le modèle est réestimé chaque mois avec les seules données passées, puis prévoit le mois suivant.
+**Validation glissante.** Méthode d'évaluation où le modèle est réestimé chaque mois avec les seules données passées, puis prévoit le mois suivant.
 
-Biais d'anticipation (look-ahead bias). Erreur qui consiste à utiliser une information qui n'était pas encore publiée à la date de la prévision.
+**Biais d'anticipation (look-ahead bias).** Erreur qui consiste à utiliser une information qui n'était pas encore publiée à la date de la prévision.
 
-Contrôle positif et contrôle négatif. Test du dispositif avec une variable fictive construite pour contenir un signal (positif), ou avec des variables de pur bruit (négatif).
+**Contrôle positif et contrôle négatif.** Test du dispositif avec une variable fictive construite pour contenir un signal (positif), ou avec des variables de pur bruit (négatif).
 
-Puissance d'un test. Probabilité qu'un test détecte un effet qui existe réellement.
+**Puissance d'un test.** Probabilité qu'un test détecte un effet qui existe réellement.
 
 # Introduction générale
 
