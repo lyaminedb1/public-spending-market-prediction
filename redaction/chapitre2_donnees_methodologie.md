@@ -73,7 +73,7 @@ Nous avons exclu les opérations financières. Ce sont des prises de participati
 
 ### 2.2.3 Respecter le calendrier de publication
 
-La SMB d'un mois M paraît au début du mois M+2. Nous l'avons vérifié sur plusieurs communiqués du ministère : janvier 2023 publié le 2 mars 2023, décembre 2024 le 4 février 2025, juin 2026 le 4 août 2026, juillet 2026 le 2 septembre 2026. À la fin d'un mois t, un investisseur ne connaît donc que le budget du mois t-2. Toutes les variables budgétaires sont décalées de deux mois. Pour les années 2014 à 2022, nous n'avons pas retrouvé les dates exactes, car les archives ne sont plus en ligne : nous supposons le même calendrier.
+La SMB d'un mois M paraît au début du mois M+2. Nous l'avons vérifié sur plusieurs communiqués du ministère : janvier 2023 publié le 2 mars 2023, décembre 2024 le 4 février 2025, juin 2026 le 4 août 2026, juillet 2026 le 2 septembre 2026. À la fin d'un mois t, un investisseur ne connaît donc que le budget du mois t-2. Toutes les variables budgétaires sont décalées de deux mois. Nous avons ensuite retrouvé 40 dates de publication entre 2017 et 2026 (annexe F) : 37 tombent au début du mois M+2 et 3, en 2019, dès la fin du mois M+1. Un décalage de deux mois n'utilise donc jamais un chiffre non encore publié ; il est au pire un peu prudent. Pour 2014-2016 et les mois non retrouvés, nous supposons le même calendrier.
 
 Le même raisonnement vaut pour l'inflation. L'INSEE publie une estimation provisoire à la fin du mois, puis l'indice définitif vers le milieu du mois suivant (pour août 2026 : le 28 août, puis le 15 septembre). Nos données sont les valeurs définitives. L'inflation est donc décalée d'un mois.
 
@@ -282,7 +282,7 @@ et l'on déclare significatives les k premières comparaisons. De façon équiva
 
 **Usage des résultats.** Ce travail n'est pas un conseil en investissement. Un modèle qui paraît prédire les marchés peut conduire à des décisions coûteuses s'il est mal évalué ; c'est pourquoi nous insistons sur la comparaison à des références simples.
 
-**Outils d'intelligence artificielle.** Conformément au guide de l'ECE, nous déclarons avoir utilisé un outil d'intelligence artificielle générative (Claude, d'Anthropic) comme assistant pour la programmation, la relecture du code et la rédaction. Le choix du sujet, de la problématique et du périmètre et les décisions de méthode relèvent de l'auteur, qui a relu l'ensemble du texte et en assume la responsabilité.
+**Outils d'intelligence artificielle.** Conformément au guide de l'ECE, nous déclarons avoir utilisé un outil d'intelligence artificielle générative (Claude, d'Anthropic) comme assistant pour la programmation et la rédaction. Le choix du sujet, de la problématique et du périmètre et les décisions de méthode relèvent de l'auteur, qui a relu l'ensemble du texte et du code, et en assume la responsabilité.
 
 ## Références ajoutées par ce chapitre
 

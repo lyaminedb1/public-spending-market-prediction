@@ -188,3 +188,8 @@ Bouillot, Candelon & Kool (2025), *Forecasting European sovereign spreads using 
 
 ## Plan du mémoire
 Introduction · Ch.1 État de l'art (rédigé) · Ch.2 Données et méthodologie · Ch.3 Résultats · Ch.4 Discussion · Conclusion · Bibliographie · Annexes.
+
+## Mise à jour du 2/10 (après-midi, relecture de la version finale d'Elyamine)
+- Relecture complète du PDF exporté par Word. Corrigé dans les sources et le Word : « Résultatss » (coquille Word), phrase fautive 1.2.2 (Attinasi), déclaration IA reprise telle qu'Elyamine l'a modifiée (« programmation et rédaction », « relu l'ensemble du texte et du code »), page blanche après le ch. 1 (sauts de page → « saut de page avant »), signe moins typographique (Word coupait « - » et le nombre en fin de ligne), colonnes du tableau B.1, titre des propriétés du PDF, source isolée en 3.3 et 3.4, paragraphe de permutation clarifié.
+- Incohérence de fond corrigée : le texte disait le décalage de publication vérifié seulement sur 2023-2026, alors que l'annexe F contient 40 dates (2017-2026) : 37 en M+2, 3 (2019) dès la fin de M+1 → le décalage de 2 mois n'utilise jamais un chiffre non publié (au pire un peu prudent). 2.2.3, 3.3 et 4.7 mis à jour. PDF : 81 p. (sommaire vérifié : 88 entrées, 0 écart).
+

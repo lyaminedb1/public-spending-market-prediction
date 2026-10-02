@@ -58,7 +58,7 @@ Dans une union monétaire, tous les pays ont la même banque centrale. L'écart 
 
 Bernoth, von Hagen et Schuknecht (2012) étudient les spreads des obligations européennes face à l'Allemagne. La dette, le déficit et la charge de la dette en expliquent une partie, y compris après l'entrée dans l'euro. L'aversion au risque mondiale renforce cet effet.
 
-Attinasi, Checherita et Nickel (2009) cherchent ce qui a fait monter les spreads pendant la crise, de fin juillet 2007 à fin mars 2009. Ils trouvent trois moteurs : l'aversion au risque internationale, la liquidité des marchés obligataires et les positions budgétaires attendues. Les annonces de plans de sauvetage bancaire ont aussi pesé. Pour nous, ce qui compte, c'est que l'annonce elle-même qui a compté, et non le montant engagé, dont l'effet n'est pas significatif.
+Attinasi, Checherita et Nickel (2009) cherchent ce qui a fait monter les spreads pendant la crise, de fin juillet 2007 à fin mars 2009. Ils trouvent trois moteurs : l'aversion au risque internationale, la liquidité des marchés obligataires et les positions budgétaires attendues. Les annonces de plans de sauvetage bancaire ont aussi pesé. Pour nous, ce qui compte, c'est que l'annonce elle-même a compté, et non le montant engagé, dont l'effet n'est pas significatif.
 
 Afonso, Arghyrou et Kontonikas (2015) couvrent la zone euro de 1999 à 2010. Les marchés tiennent compte des déficits attendus sur toute la période, mais les sanctionnent beaucoup plus fort après mars 2009. La dette, elle, ne compte vraiment qu'à partir de la crise des dettes souveraines. L'effet des finances publiques sur les spreads n'est donc pas stable dans le temps : il apparaît surtout en période de tension.
 

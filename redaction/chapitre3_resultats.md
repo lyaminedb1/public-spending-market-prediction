@@ -96,9 +96,9 @@ Un signal de corrélation 0,3 avec la cible n'est retrouvé que dans une minorit
 
 **Contrôle négatif (variables de bruit).** Nous avons remplacé les sept dépenses par sept variables de pur bruit, puis comparé le gain par rapport à M0. Avec Ridge (20 tirages), 90 à 95 % des tirages de bruit font au moins aussi bien que les vraies dépenses. Avec la forêt aléatoire (5 tirages), c'est 80 à 100 %. Avec XGBoost (10 tirages), c'est 50 à 60 %.
 
-**Décalage de publication.** La date de publication des situations budgétaires n'est vérifiée que pour 2023-2026. Nous avons donc relancé les modèles principaux avec un décalage de 1 mois et de 3 mois, au lieu de 2. Aucun R² ne devient positif (meilleur R² : -0,7 % avec 1 mois, -2,7 % avec 3 mois, jeu M1). Aucun test M1 contre M0 n'est significatif après correction (plus petite p-value corrigée : 0,51).
+**Décalage de publication.** Les dates de publication des situations budgétaires ne sont connues que pour une partie des mois (40 publications entre 2017 et 2026). Nous avons donc relancé les modèles principaux avec un décalage de 1 mois et de 3 mois, au lieu de 2. Aucun R² ne devient positif (meilleur R² : -0,7 % avec 1 mois, -2,7 % avec 3 mois, jeu M1). Aucun test M1 contre M0 n'est significatif après correction (plus petite p-value corrigée : 0,51).
 
-*Source : calculs de l'auteur. Le détail des tirages est en annexe.*
+Le détail de ces contrôles est en annexe (C, D et E).
 
 ## 3.4 Importance des variables
 
@@ -118,9 +118,7 @@ Nous avons aussi remplacé les sept dépenses par sept variables de pur bruit, t
 
 Pour l'OAT et le CAC 40, la part des dépenses se situe dans l'intervalle obtenu avec du bruit. Pour le spread, elle est inférieure au plus petit des dix tirages de bruit.
 
-Une seconde mesure, calculée hors échantillon, a été ajoutée après les premiers résultats : l'importance par permutation, calculée avec Ridge et XGBoost sur deux versions de M1, qui servent de repères : l'une avec sept variables de bruit, l'autre avec le signal fictif (ρ = 0,5). On mélange au hasard les valeurs d'un groupe de variables sur la période de test, puis on mesure la hausse de l'erreur. Quand on mélange les sept dépenses dans la version avec bruit, l'erreur n'augmente pas : le RMSE baisse légèrement, de 0,1 % à 2,5 % selon la cible et le modèle. Dans la version avec signal, l'effet des dépenses va de -3,9 % à +0,1 %. Quand on mélange le signal fictif du contrôle positif (ρ = 0,5), le RMSE augmente de 7,6 % à 18,8 %.
-
-*Source : calculs de l'auteur.*
+Une seconde mesure, calculée hors échantillon, a été ajoutée après les premiers résultats : l'importance par permutation, calculée avec Ridge et XGBoost. Pour avoir des repères, nous l'appliquons à deux versions de M1 : l'une à laquelle on ajoute sept variables de bruit, l'autre à laquelle on ajoute le signal fictif (ρ = 0,5). On mélange au hasard les valeurs d'un groupe de variables sur la période de test, puis on mesure la hausse de l'erreur. Quand on mélange les sept dépenses dans la version avec bruit, l'erreur n'augmente pas : le RMSE baisse légèrement, de 0,1 % à 2,5 % selon la cible et le modèle. Dans la version avec signal, l'effet des dépenses va de -3,9 % à +0,1 %. Quand on mélange le signal fictif du contrôle positif (ρ = 0,5), le RMSE augmente de 7,6 % à 18,8 %.
 
 *\[Figure 3.3 – Importance SHAP des variables : `results/figures/fig3_3_importance_shap.png`\]*
 

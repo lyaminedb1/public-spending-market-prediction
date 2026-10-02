@@ -140,5 +140,10 @@ if non_cites:
 doc += ["# Références", ""] + [f"::: {{custom-style=\"Bibliography\"}}\n{b}\n:::\n" for b in refs_num]
 doc += ["## Sources en ligne", ""] + [f"::: {{custom-style=\"Bibliography\"}}\n{w}\n:::\n" for w in web2]
 doc += PB + [annexes]
-(OUT / "memoire.md").write_text("\n".join(doc))
+texte = "\n".join(doc)
+# Signe moins typographique devant un nombre (Word coupait la ligne entre « - » et le chiffre),
+# et dans t-1, t-2, M-2 (hors blocs openxml, liens et DOI : seulement après une espace, « ( », « [ » ou « ; »)
+texte = re.sub(r"(?<=[\s(\[;|])-(?=\d)", "\u2212", texte)
+texte = re.sub(r"(?<=\b[tM])-(?=\d)", "\u2212", texte)
+(OUT / "memoire.md").write_text(texte)
 print("références:", len(biblio))

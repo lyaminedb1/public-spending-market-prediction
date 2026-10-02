@@ -94,8 +94,18 @@ def borders(tbl):
     for edge in ("top", "left", "bottom", "right", "insideH", "insideV"):
         e = OxmlElement(f"w:{edge}"); e.set(qn("w:val"), "single"); e.set(qn("w:sz"), "4"); e.set(qn("w:color"), "808080"); b.append(e)
     tblPr.append(b)
+W_B1 = (2.7, 1.8, 3.6, 1.0, 1.6, 1.6, 1.4, 1.9)  # tableau B.1 (annexe) : colonnes assez larges pour ne pas couper les mots
 for tbl in d.tables:
     borders(tbl)
+    hdr = [c.text.strip() for c in tbl.rows[0].cells]
+    if hdr[:3] == ["Extension", "Cible", "Comparaison"] and len(hdr) == len(W_B1):
+        tbl.autofit = False
+        grid = tbl._tbl.tblGrid
+        for gc, w in zip(grid.findall(qn("w:gridCol")), W_B1):
+            gc.set(qn("w:w"), str(int(w * 567)))
+        for row in tbl.rows:
+            for cell, w in zip(row.cells, W_B1):
+                cell.width = Cm(w)
     ncol = len(tbl.columns)
     size = 9 if ncol >= 5 else 10
     for ri, row in enumerate(tbl.rows):
@@ -109,8 +119,24 @@ for tbl in d.tables:
             if ri == 0:
                 tcPr = cell._tc.get_or_add_tcPr(); sh = OxmlElement("w:shd")
                 sh.set(qn("w:val"), "clear"); sh.set(qn("w:color"), "auto"); sh.set(qn("w:fill"), "E7E6E6"); tcPr.append(sh)
+# Sauts de page : un paragraphe vide contenant un saut de page crée une page blanche s'il tombe
+# en haut de page. On le remplace par « saut de page avant » sur le paragraphe suivant.
+for p in list(d.paragraphs):
+    brs = p._p.xpath('.//w:br[@w:type="page"]')
+    if brs and not p.text.strip():
+        nxt = p._p.getnext()
+        while nxt is not None and nxt.tag in (qn("w:bookmarkStart"), qn("w:bookmarkEnd")):
+            nxt = nxt.getnext()
+        if nxt is not None and nxt.tag == qn("w:p"):
+            pPr = nxt.find(qn("w:pPr"))
+            if pPr is None:
+                pPr = OxmlElement("w:pPr"); nxt.insert(0, pPr)
+            pb = OxmlElement("w:pageBreakBefore")
+            pos = sum(1 for c in pPr if c.tag in (qn("w:pStyle"), qn("w:keepNext"), qn("w:keepLines")))
+            pPr.insert(pos, pb)
+            p._p.getparent().remove(p._p)
 d.core_properties.author = "Abdellah Elyamine DALI BRAHAM"
-d.core_properties.title = "Mémoire – Chapitres 1 à 4"
+d.core_properties.title = "Prédiction d'indicateurs des marchés financiers à partir des données de dépenses publiques ouvertes : une approche par machine learning"
 d.save(B / "Memoire_DaliBraham.docx")
 print("ok")
 
