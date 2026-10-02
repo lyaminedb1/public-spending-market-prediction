@@ -2,7 +2,6 @@
 
 Oct 2, 2026 · @elyamine
 
-> Statut : version du 2/10 approuvée par l'auteur. Chiffres et références vérifiés.
 
 ## 4.1 Réponse à la problématique
 
