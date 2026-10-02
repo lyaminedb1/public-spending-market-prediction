@@ -108,7 +108,7 @@ titre = [l for l in sec("Page de titre").split("\n") if l.strip()]
 intro = lim[lim.index("# Introduction générale"):lim.index("# Conclusion générale")].strip()
 concl = lim[lim.index("# Conclusion générale"):].strip()
 
-doc = []
+doc = ["::: {custom-style=\"TitlePage2\"}", f"![]({(MD / 'images' / 'logo_ece.png').as_posix()}){{width=6cm}}", ":::", ""]  # logo de l'ECE
 for k, l in enumerate(titre):
     doc += [f"::: {{custom-style=\"TitlePage{1 if k == 0 else 2}\"}}", l.replace("**", ""), ":::", ""]
 doc += PB
